@@ -191,16 +191,22 @@
 - SQLite 3.31.1
 - Django 3.0.6
 
+-----
+
 #### 2) Back-Library(Framework)
 
 - Django-rest-framework 3.11.0
 - Selenium 3.141.59
 - BeautifulSoup4 4.9.0
 
+-----
+
 #### 3) Frontend
 
 - Javascript ECMAScript 2018
 - Vuejs 2.6.10
+
+-----
 
 #### 4) Frontend-Library(Framework)
 
@@ -208,10 +214,14 @@
 - IPhostentry 
 - Firebase Cloud
 
+-----
+
 #### 5) Publish & Design
 
 - Adobe Photoshop 21.1.2
 - Adobe Illustrator 24.1.2
+
+-----
 
 
 
