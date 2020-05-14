@@ -53,7 +53,6 @@
 - 더 많은 플레이어와 소통할 수 있는 공간 제공
 - 원하는 정보를 쉽게 얻을 수 있는 공간 제공
 
-
 -----
 
 #### 5) :star: 향후 전망
@@ -74,13 +73,11 @@
 
   - 미술품, 꽃, 물고기, 곤충, 주민 등 도감 서비스 제공 
 
-
 -----
 
 #### 2) 커뮤니티
 
   - 동물의 숲 유저들의 소통 공간(거래, 친목) 구현
-
 
 -----
 
@@ -187,39 +184,39 @@
 
 #### 1) Backend
 
-- Python 3.8.2
-- SQLite 3.31.1
-- Django 3.0.6
+- ![a](https://img.shields.io/badge/python-3.8.2-blue) Python 3.8.2
+- ![](https://img.shields.io/badge/SQLite-3.31.1-green) SQLite 3.31.1
+- ![](https://img.shields.io/badge/Django-3.0.6-red) Django 3.0.6
 
 -----
 
 #### 2) Back-Library(Framework)
 
-- Django-rest-framework 3.11.0
-- Selenium 3.141.59
-- BeautifulSoup4 4.9.0
+- ![](https://img.shields.io/badge/Django--rest--framework-3.11.0-orange) Django-rest-framework 3.11.0
+- ![](https://img.shields.io/badge/Selenium-3.141.59-pink) Selenium 3.141.59
+- ![](https://img.shields.io/badge/BeautifulSoup4-4.9.0-yellow) BeautifulSoup4 4.9.0
 
 -----
 
 #### 3) Frontend
 
-- Javascript ECMAScript 2018
-- Vuejs 2.6.10
+- ![](https://img.shields.io/badge/Javascript-ECMAScript 2018-red) Javascript ECMAScript 2018
+- ![](https://img.shields.io/badge/Vuejs-2.6.10-brightgreen) Vuejs 2.6.10
 
 -----
 
 #### 4) Frontend-Library(Framework)
 
-- Vuetify 2.2.28
-- IPhostentry 
-- Firebase Cloud
+- ![](https://img.shields.io/badge/Vuetify-2.2.28-yellowgreen) Vuetify 2.2.28
+- ![](https://img.shields.io/badge/IPhostentry-0-lightgrey) IPhostentry
+- ![](https://img.shields.io/badge/Firebase-Cloud-red) Firebase Cloud
 
 -----
 
 #### 5) Publish & Design
 
-- Adobe Photoshop 21.1.2
-- Adobe Illustrator 24.1.2
+- ![https://img.shields.io/badge/Adobe%20Photoshop-21.1.2-blueviolet](https://img.shields.io/badge/Adobe Photoshop-21.1.2-blueviolet) Adobe Photoshop 21.1.2
+- ![https://img.shields.io/badge/Adobe%20Illustrator-24.1.2-9cf](https://img.shields.io/badge/Adobe Illustrator-24.1.2-9cf) Adobe Illustrator 24.1.2
 
 -----
 
