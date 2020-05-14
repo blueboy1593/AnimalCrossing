@@ -202,7 +202,7 @@
 
 - ERD
 
-  ![](./README_image/ERD.PNG)
+  ![](./README_image/ERD.png)
 
 - Vue Components Structure
 
