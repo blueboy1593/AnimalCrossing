@@ -200,7 +200,7 @@
 
 #### 3) Frontend
 
-- ![](https://img.shields.io/badge/Javascript-ECMAScript 2018-red) Javascript ECMAScript 2018
+- ![](https://img.shields.io/badge/Javascript-ECMAScript 2018-red) Django 3.0.6
 - ![](https://img.shields.io/badge/Vuejs-2.6.10-brightgreen) Vuejs 2.6.10
 
 -----
@@ -215,8 +215,8 @@
 
 #### 5) Publish & Design
 
-- ![https://img.shields.io/badge/Adobe%20Photoshop-21.1.2-blueviolet](https://img.shields.io/badge/Adobe Photoshop-21.1.2-blueviolet) Adobe Photoshop 21.1.2
-- ![https://img.shields.io/badge/Adobe%20Illustrator-24.1.2-9cf](https://img.shields.io/badge/Adobe Illustrator-24.1.2-9cf) Adobe Illustrator 24.1.2
+- ![https://img.shields.io/badge/Adobe%20Photoshop-21.1.2-blueviolet](https://img.shields.io/badge/Adobe Photoshop-21.1.2-pink) Adobe Photoshop 21.1.2
+- ![https://img.shields.io/badge/Adobe%20Illustrator-24.1.2-9cf](https://img.shields.io/badge/Adobe Illustrator-24.1.2-violet) Adobe Illustrator 24.1.2
 
 -----
 
