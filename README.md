@@ -200,7 +200,7 @@
 
 #### 3) Frontend
 
-- ![](https://img.shields.io/badge/Javascript-ECMAScript 2018-red) Django 3.0.6
+- ![](https://img.shields.io/badge/Javascript-ECMAScript 2018-red) Javascript EDMA Script 2018
 - ![](https://img.shields.io/badge/Vuejs-2.6.10-brightgreen) Vuejs 2.6.10
 
 -----
@@ -225,6 +225,12 @@
 ## 3. 요구사항 정의:mag_right:
 ### 3-1. Table
 
+1. 유저 관리(ip이용)
+2. 물고기, 곤충 조회(도감 및 박물관 채우기용)
+3. 그림 및 화석 조회(박물관 채우기 용)
+4. 꽃 교배정보 조회(꾸미기 용)
+5. 커뮤니티 기능 - 거래, 자랑, 친구찾기 커뮤니티
+
 | Req ID |              요구사항 명              | 설명                                                         |
 | :----: | :-----------------------------------: | :----------------------------------------------------------- |
 | Req 1  |            유저 관리:man:             | - 관리자: 서비스를 관리한다.<br />- 방문자: 고유 ip를 통해 랜덤 닉네임을 부여 받는다. |
@@ -242,8 +248,8 @@
 |        |               주요 기능               | - 글 작성<br />- 댓글 작성<br />- 좋아요 기능 **없음**<br />- 판매자와 수요자 간 1:1 통신 채널 구현 (채팅)<br />- 글 작성자를 누르면 서로 채팅 가능하게 |
 | Req 6  |       커뮤니티​<br />​자랑:mega:        | 회원을 위한 동물의 숲 커뮤니티 (2)<br />내 섬의 컨텐츠를 단순히 자랑만 할 수 있는 게시판 |
 |        |               주요 기능               | - 글 작성<br />- 댓글 작성 가능<br />- 좋아요 기능 **있음**<br />- 게임 내 컨텐츠 캡처 이미지 업로드 기능 구현 필수 (Firebase)<br />- *(필요시 네이버 텍스트 에디터 오픈소스 사용해서 구현)* |
-| Req 7  |           커뮤니티:couple:            | 회원을 위한 동물의 숲 커뮤니티 (3)<br />같은 지역 기반 동물의 숲 유저 찾기<br />게임친구 :arrow_right: 동네친구 (동네친구 찾기 '위피' 어플에서 착안) |
-|        |               주요 기능               | - 구글 지도 API 사용<br />- 같은 지역 기반 동물의 숲 유저 찾기<br />- 다른 지역 기반 동물의 숲 유저 찾기 |
+| Req 7  |           커뮤니티:couple:            | 회원을 위한 동물의 숲 커뮤니티 (3)                           |
+|        |               주요 기능               | - 동물의 숲 유저 글쓰기                                      |
 | Req 8  |              커뮤니티 DB              | ** **CRUD 기능 제공** **<br /><br />- 게시글 카테고리 (IntField): 거래, 자랑, 친구<br />- 게시글 제목 (CharField)<br />- 게시글 내용 (TextField)<br />- 작성자 (CharField): 고유 ip로 형성된 랜덤 닉네임<br />- 이미지 (CharField): Firebase 이미지 URL<br />- 비밀번호 (​CharField): 게시글 작성 시마다 입력<br />- 작성 시간 (DateTimeField, auto_now_add=True)<br />- 수정 시간 (DateTimeField, auto_add=True)<br />- 댓글 (CharField)<br />- 게시글 좋아요 기능 (ManyToManyField) |
 | Req 9  |       서비스 UX/UI 커스터마이징       | - Web: 동물의 숲 컨셉 + 싸이월드 감성<br />- Mobile: 프로그레시브웹앱(PWA) |
 
