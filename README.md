@@ -1,5 +1,7 @@
 # :cat: PROJECT TITLE:  공략해요 동물의 숲
 
+(가제)
+
 
 
 ## 1. 프로젝트 개요
@@ -30,12 +32,8 @@
 
 ![비교](imgs/비교.png)
 
-
-
 - 네이버 카페 / DC인사이드: 게임을 함께 이용하는 사람들과 커뮤니케이션
   <img src="imgs/gall.PNG" alt="gall" style="zoom:67%;" />
-
-
 
 - 정리: 이를 통해, 정보와 커뮤니티 서비스를 한 곳에서 제공하는 사이트를 착안
   
@@ -200,7 +198,7 @@
 
 #### 3) Frontend
 
-- ![](https://img.shields.io/badge/Javascript-ECMAScript 2018-red) Javascript EDMA Script 2018
+- ![](https://img.shields.io/badge/Javascript-ECMAScript2018-red) Javascript EDMA Script 2018
 - ![](https://img.shields.io/badge/Vuejs-2.6.10-brightgreen) Vuejs 2.6.10
 
 -----
@@ -215,8 +213,8 @@
 
 #### 5) Publish & Design
 
-- ![https://img.shields.io/badge/Adobe%20Photoshop-21.1.2-blueviolet](https://img.shields.io/badge/Adobe Photoshop-21.1.2-pink) Adobe Photoshop 21.1.2
-- ![https://img.shields.io/badge/Adobe%20Illustrator-24.1.2-9cf](https://img.shields.io/badge/Adobe Illustrator-24.1.2-violet) Adobe Illustrator 24.1.2
+- ![https://img.shields.io/badge/Adobe-Photoshop-21.1.2-blueviolet](https://img.shields.io/badge/Adobe Photoshop-21.1.2-pink) Adobe Photoshop 21.1.2
+- ![https://img.shields.io/badge/Adobe-Illustrator-24.1.2-9cf](https://img.shields.io/badge/Adobe Illustrator-24.1.2-violet) Adobe Illustrator 24.1.2
 
 -----
 
