@@ -214,7 +214,7 @@
 #### 5) Publish & Design
 
 - ![https://img.shields.io/badge/AdobePhotoshop-21.1.2-blueviolet](https://img.shields.io/badge/AdobePhotoshop-21.1.2-pink) Adobe Photoshop 21.1.2
-- ![https://img.shields.io/badge/Adobe-Illustrator-24.1.2-9cf](https://img.shields.io/badge/Adobe Illustrator-24.1.2-violet) Adobe Illustrator 24.1.2
+- ![https://img.shields.io/badge/AdobeIllustrator-24.1.2-9cf](https://img.shields.io/badge/AdobeIllustrator-24.1.2-violet) Adobe Illustrator 24.1.2
 
 -----
 
