@@ -1,3 +1,4 @@
+/* eslint-disable*/
 <template>
   <v-app>
     <v-app-bar
@@ -58,3 +59,4 @@ export default {
   }),
 };
 </script>
+/* eslint-enable*/ 

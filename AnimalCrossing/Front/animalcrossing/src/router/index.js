@@ -1,15 +1,69 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import Info from '../views/Info.vue';
+import Community from '../views/Community.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
+    path: '*',
+    redirect: '/',
+    beforeEnter: alert('없는 경로입니다. 홈으로 이동합니다.')
+  },
+  {
     path: '/',
     name: 'Home',
     component: Home,
   },
+  {
+    path: '/info',
+    name: 'Info',
+    component: Info,
+    children: [
+      {
+        path: "fish",
+        component: () => import("../components/info/Fish.vue"),
+      },
+      {
+        path: "flower",
+        component: () => import("../components/info/Flower.vue"),
+      },
+      {
+        path: "fossil",
+        component: () => import("../components/info/Fossil.vue"),
+      },
+      {
+        path: "insect",
+        component: () => import("../components/info/Insect.vue"),
+      },
+      {
+        path: "painting",
+        component: () => import("../components/info/Painting.vue"),
+      },
+    ],
+  },
+  {
+    path: '/community',
+    name: 'Community',
+    component: Community,
+    children: [
+      {
+        path: "trade",
+        component: () => import("../components/community/Trade.vue"),
+      },
+      {
+        path: "show",
+        component: () => import("../components/community/Show.vue"),
+      },
+      {
+        path: "friend",
+        component: () => import("../components/community/Friend.vue"),
+      },
+    ],
+  },
+
   {
     path: '/about',
     name: 'About',
