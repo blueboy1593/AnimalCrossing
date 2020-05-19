@@ -9,8 +9,10 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "*",
-    redirect: "/"
-    // beforeEnter: alert('없는 경로입니다. 홈으로 이동합니다.')
+    redirect: "/",
+    beforeRouterEnter(to, from, next) {
+      next();
+    }
   },
   {
     path: "/",
