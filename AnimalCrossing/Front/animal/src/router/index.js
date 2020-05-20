@@ -8,13 +8,6 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "*",
-    redirect: "/",
-    beforeRouterEnter(to, from, next) {
-      next();
-    }
-  },
-  {
     path: "/",
     name: "Home",
     component: Home
@@ -74,6 +67,17 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
+  },
+
+  // 404 page redirect
+  {
+    path: "/pageNotFound",
+    name: "NotFound",
+    component: () => import("@/views/404Page.vue")
+  },
+  {
+    path: "*",
+    redirect: { name: "NotFound" }
   }
 ];
 
