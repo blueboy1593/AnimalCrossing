@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Info from "../views/Info.vue";
 import Community from "../views/Community.vue";
+import NotFound from "../views/404Page.vue";
 
 Vue.use(VueRouter);
 
@@ -73,7 +74,7 @@ const routes = [
   {
     path: "/pageNotFound",
     name: "NotFound",
-    component: () => import("@/views/404Page.vue")
+    component: NotFound
   },
   {
     path: "*",
