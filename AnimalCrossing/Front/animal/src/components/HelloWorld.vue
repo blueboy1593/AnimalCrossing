@@ -1,141 +1,94 @@
 <template>
   <v-container>
     <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
-
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br />please join our online
-          <a href="https://community.vuetifyjs.com" target="_blank"
-            >Discord Community</a
-          >
-        </p>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
-      </v-col>
+      <ul>
+        <li>
+          <span>
+            <i class="fa fa-users"></i>
+          </span>
+          홈
+        </li>
+        <li>
+          <span>
+            <i class="fa fa-graduation-cap"></i>
+          </span>
+          정보
+        </li>
+        <li>
+          <span>
+            <i class="fa fa-cogs"></i>
+          </span>
+          커뮤니티
+        </li>
+        <li>
+          <span>
+            <i class="fa fa-magic"></i>
+          </span>
+          기타 등등
+        </li>
+      </ul>
     </v-row>
   </v-container>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
-
-  data: () => ({
-    ecosystem: [
-      {
-        text: "vuetify-loader",
-        href: "https://github.com/vuetifyjs/vuetify-loader"
-      },
-      {
-        text: "github",
-        href: "https://github.com/vuetifyjs/vuetify"
-      },
-      {
-        text: "awesome-vuetify",
-        href: "https://github.com/vuetifyjs/awesome-vuetify"
-      }
-    ],
-    importantLinks: [
-      {
-        text: "Documentation",
-        href: "https://vuetifyjs.com"
-      },
-      {
-        text: "Chat",
-        href: "https://community.vuetifyjs.com"
-      },
-      {
-        text: "Made with Vuetify",
-        href: "https://madewithvuejs.com/vuetify"
-      },
-      {
-        text: "Twitter",
-        href: "https://twitter.com/vuetifyjs"
-      },
-      {
-        text: "Articles",
-        href: "https://medium.com/vuetify"
-      }
-    ],
-    whatsNext: [
-      {
-        text: "Explore components",
-        href: "https://vuetifyjs.com/components/api-explorer"
-      },
-      {
-        text: "Select a layout",
-        href: "https://vuetifyjs.com/layout/pre-defined"
-      },
-      {
-        text: "Frequently Asked Questions",
-        href: "https://vuetifyjs.com/getting-started/frequently-asked-questions"
-      }
-    ]
-  })
+  name: "HelloWorld"
 };
 </script>
+
+<style>
+html,
+body {
+  font-size: 16px;
+  background: #d1d1d1;
+  text-align: center;
+  font-family: "Cabin", cursive;
+  overflow: hidden;
+}
+
+ul {
+  position: absolute;
+  right: -212px;
+  padding: 0;
+  list-style-type: none;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 200%;
+  line-height: 1.9;
+  color: #2d2d2d;
+  width: 280px;
+  text-transform: capitalize;
+}
+li {
+  height: 60px;
+  transition: all 0.3s ease-out, color 0.2s 0.4s ease-out;
+  background: #0d0d0d;
+  margin-bottom: 2px;
+  border-left: 4px solid #2d2d2d;
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.4);
+}
+li:hover {
+  margin-left: -50%;
+  cursor: pointer;
+  border-left: 4px solid #f4df48;
+  color: #ffffff;
+}
+li:hover > span {
+  color: #ffffff;
+  transform: rotate(-5deg);
+}
+span {
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  float: left;
+  line-height: 2.1;
+  transition: all 0.2s 0.4s ease-out;
+  font-size: 120%;
+  margin: 0 3px;
+  font-size: 95%;
+}
+</style>

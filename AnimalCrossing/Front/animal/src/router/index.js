@@ -3,17 +3,11 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Info from "../views/Info.vue";
 import Community from "../views/Community.vue";
+import NotFound from "../views/404Page.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "*",
-    redirect: "/",
-    beforeRouterEnter(to, from, next) {
-      next();
-    }
-  },
   {
     path: "/",
     name: "Home",
@@ -74,6 +68,17 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
+  },
+
+  // 404 page redirect
+  {
+    path: "/pageNotFound",
+    name: "NotFound",
+    component: NotFound
+  },
+  {
+    path: "*",
+    redirect: { name: "NotFound" }
   }
 ];
 
