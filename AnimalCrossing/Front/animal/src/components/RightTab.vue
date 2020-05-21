@@ -2,24 +2,30 @@
   <v-container>
     <v-row class="text-center">
       <ul>
-        <li>
-          <span>
-            <i class="fa fa-users"></i>
-          </span>
-          홈
-        </li>
-        <li>
-          <span>
-            <i class="fa fa-graduation-cap"></i>
-          </span>
-          정보
-        </li>
-        <li>
-          <span>
-            <i class="fa fa-cogs"></i>
-          </span>
-          커뮤니티
-        </li>
+        <router-link to="/">
+          <li>
+            <span>
+              <i class="fa fa-users"></i>
+            </span>
+            홈
+          </li>
+        </router-link>
+        <router-link to="/info">
+          <li>
+            <span>
+              <i class="fa fa-graduation-cap"></i>
+            </span>
+            정보
+          </li>
+        </router-link>
+        <router-link to="/community">
+          <li>
+            <span>
+              <i class="fa fa-cogs"></i>
+            </span>
+            커뮤니티
+          </li>
+        </router-link>
         <li>
           <span>
             <i class="fa fa-magic"></i>
