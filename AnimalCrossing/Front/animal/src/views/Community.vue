@@ -1,6 +1,6 @@
 <template>
   <div class="community">
-    <h1>This is an Community page</h1>
+    <h1>동물의숲 커뮤니티 페이지</h1>
   </div>
 </template>
 
