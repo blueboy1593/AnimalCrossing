@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <!-- <nav-bar></nav-bar> -->
-    <router-view />
-  </div>
+  <v-app>
+    <RightTab />
+    <v-content>
+      <router-view />
+    </v-content>
+  </v-app>
 </template>
 <script>
+import RightTab from "@/components/RightTab.vue";
 export default {
   name: "App",
-
-  components: {},
-
-  data: () => ({
-    //
-  })
+  components: {
+    RightTab
+  }
 };
 </script>

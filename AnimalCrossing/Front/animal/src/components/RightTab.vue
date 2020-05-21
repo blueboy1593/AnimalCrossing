@@ -31,13 +31,9 @@
   </v-container>
 </template>
 
-<script>
-export default {
-  name: "HelloWorld"
-};
-</script>
+<script></script>
 
-<style>
+<style scoped>
 html,
 body {
   font-size: 16px;
