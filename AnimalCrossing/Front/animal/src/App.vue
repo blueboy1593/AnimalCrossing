@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <RightTab />
     <v-content>
       <router-view />
     </v-content>
@@ -7,7 +8,11 @@
 </template>
 
 <script>
+import RightTab from "@/components/RightTab.vue";
 export default {
-  name: "App"
+  name: "App",
+  components: {
+    RightTab
+  }
 };
 </script>

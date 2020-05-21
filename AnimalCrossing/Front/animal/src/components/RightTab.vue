@@ -31,11 +31,7 @@
   </v-container>
 </template>
 
-<script>
-export default {
-  name: "HelloWorld"
-};
-</script>
+<script></script>
 
 <style scoped>
 html,
