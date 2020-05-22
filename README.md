@@ -238,6 +238,7 @@
 |        |           곤충 조회:beetle:           | 크롤링을 통해 가져온 곤충 정보를 보기 편한 UI로 디자인       |
 |        |               물고기 DB               | 물고기 데이터베이스 테이블 만들기<br /><br />- 물고기 이름 (CharField)<br />- 포획 가능 달 (IntField)<br />- 포획 가능 시간대 (CharField)<br />- 포획 장소 (CharField)<br />- 포획 난이도 (IntField) |
 |        |                곤충 DB                | 곤충 데이터베이스 테이블 만들기<br /><br />- 곤충 이름 (CharField)<br />- 포획 가능 달 (CharField) <br />- 포획 가능 시간 대 (CharField) |
+|        |              주민정보 DB              | - 주민 이름<br /> - 주민 영어이름 <br /> - 주민 성별<br />- 주민 생일 <br />- 주민 성격 <br /> - 주민 종류(개 고양이 등) |
 | Req 3  |            그림 조회:art:             | - 미술관을 구성할 수 있는 특정 그림 수집 방법 소개<br />- 진품/가품 구분 기준 제공 |
 |        |                그림 DB                | 그림 데이터베이스 테이블 만들기<br /><br />- 그림 제목 (CharField)<br />- 진품 그림 설명 (TextField)<br />- 가품 그림 설명 (TextField)<br />- 구분 방법 (TextField) |
 | Req 4  |        꽃 교배:cherry_blossom:        | 가져온 꽃 정보를 기반으로 보기 편한 UI로 제공<br /><br />- 교배 방법<br />- 교배 시 나오는 꽃의 종류<br />- 특정 꽃을 얻는 방법<br />- 시뮬레이션 기능: 시간이 남으면 도전해볼 것 |
