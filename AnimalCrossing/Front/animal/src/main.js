@@ -5,7 +5,11 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import "@fortawesome/fontawesome-free/css/all.css";
+<<<<<<< HEAD
 import "@fortawesome/fontawesome-free/js/all.js"; 
+=======
+import "@fortawesome/fontawesome-free/js/all.js";
+>>>>>>> 404page
 
 Vue.config.productionTip = false;
 

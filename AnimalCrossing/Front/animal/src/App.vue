@@ -1,5 +1,6 @@
 <template>
   <v-app>
+<<<<<<< HEAD
     <v-content>
       <Home />
       <Board />
@@ -26,3 +27,21 @@ export default {
   background-size: cover;
 }
 </style>
+=======
+    <RightTab />
+    <v-content>
+      <router-view />
+    </v-content>
+  </v-app>
+</template>
+
+<script>
+import RightTab from "@/components/RightTab.vue";
+export default {
+  name: "App",
+  components: {
+    RightTab
+  }
+};
+</script>
+>>>>>>> 404page
