@@ -21,8 +21,8 @@ export default {
 };
 </script>
 <style scoped>
-* {
+/* * {
   background-image: url("../public/img/background.png");
   background-size: cover;
-}
+} */
 </style>
