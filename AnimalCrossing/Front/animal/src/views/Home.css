@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+body {
+    margin: 0;
+    background-color: #f2f2f2;
+}
+
+
+@media screen and (min-width: 1024px) {
+    .logo {
+        display: none;
+    }
+
+    .box1 {
+        display: grid;
+        background-color: #A2DED0;
+        background-image: url("../assets/images/1.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .box1IconImg {
+        display: none;
+    }
+
+    .box2 {
+        display: grid;
+        background-color: #F4D03F;
+        background-image: url("../assets/images/2.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .box3 {
+        display: grid;
+        background-color: #6C7A89;
+        background-image: url("../assets/images/3.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .box4 {
+        display: grid;
+        background-color: #59ABE3;
+        background-image: url("../assets/images/4.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .home {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 100vh;
+    }
+
+    .box {
+        font-family: 'Jua', sans-serif;
+        font-size: 2rem;
+        text-shadow: 2px 2px 2px gray;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+        line-height: 90vh;
+        background-color: #efefef;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .box1 {
+        overflow: hidden;
+        display: grid;
+        background-color: rgba(168, 185, 196, 0.384);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .box1Con {
+        display: grid;
+        grid-template-rows: 2fr 1fr;
+        grid-template-areas:
+            "box1IconImg"
+            "box1Text";
+    }
+
+    .box1IconImg {
+        width: auto; 
+        height: 85%;
+        margin: 0 auto ;
+        grid-area: box1IconImg;
+    }
+
+    .box1Text {
+        float: left;
+        width: 40%;
+        margin : 0 auto ;
+        grid-area: box1Text;
+    }
+
+    .box2Con {
+        background-color: rgba(58, 134, 184, 0.603);
+    }
+
+    .box2 {
+        display: grid;
+        background-color: rgba(58, 134, 184, 0.452);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        /* border-radius: 0px 0px 50px 50px; */
+    }
+    
+    .box3 {
+        display: grid;
+        background-color: rgba(58, 134, 184, 0.603);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        /* border-radius: 0px 0px 50px 50px; */
+    }
+
+    .box4 {
+        display: grid;
+        background-color: rgba(89, 172, 227, 0);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .box {
+        font-family: 'Jua', sans-serif;
+        font-size: 2rem;
+        text-shadow: 2px 2px 2px gray;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+    }
+
+    .home {
+        background-image: url("../assets/images/sea.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 40vh 20vh 20vh 20vh;
+        grid-template-areas:
+            "box1"
+            "box2"
+            "box3"
+            "box4";
+    }
+}

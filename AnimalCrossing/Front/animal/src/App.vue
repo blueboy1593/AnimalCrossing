@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-content>
-      <!-- <RightTab /> -->
+      <Home />
       <Board />
     </v-content>
   </v-app>
@@ -9,12 +9,14 @@
 <script>
 // import RightTab from "@/components/RightTab.vue";
 import Board from "./views/Board.vue";
+import Home from './views/Home.vue';
 
 export default {
   name: "App",
   components: {
     // RightTab,
-    Board
+    Board,
+    Home
   }
 };
 </script>

@@ -16,8 +16,7 @@
       <section class="board__news">
         <router-view />
         <!-- ! news items added through the script according to 1. the latest date and 1. the selected category -->
-        <!--
-        <a class="news--item" href="#">
+        <!-- <a class="news--item" href="#">
             <p class="date">
                 Apr 26, 2019
             </p>
