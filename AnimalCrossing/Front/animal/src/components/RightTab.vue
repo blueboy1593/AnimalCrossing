@@ -2,7 +2,6 @@
   <v-container>
     <v-row class="text-center">
       <ul>
-<<<<<<< HEAD
         <router-link to="/">
           <li>
             <span>
@@ -27,7 +26,6 @@
             커뮤니티
           </li>
         </router-link>
-=======
         <li>
           <span>
             <i class="fa fa-users"></i>
@@ -46,7 +44,6 @@
           </span>
           커뮤니티
         </li>
->>>>>>> 404page
         <li>
           <span>
             <i class="fa fa-magic"></i>
