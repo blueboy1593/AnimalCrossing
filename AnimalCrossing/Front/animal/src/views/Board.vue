@@ -56,9 +56,10 @@
 <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
-  * {
+  .boardContainer {
     background-image: url("../../public/img/background.png");
     background-size: cover;
+    height: 100vh;
   }
 
   body {
@@ -130,11 +131,7 @@
     grid-area: boardGreen;
     max-width: 90%;
     max-height: 90%;
-    /* margin: 4rem auto; */
-    /* margin: 0 auto; */
     display: grid;
-    /* border: 4px solid hsl(207, 79%, 21%); */
-    /* background: #fff; */
     background: rgba(10, 85, 10, 0.425);
     box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.3);
     position: relative;
@@ -157,10 +154,7 @@
 
   /* for the heading include a slightly darker background */
   .board__heading {
-    /* margin to have the heading overlap on the surrounding border */
-    /* margin: -4px; */
     margin-bottom: 1.75rem;
-    /* font-family: "Chivo", sans-serif; */
     font-family: 'Jua', sans-serif;
     font-size: 1.25rem;
     color: #fff;
