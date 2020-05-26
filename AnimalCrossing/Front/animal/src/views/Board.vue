@@ -35,6 +35,7 @@
           </div>
         </div>
       </div>
+      <music></music>
     </div>
   </div>
 </template>
@@ -42,13 +43,15 @@
 <script>
   import RightTab from "@/components/RightTab.vue";
   import ring from "@/components/ring.vue";
-  import logoImage from "@/components/logoImage.vue"
+  import logoImage from "@/components/logoImage.vue";
+  import music from "@/components/music.vue";
 
   export default {
     components: {
       RightTab,
       ring,
-      logoImage
+      logoImage,
+      music
     }
   };
 </script>
