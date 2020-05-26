@@ -1,15 +1,19 @@
 <template>
-  <div id=painting>
+  <div>
     <h1>painting</h1>
+    <infoCard></infoCard>
   </div>
 </template>
 
 <script>
-export default {};
+import infoCard from "./infoCard.vue";
+
+export default {
+  name: "painting",
+  components: {
+      infoCard
+  }
+};
 </script>
 
-<style>
-    #painting {
-        background-color: none;
-    }
-</style>
+<style></style>
