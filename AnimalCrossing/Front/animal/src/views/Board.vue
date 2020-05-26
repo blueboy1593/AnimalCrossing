@@ -263,7 +263,7 @@ a background is specified in the script */
 
     /* position the navigation items atop one another instead of side by side */
     .board__nav {
-      grid-area: nav;
+      /* grid-area: nav; */
       flex-direction: column;
       /* at the top of the container */
       align-self: start;
@@ -276,7 +276,7 @@ a background is specified in the script */
 
     /* slightly increase the height of the container to include a taller board */
     .board__news {
-      grid-area: section;
+      /* grid-area: section; */
       width: 90%;
       max-height: 380px;
     }
