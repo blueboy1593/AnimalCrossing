@@ -1,3 +1,6 @@
+## 물고기
+
+```python
 from django.shortcuts import render
 import openpyxl
 from .models import Fish, Insect, Animal, Painting, Fossil
@@ -105,3 +108,5 @@ def excel_to_list(request):
         painting.memo = 가품특징[i]
         painting.save()
     return 
+```
+
