@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="text-center">
       <ul>
-        <router-link to="/">
+        <router-link to="/info">
           <li>
             <!-- <span>
               <i class="fa fa-users"></i>
