@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Info from "../views/Info.vue";
 import Community from "../views/Community.vue";
 import NotFound from "../views/404Page.vue";
+// import Board from '../views/Board.vue'
 
 Vue.use(VueRouter);
 
@@ -13,6 +14,11 @@ const routes = [
     name: "Home",
     component: Home
   },
+  // {
+  //   path: "/",
+  //   name: "Board",
+  //   component: Board
+  // },
   {
     path: "/info",
     name: "Info",

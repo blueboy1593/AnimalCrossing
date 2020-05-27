@@ -10,12 +10,17 @@
             동물의숲 게시판
           </h1> -->
           <nav class="board__nav">
-            <!-- ! the buttons added in the script, to include a background color for the specific category  -->
-            <!-- <button class="nav--item active" data-item="all">All</button>
-            <button class="nav--item" data-item="news">News</button>
-            <button class="nav--item" data-item="updates">Updates</button>
-            <button class="nav--item" data-item="maintenance">Maintenance</button>
-            <button class="nav--item" data-item="events">Events</button>
+            <router-link to="/info/fish">
+              <button class="nav--item active" data-item="Fish">Fish</button>
+            </router-link>
+            <router-link to="/info/insect">
+              <button class="nav--item" data-item="Insect">Insect</button>
+            </router-link>
+            <router-link to="/info/fossil">
+              <button class="nav--item" data-item="Fossil">Fossil</button>
+            </router-link>
+            <button class="nav--item" data-item="neighbor">Neighbor</button>
+            <!-- <button class="nav--item" data-item="events">Events</button>
             <button class="nav--item" data-item="important">Important</button> -->
           </nav>
           <section class="board__news">
