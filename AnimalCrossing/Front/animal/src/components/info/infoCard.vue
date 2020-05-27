@@ -35,9 +35,11 @@ export default {
         border-radius: 15px;
         background-color: #aac8e4;
         text-align: center;
+        overflow: hidden;
     }
 
-    .photoImg {
+    .image {
+        height: 100px;
         /* display: block; */
         margin: 0 auto;
     }
