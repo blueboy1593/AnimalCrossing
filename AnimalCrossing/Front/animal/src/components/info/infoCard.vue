@@ -22,11 +22,18 @@ export default {
 
 <style>
     .infoCard {
+        margin-top: 0.3rem;
         width: 120px;
         height: 150px;
         border-radius: 15px;
         background-color: #c1d2e1;
         overflow: hidden;
+    }
+
+    .infoCard:hover {
+        transform: scale(1.02);
+        opacity: 0.9;
+        border: 3px solid #276dd68e;
     }
 
     .photo {
