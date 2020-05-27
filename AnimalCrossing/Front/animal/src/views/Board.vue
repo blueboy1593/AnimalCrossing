@@ -19,7 +19,9 @@
             <router-link to="/info/fossil">
               <button class="nav--item" data-item="Fossil">Fossil</button>
             </router-link>
-            <button class="nav--item" data-item="neighbor">Neighbor</button>
+            <router-link to="/info/neighbor">
+              <button class="nav--item" data-item="neighbor">Neighbor</button>
+            </router-link>
             <!-- <button class="nav--item" data-item="events">Events</button>
             <button class="nav--item" data-item="important">Important</button> -->
           </nav>

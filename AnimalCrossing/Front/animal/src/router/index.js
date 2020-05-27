@@ -43,6 +43,10 @@ const routes = [
       {
         path: "painting",
         component: () => import("../components/info/Painting.vue")
+      },
+      {
+        path: "neighbor",
+        component: () => import("../components/info/Neighbor.vue")
       }
     ]
   },
