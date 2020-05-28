@@ -8,7 +8,7 @@
       {{ infoCard.title }}
     </div>
     <div class="infoDetail">
-      {{ infoCard.detail }}
+      {{ infoCard.name }}
     </div>
   </div>
 </template>

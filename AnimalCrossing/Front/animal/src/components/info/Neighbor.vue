@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import infoCard from "./infoCard.vue";
 
 export default {
@@ -18,46 +19,68 @@ export default {
   },
   data() {
     return {
-      infoCards: [
-        {
-          src: require("../../assets/images/neighbor.png"),
-          title: "이웃"
-        },
-        {
-          src: require("../../assets/images/neighbor.png"),
-          title: "이웃"
-        },
-        {
-          src: require("../../assets/images/neighbor.png"),
-          title: "이웃"
-        },
-        {
-          src: require("../../assets/images/neighbor.png"),
-          title: "이웃"
-        },
-        {
-          src: require("../../assets/images/neighbor.png"),
-          title: "이웃"
-        },
-        {
-          src: require("../../assets/images/neighbor.png"),
-          title: "이웃"
-        },
-        {
-          src: require("../../assets/images/neighbor.png"),
-          title: "이웃"
-        },
-        {
-          src: require("../../assets/images/neighbor.png"),
-          title: "이웃"
-        },
-        {
-          src: require("../../assets/images/neighbor.png"),
-          title: "이웃"
-        }
-      ]
+      infoCards: []
     };
+  },
+  methods: {
+    getNeighbor: function() {
+      axios
+        .get("http://127.0.0.1:8000/api/v1/animals/")
+        .then(response => {
+          this.infoCards = response.data;
+          console.log("this.infoCards::: ", this.infoCards);
+          // 여기서 가져온 데이터 for문으로 로드하기
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
+  mounted() {
+    this.getNeighbor();
   }
+  // data() {
+  //   return {
+  //     infoCards: [
+  //       {
+  //         src: require("../../assets/images/neighbor.png"),
+  //         title: "이웃"
+  //       },
+  //       {
+  //         src: require("../../assets/images/neighbor.png"),
+  //         title: "이웃"
+  //       },
+  //       {
+  //         src: require("../../assets/images/neighbor.png"),
+  //         title: "이웃"
+  //       },
+  //       {
+  //         src: require("../../assets/images/neighbor.png"),
+  //         title: "이웃"
+  //       },
+  //       {
+  //         src: require("../../assets/images/neighbor.png"),
+  //         title: "이웃"
+  //       },
+  //       {
+  //         src: require("../../assets/images/neighbor.png"),
+  //         title: "이웃"
+  //       },
+  //       {
+  //         src: require("../../assets/images/neighbor.png"),
+  //         title: "이웃"
+  //       },
+  //       {
+  //         src: require("../../assets/images/neighbor.png"),
+  //         title: "이웃"
+  //       },
+  //       {
+  //         src: require("../../assets/images/neighbor.png"),
+  //         title: "이웃"
+  //       }
+  //     ]
+  //   };
+  // }
 };
 </script>
 
