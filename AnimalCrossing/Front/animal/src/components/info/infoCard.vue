@@ -5,10 +5,10 @@
       <img :src="infoCard.src" class="image" />
     </div>
     <div class="infoName">
-      {{ infoCard.title }}
+      {{ infoCard.name }}
     </div>
     <div class="infoDetail">
-      {{ infoCard.name }}
+      {{ infoCard.price }}
     </div>
   </div>
 </template>
