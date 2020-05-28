@@ -9,7 +9,7 @@ export default {};
 </script>
 
 <style>
-  #info {
-    background-color: none;
-    }
+#info {
+  background-color: none;
+}
 </style>

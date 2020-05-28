@@ -40,7 +40,7 @@
 <script></script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 html,
 body {
@@ -55,7 +55,7 @@ body {
 /* 밑줄 제거, 폰트 */
 .v-application a {
   color: rgba(255, 255, 255, 0);
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   text-align: center;
 }
 
