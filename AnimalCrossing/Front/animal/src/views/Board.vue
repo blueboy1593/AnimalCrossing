@@ -10,13 +10,16 @@
           </h1> -->
           <nav class="board__nav">
             <router-link to="/info/fish">
-              <button class="nav--item active" data-item="Fish">Fish</button>
+              <img src="../assets/images/nav_fish.png" alt="Fish"/>
             </router-link>
             <router-link to="/info/insect">
-              <button class="nav--item" data-item="Insect">Insect</button>
+              <img src="../assets/images/nav_insect.png" alt="Insect"/>
             </router-link>
             <router-link to="/info/fossil">
               <button class="nav--item" data-item="Fossil">Fossil</button>
+            </router-link>
+            <router-link to="/info/painting">
+              <button class="nav--item" data-item="painting">Painting</button>
             </router-link>
             <router-link to="/info/neighbor">
               <button class="nav--item" data-item="neighbor">Neighbor</button>
