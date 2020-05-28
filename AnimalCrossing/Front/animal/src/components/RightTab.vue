@@ -3,7 +3,7 @@
     <v-row class="text-center">
       <ul>
         <router-link to="/info">
-          <li>
+          <li id="illustratedBook">
             <!-- <span>
               <i class="fa fa-users"></i>
             </span> -->
@@ -11,7 +11,7 @@
           </li>
         </router-link>
         <router-link to="/info">
-          <li>
+          <li id="calculator">
             <!-- <span>
               <i class="fa fa-graduation-cap"></i>
             </span> -->
@@ -19,7 +19,7 @@
           </li>
         </router-link>
         <router-link to="/community">
-          <li>
+          <li id="exchange">
             <!-- <span>
               <i class="fa fa-cogs"></i>
             </span> -->
@@ -92,6 +92,30 @@ li:hover {
 
   /* border-left: 4px solid #f4df48; */
   /* color: #ffffff; */
+}
+#illustratedBook {
+  background: #7a194a;
+  /* background: #f0c2d9dc; */
+}
+#illustratedBook:hover {
+  background: #b13472be;
+  /* background: #7a194a; */
+}
+#calculator {
+  background: #607a19;
+  /* background: #e2f0c2dc; */
+}
+#calculator:hover {
+  background: #94b33ece;
+  /* background: #607a19; */
+}
+#exchange {
+  background: #195e7a;
+  /* background: #c2dff0dc; */
+}
+#exchange:hover {
+  background: #368eb1c9;
+  /* background: #195e7a; */
 }
 li:hover > span {
   color: #ffffff;
