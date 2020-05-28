@@ -2,7 +2,10 @@
   <div class="infoCard">
     <div class="photo">
       <!-- <img src="../../assets/images/fish.png" height="100%" class="photoImg" alt=""> -->
-      <img :src="infoCard.src" class="image" />
+      <img v-if="true" :src="getImgPath(infoCard.engname)" class="image" />
+      <img :src="getImgPath(infoCard.engname)" class="image" />
+      <img :src="getImgPath(infoCard.engname)" class="image" />
+      <img :src="getImgPath(infoCard.engname)" class="image" />
     </div>
     <div class="infoName">
       {{ infoCard.title }}
@@ -16,7 +19,13 @@
 <script>
 export default {
   name: "infoCard",
-  props: ["infoCard"]
+  props: ["infoCard"],
+  methods: {
+    getImgPath(engname) {
+      let images = require(`@/assets/images/image_animal/${engname}.png`);
+      return images;
+    }
+  }
 };
 </script>
 

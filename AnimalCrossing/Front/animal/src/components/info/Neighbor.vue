@@ -2,7 +2,7 @@
   <div class="neighborCards">
     <infoCard
       v-for="infoCard in infoCards"
-      :key="infoCard.name"
+      :key="infoCard.engname"
       :infoCard="infoCard"
     />
   </div>
