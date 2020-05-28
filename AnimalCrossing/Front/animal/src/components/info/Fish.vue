@@ -18,15 +18,20 @@ export default {
   components: {
     infoCard
   },
+  data() {
+    return {
+      infoCards: []
+    };
+  },
   methods: {
     getFish: function() {
       axios
         .get("http://127.0.0.1:8000/api/v1/fishes/")
-        .then(function(response) {
-          console.log(response.data);
-          // 여기서 가져온 데이터 for문으로 로드하기
+        .then(response => {
+          this.infoCards = response.data;
+          console.log(this.infoCards);
         })
-        .catch(function(error) {
+        .catch(error => {
           console.log(error);
         });
     }
@@ -34,77 +39,77 @@ export default {
   mounted() {
     this.getFish();
   },
-  data() {
-    return {
-      infoCards: [
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "붕어",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "잉어",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "흰동가리",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "흰동가리",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "흰동가리",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "흰동가리",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "흰동가리",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "흰동가리",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "흰동가리",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "흰동가리",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "흰동가리",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "흰동가리",
-          detail: "5월"
-        },
-        {
-          src: require("../../assets/images/fish.png"),
-          title: "흰동가리",
-          detail: "5월"
-        }
-      ]
-    };
-  }
+  // data() {
+  //   return {
+  //     infoCards: [
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "붕어",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "잉어",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "흰동가리",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "흰동가리",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "흰동가리",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "흰동가리",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "흰동가리",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "흰동가리",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "흰동가리",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "흰동가리",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "흰동가리",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "흰동가리",
+  //         detail: "5월"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fish.png"),
+  //         title: "흰동가리",
+  //         detail: "5월"
+  //       }
+  //     ]
+  //   };
+  // }
 };
 </script>
 
