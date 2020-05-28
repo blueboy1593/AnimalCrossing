@@ -1,24 +1,24 @@
 <template>
   <v-app>
     <v-content>
-      <!-- <router-view class='home'/> -->
+      <router-view />
       <!-- <div v-if="this.location.pathname == '/'"> -->
-      <Home />
+        <!-- <Home /> -->
       <!-- </div>> -->
-      <Board />
+      <!-- <Board /> -->
     </v-content>
   </v-app>
 </template>
 <script>
-import Board from "./views/Board.vue";
-import Home from "./views/Home.vue";
+// import Board from "./views/Board.vue";
+// import Home from './views/Home.vue';
 
 export default {
   name: "App",
-  components: {
-    Board,
-    Home
-  }
+  // components: {
+  //   Board,
+  //   Home
+  // }
 };
 </script>
 <style scoped>
