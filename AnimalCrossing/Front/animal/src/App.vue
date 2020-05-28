@@ -3,7 +3,7 @@
     <v-content>
       <!-- <router-view class='home'/> -->
       <!-- <div v-if="this.location.pathname == '/'"> -->
-        <Home />
+      <Home />
       <!-- </div>> -->
       <Board />
     </v-content>
@@ -11,7 +11,7 @@
 </template>
 <script>
 import Board from "./views/Board.vue";
-import Home from './views/Home.vue';
+import Home from "./views/Home.vue";
 
 export default {
   name: "App",

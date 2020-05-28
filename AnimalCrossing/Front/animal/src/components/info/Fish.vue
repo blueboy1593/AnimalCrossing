@@ -1,12 +1,16 @@
 <template>
   <div class="fishCards">
     <!-- <h1>fish</h1> -->
-    <infoCard v-for="infoCard in infoCards" :key="infoCard.title" :infoCard="infoCard" />
+    <infoCard
+      v-for="infoCard in infoCards"
+      :key="infoCard.title"
+      :infoCard="infoCard"
+    />
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 import infoCard from "./infoCard.vue";
 
 export default {
@@ -16,7 +20,8 @@ export default {
   },
   methods: {
     getFish: function() {
-      axios.get('http://127.0.0.1:8000/api/v1/fishes/')
+      axios
+        .get("http://127.0.0.1:8000/api/v1/fishes/")
         .then(function(response) {
           console.log(response.data);
           // 여기서 가져온 데이터 for문으로 로드하기
