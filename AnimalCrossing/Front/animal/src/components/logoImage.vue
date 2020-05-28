@@ -1,7 +1,9 @@
 <template>
-    <div class="logoImage">
-        <img src="../assets/images/logo.png" class="logoImg" alt="">
-    </div>
+  <div class="logoImage">
+    <router-link to="/">
+      <img src="../assets/images/logo.png" class="logoImg" alt="">
+    </router-link>
+  </div>
 </template>
 
 <script></script>
