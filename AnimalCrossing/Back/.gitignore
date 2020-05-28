@@ -20,7 +20,9 @@ media
 # Byte-compiled / optimized / DLL files
 *.py[cod]
 *$py.class
-
+/venv/
+venv/
+/venv
 # C extensions
 *.so
 
