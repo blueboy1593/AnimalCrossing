@@ -4,7 +4,7 @@ import Home from "../views/Home.vue";
 import Info from "../views/Info.vue";
 import Community from "../views/Community.vue";
 import NotFound from "../views/404Page.vue";
-// import Board from '../views/Board.vue'
+import Board from "../views/Board.vue";
 
 Vue.use(VueRouter);
 
@@ -14,58 +14,60 @@ const routes = [
     name: "Home",
     component: Home
   },
-  // {
-  //   path: "/",
-  //   name: "Board",
-  //   component: Board
-  // },
   {
-    path: "/info",
-    name: "Info",
-    component: Info,
+    path: "/",
+    name: "Board",
+    component: Board,
     children: [
       {
-        path: "fish",
-        component: () => import("../components/info/Fish.vue")
+        path: "/info",
+        name: "Info",
+        component: Info,
+        children: [
+          {
+            path: "fish",
+            component: () => import("../components/info/Fish.vue")
+          },
+          {
+            path: "flower",
+            component: () => import("../components/info/Flower.vue")
+          },
+          {
+            path: "fossil",
+            component: () => import("../components/info/Fossil.vue")
+          },
+          {
+            path: "insect",
+            component: () => import("../components/info/Insect.vue")
+          },
+          {
+            path: "painting",
+            component: () => import("../components/info/Painting.vue")
+          },
+          {
+            path: "neighbor",
+            component: () => import("../components/info/Neighbor.vue")
+          }
+        ]
       },
       {
-        path: "flower",
-        component: () => import("../components/info/Flower.vue")
-      },
-      {
-        path: "fossil",
-        component: () => import("../components/info/Fossil.vue")
-      },
-      {
-        path: "insect",
-        component: () => import("../components/info/Insect.vue")
-      },
-      {
-        path: "painting",
-        component: () => import("../components/info/Painting.vue")
-      },
-      {
-        path: "neighbor",
-        component: () => import("../components/info/Neighbor.vue")
-      }
-    ]
-  },
-  {
-    path: "/community",
-    name: "Community",
-    component: Community,
-    children: [
-      {
-        path: "trade",
-        component: () => import("../components/community/Trade.vue")
-      },
-      {
-        path: "show",
-        component: () => import("../components/community/Show.vue")
-      },
-      {
-        path: "friend",
-        component: () => import("../components/community/Friend.vue")
+        path: "/community",
+        name: "Community",
+        component: Community,
+        children: [
+          {
+            path: "trade",
+            component: () => import("../components/community/Trade.vue")
+          },
+          {
+            path: "show",
+            component: () => import("../components/community/Show.vue")
+          },
+          {
+            path: "friend",
+            component: () => import("../components/community/Friend.vue")
+          }
+        ]
       }
     ]
   },

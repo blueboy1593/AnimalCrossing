@@ -3,7 +3,6 @@
     <div class="boardContainer">
       <logoImage></logoImage>
       <div class="boardGreen">
-        
         <ring></ring>
         <div class="boardGray">
           <!-- <h1 class="board__heading">
