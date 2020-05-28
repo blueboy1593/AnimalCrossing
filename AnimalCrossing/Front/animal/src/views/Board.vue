@@ -8,25 +8,6 @@
           <!-- <h1 class="board__heading">
             동물의숲 게시판
           </h1> -->
-          <nav class="board__nav">
-            <router-link to="/info/fish">
-              <img src="../assets/images/nav_fish.png" alt="Fish"/>
-            </router-link>
-            <router-link to="/info/insect">
-              <img src="../assets/images/nav_insect.png" alt="Insect"/>
-            </router-link>
-            <router-link to="/info/fossil">
-              <button class="nav--item" data-item="Fossil">Fossil</button>
-            </router-link>
-            <router-link to="/info/painting">
-              <button class="nav--item" data-item="painting">Painting</button>
-            </router-link>
-            <router-link to="/info/neighbor">
-              <button class="nav--item" data-item="neighbor">Neighbor</button>
-            </router-link>
-            <!-- <button class="nav--item" data-item="events">Events</button>
-            <button class="nav--item" data-item="important">Important</button> -->
-          </nav>
           <section class="board__news">
             <router-view />
             <!-- ! news items added through the script according to 1. the latest date and 1. the selected category -->
@@ -175,38 +156,6 @@ body {
   padding-left: 1.5rem;
 }
 
-/* navigation displaying the items evenly in a non-wrapping row */
-.board__nav {
-  display: flex;
-  margin: 1rem 2rem;
-  justify-content: space-evenly;
-  width: 80%;
-  justify-self: center;
-}
-
-/* style the buttons to have a bit of whitespace around the text
-a background is specified in the script */
-.nav--item {
-  border: none;
-  background: none;
-  color: inherit;
-  font-size: 0.85rem;
-  /* font-family: inherit; */
-  font-family: "Jua", sans-serif;
-  text-transform: capitalize;
-  border-radius: 30px;
-  letter-spacing: 0.05rem;
-  padding: 0.3rem 0.75rem;
-  cursor: pointer;
-}
-
-/* on hover and focused slightly decrease the color of the button and add an underline */
-.nav--item:hover,
-.nav--item:focus {
-  color: hsl(0, 0%, 35%);
-  text-decoration: underline;
-}
-
 /* for the section describing the news items, display the items in a single column layout */
 .board__news {
   display: flex;
@@ -232,28 +181,6 @@ a background is specified in the script */
 .board__news::-webkit-scrollbar-thumb {
   background: hsl(200, 100%, 10%);
   border-radius: 5px;
-}
-
-/* remove the default properties of the anchor links describing the news items */
-.news--item {
-  text-decoration: none;
-  color: inherit;
-  margin: 1.25rem 0;
-  padding-left: 0.75rem;
-}
-
-/* on hover and when focused slightly decrease the weight of the anchor links */
-.news--item:hover,
-.news--item:focus {
-  color: hsl(0, 0%, 35%);
-}
-
-.news--item .date {
-  font-size: 0.8rem;
-}
-
-.news--item .brief {
-  font-size: 0.9rem;
 }
 
 /* on smaller viewports */

@@ -5,6 +5,7 @@ import Info from "../views/Info.vue";
 import Community from "../views/Community.vue";
 import NotFound from "../views/404Page.vue";
 import Board from "../views/Board.vue";
+import MooCalculator from "../views/MooCalculator.vue";
 
 Vue.use(VueRouter);
 
@@ -68,6 +69,11 @@ const routes = [
             component: () => import("../components/community/Friend.vue")
           }
         ]
+      },
+      {
+        path: "/moocalculator",
+        name: "Moocalculator",
+        component: MooCalculator
       }
     ]
   },

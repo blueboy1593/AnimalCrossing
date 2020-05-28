@@ -38,7 +38,7 @@ export default {
   },
   mounted() {
     this.getFish();
-  },
+  }
   // data() {
   //   return {
   //     infoCards: [

@@ -10,7 +10,7 @@
             도감
           </li>
         </router-link>
-        <router-link to="/info">
+        <router-link to="/moocalculator">
           <li id="calculator">
             <!-- <span>
               <i class="fa fa-graduation-cap"></i>
