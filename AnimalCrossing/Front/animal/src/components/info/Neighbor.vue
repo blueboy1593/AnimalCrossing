@@ -1,6 +1,5 @@
 <template>
-  <div class="paintingCards">
-    <!-- <h1>fish</h1> -->
+  <div class="neighborCards">
     <infoCard
       v-for="infoCard in infoCards"
       :key="infoCard.title"
@@ -13,7 +12,7 @@
 import infoCard from "./infoCard.vue";
 
 export default {
-  name: "painting",
+  name: "neighbor",
   components: {
       infoCard
   },
@@ -21,40 +20,40 @@ export default {
     return {
       infoCards: [
         {
-          src: require('../../assets/images/art.jpg'),
-          title: '미술품',
+          src: require('../../assets/images/neighbor.png'),
+          title: '이웃',
         },
         {
-          src: require('../../assets/images/art.jpg'),
-          title: '미술품',
+          src: require('../../assets/images/neighbor.png'),
+          title: '이웃',
         },
         {
-          src: require('../../assets/images/art.jpg'),
-          title: '미술품',
+          src: require('../../assets/images/neighbor.png'),
+          title: '이웃',
         },
         {
-          src: require('../../assets/images/art.jpg'),
-          title: '미술품',
+          src: require('../../assets/images/neighbor.png'),
+          title: '이웃',
         },
         {
-          src: require('../../assets/images/art.jpg'),
-          title: '미술품',
+          src: require('../../assets/images/neighbor.png'),
+          title: '이웃',
         },
         {
-          src: require('../../assets/images/art.jpg'),
-          title: '미술품',
+          src: require('../../assets/images/neighbor.png'),
+          title: '이웃',
         },
         {
-          src: require('../../assets/images/art.jpg'),
-          title: '미술품',
+          src: require('../../assets/images/neighbor.png'),
+          title: '이웃',
         },
         {
-          src: require('../../assets/images/art.jpg'),
-          title: '미술품',
+          src: require('../../assets/images/neighbor.png'),
+          title: '이웃',
         },
         {
-          src: require('../../assets/images/art.jpg'),
-          title: '미술품',
+          src: require('../../assets/images/neighbor.png'),
+          title: '이웃',
         },
       ]
     }
@@ -63,7 +62,7 @@ export default {
 </script>
 
 <style>
-  .paintingCards {
+  .neighborCards {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-auto-rows: auto;
@@ -71,35 +70,35 @@ export default {
     /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
   }
   @media (max-width: 1600px) {
-    .paintingCards {
+    .neighborCards {
       grid-template-columns: repeat(6, 1fr);
       grid-gap: 1rem 0.4rem;
     }
   }
 
   @media (max-width: 1300px) {
-    .paintingCards {
+    .neighborCards {
       grid-template-columns: repeat(5, 1fr);
       grid-gap: 1rem 0.4rem;
     }
   }
 
   @media (max-width: 1100px) {
-    .paintingCards {
+    .neighborCards {
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 1rem 0.4rem;
     }
   }
     
   @media (max-width: 900px) {
-    .paintingCards {
+    .neighborCards {
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 1rem 0rem;
     }
   }
   
   @media (max-width: 560px) {
-    .paintingCards {
+    .neighborCards {
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 1rem 0rem;
     }
