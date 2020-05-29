@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\multicampus\ssafy\lastProject(심화)\AnimalCrossing\Back\venv
+set VIRTUAL_ENV=C:\Users\multicampus\ssafy\lastProject\AnimalCrossing\Back\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
