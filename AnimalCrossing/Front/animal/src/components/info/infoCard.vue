@@ -2,10 +2,26 @@
   <div class="infoCard">
     <div class="photo">
       <!-- <img src="../../assets/images/fish.png" height="100%" class="photoImg" alt=""> -->
-      <img v-if="true" :src="getImgPath(infoCard.engname)" class="image" />
-      <img :src="getImgPath(infoCard.engname)" class="image" />
-      <img :src="getImgPath(infoCard.engname)" class="image" />
-      <img :src="getImgPath(infoCard.engname)" class="image" />
+      <img
+        v-if="routePath === '/info/neighbor'"
+        :src="getAnimalImgPath(infoCard.engname)"
+        class="image"
+      />
+      <img
+        v-if="routePath === '/info/fish'"
+        :src="getFishImgPath(infoCard.name)"
+        class="image"
+      />
+      <img
+        v-if="routePath === '/info/insect'"
+        :src="getInsectImgPath(infoCard.name)"
+        class="image"
+      />
+      <img
+        v-if="routePath === '/info/fossil'"
+        :src="getFossilImgPath()"
+        class="image"
+      />
     </div>
     <div class="infoName">
       {{ infoCard.title }}
@@ -19,10 +35,22 @@
 <script>
 export default {
   name: "infoCard",
-  props: ["infoCard"],
+  props: ["infoCard", "routePath"],
   methods: {
-    getImgPath(engname) {
+    getAnimalImgPath(engname) {
       let images = require(`@/assets/images/image_animal/${engname}.png`);
+      return images;
+    },
+    getFishImgPath(name) {
+      let images = require(`@/assets/images/image_fishes/${name}.png`);
+      return images;
+    },
+    getInsectImgPath(name) {
+      let images = require(`@/assets/images/image_insect/${name}.png`);
+      return images;
+    },
+    getFossilImgPath() {
+      let images = require(`@/assets/images/fossil.png`);
       return images;
     }
   }
