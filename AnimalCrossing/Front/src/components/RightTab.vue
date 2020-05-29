@@ -24,12 +24,12 @@
         </router-link>
         <li class="blank"></li>
         <li class="blank"></li>
-        <router-link to="/community">
+        <router-link to="/login">
           <li id="signin">
             로그인
           </li>
         </router-link>
-        <router-link to="/community">
+        <router-link to="/signup">
           <li id="signup">
             회원가입
           </li>
