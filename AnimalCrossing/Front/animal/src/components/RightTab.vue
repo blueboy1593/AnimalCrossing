@@ -2,35 +2,35 @@
   <v-container>
     <v-row class="text-center">
       <ul>
-        <router-link to="/">
+        <router-link to="/info">
           <li>
-            <span>
+            <!-- <span>
               <i class="fa fa-users"></i>
-            </span>
-            홈
+            </span> -->
+            도감
           </li>
         </router-link>
         <router-link to="/info">
           <li>
-            <span>
+            <!-- <span>
               <i class="fa fa-graduation-cap"></i>
-            </span>
-            정보
+            </span> -->
+            무 계산기
           </li>
         </router-link>
         <router-link to="/community">
           <li>
-            <span>
+            <!-- <span>
               <i class="fa fa-cogs"></i>
-            </span>
-            커뮤니티
+            </span> -->
+            거래소
           </li>
         </router-link>
         <li>
           <span>
-            <i class="fa fa-magic"></i>
+            <!-- <i class="fa fa-magic"></i> -->
           </span>
-          기타 등등
+          게시판
         </li>
       </ul>
     </v-row>
@@ -40,47 +40,64 @@
 <script></script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
 html,
 body {
   font-size: 16px;
   background: #d1d1d1;
   text-align: center;
-  font-family: "Cabin", cursive;
+  /* font-family: "Cabin", cursive; */
+  /* font-family: 'Jua', sans-serif; */
   overflow: hidden;
+}
+
+/* 밑줄 제거, 폰트 */
+.v-application a {
+  color: rgba(255, 255, 255, 0);
+  font-family: "Jua", sans-serif;
+  text-align: center;
 }
 
 ul {
   position: absolute;
-  right: -212px;
-  padding: 0;
+  /* right: -212px; */
+  /* padding: 0; */
   list-style-type: none;
   text-align: left;
   white-space: nowrap;
-  font-size: 200%;
-  line-height: 1.9;
-  color: #2d2d2d;
-  width: 280px;
+  font-size: 150%;
+  line-height: 2.2;
+  /* color: #2d2d2d; */
+  color: #000000;
+  width: 150px;
   text-transform: capitalize;
 }
+/* 오른쪽 사이드 메뉴 */
 li {
-  height: 60px;
+  /* padding-left: 5%; */
+  color: black;
+  height: 50px;
   transition: all 0.3s ease-out, color 0.2s 0.4s ease-out;
-  background: #0d0d0d;
-  margin-bottom: 2px;
-  border-left: 4px solid #2d2d2d;
-  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.4);
+  background: #f3f8f8;
+  margin-bottom: 5px;
+  /* border-left: 4px solid #2d2d2d; */
+  /* box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.4); */
+  border-radius: 13px;
 }
 li:hover {
-  margin-left: -50%;
+  margin-right: -3%;
   cursor: pointer;
-  border-left: 4px solid #f4df48;
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.815);
+
+  /* border-left: 4px solid #f4df48; */
+  /* color: #ffffff; */
 }
 li:hover > span {
   color: #ffffff;
   transform: rotate(-5deg);
 }
-span {
+/* span {
   position: relative;
   display: block;
   width: 60px;
@@ -92,5 +109,5 @@ span {
   font-size: 120%;
   margin: 0 3px;
   font-size: 95%;
-}
+} */
 </style>
