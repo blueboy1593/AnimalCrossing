@@ -4,34 +4,36 @@
       <ul>
         <router-link to="/info">
           <li id="illustratedBook">
-            <!-- <span>
-              <i class="fa fa-users"></i>
-            </span> -->
             도감
           </li>
         </router-link>
         <router-link to="/moocalculator">
           <li id="calculator">
-            <!-- <span>
-              <i class="fa fa-graduation-cap"></i>
-            </span> -->
             무 계산기
           </li>
         </router-link>
         <router-link to="/community">
           <li id="exchange">
-            <!-- <span>
-              <i class="fa fa-cogs"></i>
-            </span> -->
             거래소
           </li>
         </router-link>
-        <li>
-          <span>
-            <!-- <i class="fa fa-magic"></i> -->
-          </span>
-          게시판
-        </li>
+        <router-link to="/community">
+          <li id="board">
+            게시판
+          </li>
+        </router-link>
+        <li class="blank"></li>
+        <li class="blank"></li>
+        <router-link to="/community">
+          <li id="signin">
+            로그인
+          </li>
+        </router-link>
+        <router-link to="/community">
+          <li id="signup">
+            회원가입
+          </li>
+        </router-link>
       </ul>
     </v-row>
   </v-container>
@@ -93,6 +95,9 @@ li:hover {
   /* border-left: 4px solid #f4df48; */
   /* color: #ffffff; */
 }
+.blank {
+  visibility: hidden;
+}
 #illustratedBook {
   background: #7a194a;
   /* background: #f0c2d9dc; */
@@ -115,6 +120,14 @@ li:hover {
 }
 #exchange:hover {
   background: #368eb1c9;
+  /* background: #195e7a; */
+}
+#board {
+  background: #807e14;
+  /* background: #c2dff0dc; */
+}
+#board:hover {
+  background: #b1af3b;
   /* background: #195e7a; */
 }
 li:hover > span {

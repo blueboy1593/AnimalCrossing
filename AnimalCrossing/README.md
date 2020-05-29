@@ -7,10 +7,11 @@
 python -m venv venv
 
 # 가상환경 실행
-source venv/Script/activate
+source venv/Scripts/activate
 
 # pip등 깔려있지 않을 때
 pip list # 하고 나오는 upgrage 복사해서 하기
+python -m pip install --upgrade pip
 
 # requirements에 저장된 것들 설치
 pip install -r requirements.txt
