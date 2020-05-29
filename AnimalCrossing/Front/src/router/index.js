@@ -6,6 +6,8 @@ import Community from "../views/Community.vue";
 import NotFound from "../views/404Page.vue";
 import Board from "../views/Board.vue";
 import MooCalculator from "../views/MooCalculator.vue";
+import Login from "../views/Login.vue";
+import Signup from "../views/Signup.vue";
 
 Vue.use(VueRouter);
 
@@ -74,6 +76,16 @@ const routes = [
         path: "/moocalculator",
         name: "Moocalculator",
         component: MooCalculator
+      },
+      {
+        path: "/login",
+        name: "Login",
+        component: Login
+      },
+      {
+        path: "/signup",
+        name: "Signup",
+        component: Signup
       }
     ]
   },
