@@ -2,8 +2,9 @@
   <div class="neighborCards">
     <infoCard
       v-for="infoCard in infoCards"
-      :key="infoCard.name"
+      :key="infoCard.id"
       :infoCard="infoCard"
+      :routePath="routePath"
     />
   </div>
 </template>
@@ -19,7 +20,8 @@ export default {
   },
   data() {
     return {
-      infoCards: []
+      infoCards: [],
+      routePath: this.$route.path
     };
   },
   methods: {

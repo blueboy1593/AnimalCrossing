@@ -5,6 +5,7 @@
       v-for="infoCard in infoCards"
       :key="infoCard.title"
       :infoCard="infoCard"
+      :routePath="routePath"
     />
   </div>
 </template>
@@ -20,7 +21,8 @@ export default {
   },
   data() {
     return {
-      infoCards: []
+      infoCards: [],
+      routePath: this.$route.path
     };
   },
   methods: {
@@ -29,7 +31,8 @@ export default {
         .get("http://127.0.0.1:8000/api/v1/fishes/")
         .then(response => {
           this.infoCards = response.data;
-          console.log(this.infoCards);
+          console.log("this.infoCards::: ", this.infoCards);
+          // 여기서 가져온 데이터 for문으로 로드하기
         })
         .catch(error => {
           console.log(error);

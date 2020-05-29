@@ -3,14 +3,16 @@
     <!-- <h1>fish</h1> -->
     <infoCard
       v-for="infoCard in infoCards"
-      :key="infoCard.title"
+      :key="infoCard.id"
       :infoCard="infoCard"
+      :routePath="routePath"
     />
   </div>
 </template>
 
 <script>
 import infoCard from "./infoCard.vue";
+import axios from "axios";
 
 export default {
   name: "fossil",
@@ -19,42 +21,65 @@ export default {
   },
   data() {
     return {
-      infoCards: [
-        {
-          src: require("../../assets/images/fossil.png"),
-          title: "화석"
-        },
-        {
-          src: require("../../assets/images/fossil.png"),
-          title: "화석"
-        },
-        {
-          src: require("../../assets/images/fossil.png"),
-          title: "화석"
-        },
-        {
-          src: require("../../assets/images/fossil.png"),
-          title: "화석"
-        },
-        {
-          src: require("../../assets/images/fossil.png"),
-          title: "화석"
-        },
-        {
-          src: require("../../assets/images/fossil.png"),
-          title: "화석"
-        },
-        {
-          src: require("../../assets/images/fossil.png"),
-          title: "화석"
-        },
-        {
-          src: require("../../assets/images/fossil.png"),
-          title: "화석"
-        }
-      ]
+      infoCards: [],
+      routePath: this.$route.path
     };
+  },
+  methods: {
+    getFossil: function() {
+      axios
+        .get("http://127.0.0.1:8000/api/v1/fossils/")
+        .then(response => {
+          this.infoCards = response.data;
+          console.log("this.infoCards::: ", this.infoCards);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
+  mounted() {
+    this.getFossil();
   }
+
+  // data() {
+  //   return {
+  //     infoCards: [
+  //       {
+  //         src: require("../../assets/images/fossil.png"),
+  //         title: "화석"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fossil.png"),
+  //         title: "화석"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fossil.png"),
+  //         title: "화석"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fossil.png"),
+  //         title: "화석"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fossil.png"),
+  //         title: "화석"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fossil.png"),
+  //         title: "화석"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fossil.png"),
+  //         title: "화석"
+  //       },
+  //       {
+  //         src: require("../../assets/images/fossil.png"),
+  //         title: "화석"
+  //       }
+  //     ]
+  //   };
+  // }
 };
 </script>
 

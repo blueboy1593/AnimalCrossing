@@ -37,7 +37,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV="C:\Users\multicampus\SSAFY\3rd_project\s02p31a403\AnimalCrossing\Back\venv"
+=======
+VIRTUAL_ENV="C:\Users\multicampus\ssafy\lastProject\AnimalCrossing\Back\venv"
+>>>>>>> infoNeighbor
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

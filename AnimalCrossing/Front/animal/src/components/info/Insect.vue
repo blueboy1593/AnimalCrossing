@@ -2,8 +2,9 @@
   <div class="insectCards">
     <infoCard
       v-for="infoCard in infoCards"
-      :key="infoCard.title"
+      :key="infoCard.id"
       :infoCard="infoCard"
+      :routePath="routePath"
     />
   </div>
 </template>
@@ -17,18 +18,19 @@ export default {
   components: {
     infoCard
   },
-   data() {
+  data() {
     return {
-      infoCards: []
+      infoCards: [],
+      routePath: this.$route.path
     };
   },
-   methods: {
+  methods: {
     getInsect: function() {
       axios
         .get("http://127.0.0.1:8000/api/v1/insects/")
         .then(response => {
           this.infoCards = response.data;
-          console.log(this.infoCards);
+          console.log("this.infoCards::: ", this.infoCards);
         })
         .catch(error => {
           console.log(error);
@@ -37,7 +39,7 @@ export default {
   },
   mounted() {
     this.getInsect();
-  },
+  }
   // data() {
   //   return {
   //     infoCards: [
