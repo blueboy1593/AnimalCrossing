@@ -1,6 +1,6 @@
 <template>
-  <div class="info">
-    <h1>동물의숲 정보 페이지</h1>
+  <div id="info">
+    <router-view />
   </div>
 </template>
 
@@ -8,4 +8,8 @@
 export default {};
 </script>
 
-<style></style>
+<style>
+#info {
+  background-color: none;
+}
+</style>
