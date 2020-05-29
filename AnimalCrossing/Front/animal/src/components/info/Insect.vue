@@ -1,6 +1,5 @@
 <template>
   <div class="insectCards">
-    <!-- <h1>fish</h1> -->
     <infoCard
       v-for="infoCard in infoCards"
       :key="infoCard.title"
@@ -10,6 +9,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import infoCard from "./infoCard.vue";
 
 export default {
@@ -17,52 +17,73 @@ export default {
   components: {
     infoCard
   },
-  data() {
+   data() {
     return {
-      infoCards: [
-        {
-          src: require("../../assets/images/bug.png"),
-          title: "나비"
-        },
-        {
-          src: require("../../assets/images/bug.png"),
-          title: "나비"
-        },
-        {
-          src: require("../../assets/images/bug.png"),
-          title: "나비"
-        },
-        {
-          src: require("../../assets/images/bug.png"),
-          title: "나비"
-        },
-        {
-          src: require("../../assets/images/bug.png"),
-          title: "나비"
-        },
-        {
-          src: require("../../assets/images/bug.png"),
-          title: "나비"
-        },
-        {
-          src: require("../../assets/images/bug.png"),
-          title: "나비"
-        },
-        {
-          src: require("../../assets/images/bug.png"),
-          title: "나비"
-        },
-        {
-          src: require("../../assets/images/bug.png"),
-          title: "나비"
-        },
-        {
-          src: require("../../assets/images/bug.png"),
-          title: "나비"
-        }
-      ]
+      infoCards: []
     };
-  }
+  },
+   methods: {
+    getInsect: function() {
+      axios
+        .get("http://127.0.0.1:8000/api/v1/insects/")
+        .then(response => {
+          this.infoCards = response.data;
+          console.log(this.infoCards);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
+  mounted() {
+    this.getInsect();
+  },
+  // data() {
+  //   return {
+  //     infoCards: [
+  //       {
+  //         src: require("../../assets/images/bug.png"),
+  //         title: "나비"
+  //       },
+  //       {
+  //         src: require("../../assets/images/bug.png"),
+  //         title: "나비"
+  //       },
+  //       {
+  //         src: require("../../assets/images/bug.png"),
+  //         title: "나비"
+  //       },
+  //       {
+  //         src: require("../../assets/images/bug.png"),
+  //         title: "나비"
+  //       },
+  //       {
+  //         src: require("../../assets/images/bug.png"),
+  //         title: "나비"
+  //       },
+  //       {
+  //         src: require("../../assets/images/bug.png"),
+  //         title: "나비"
+  //       },
+  //       {
+  //         src: require("../../assets/images/bug.png"),
+  //         title: "나비"
+  //       },
+  //       {
+  //         src: require("../../assets/images/bug.png"),
+  //         title: "나비"
+  //       },
+  //       {
+  //         src: require("../../assets/images/bug.png"),
+  //         title: "나비"
+  //       },
+  //       {
+  //         src: require("../../assets/images/bug.png"),
+  //         title: "나비"
+  //       }
+  //     ]
+  //   };
+  // }
 };
 </script>
 
