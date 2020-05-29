@@ -1,4 +1,4 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 # from django.models import
 # from django.core import seralizers
 # from django.contrib.auth import authenticate
@@ -10,7 +10,7 @@
 
 
 
-# def signup(request):
-#   email = request.data.get('email')
-#   password = request.data.get('password')
-#   user = User.
+def signup(request):
+  email = request.data.get('email')
+  password = request.data.get('password')
+  # user = User.
