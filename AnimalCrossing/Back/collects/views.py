@@ -45,3 +45,4 @@ def animals(request):
     animals = Animal.objects.all()
     serializer = AnimalSerializer(animals, many=True)
     return Response(serializer.data)
+
