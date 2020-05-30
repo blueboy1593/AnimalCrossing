@@ -1,6 +1,6 @@
 {
   // 파이썬 환경 선택 => 자동으로 해줌
-  "python.pythonPath": "venv\\Scripts\\python.exe",
+  "python.pythonPath": "C:\\Program Files\\Python38\\python.exe",
 
   // Django에서 사용되는 파일 타입에 대한 정의
   "files.associations": {
