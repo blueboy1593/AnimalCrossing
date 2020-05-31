@@ -5,6 +5,7 @@ class Article(models.Model):
     # 필수: title, content, user, category, sort
     # 선택: image, name, price
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='articles', on_delete=models.CASCADE)
+    username = models.CharField(max_length=50) # 아이디 paik11012
     title = models.CharField(max_length=20)
     content = models.TextField(max_length=800)
     image = models.ImageField(blank=True) # 선택 가능s
@@ -25,6 +26,7 @@ class Comment(models.Model):
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='comments', on_delete=models.CASCADE)
+    username = models.CharField(max_length=50) # 아이디 paik11012
     class Meta:
         ordering = ['-pk']  # 역순 ('-pk',)도 가능
     def __str__(self):

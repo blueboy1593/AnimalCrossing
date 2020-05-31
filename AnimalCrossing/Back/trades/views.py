@@ -10,10 +10,6 @@ from accounts.models import User
 from rest_framework.authtoken.models import Token
 
 
-
-# Create your views here.
-# Article crud, 댓글 crud
-
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def write(request): # 거래소에 글 하나 올리기
@@ -25,8 +21,8 @@ def write(request): # 거래소에 글 하나 올리기
   name = request.data.get('name')
   sort = request.data.get('sort')
   price = request.data.get('price')
-  user_id = request.data.get('user') # 고유한 유저 번호 132 등
-  
+  user_id = request.data.get('user_id') # 고유한 유저 번호 132 등
+  username = request.data.get('username')
   # 할당하기 contents 이상하다 이거
   article = Article()
   article.title = title
@@ -36,7 +32,8 @@ def write(request): # 거래소에 글 하나 올리기
   article.name = name
   article.sort = sort
   article.price = price
-  user =  get_object_or_404(User, pk=user_id) # user와 연결 아이디 가져오기 paik11012
+  article.username = username
+  user =  get_object_or_404(User, pk=user_id) 
   article.user = user
   article.save()
   serializer = ArticleSerializer(instance=article)
@@ -71,19 +68,22 @@ def detail(request, article_pk):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def comment(request, article_pk):
-  content = request.data.get('content')
-  user_id = request.data.get('user') # 댓글 쓰는 user 번호
-  
-  article_id = article_pk
-  comment = Comment()
-  comment.content = content
-  comment.user = user_id
-
+  serializer = CommentSerializer(data = request.data)
+  user_id = request.data.get('user_id')
   if serializer.is_valid(raise_exception=True):
-    comment.user = user_id
-    comment.content = content
-    article = article_pk
+    serializer.save(article_id = article_pk, user_id=user_id)
   return Response(serializer.data)
 
-
+@api_view(['PUT', 'DELETE'])
+@permission_classes([AllowAny])
+def comment_ud(request, comment_pk):
+  comment = get_object_or_404(Comment, pk=comment_pk)
+  if request.method == 'PUT':
+    serializer = CommentUpdateSerializer(data=request.data, instance=comment)
+    if serializer.is_valid(raise_exception=True):
+      serializer.save()
+      return Response({'message':'completed comment update'})
+  else:
+    comment.delete()
+    return Response({'message': 'completed comment delete'})
 
