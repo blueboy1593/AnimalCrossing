@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #Local apps
     'collects',
-    'accounts',
     'trade',
     #api 관련
     'rest_framework',
@@ -122,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'ASIA/SEOUL'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -135,3 +134,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+AUTH_USER_MODEL = 'accounts.User'
