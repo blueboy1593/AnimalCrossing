@@ -159,7 +159,7 @@ body {
 /* for the section describing the news items, display the items in a single column layout */
 .board__news {
   display: flex;
-  margin: 1rem 0 3rem;
+  margin: 1rem 0 2rem;
   flex-direction: column;
   width: 80%;
   justify-self: center;
