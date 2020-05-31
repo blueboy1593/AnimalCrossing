@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #Local apps
     'collects',
-    'trade',
+    'trades',
     #api 관련
     'rest_framework',
     'corsheaders',
