@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { getFishes } from "@/api/info.js";
 import infoCard from "./infoCard.vue";
 
 export default {
@@ -25,22 +25,8 @@ export default {
       routePath: this.$route.path
     };
   },
-  methods: {
-    getFish: function() {
-      axios
-        .get("http://127.0.0.1:8000/api/v1/fishes/")
-        .then(response => {
-          this.infoCards = response.data;
-          console.log("this.infoCards::: ", this.infoCards);
-          // 여기서 가져온 데이터 for문으로 로드하기
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  },
-  mounted() {
-    this.getFish();
+  async mounted() {
+    this.infoCards = await getFishes(this.infoCards);
   }
   // data() {
   //   return {
