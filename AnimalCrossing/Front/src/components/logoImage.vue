@@ -24,7 +24,7 @@
   background-image: none;
   grid-area: logoImage;
   display: grid;
-  }
+}
 
 .logoImg {
   width: 10%;
