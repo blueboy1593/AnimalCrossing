@@ -106,5 +106,6 @@ export default {
 
 .box button[type="submit"]:hover {
   background: #d15977;
+  color: rgb(243, 227, 227);
 }
 </style>
