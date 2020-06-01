@@ -6,6 +6,7 @@ import Community from "../views/Community.vue";
 import NotFound from "../views/404Page.vue";
 import Board from "../views/Board.vue";
 import MooCalculator from "../views/MooCalculator.vue";
+import MooCalculated from "../views/MooCalculated.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import infoDetail from "../components/info/infoDetail.vue";
@@ -82,6 +83,11 @@ const routes = [
         path: "/moocalculator",
         name: "Moocalculator",
         component: MooCalculator
+      },
+      {
+        path: "/mooCalculated",
+        name: "MooCalculated",
+        component: MooCalculated
       },
       {
         path: "/login",
