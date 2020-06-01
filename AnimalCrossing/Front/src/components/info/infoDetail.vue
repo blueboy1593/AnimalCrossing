@@ -1,6 +1,6 @@
 <template>
-    <div class="infoDetailCon">
-        <div class="infoDetail">
+    <div class="paintingDetailCon">
+        <div class="paintingDetail">
             <div class="painting">
                 <div class="detailPhoto">
                     <span></span>
@@ -28,18 +28,18 @@
 
 <script>
     export default {
-        name: "infoDetail",
+        name: "paintingDetail",
     };
 </script>
 
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
-    .infoDetailCon {
+    .paintingDetailCon {
         transform: scale(0.8);
     }
 
-    .infoDetail {
+    .paintingDetail {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(8, 1fr);
