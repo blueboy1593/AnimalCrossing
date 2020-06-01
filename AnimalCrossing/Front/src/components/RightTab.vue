@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="text-center">
       <ul>
-        <router-link to="/info">
+        <router-link to="/info/fish">
           <li id="illustratedBook">
             도감
           </li>
@@ -26,16 +26,16 @@
         <li class="blank"></li>
         <router-link to="/login">
           <li id="signin">
-            <div class="signin">              
-              <img src="../assets/images/dog.png" alt="">
+            <div class="signin">
+              <img src="../assets/images/dog.png" alt="" />
               로그인
             </div>
           </li>
         </router-link>
         <router-link to="/signup">
           <li id="signup">
-            <div class="signup">              
-              <img src="../assets/images/neogul.png" alt="">
+            <div class="signup">
+              <img src="../assets/images/neogul.png" alt="" />
               회원가입
             </div>
           </li>
