@@ -5,7 +5,6 @@ from rest_framework.permissions import AllowAny
 from rest_framework import serializers
 from rest_framework.response import Response
 from .serializers import UserDetailSerializer, ArticleSerializer, CommentSerializer, ArticleUpdateSerializer, CommentUpdateSerializer
-from .models import Article, Comment
 from accounts.models import User 
 from rest_framework.authtoken.models import Token
 
