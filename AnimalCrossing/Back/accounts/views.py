@@ -1,11 +1,3 @@
-# from django.models import
-# from django.core import seralizers
-# from django.contrib.auth import authenticate
-# from django.http import HttpResponse
-
-# from rest_framework.authtoken.models import Token
-# from rest_framework.decoraters import api_view
-# Create your views here.
 from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -14,9 +6,7 @@ from .serializers import UserSerializer, UserCreateSerializer
 from rest_framework.permissions import AllowAny 
 from rest_framework import serializers
 
-
 # Create your views here.
-
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
