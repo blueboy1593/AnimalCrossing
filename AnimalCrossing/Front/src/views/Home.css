@@ -78,6 +78,7 @@ body {
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
+        height: 100%;
     }
 
     .box1Con {
@@ -113,6 +114,8 @@ body {
         background-position: center center;
         background-size: cover;
         /* border-radius: 0px 0px 50px 50px; */
+        height: 100%;
+        line-height: 6rem;
     }
     
     .box3 {
@@ -122,6 +125,8 @@ body {
         background-position: center center;
         background-size: cover;
         /* border-radius: 0px 0px 50px 50px; */
+        height: 100%;
+        line-height: 6rem;
     }
 
     .box4 {
@@ -130,6 +135,7 @@ body {
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
+        line-height: 6rem;
     }
 
     .box {
