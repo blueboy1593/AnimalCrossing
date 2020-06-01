@@ -56,3 +56,17 @@ export function getNeighbors(cards) {
       console.log(error);
     });
 }
+
+// 미술작품 도감 정보 가져오기
+export function getPaintings(cards) {
+  return instance
+    .get("/api/v1/paintings/")
+    .then(response => {
+      cards = response.data;
+      console.log("response.data::::  ", response.data);
+      return cards;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}

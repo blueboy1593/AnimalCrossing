@@ -19,46 +19,52 @@ export default {
   },
   data() {
     return {
-      infoCards: [
-        {
-          src: require("../../assets/images/art.jpg"),
-          title: "미술품"
-        },
-        {
-          src: require("../../assets/images/art.jpg"),
-          title: "미술품"
-        },
-        {
-          src: require("../../assets/images/art.jpg"),
-          title: "미술품"
-        },
-        {
-          src: require("../../assets/images/art.jpg"),
-          title: "미술품"
-        },
-        {
-          src: require("../../assets/images/art.jpg"),
-          title: "미술품"
-        },
-        {
-          src: require("../../assets/images/art.jpg"),
-          title: "미술품"
-        },
-        {
-          src: require("../../assets/images/art.jpg"),
-          title: "미술품"
-        },
-        {
-          src: require("../../assets/images/art.jpg"),
-          title: "미술품"
-        },
-        {
-          src: require("../../assets/images/art.jpg"),
-          title: "미술품"
-        }
-      ]
+      infoCards: [],
+      routePath: this.$route.path
     };
   }
+  // data() {
+  //   return {
+  //     infoCards: [
+  //       {
+  //         src: require("../../assets/images/art.jpg"),
+  //         title: "미술품"
+  //       },
+  //       {
+  //         src: require("../../assets/images/art.jpg"),
+  //         title: "미술품"
+  //       },
+  //       {
+  //         src: require("../../assets/images/art.jpg"),
+  //         title: "미술품"
+  //       },
+  //       {
+  //         src: require("../../assets/images/art.jpg"),
+  //         title: "미술품"
+  //       },
+  //       {
+  //         src: require("../../assets/images/art.jpg"),
+  //         title: "미술품"
+  //       },
+  //       {
+  //         src: require("../../assets/images/art.jpg"),
+  //         title: "미술품"
+  //       },
+  //       {
+  //         src: require("../../assets/images/art.jpg"),
+  //         title: "미술품"
+  //       },
+  //       {
+  //         src: require("../../assets/images/art.jpg"),
+  //         title: "미술품"
+  //       },
+  //       {
+  //         src: require("../../assets/images/art.jpg"),
+  //         title: "미술품"
+  //       }
+  //     ]
+  //   };
+  // }
 };
 </script>
 
