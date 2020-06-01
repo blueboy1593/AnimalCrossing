@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     #Local apps
     'collects',
     'trades',
+    'shows',
     #api 관련
     'rest_framework',
     'corsheaders',
