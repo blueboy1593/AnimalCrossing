@@ -26,12 +26,18 @@
         <li class="blank"></li>
         <router-link to="/login">
           <li id="signin">
-            로그인
+            <div class="signin">              
+              <img src="../assets/images/dog.png" alt="">
+              로그인
+            </div>
           </li>
         </router-link>
         <router-link to="/signup">
           <li id="signup">
-            회원가입
+            <div class="signup">              
+              <img src="../assets/images/neogul.png" alt="">
+              회원가입
+            </div>
           </li>
         </router-link>
       </ul>
@@ -123,12 +129,14 @@ li:hover {
   /* background: #195e7a; */
 }
 #board {
-  background: #807e14;
+  /* background: #807e14; */
   /* background: #c2dff0dc; */
+  background: #8d6b3f;
 }
 #board:hover {
-  background: #b1af3b;
+  /* background: #b1af3b; */
   /* background: #195e7a; */
+  background: #b88e56ce;
 }
 li:hover > span {
   color: #ffffff;
@@ -147,4 +155,43 @@ li:hover > span {
   margin: 0 3px;
   font-size: 95%;
 } */
+
+#signin {
+  /* background: #8a2e2e; */
+  background: none;
+  overflow: hidden;
+  color: white;
+}
+
+#signin img {
+  float: left;
+  /* margin-top: -0.4rem; */
+  margin-left: 0.4rem;
+  width: 35%;
+}
+
+#signin:hover {
+  /* background: #cf4a4abb; */
+  color: #86b3eebb;
+}
+
+#signup {
+  /* background: #805114; */
+  width: 145px;
+  background: none;
+  overflow: hidden;
+  color: white;
+}
+
+#signup img {
+  float: left;
+  margin-top: 0.2rem;
+  margin-left: 0.4rem;
+  width: 30%;
+}
+
+#signup:hover {
+  /* background: #d18d35b6; */
+  color: #86b3eebb;
+}
 </style>
