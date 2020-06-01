@@ -8,6 +8,7 @@ import Board from "../views/Board.vue";
 import MooCalculator from "../views/MooCalculator.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
+import infoDetail from "../components/info/infoDetail.vue";
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home
+  },
+  {
+    path: "/test",
+    name: "test",
+    component: infoDetail
   },
   {
     path: "/",
