@@ -1,169 +1,159 @@
 <template>
   <div class="back">
-    <div class="cal_head">
-      <h1>동물의숲 무계산기</h1>
-    </div>
-    <div class="buy_price">
-      <div class="buy_price_form">
-        무파니 구매 가격
-        <div>
-          <img
-            src="../assets/images/bells.svg"
-            alt="Bag of bells"
-            class="bell"
-          />
-          <input
-            type="text"
-            class="buy_price_input"
-            placeholder="bell을 입력하세요"
-            v-model="moo.initial_price"
-          />벨
-        </div>
+    <div class="top_container">
+      <div class="graph_box">
+        <!-- <div class="cal_head">
+          <h5>동물의숲 예측무값</h5>
+        </div> -->
+        <!-- <div class="buy_price">
+          <div class="buy_price_form">
+            무파니 구매 가격
+            <div>
+              <img
+                src="../assets/images/bells.svg"
+                alt="Bag of bells"
+                class="bell"
+              />
+              <input
+                type="text"
+                class="buy_price_input"
+                placeholder="bell을 입력하세요"
+              />벨
+            </div>
+          </div>
+        </div> -->
+        <img
+          src="../assets/images/moo_chart.png"
+          alt="무차트임시"
+          id="moo_chart"
+        />
+      </div>
+      <div class="moopany_box">
+        <button
+          type="submit"
+          id="moocal_btn"
+          class="btn btn-primary"
+          v-on:click="moocalcul"
+        >
+          다시 입력하기
+        </button>
+        <img
+          src="../assets/images/moopany.png"
+          alt="무파니 사진"
+          id="moopany"
+        />
       </div>
     </div>
     <div class="weekly_price_box">
-      <div class="weekly_price">
-        <h4>월요일</h4>
+      <div class="weekly_price" style="text-align:center">
+        <h4>요일</h4>
         <div class="weekly_price_time">
           오전
-          <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input
-              type="text"
-              class="weekly_price_input"
-              placeholder="벨"
-              v-model="moo.mon_am"
-            />
-          </div>
         </div>
         <div class="weekly_price_time">
           오후
+        </div>
+      </div>
+      <div class="weekly_price">
+        <h4>월요일</h4>
+        <div class="weekly_price_time">
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input
-              type="text"
-              class="weekly_price_input"
-              placeholder="벨"
-              v-model="moo.mon_pm"
-            />
+            105벨
+          </div>
+        </div>
+        <div class="weekly_price_time">
+          <div>
+            <img src="../assets/images/bells.svg" class="weekly_bell" />
+            110벨
           </div>
         </div>
       </div>
       <div class="weekly_price">
         <h4>화요일</h4>
         <div class="weekly_price_time">
-          오전
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            115벨
           </div>
         </div>
         <div class="weekly_price_time">
-          오후
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            124벨
           </div>
         </div>
       </div>
       <div class="weekly_price">
         <h4>수요일</h4>
         <div class="weekly_price_time">
-          오전
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            130벨
           </div>
         </div>
         <div class="weekly_price_time">
-          오후
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            140벨
           </div>
         </div>
       </div>
       <div class="weekly_price">
         <h4>목요일</h4>
         <div class="weekly_price_time">
-          오전
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            150벨
           </div>
         </div>
         <div class="weekly_price_time">
-          오후
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            160벨
           </div>
         </div>
       </div>
       <div class="weekly_price">
         <h4>금요일</h4>
         <div class="weekly_price_time">
-          오전
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            160벨
           </div>
         </div>
         <div class="weekly_price_time">
-          오후
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            160벨
           </div>
         </div>
       </div>
       <div class="weekly_price">
         <h4>토요일</h4>
         <div class="weekly_price_time">
-          오전
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            170벨
           </div>
         </div>
         <div class="weekly_price_time">
-          오후
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            180벨
           </div>
         </div>
       </div>
     </div>
-    <button
-      type="submit"
-      id="moocal_btn"
-      class="btn btn-primary"
-      v-on:click="moocalcul"
-    >
-      무트코인 예측하기
-    </button>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      moo: {
-        initial_price: 0,
-        mon_am: 0,
-        mon_pm: 0
-      }
-    };
-  },
   methods: {
     moocalcul: function() {
-      const scope = this;
-      const moo_info = this.moo;
-      console.log(moo_info);
-      alert("무값 계산중 계산중");
-      scope.$router.push("/moocalculated");
+      alert("입력란으로 돌아갑니다");
+      this.$router.push("/moocalculator");
     }
   }
 };
@@ -179,6 +169,30 @@ export default {
   font-size: 22px;
   text-align: center;
   margin-top: 15px;
+}
+
+/* 그래프와 헤더, 그리고 무파니까지 */
+.graph_box {
+  width: 70%;
+  height: 50%;
+  margin: 1rem;
+  display: inline-block;
+}
+
+#moo_chart {
+  width: 100%;
+}
+
+.moopany_box {
+  /* display: inline-block; */
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+}
+
+#moopany {
+  width: 60%;
+  /* margin-bottom: 20px; */
 }
 
 /* 벨 사진 사이즈 조정 */
@@ -237,8 +251,16 @@ h4 {
   flex-direction: column;
   justify-content: space-between;
   background-color: rgb(248, 248, 240);
-  padding: 16px;
+  padding: 10px;
   border-radius: 16px;
+}
+
+.weekly_price_time {
+  padding: 4px;
+  color: #6e661b;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.1876em;
 }
 
 .weekly_price_input {
@@ -262,10 +284,10 @@ h4 {
   border: 0;
   background: none;
   display: block;
-  margin: 20px auto 10px;
+  margin: 10px auto 10px;
   text-align: center;
   border: 2px solid #84e9b6;
-  padding: 0px 40px;
+  padding: 0px 30px;
   height: 40px;
   outline: none;
   color: white;
