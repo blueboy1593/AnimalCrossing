@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework import serializers
 from rest_framework.response import Response
 from .serializers import ShowUserDetailSerializer, ShowSerializer, ShowcommentSerializer, ShowUpdateSerializer, ShowcommentUpdateSerializer
@@ -13,8 +13,8 @@ from rest_framework.authtoken.models import Token
 
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
 def write(request): # 거래소에 글 하나 올리기
+  permission_classes = [IsAuthenticated]
   # fields = ['id', 'title', 'content', 'image', 'category', 'name', 'sort', 'price', 'created_at', 'updated_at', 'user']
   title = request.data.get('title')
   content = request.data.get('content')
@@ -42,9 +42,10 @@ def list(request): # 모든 거래소 글 가져오기
   return Response(serializer.data)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([AllowAny])
+
 def detail(request, show_pk):
   show = get_object_or_404(Show, pk=show_pk)
+  permission_classes = [IsAuthenticated, IsOwnerAndAdminOnly]
   if request.method == 'GET':
     serializer = ShowSerializer(show)
     return Response(serializer.data)
@@ -69,7 +70,7 @@ def showcomment(request, show_pk):
   return Response(serializer.data)
 
 @api_view(['PUT', 'DELETE'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def showcomment_ud(request, showcomment_pk):
   showcomment = get_object_or_404(Showcomment, pk=showcomment_pk)
   if request.method == 'PUT':
