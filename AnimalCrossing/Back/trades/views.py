@@ -5,7 +5,6 @@ from rest_framework.permissions import AllowAny
 from rest_framework import serializers
 from rest_framework.response import Response
 from .serializers import UserDetailSerializer, ArticleSerializer, CommentSerializer, ArticleUpdateSerializer, CommentUpdateSerializer
-from .models import Article, Comment
 from accounts.models import User 
 from rest_framework.authtoken.models import Token
 
@@ -47,14 +46,24 @@ def list(request): # 모든 거래소 글 가져오기
   serializer = ArticleSerializer(articles, many=True)
   return Response(serializer.data)
 
-# 이름 하나에 딸린 글 가져요기
+# 카테고리가 etc인 글 가져오기
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def sortlist(request, sort):
-  print(sort)
-  return Response(data)
-  # namelist = Article.objects.filter(name==getname)
+def etclist(request):
+  articles = Article.objects.all().filter(category="etc")
+  serializer = ArticleSerializer(articles, many=True)
+  return Response(serializer.data)
 
+# 각 아이템에 대한 글 뭉치 가져오기(bianca 관련 글) -> 프론트에서 buy sell 필터링
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def namelist(request, category, name):
+  articles = Article.objects.all().filter(category=category, name=name)
+  serializer = ArticleSerializer(articles, many=True)
+  return Response(serializer.data)
+
+
+# 한 개 글 가져오기, 수정하기, 삭제하기
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([AllowAny])
 def detail(request, article_pk):
@@ -72,7 +81,7 @@ def detail(request, article_pk):
     article.delete()
     return Response({'message': 'trade article is successfully deleted'})
     
-# 이제 댓글
+# 댓글
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def comment(request, article_pk):
