@@ -4,7 +4,7 @@
       <div id="login-form" class="col-md-6 mx-auto box">
         <div class="mt-4 box">
           <div class="form-group">
-            <label for="email">email</label>
+            <label for="email">이메일</label>
             <input
               type="text"
               class="form-control"
@@ -49,12 +49,18 @@ export default {
 
 <style>
 .box {
+  padding-top: 1rem;
   /* transform: translate(-50%, -50%); */
-  background: #e9a1df;
+  /* background: #e9a1df; */
   text-align: center;
-  color: white;
+  color: black;
   text-transform: uppercase;
+  font-size: 1rem;
   font-weight: 500;
+}
+
+.form-group {
+  padding-top: 0.8rem;
 }
 
 #login-email,
@@ -69,27 +75,30 @@ export default {
   width: 200px;
   outline: none;
   color: white;
-  border-radius: 24px;
+  border-radius: 34px;
   transition: 0.25s;
 }
 
 #login-email:focus,
 #login-password:focus {
-  width: 280px;
+  width: 230px;
   border-color: #d15977;
+}
+
+.btn-primary {
 }
 
 .box button[type="submit"] {
   border: 0;
   background: none;
-  display: block;
+  /* display: block; */
   margin: 20px auto;
   text-align: center;
   border: 2px solid #d15977;
   padding: 0px 40px;
   height: 40px;
   outline: none;
-  color: white;
+  color: black;
   border-radius: 24px;
   transition: 0.25s;
   cursor: pointer;
