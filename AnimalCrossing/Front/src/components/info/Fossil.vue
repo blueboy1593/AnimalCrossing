@@ -11,8 +11,8 @@
 </template>
 
 <script>
+import { getFossils } from "@/api/info.js";
 import infoCard from "./infoCard.vue";
-import axios from "axios";
 
 export default {
   name: "fossil",
@@ -25,21 +25,8 @@ export default {
       routePath: this.$route.path
     };
   },
-  methods: {
-    getFossil: function() {
-      axios
-        .get("http://127.0.0.1:8000/api/v1/fossils/")
-        .then(response => {
-          this.infoCards = response.data;
-          console.log("this.infoCards::: ", this.infoCards);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  },
-  mounted() {
-    this.getFossil();
+  async mounted() {
+    this.infoCards = await getFossils(this.infoCards);
   }
 
   // data() {

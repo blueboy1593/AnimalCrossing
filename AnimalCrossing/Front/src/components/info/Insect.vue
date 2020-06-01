@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { getInsects } from "@/api/info.js";
 import infoCard from "./infoCard.vue";
 
 export default {
@@ -24,21 +24,9 @@ export default {
       routePath: this.$route.path
     };
   },
-  methods: {
-    getInsect: function() {
-      axios
-        .get("http://127.0.0.1:8000/api/v1/insects/")
-        .then(response => {
-          this.infoCards = response.data;
-          console.log("this.infoCards::: ", this.infoCards);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  },
-  mounted() {
-    this.getInsect();
+
+  async mounted() {
+    this.infoCards = await getInsects(this.infoCards);
   }
   // data() {
   //   return {
