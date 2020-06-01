@@ -5,11 +5,13 @@
       v-for="infoCard in infoCards"
       :key="infoCard.title"
       :infoCard="infoCard"
+      :routePath="routePath"
     />
   </div>
 </template>
 
 <script>
+import { getPaintings } from "@/api/info.js";
 import infoCard from "./infoCard.vue";
 
 export default {
@@ -22,6 +24,9 @@ export default {
       infoCards: [],
       routePath: this.$route.path
     };
+  },
+  async mounted() {
+    this.infoCards = await getPaintings(this.infoCards);
   }
   // data() {
   //   return {

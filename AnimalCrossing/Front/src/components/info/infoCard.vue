@@ -22,6 +22,11 @@
         :src="getFossilImgPath()"
         class="image"
       />
+      <img
+        v-if="routePath === '/info/painting'"
+        :src="getPatingImagPath(infoCard.engname)"
+        class="image"
+      />
     </div>
     <div class="infoName">
       {{ infoCard.name }}
@@ -51,6 +56,10 @@ export default {
     },
     getFossilImgPath() {
       let images = require(`@/assets/images/fossil.png`);
+      return images;
+    },
+    getPatingImagPath(engname) {
+      let images = require(`@/assets/images/image_painting/${engname}.jpg`);
       return images;
     }
   }
