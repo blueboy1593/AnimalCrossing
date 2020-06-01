@@ -23,6 +23,10 @@
               placeholder="이름"
             />
           </div>
+        </div>
+      </div>
+      <div id="register-form" class="col-md-6 mx-auto box2">
+        <div class="mt-4 box2">
           <div class="form-group">
             <label for="password">비밀번호</label>
             <input
@@ -43,17 +47,17 @@
               placeholder="비밀번호 확인"
             />
           </div>
-          <button type="submit" class="btn btn-primary" v-on:click="register">
-            회원가입
-          </button>
         </div>
       </div>
+      <button type="submit" class="signup_btn" v-on:click="register">
+        회원가입
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-// import { signup } from "../api/user.js";
+import { signup } from "../api/user.js";
 
 export default {
   data() {
@@ -65,40 +69,42 @@ export default {
         passwordConfirm: ""
       }
     };
+  },
+  methods: {
+    register() {
+      var scope = this;
+      if (this.user.password === this.user.passwordConfirm) {
+        // const context = {
+        //   email: this.user.email,
+        //   nickname: this.user.name,
+        //   password: this.user.password
+        // };
+        signup(
+          this.user.email,
+          this.user.name,
+          this.user.password,
+          function() {
+            alert("회원가입이 완료되었습니다.");
+            scope.$router.push("/");
+          },
+          function(error) {
+            console.error(error);
+          }
+        );
+      } else {
+        alert("비밀번호가 일치하지 않습니다.");
+      }
+    }
   }
-  //   methods: {
-  //     register() {
-  //       var scope = this;
-  //       if (this.user.password === this.user.passwordConfirm) {
-  //         signup(
-  //           this.user.email,
-  //           this.user.name,
-  //           this.user.password,
-  //           function() {
-  //             alert("회원가입이 완료되었습니다.");
-  //             scope.$router.push("/");
-  //           },
-  //           function(error) {
-  //             console.error(error);
-  //           }
-  //         );
-  //       } else {
-  //         alert("비밀번호가 일치하지 않습니다.");
-  //       }
-  //     }
-  //   }
 };
 </script>
 
 <style>
 #register-form {
-  /* margin-left: 40px !important; */
-  margin-top: 60px;
+  margin-top: 10px;
 }
 
 .box2 {
-  /* transform: translate(-50%, -50%); */
-  background: orange;
   text-align: center;
   color: white;
   text-transform: uppercase;
@@ -131,7 +137,7 @@ export default {
   border-color: #d6eb78;
 }
 
-.box2 button[type="submit"] {
+.signup_btn {
   border: 0;
   background: none;
   display: block;
@@ -147,7 +153,7 @@ export default {
   cursor: pointer;
 }
 
-.box2 button[type="submit"]:hover {
+.signup_btn:hover {
   background: #d6eb78;
 }
 </style>

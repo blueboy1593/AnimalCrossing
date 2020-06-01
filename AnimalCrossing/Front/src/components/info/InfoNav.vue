@@ -1,19 +1,31 @@
 <template>
   <nav class="board__nav">
     <router-link to="/info/fish">
-      <img src="../../assets/images/nav_fish.png" alt="Fish" />
+      <img src="../../assets/images/nav_fish.png" alt="Fish" class="nav-img" />
     </router-link>
     <router-link to="/info/insect">
-      <img src="../../assets/images/nav_insect.png" alt="Insect" />
+      <img
+        src="../../assets/images/nav_insect.png"
+        alt="Insect"
+        class="nav-img"
+      />
     </router-link>
     <router-link to="/info/fossil">
-      <button class="nav--item" data-item="Fossil">Fossil</button>
+      <img src="../../assets/images/fossil.png" alt="Fossil" class="nav-img" />
     </router-link>
     <router-link to="/info/painting">
-      <button class="nav--item" data-item="painting">Painting</button>
+      <img
+        src="../../assets/images/nav_painting.png"
+        alt="Nav_painting"
+        class="nav-img"
+      />
     </router-link>
     <router-link to="/info/neighbor">
-      <button class="nav--item" data-item="neighbor">Neighbor</button>
+      <img
+        src="../../assets/images/nav_neighbor.png"
+        alt="Nav_neighbor"
+        class="nav-img"
+      />
     </router-link>
     <!-- <button class="nav--item" data-item="events">Events</button>
     <button class="nav--item" data-item="important">Important</button> -->
@@ -28,10 +40,15 @@ export default {};
 /* navigation displaying the items evenly in a non-wrapping row */
 .board__nav {
   display: flex;
-  margin: 1rem 2rem;
+  margin: 1rem 1rem;
   justify-content: space-evenly;
-  width: 80%;
+  width: 90%;
   justify-self: center;
+}
+
+/* navbar 이미지 사이즈 및 설정 */
+.nav-img {
+  height: 60px;
 }
 
 /* style the buttons to have a bit of whitespace around the text
