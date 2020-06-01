@@ -47,6 +47,14 @@ def list(request): # 모든 거래소 글 가져오기
   serializer = ArticleSerializer(articles, many=True)
   return Response(serializer.data)
 
+# 이름 하나에 딸린 글 가져요기
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def sortlist(request, sort):
+  print(sort)
+  return Response(data)
+  # namelist = Article.objects.filter(name==getname)
+
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([AllowAny])
 def detail(request, article_pk):
