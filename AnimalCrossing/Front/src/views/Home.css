@@ -5,6 +5,10 @@ body {
     background-color: #f2f2f2;
 }
 
+.v-application a {
+    text-decoration: none;
+}
+
 
 @media screen and (min-width: 1024px) {
     .logo {
@@ -64,7 +68,7 @@ body {
         color: #fff;
         padding: 1em;
         text-align: center;
-        line-height: 90vh;
+        line-height: 92.3vh;
         background-color: #efefef;
     }
 }
