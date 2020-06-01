@@ -2,9 +2,9 @@
   <!-- <div class="player"> -->
   <!-- <div class="album">
         <img src="../../src/assets/images/navi.png" class="albumImg" alt="" />
-      </div> -->
+  </div>-->
   <!-- <audio src="../../src/assets/audios/navi.mp3" class="audioCon" loop autoplay></audio> -->
-  <audio controls class="player">
+  <audio controls autoplay class="player">
     <source src="../../src/assets/audios/navi.mp3" type="audio/mpeg" />
   </audio>
   <!-- </div> -->
