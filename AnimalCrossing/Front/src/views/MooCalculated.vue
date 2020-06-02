@@ -2,31 +2,9 @@
   <div class="back">
     <div class="top_container">
       <div class="graph_box">
-        <!-- <div class="cal_head">
-          <h5>동물의숲 예측무값</h5>
-        </div> -->
-        <!-- <div class="buy_price">
-          <div class="buy_price_form">
-            무파니 구매 가격
-            <div>
-              <img
-                src="../assets/images/bells.svg"
-                alt="Bag of bells"
-                class="bell"
-              />
-              <input
-                type="text"
-                class="buy_price_input"
-                placeholder="bell을 입력하세요"
-              />벨
-            </div>
-          </div>
-        </div> -->
-        <img
-          src="../assets/images/moo_chart.png"
-          alt="무차트임시"
-          id="moo_chart"
-        />
+        <!-- <MooGraph :moo_graph_info="moo_graph_info" /> -->
+        <MooGraphMin :moo_graph_info="graph_min" class="moo" />
+        <MooGraphMax :moo_graph_info="graph_max" class="moo" />
       </div>
       <div class="moopany_box">
         <button
@@ -139,11 +117,20 @@
 </template>
 
 <script>
+import MooGraphMin from "../components/MooGraphMin.vue";
+import MooGraphMax from "../components/MooGraphMax.vue";
+
 export default {
   data() {
     return {
-      moo: []
+      moo: [],
+      graph_max: [],
+      graph_min: []
     };
+  },
+  components: {
+    MooGraphMin,
+    MooGraphMax
   },
   methods: {
     moocalcul: function() {
@@ -154,6 +141,8 @@ export default {
   mounted: function() {
     const moo_info = this.$route.params.price_calculated;
     const moo_price = new Array();
+    const moo_graph_max = new Array();
+    const moo_graph_min = new Array();
     moo_info.forEach(element => {
       if (element[0] === element[1]) {
         moo_price.push(element[0]);
@@ -161,8 +150,17 @@ export default {
         moo_price.push(`${element[0]} ~ ${element[1]}`);
       }
     });
+    moo_info.forEach(element => {
+      moo_graph_max.push(element[1]);
+      moo_graph_min.push(element[0]);
+    });
+    // moo_graph_max.push(600);
+    // moo_graph_min.push(600);
+
     this.moo = moo_price;
-    console.log(this.moo);
+    this.graph_max = moo_graph_max;
+    this.graph_min = moo_graph_min;
+    // console.log(this.moo);
   }
 };
 </script>
@@ -180,11 +178,23 @@ export default {
 }
 
 /* 그래프와 헤더, 그리고 무파니까지 */
+.moo {
+  /* display: flex; */
+  position: absolute;
+  width: 55%;
+}
+
+.top_container {
+  height: 60%;
+  margin-bottom: 30px;
+}
+
 .graph_box {
   width: 70%;
   height: 50%;
   margin: 1rem;
   display: inline-block;
+  margin-bottom: 40px;
 }
 
 #moo_chart {
@@ -196,10 +206,11 @@ export default {
   display: inline-block;
   width: 20%;
   text-align: center;
+  margin-left: 30px;
 }
 
 #moopany {
-  width: 60%;
+  width: 75%;
   /* margin-bottom: 20px; */
 }
 
