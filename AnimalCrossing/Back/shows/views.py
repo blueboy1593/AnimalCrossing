@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import serializers
 from rest_framework.response import Response
 from .serializers import ShowUserDetailSerializer, ShowSerializer, ShowcommentSerializer, ShowUpdateSerializer, ShowcommentUpdateSerializer
@@ -13,7 +13,7 @@ from rest_framework.authtoken.models import Token
 
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def write(request): # 거래소에 글 하나 올리기
   # fields = ['id', 'title', 'content', 'image', 'category', 'name', 'sort', 'price', 'created_at', 'updated_at', 'user']
   title = request.data.get('title')
