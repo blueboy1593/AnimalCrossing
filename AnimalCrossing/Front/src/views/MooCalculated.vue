@@ -49,9 +49,11 @@
         <h4>요일</h4>
         <div class="weekly_price_time">
           오전
+          <img src="../assets/images/bells.svg" class="weekly_bell" />
         </div>
         <div class="weekly_price_time">
           오후
+          <img src="../assets/images/bells.svg" class="weekly_bell" />
         </div>
       </div>
       <div class="weekly_price">
@@ -150,11 +152,32 @@
 
 <script>
 export default {
+  data() {
+    return {
+      moo: {
+        mon_am: 0,
+        mon_pm: 0,
+        tues_am: 0,
+        tues_pm: 0,
+        wedn_am: 0,
+        wedn_pm: 0,
+        thur_am: 0,
+        thur_pm: 0,
+        fri_am: 0,
+        fri_pm: 0,
+        sat_am: 0,
+        sat_pm: 0
+      }
+    };
+  },
   methods: {
     moocalcul: function() {
       alert("입력란으로 돌아갑니다");
       this.$router.push("/moocalculator");
     }
+  },
+  mounted: function() {
+    console.log(this.$router);
   }
 };
 </script>
