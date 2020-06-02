@@ -15,6 +15,7 @@ from rest_framework.authtoken.models import Token
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def write(request): # 거래소에 글 하나 올리기
+
   # fields = ['id', 'title', 'content', 'image', 'category', 'name', 'sort', 'price', 'created_at', 'updated_at', 'user']
   title = request.data.get('title')
   content = request.data.get('content')
@@ -42,26 +43,28 @@ def list(request): # 모든 거래소 글 가져오기
   return Response(serializer.data)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-
+@permission_classes([AllowAny])
 def detail(request, show_pk):
   show = get_object_or_404(Show, pk=show_pk)
-  permission_classes = [IsAuthenticated, IsOwnerAndAdminOnly]
+  
   if request.method == 'GET':
     serializer = ShowSerializer(show)
     return Response(serializer.data)
   elif request.method == "PUT":
+    permission_classes = [IsAuthenticated]
     serializer = ShowUpdateSerializer(data = request.data, instance=show)
     if serializer.is_valid(raise_exception=True):
       serializer.save()
       return Response(serializer.data)
     else: Response({'message': 'put error'})
   else:
+    permission_classes = [IsAuthenticated]
     show.delete()
     return Response({'message': 'show post is successfully deleted'})
     
 # 이제 댓글
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def showcomment(request, show_pk):
   serializer = ShowcommentSerializer(data = request.data)
   user_id = request.data.get('user_id')

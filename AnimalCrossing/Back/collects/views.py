@@ -46,7 +46,7 @@ def animals(request):
     serializer = AnimalSerializer(animals, many=True)
     return Response(serializer.data)
 
-def excel_to_list(request):
+# def excel_to_list(request):
     # wb = openpyxl.load_workbook("./crawling/data/fossil.xlsx")
     # ws = wb.active
     # 이름 = []
@@ -106,46 +106,46 @@ def excel_to_list(request):
     #     insect.price = 가격[i]
     #     insect.save()
 
-    wb = openpyxl.load_workbook("./crawling/data/animals.xlsx")
-    ws = wb.active
-    이름 = []
-    영어이름 = []
-    성별 = []
-    생일 = []
-    성격 = []
-    종류 = []
-    for r in ws.rows:
-        이름. append(r[1].value)
-        영어이름. append(r[2].value)
-        성별. append(r[3].value)
-        생일. append(r[4].value)
-        성격. append(r[5].value)
-        종류. append(r[6].value)
-    for i in range(391):
-        animal = Animal()
-        animal.name = 이름[i]
-        animal.engname = 영어이름[i].strip()
-        animal.gender = 성별[i].strip()
-        animal.birthday = 생일[i]
-        animal.personality = 성격[i]
-        animal.sort = 종류[i]
-        animal.save()
-    wb = openpyxl.load_workbook("./crawling/data/painting.xlsx")
-    ws = wb.active
-    이름 = []
-    영어이름 = []
-    실제미술품 = []
-    가품특징 = []
-    for r in ws.rows:
-        이름. append(r[1].value)
-        영어이름. append(r[2].value)
-        실제미술품. append(r[3].value)
-        가품특징. append(r[4].value)
-    for i in range(43):
-        painting = Painting()
-        painting.name = 이름[i].strip()
-        painting.engname = 영어이름[i].strip()
-        painting.real = 실제미술품[i]
-        painting.memo = 가품특징[i]
-        painting.save()
-    return
+    # wb = openpyxl.load_workbook("./crawling/data/animals.xlsx")
+    # ws = wb.active
+    # 이름 = []
+    # 영어이름 = []
+    # 성별 = []
+    # 생일 = []
+    # 성격 = []
+    # 종류 = []
+    # for r in ws.rows:
+    #     이름. append(r[1].value)
+    #     영어이름. append(r[2].value)
+    #     성별. append(r[3].value)
+    #     생일. append(r[4].value)
+    #     성격. append(r[5].value)
+    #     종류. append(r[6].value)
+    # for i in range(391):
+    #     animal = Animal()
+    #     animal.name = 이름[i]
+    #     animal.engname = 영어이름[i].strip()
+    #     animal.gender = 성별[i].strip()
+    #     animal.birthday = 생일[i]
+    #     animal.personality = 성격[i]
+    #     animal.sort = 종류[i]
+    #     animal.save()
+    # wb = openpyxl.load_workbook("./crawling/data/painting.xlsx")
+    # ws = wb.active
+    # 이름 = []
+    # 영어이름 = []
+    # 실제미술품 = []
+    # 가품특징 = []
+    # for r in ws.rows:
+    #     이름. append(r[1].value)
+    #     영어이름. append(r[2].value)
+    #     실제미술품. append(r[3].value)
+    #     가품특징. append(r[4].value)
+    # for i in range(43):
+    #     painting = Painting()
+    #     painting.name = 이름[i].strip()
+    #     painting.engname = 영어이름[i].strip()
+    #     painting.real = 실제미술품[i]
+    #     painting.memo = 가품특징[i]
+    #     painting.save()
+    # return
