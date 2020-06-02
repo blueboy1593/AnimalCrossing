@@ -60,14 +60,12 @@
         <h4>월요일</h4>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            105벨
+            {{ this.moo[0] }}
           </div>
         </div>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            110벨
+            {{ this.moo[1] }}
           </div>
         </div>
       </div>
@@ -75,14 +73,12 @@
         <h4>화요일</h4>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            115벨
+            {{ this.moo[2] }}
           </div>
         </div>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            124벨
+            {{ this.moo[3] }}
           </div>
         </div>
       </div>
@@ -90,14 +86,12 @@
         <h4>수요일</h4>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            130벨
+            {{ this.moo[4] }}
           </div>
         </div>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            140벨
+            {{ this.moo[5] }}
           </div>
         </div>
       </div>
@@ -105,14 +99,12 @@
         <h4>목요일</h4>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            150벨
+            {{ this.moo[6] }}
           </div>
         </div>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            160벨
+            {{ this.moo[7] }}
           </div>
         </div>
       </div>
@@ -120,14 +112,12 @@
         <h4>금요일</h4>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            160벨
+            {{ this.moo[8] }}
           </div>
         </div>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            160벨
+            {{ this.moo[9] }}
           </div>
         </div>
       </div>
@@ -135,14 +125,12 @@
         <h4>토요일</h4>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            170벨
+            {{ this.moo[10] }}
           </div>
         </div>
         <div class="weekly_price_time">
           <div>
-            <img src="../assets/images/bells.svg" class="weekly_bell" />
-            180벨
+            {{ this.moo[11] }}
           </div>
         </div>
       </div>
@@ -154,20 +142,7 @@
 export default {
   data() {
     return {
-      moo: {
-        mon_am: 0,
-        mon_pm: 0,
-        tues_am: 0,
-        tues_pm: 0,
-        wedn_am: 0,
-        wedn_pm: 0,
-        thur_am: 0,
-        thur_pm: 0,
-        fri_am: 0,
-        fri_pm: 0,
-        sat_am: 0,
-        sat_pm: 0
-      }
+      moo: []
     };
   },
   methods: {
@@ -177,7 +152,17 @@ export default {
     }
   },
   mounted: function() {
-    console.log(this.$router);
+    const moo_info = this.$route.params.price_calculated;
+    const moo_price = new Array();
+    moo_info.forEach(element => {
+      if (element[0] === element[1]) {
+        moo_price.push(element[0]);
+      } else {
+        moo_price.push(`${element[0]} ~ ${element[1]}`);
+      }
+    });
+    this.moo = moo_price;
+    console.log(this.moo);
   }
 };
 </script>
@@ -281,9 +266,10 @@ h4 {
 .weekly_price_time {
   padding: 4px;
   color: #6e661b;
-  font-size: 20px;
+  font-size: 1.1rem;
   font-weight: 400;
   line-height: 1.1876em;
+  text-align: center;
 }
 
 .weekly_price_input {
@@ -309,7 +295,7 @@ h4 {
   display: block;
   margin: 10px auto 10px;
   text-align: center;
-  border: 2px solid #84e9b6;
+  border: 2px solid #7273e0;
   padding: 0px 30px;
   height: 40px;
   outline: none;
@@ -320,7 +306,6 @@ h4 {
 }
 
 #moocal_btn[type="submit"]:hover {
-  /* background: #96e985; */
-  background: #84e9b6;
+  background: #7273e0;
 }
 </style>

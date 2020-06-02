@@ -214,20 +214,19 @@ export default {
     };
   },
   methods: {
-    moocalcul: function() {
+    moocalcul: async function() {
       const scope = this;
-      const moo_info = this.moo;
+      const moo_info = scope.moo;
       localStorage.setItem("moo_info", JSON.stringify(moo_info));
       let percentage = 40;
       // 2차원 배열 만들기.
       let price_input = this.moo.map(x => {
         return parseInt(x);
       });
-
       let price_calculated = new Array();
       price_calculated.push([price_input[0], price_input[0]]);
       for (let i = 1; i < 13; i++) {
-        if (price_input[i] == 0) {
+        if (price_input[i] === 0) {
           const pre_input = price_calculated[i - 1];
           const min_input = Math.round(
             (pre_input[0] * (100 - percentage)) / 100
@@ -236,14 +235,16 @@ export default {
             (pre_input[1] * (100 + percentage)) / 100
           );
           percentage = percentage * (2 / 3);
-          price_calculated.push([min_input, max_input]);
+          price_calculated.push([min_input, Math.min(600, max_input)]);
         } else {
-          price_calculated.push([price_calculated[i], price_calculated[i]]);
+          price_calculated.push([price_input[i], price_input[i]]);
         }
       }
-
       alert("무값 계산중 계산중");
-      scope.$router.push({ path: "/moocalculated", params: price_calculated });
+      scope.$router.push({
+        name: "MooCalculated",
+        params: { price_calculated }
+      });
     },
     initialize: function() {
       localStorage.removeItem("moo_info");
