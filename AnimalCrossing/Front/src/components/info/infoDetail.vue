@@ -10,7 +10,7 @@
             <span></span>
             <img
               id="detailImg"
-              src="../../assets/images/nav_painting.png"
+              :src="getPatingImagPath(infoCard.engname)"
               alt=""
             />
           </div>
@@ -18,15 +18,11 @@
 
         <div class="detailName">
           <div class="textBox">
-            모성이 느껴지는 조각
+            {{ infoCard.name }}
           </div>
         </div>
-        <div class="detailReal">
-          작자 미상카피톨리나 늑대상
-        </div>
-        <div class="detailMemo">
-          늑대가 혀를 내밀고 있음
-        </div>
+        <div class="detailReal">진품: {{ infoCard.real }}</div>
+        <div class="detailMemo">가품: {{ infoCard.memo }}</div>
       </div>
     </div>
   </div>
@@ -34,7 +30,14 @@
 
 <script>
 export default {
-  name: "paintingDetail"
+  name: "paintingDetail",
+  props: ["infoCard", "routePath"],
+  methods: {
+    getPatingImagPath(engname) {
+      let images = require(`@/assets/images/image_painting/${engname}.jpg`);
+      return images;
+    }
+  }
 };
 </script>
 

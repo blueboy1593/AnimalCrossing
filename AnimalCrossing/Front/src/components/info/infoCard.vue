@@ -26,6 +26,7 @@
         v-if="routePath === '/info/painting'"
         :src="getPatingImagPath(infoCard.engname)"
         class="image"
+        @click="paintingDialog = !paintingDialog"
       />
     </div>
     <div class="infoName">
@@ -34,13 +35,28 @@
     <div class="infoDetail">
       {{ infoCard.price }}
     </div>
+
+    <v-dialog id="paintingfDialog" v-model="paintingDialog">
+      <PaintingDialog
+        v-on:close="paintingDialog = false"
+        :infoCard="infoCard"
+      />
+    </v-dialog>
   </div>
 </template>
 
 <script>
+import PaintingDialog from "@/components/info/infoDetail.vue";
+
 export default {
   name: "infoCard",
+  components: {
+    PaintingDialog
+  },
   props: ["infoCard", "routePath"],
+  data: () => ({
+    paintingDialog: false
+  }),
   methods: {
     getAnimalImgPath(engname) {
       let images = require(`@/assets/images/image_animal/${engname}.png`);
