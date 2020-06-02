@@ -56,7 +56,6 @@ export default {
     ". photo photo photo name name"
     ". . real real real ."
     ". . memo memo memo .";
-  /* width: 100vh; */
   height: 100vh;
   border-radius: 15px;
   background-color: #2f3652ec;
@@ -78,13 +77,11 @@ export default {
 
 .textBox {
   font-family: 궁서;
-  /* width: 100%; */
   font-size: 2rem;
   padding-top: 1.7rem;
   margin: 0 auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  /* background-color: rgba(126, 126, 126, 0.473); */
   border-radius: 5px;
   color: rgba(255, 255, 255, 0.877);
 }
@@ -134,7 +131,6 @@ export default {
   box-shadow: 0 10px 20px rgba(146, 193, 219, 0.5);
   overflow: hidden;
   line-height: 0;
-  /* width: 100%; */
 }
 
 .detailPhoto:before {
