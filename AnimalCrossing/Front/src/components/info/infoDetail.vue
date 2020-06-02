@@ -239,4 +239,164 @@
       transform: translateY(-100%);
     }
   }
+
+@media (max-width: 1400px) {
+  .paintingDetail {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas:
+      ". . . . . ."
+      ". photo photo photo . ."
+      ". photo photo photo . ."
+      ". photo photo photo . ."
+      ". . . . . ."
+      ". name name name name ."
+      ". real real real real ."
+      ". memo memo memo memo .";
+    height: 100vh;
+    border-radius: 15px;
+  }
+
+  #detailImg {
+    height: 40vh;
+  }
+}
+
+@media (max-width: 1100px) {
+  
+}
+
+@media (max-width: 700px) {
+  .paintingDetail {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    grid-template-areas:
+      ". . . . . ."
+      ". photo photo photo . ."
+      ". photo photo photo . ."
+      ". photo photo photo . ."
+      ". . . . . ."
+      ". name name name name name"
+      ". real real real real real"
+      ". memo memo memo memo memo"
+      ". . . . . .";
+  }
+
+  #detailImg {
+    height: 35vh;
+  }
+
+  .detailName {
+    font-size: 2rem;
+  }
+
+  .detailReal {
+    font-size: 1.5rem;
+  }
+
+  .detailMemo {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .paintingDetail {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas:
+      ". . . . . ."
+      ". photo photo photo . ."
+      ". photo photo photo . ."
+      ". photo photo photo . ."
+      ". name name name name name"
+      ". real real real real real"
+      ". memo memo memo memo memo"
+      ". . . . . .";
+  }
+
+  #detailImg {
+    height: 30vh;
+  }
+
+  .detailName {
+    font-size: 2rem;
+  }
+
+  .detailReal {
+    font-size: 1.5rem;
+  }
+
+  .detailMemo {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .paintingDetail {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas:
+      ". . . . . ."
+      ". photo photo photo . ."
+      ". photo photo photo . ."
+      ". photo photo photo . ."
+      ". name name name name name"
+      ". real real real real real"
+      ". memo memo memo memo memo"
+      ". . . . . .";
+  }
+
+  #detailImg {
+    height: 25vh;
+  }
+
+  .detailName {
+    font-size: 1.5rem;
+  }
+
+  .detailReal {
+    font-size: 1rem;
+  }
+
+  .detailMemo {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .paintingDetail {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas:
+      ". . . . . ."
+      ". photo photo photo . ."
+      ". photo photo photo . ."
+      ". photo photo photo . ."
+      ". name name name name name"
+      ". real real real real real"
+      ". memo memo memo memo memo"
+      ". . . . . .";
+  }
+
+  #detailImg {
+    height: 20vh;
+  }
+
+  .detailName {
+    font-size: 1.5rem;
+  }
+
+  .detailReal {
+    font-size: 1rem;
+  }
+
+  .detailMemo {
+    font-size: 1rem;
+  }
+}
 </style>
