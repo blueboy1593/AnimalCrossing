@@ -43,11 +43,11 @@ def list(request): # 모든 거래소 글 가져오기
   return Response(serializer.data)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([AllowAny])
 def detail(request, show_pk):
   show = get_object_or_404(Show, pk=show_pk)
   
   if request.method == 'GET':
+    permission_classes = [AllowAny]
     serializer = ShowSerializer(show)
     return Response(serializer.data)
   elif request.method == "PUT":
