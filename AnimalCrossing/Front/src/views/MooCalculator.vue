@@ -16,7 +16,7 @@
             type="text"
             class="buy_price_input"
             placeholder="bell을 입력하세요"
-            v-model="moo.initial_price"
+            v-model="moo[0]"
           />벨
         </div>
       </div>
@@ -32,7 +32,7 @@
               type="text"
               class="weekly_price_input"
               placeholder="벨"
-              v-model="moo.mon_am"
+              v-model="moo[1]"
             />
           </div>
         </div>
@@ -44,7 +44,7 @@
               type="text"
               class="weekly_price_input"
               placeholder="벨"
-              v-model="moo.mon_pm"
+              v-model="moo[2]"
             />
           </div>
         </div>
@@ -55,14 +55,24 @@
           오전
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            <input
+              type="text"
+              class="weekly_price_input"
+              v-model="moo[3]"
+              placeholder="벨"
+            />
           </div>
         </div>
         <div class="weekly_price_time">
           오후
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            <input
+              type="text"
+              class="weekly_price_input"
+              v-model="moo[4]"
+              placeholder="벨"
+            />
           </div>
         </div>
       </div>
@@ -72,14 +82,24 @@
           오전
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            <input
+              type="text"
+              class="weekly_price_input"
+              v-model="moo[5]"
+              placeholder="벨"
+            />
           </div>
         </div>
         <div class="weekly_price_time">
           오후
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            <input
+              type="text"
+              class="weekly_price_input"
+              v-model="moo[6]"
+              placeholder="벨"
+            />
           </div>
         </div>
       </div>
@@ -89,14 +109,24 @@
           오전
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            <input
+              type="text"
+              class="weekly_price_input"
+              v-model="moo[7]"
+              placeholder="벨"
+            />
           </div>
         </div>
         <div class="weekly_price_time">
           오후
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            <input
+              type="text"
+              class="weekly_price_input"
+              v-model="moo[8]"
+              placeholder="벨"
+            />
           </div>
         </div>
       </div>
@@ -106,14 +136,24 @@
           오전
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            <input
+              type="text"
+              class="weekly_price_input"
+              v-model="moo[9]"
+              placeholder="벨"
+            />
           </div>
         </div>
         <div class="weekly_price_time">
           오후
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            <input
+              type="text"
+              class="weekly_price_input"
+              v-model="moo[10]"
+              placeholder="벨"
+            />
           </div>
         </div>
       </div>
@@ -123,26 +163,46 @@
           오전
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            <input
+              type="text"
+              class="weekly_price_input"
+              v-model="moo[11]"
+              placeholder="벨"
+            />
           </div>
         </div>
         <div class="weekly_price_time">
           오후
           <div>
             <img src="../assets/images/bells.svg" class="weekly_bell" />
-            <input type="text" class="weekly_price_input" placeholder="벨" />
+            <input
+              type="text"
+              class="weekly_price_input"
+              v-model="moo[12]"
+              placeholder="벨"
+            />
           </div>
         </div>
       </div>
     </div>
-    <button
-      type="submit"
-      id="moocal_btn"
-      class="btn btn-primary"
-      v-on:click="moocalcul"
-    >
-      무트코인 예측하기
-    </button>
+    <div class="button_box">
+      <button
+        type="submit"
+        id="moocal_btn_initialize"
+        class="moocal_btn btn btn-primary"
+        v-on:click="initialize"
+      >
+        입력값 초기화
+      </button>
+      <button
+        type="submit"
+        id="moocal_btn_predict"
+        class="moocal_btn btn btn-primary"
+        v-on:click="moocalcul"
+      >
+        무트코인 예측하기
+      </button>
+    </div>
   </div>
 </template>
 
@@ -150,20 +210,51 @@
 export default {
   data() {
     return {
-      moo: {
-        initial_price: 0,
-        mon_am: 0,
-        mon_pm: 0
-      }
+      moo: [100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     };
   },
   methods: {
-    moocalcul: function() {
+    moocalcul: async function() {
       const scope = this;
-      const moo_info = this.moo;
-      console.log(moo_info);
+      const moo_info = scope.moo;
+      localStorage.setItem("moo_info", JSON.stringify(moo_info));
+      let percentage = 40;
+      // 2차원 배열 만들기.
+      let price_input = this.moo.map(x => {
+        return parseInt(x);
+      });
+      let price_calculated = new Array();
+      price_calculated.push([price_input[0], price_input[0]]);
+      for (let i = 1; i < 13; i++) {
+        if (price_input[i] === 0) {
+          const pre_input = price_calculated[i - 1];
+          const min_input = Math.round(
+            (pre_input[0] * (100 - percentage)) / 100
+          );
+          const max_input = Math.round(
+            (pre_input[1] * (100 + percentage)) / 100
+          );
+          percentage = percentage * (2 / 3);
+          price_calculated.push([min_input, Math.min(600, max_input)]);
+        } else {
+          price_calculated.push([price_input[i], price_input[i]]);
+        }
+      }
       alert("무값 계산중 계산중");
-      scope.$router.push("/moocalculated");
+      scope.$router.push({
+        name: "MooCalculated",
+        params: { price_calculated }
+      });
+    },
+    initialize: function() {
+      localStorage.removeItem("moo_info");
+      this.moo = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      alert("무 입력값이 초기화 되었습니다.");
+    }
+  },
+  mounted: function() {
+    if (localStorage.getItem("moo_info")) {
+      this.moo = JSON.parse(localStorage.getItem("moo_info"));
     }
   }
 };
@@ -258,13 +349,19 @@ h4 {
   text-align: center;
 }
 
-#moocal_btn[type="submit"] {
+/* 버튼 관리 파트 */
+.button_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 버튼 공통!!! */
+.moocal_btn {
   border: 0;
   background: none;
-  display: block;
-  margin: 20px auto 10px;
+  display: inline-block;
+  margin: 10px auto 0px;
   text-align: center;
-  border: 2px solid #84e9b6;
   padding: 0px 40px;
   height: 40px;
   outline: none;
@@ -274,7 +371,19 @@ h4 {
   cursor: pointer;
 }
 
-#moocal_btn[type="submit"]:hover {
+#moocal_btn_initialize {
+  border: 2px solid #e9a87d;
+}
+
+#moocal_btn_initialize:hover {
+  background: #e9a87d;
+}
+
+#moocal_btn_predict {
+  border: 2px solid #84e9b6;
+}
+
+#moocal_btn_predict:hover {
   /* background: #96e985; */
   background: #84e9b6;
 }

@@ -5,20 +5,8 @@
       <div class="boardGreen">
         <ring></ring>
         <div class="boardGray">
-          <!-- <h1 class="board__heading">
-            동물의숲 게시판
-          </h1> -->
           <section class="board__news">
             <router-view />
-            <!-- ! news items added through the script according to 1. the latest date and 1. the selected category -->
-            <!-- <a class="news--item" href="#">
-                <p class="date">
-                    Apr 26, 2019
-                </p>
-                <p class="title">
-                    Lorem inpsum
-                </p>
-            </a> -->
           </section>
           <div class="right_tab">
             <RightTab />

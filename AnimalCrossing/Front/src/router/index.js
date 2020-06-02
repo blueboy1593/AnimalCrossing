@@ -82,12 +82,15 @@ const routes = [
       {
         path: "/moocalculator",
         name: "Moocalculator",
-        component: MooCalculator
+        component: MooCalculator,
+        props: true
       },
       {
         path: "/mooCalculated",
         name: "MooCalculated",
-        component: MooCalculated
+        component: MooCalculated,
+        props: true
+        // 이거를 해줘야해...? 좀 천재적인거 아냐?
       },
       {
         path: "/login",
