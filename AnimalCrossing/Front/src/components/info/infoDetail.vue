@@ -38,7 +38,7 @@
   @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
   #black {
-    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('../../assets/images/marble.png');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('../../assets/images/marble.png');
     background-size: cover;
   }
 
@@ -89,8 +89,7 @@
     font-size: 2.2rem;
   }
 
-  .textBox {
-  }
+  .textBox {}
 
   .detailReal {
     display: grid;
@@ -240,163 +239,161 @@
     }
   }
 
-@media (max-width: 1400px) {
-  .paintingDetail {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    grid-template-areas:
-      ". . . . . ."
-      ". photo photo photo . ."
-      ". photo photo photo . ."
-      ". photo photo photo . ."
-      ". . . . . ."
-      ". name name name name ."
-      ". real real real real ."
-      ". memo memo memo memo .";
-    height: 100vh;
-    border-radius: 15px;
+  @media (max-width: 1400px) {
+    .paintingDetail {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      grid-template-areas:
+        ". . . . . ."
+        ". photo photo photo . ."
+        ". photo photo photo . ."
+        ". photo photo photo . ."
+        ". . . . . ."
+        ". name name name name ."
+        ". real real real real ."
+        ". memo memo memo memo .";
+      height: 100vh;
+      border-radius: 15px;
+    }
+
+    #detailImg {
+      height: 40vh;
+    }
   }
 
-  #detailImg {
-    height: 40vh;
-  }
-}
+  @media (max-width: 1100px) {}
 
-@media (max-width: 1100px) {
-  
-}
+  @media (max-width: 700px) {
+    .paintingDetail {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(9, 1fr);
+      grid-template-areas:
+        ". . . . . ."
+        ". photo photo photo . ."
+        ". photo photo photo . ."
+        ". photo photo photo . ."
+        ". . . . . ."
+        ". name name name name name"
+        ". real real real real real"
+        ". memo memo memo memo memo"
+        ". . . . . .";
+    }
 
-@media (max-width: 700px) {
-  .paintingDetail {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    grid-template-areas:
-      ". . . . . ."
-      ". photo photo photo . ."
-      ". photo photo photo . ."
-      ". photo photo photo . ."
-      ". . . . . ."
-      ". name name name name name"
-      ". real real real real real"
-      ". memo memo memo memo memo"
-      ". . . . . .";
-  }
+    #detailImg {
+      height: 35vh;
+    }
 
-  #detailImg {
-    height: 35vh;
-  }
+    .detailName {
+      font-size: 2rem;
+    }
 
-  .detailName {
-    font-size: 2rem;
-  }
+    .detailReal {
+      font-size: 1.5rem;
+    }
 
-  .detailReal {
-    font-size: 1.5rem;
+    .detailMemo {
+      font-size: 1.5rem;
+    }
   }
 
-  .detailMemo {
-    font-size: 1.5rem;
-  }
-}
+  @media (max-width: 560px) {
+    .paintingDetail {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      grid-template-areas:
+        ". . . . . ."
+        ". photo photo photo . ."
+        ". photo photo photo . ."
+        ". photo photo photo . ."
+        ". name name name name name"
+        ". real real real real real"
+        ". memo memo memo memo memo"
+        ". . . . . .";
+    }
 
-@media (max-width: 560px) {
-  .paintingDetail {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    grid-template-areas:
-      ". . . . . ."
-      ". photo photo photo . ."
-      ". photo photo photo . ."
-      ". photo photo photo . ."
-      ". name name name name name"
-      ". real real real real real"
-      ". memo memo memo memo memo"
-      ". . . . . .";
-  }
+    #detailImg {
+      height: 30vh;
+    }
 
-  #detailImg {
-    height: 30vh;
-  }
+    .detailName {
+      font-size: 2rem;
+    }
 
-  .detailName {
-    font-size: 2rem;
-  }
+    .detailReal {
+      font-size: 1.5rem;
+    }
 
-  .detailReal {
-    font-size: 1.5rem;
-  }
-
-  .detailMemo {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 460px) {
-  .paintingDetail {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    grid-template-areas:
-      ". . . . . ."
-      ". photo photo photo . ."
-      ". photo photo photo . ."
-      ". photo photo photo . ."
-      ". name name name name name"
-      ". real real real real real"
-      ". memo memo memo memo memo"
-      ". . . . . .";
+    .detailMemo {
+      font-size: 1.5rem;
+    }
   }
 
-  #detailImg {
-    height: 25vh;
+  @media (max-width: 460px) {
+    .paintingDetail {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      grid-template-areas:
+        ". . . . . ."
+        ". photo photo photo . ."
+        ". photo photo photo . ."
+        ". photo photo photo . ."
+        ". name name name name name"
+        ". real real real real real"
+        ". memo memo memo memo memo"
+        ". . . . . .";
+    }
+
+    #detailImg {
+      height: 25vh;
+    }
+
+    .detailName {
+      font-size: 1.5rem;
+    }
+
+    .detailReal {
+      font-size: 1rem;
+    }
+
+    .detailMemo {
+      font-size: 1rem;
+    }
   }
 
-  .detailName {
-    font-size: 1.5rem;
-  }
+  @media (max-width: 375px) {
+    .paintingDetail {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      grid-template-areas:
+        ". . . . . ."
+        ". photo photo photo . ."
+        ". photo photo photo . ."
+        ". photo photo photo . ."
+        ". name name name name name"
+        ". real real real real real"
+        ". memo memo memo memo memo"
+        ". . . . . .";
+    }
 
-  .detailReal {
-    font-size: 1rem;
-  }
+    #detailImg {
+      height: 20vh;
+    }
 
-  .detailMemo {
-    font-size: 1rem;
-  }
-}
+    .detailName {
+      font-size: 1.5rem;
+    }
 
-@media (max-width: 375px) {
-  .paintingDetail {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    grid-template-areas:
-      ". . . . . ."
-      ". photo photo photo . ."
-      ". photo photo photo . ."
-      ". photo photo photo . ."
-      ". name name name name name"
-      ". real real real real real"
-      ". memo memo memo memo memo"
-      ". . . . . .";
-  }
+    .detailReal {
+      font-size: 1rem;
+    }
 
-  #detailImg {
-    height: 20vh;
+    .detailMemo {
+      font-size: 1rem;
+    }
   }
-
-  .detailName {
-    font-size: 1.5rem;
-  }
-
-  .detailReal {
-    font-size: 1rem;
-  }
-
-  .detailMemo {
-    font-size: 1rem;
-  }
-}
 </style>
