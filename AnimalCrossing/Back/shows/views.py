@@ -42,23 +42,25 @@ def list(request): # 모든 거래소 글 가져오기
   serializer = ShowSerializer(shows, many=True)
   return Response(serializer.data)
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET'])
+@permission_classes([AllowAny])
 def detail(request, show_pk):
   show = get_object_or_404(Show, pk=show_pk)
-  
   if request.method == 'GET':
     permission_classes = [AllowAny]
     serializer = ShowSerializer(show)
     return Response(serializer.data)
-  elif request.method == "PUT":
-    permission_classes = [IsAuthenticated]
+
+@api_view(['PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
+def detail_ud(request, show_pk):
+  if request.method == "PUT":
     serializer = ShowUpdateSerializer(data = request.data, instance=show)
     if serializer.is_valid(raise_exception=True):
       serializer.save()
       return Response(serializer.data)
     else: Response({'message': 'put error'})
   else:
-    permission_classes = [IsAuthenticated]
     show.delete()
     return Response({'message': 'show post is successfully deleted'})
     

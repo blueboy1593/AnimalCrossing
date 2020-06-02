@@ -8,7 +8,6 @@ from .serializers import FishSerializer, InsectSerializer, FossilSerializer, Ani
 # from accounts.models import User
 from rest_framework.permissions import AllowAny 
 from rest_framework import serializers
-import openpyxl
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
