@@ -97,7 +97,16 @@ CORS_ORIGIN_WHITELIST = [
 ]
 WSGI_APPLICATION = 'animal.wsgi.application'
 
-
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        "api_key": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        },
+    },
+    "SHOW_URL":"/shows/write/"
+}
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 

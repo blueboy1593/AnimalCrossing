@@ -1,16 +1,21 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Article, Comment
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
-from rest_framework import serializers
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework import serializers, permissions
 from rest_framework.response import Response
 from .serializers import UserDetailSerializer, ArticleSerializer, CommentSerializer, ArticleUpdateSerializer, CommentUpdateSerializer
 from accounts.models import User 
 from rest_framework.authtoken.models import Token
 
+# class IsOwnerOrReadOnly(permissions.BasePermission):
+#   def has_object_permission(self, request, view, obj):
+#     if request.method in permission.SAFE_METHODS:
+#       return True
+#     return obj.username == 
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def write(request): # 거래소에 글 하나 올리기
   # fields = ['id', 'title', 'content', 'image', 'category', 'name', 'sort', 'price', 'created_at', 'updated_at', 'user']
   title = request.data.get('title')
@@ -72,18 +77,20 @@ def detail(request, article_pk):
     serializer = ArticleSerializer(article)
     return Response(serializer.data)
   elif request.method == "PUT":
+    permission_classes = [IsAuthenticated]
     serializer = ArticleUpdateSerializer(data = request.data, instance=article)
     if serializer.is_valid(raise_exception=True):
       serializer.save()
       return Response(serializer.data)
     else: Response({'message': 'put error'})
   else:
+    permission_classes = [IsAuthenticated]
     article.delete()
     return Response({'message': 'trade article is successfully deleted'})
     
 # 댓글
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def comment(request, article_pk):
   serializer = CommentSerializer(data = request.data)
   user_id = request.data.get('user_id')
@@ -92,7 +99,7 @@ def comment(request, article_pk):
   return Response(serializer.data)
 
 @api_view(['PUT', 'DELETE'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def comment_ud(request, comment_pk):
   comment = get_object_or_404(Comment, pk=comment_pk)
   if request.method == 'PUT':
