@@ -36,7 +36,7 @@
       {{ infoCard.price }}
     </div>
 
-    <v-dialog id="paintingfDialog" v-model="paintingDialog">
+    <v-dialog v-model="paintingDialog">
       <PaintingDialog
         v-on:close="paintingDialog = false"
         :infoCard="infoCard"
@@ -96,6 +96,17 @@ export default {
   transform: scale(1.02);
   opacity: 0.9;
   border: 3px solid #276dd68e;
+}
+
+/* 모달 사이즈 조정 직접 접근해야함 */
+.v-dialog {
+  height: 80% !important;
+  width: 70% !important;
+  box-shadow: none;
+  /* 나중에 박스 쉐도우 제거 */
+}
+.v-dialog:not(.v-dialog--fullscreen) {
+  max-height: 70%;
 }
 
 .photo {

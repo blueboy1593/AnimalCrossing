@@ -1,31 +1,31 @@
 <template>
-  <div id="black">
-    <div class="paintingDetailCon">
-      <div class="paintingDetail">
-        <div class="painting">
-          <div class="detailPhoto">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <img
-              id="detailImg"
-              :src="getPatingImagPath(infoCard.engname)"
-              alt=""
-            />
-          </div>
+  <!-- <div id="black"> -->
+  <div class="paintingDetailCon">
+    <div class="paintingDetail">
+      <div class="painting">
+        <div class="detailPhoto">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <img
+            id="detailImg"
+            :src="getPatingImagPath(infoCard.engname)"
+            alt=""
+          />
         </div>
-
-        <div class="detailName">
-          <div class="textBox">
-            {{ infoCard.name }}
-          </div>
-        </div>
-        <div class="detailReal">진품: {{ infoCard.real }}</div>
-        <div class="detailMemo">가품: {{ infoCard.memo }}</div>
       </div>
+
+      <div class="detailName">
+        <div class="textBox">
+          {{ infoCard.name }}
+        </div>
+      </div>
+      <div class="detailReal">진품: {{ infoCard.real }}</div>
+      <div class="detailMemo">가품: {{ infoCard.memo }}</div>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -45,12 +45,15 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 #black {
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("../../assets/images/marble.png");
+    url("../../assets/images/marble.png"); */
+  background: transparent;
   background-size: cover;
+
+  width: 100%;
 }
 
 .paintingDetailCon {
@@ -70,7 +73,7 @@ export default {
     ". photo photo photo real real"
     ". photo photo photo memo memo"
     ". . . . . .";
-  height: 100vh;
+  height: 70vh;
   border-radius: 15px;
   /* background-color: #2f3652ec; */
   background-image: url("../../assets/images/light.png");
@@ -100,9 +103,6 @@ export default {
   font-size: 2.2rem;
 }
 
-.textBox {
-}
-
 .detailReal {
   display: grid;
   grid-area: real;
@@ -125,7 +125,7 @@ export default {
 }
 
 #detailImg {
-  height: 60vh;
+  height: 40vh;
 }
 
 .detailPhoto:hover {
@@ -265,7 +265,7 @@ export default {
       ". name name name name ."
       ". real real real real ."
       ". memo memo memo memo .";
-    height: 100vh;
+    height: 70vh;
     border-radius: 15px;
   }
 
