@@ -10,6 +10,7 @@ import MooCalculated from "../views/MooCalculated.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import infoDetail from "../components/info/infoDetail.vue";
+import trade from "../views/trade.vue";
 
 Vue.use(VueRouter);
 
@@ -98,6 +99,11 @@ const routes = [
         path: "/signup",
         name: "Signup",
         component: Signup
+      },
+      {
+        path: "/test2",
+        name: "trade",
+        component: trade
       }
     ]
   },
