@@ -1,11 +1,17 @@
 <template>
   <div class="community">
-    <h1>동물의숲 커뮤니티 페이지</h1>
+    <h3 style="font-family:Gamja Flower">자랑해요, 동물의 숲</h3>
+    <CommunityPost />
   </div>
 </template>
 
 <script>
-export default {};
+import CommunityPost from "../components/community/CommunityPost.vue";
+export default {
+  components: {
+    CommunityPost
+  }
+};
 </script>
 
 <style></style>

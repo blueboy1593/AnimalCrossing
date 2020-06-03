@@ -11,8 +11,13 @@ import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import infoDetail from "../components/info/infoDetail.vue";
 import trade from "../views/trade.vue";
+import Detail from "../views/Detail.vue";
 
 Vue.use(VueRouter);
+// const detail = () =>
+//   import(
+//     /* webpackChunkName: "c_detail" */ "../components/community/CommunityDetail.vue"
+//   );
 
 const routes = [
   {
@@ -30,6 +35,11 @@ const routes = [
     name: "Board",
     component: Board,
     children: [
+      {
+        path: "/detail",
+        name: "detail",
+        component: Detail
+      },
       {
         path: "/info",
         name: "Info",
@@ -67,12 +77,13 @@ const routes = [
         component: Community,
         children: [
           {
-            path: "trade",
-            component: () => import("../components/community/Trade.vue")
+            path: "communitypost",
+            component: () => import("../components/community/CommunityPost.vue")
           },
           {
-            path: "show",
-            component: () => import("../components/community/Show.vue")
+            path: "cdetail",
+            component: () =>
+              import("../components/community/CommunityDetail.vue")
           },
           {
             path: "friend",
