@@ -5,7 +5,7 @@
   </div>-->
   <!-- <audio src="../../src/assets/audios/navi.mp3" class="audioCon" loop autoplay></audio> -->
   <audio controls autoplay class="player">
-    <source src="../../src/assets/audios/navi.mp3" type="audio/mpeg" />
+    <!-- <source src="../../src/assets/audios/navi.mp3" type="audio/mpeg" /> -->
   </audio>
   <!-- </div> -->
 </template>
