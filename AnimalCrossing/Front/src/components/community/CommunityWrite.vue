@@ -99,6 +99,7 @@
     }
 
     .imgCon {
+        margin-top: -1rem;
         max-width: 10rem;
         display: grid;
         grid-area: imgCon;
@@ -110,6 +111,7 @@
         margin: 0 auto;
         margin-left: -2.5rem;
         max-width: 15rem;
+        padding-top: -10rem;
     }
 
     #textUpload {
