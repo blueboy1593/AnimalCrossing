@@ -100,9 +100,6 @@ export default {
   font-size: 2.2rem;
 }
 
-.textBox {
-}
-
 .detailReal {
   display: grid;
   grid-area: real;
