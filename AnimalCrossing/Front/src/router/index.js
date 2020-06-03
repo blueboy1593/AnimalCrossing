@@ -77,6 +77,10 @@ const routes = [
           {
             path: "friend",
             component: () => import("../components/community/Friend.vue")
+          },
+          {
+            path: "write",
+            component: () => import("../components/community/CommunityWrite.vue")
           }
         ]
       },
@@ -107,7 +111,7 @@ const routes = [
         path: "/test2",
         name: "trade",
         component: trade
-      }
+      },
     ]
   },
 
