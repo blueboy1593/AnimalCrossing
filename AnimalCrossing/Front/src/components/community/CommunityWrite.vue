@@ -108,6 +108,7 @@
 
     #imgPreview {
         margin: 0 auto;
+        margin-left: -2.5rem;
         max-width: 15rem;
     }
 
