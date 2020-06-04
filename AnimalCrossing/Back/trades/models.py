@@ -8,7 +8,7 @@ class Article(models.Model):
     username = models.CharField(max_length=50) # 아이디 paik11012
     title = models.CharField(max_length=20)
     content = models.TextField(max_length=800)
-    image = models.ImageField(blank=True) # 선택 가능s
+    image = models.CharField(max_length=800, blank=True) # 선택 가능s
     category = models.CharField(max_length=20)  # animal, fossil, painting, etc 중 하나
     name = models.CharField(max_length=30, blank=True)  # 각 카테고리의 디테일 이름 선택적
     sort = models.CharField(max_length=20)  # buy sell 표시용
