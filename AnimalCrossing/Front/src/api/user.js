@@ -24,7 +24,7 @@ function login(email, password, success, fail) {
   };
 
   instance
-    .post("/accounts/login/", JSON.stringify(body))
+    .post("/api-token-auth/", JSON.stringify(body))
     .then(success)
     .catch(fail);
 }

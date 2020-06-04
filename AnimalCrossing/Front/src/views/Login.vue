@@ -52,11 +52,13 @@ export default {
         this.user.email,
         this.user.password,
         function(response) {
-          console.log(response);
+          console.log(response.data);
+          scope.$store.commit("saveToken", response.data.token);
           scope.$store.commit("setIsSigned", true);
           scope.$store.commit("setUserId", response.data.id);
           localStorage.setItem("user", scope.user.email);
           localStorage.setItem("password", scope.user.password);
+          localStorage.setItem("token", response.data.token);
           scope.$router.go(-1);
         },
         function(error) {
