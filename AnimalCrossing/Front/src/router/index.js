@@ -130,7 +130,14 @@ const routes = [
       {
         path: "/test2",
         name: "trade",
-        component: trade
+        component: trade,
+        children: [
+          {
+            path: "write",
+            component: () =>
+              import("../components/trade/tradeWrite.vue")
+          }
+        ]
       }
     ]
   },
