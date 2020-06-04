@@ -13,11 +13,17 @@
       </v-radio-group>
 
       <!-- 거래할 아이템 종류 -->
-      <v-col id="tradeItem" class="d-flex" cols="12" sm="6">
+      <!-- <v-col id="tradeItem" class="d-flex" cols="12" sm="6">
         <v-select :items="items" label="Solo field" dense solo></v-select>
-      </v-col>
+      </v-col> -->
 
       <!-- 거래할 아이템(+이미지 미리보기) -->
+      <!-- 거래할 아이템 종류로 바꿈 -->
+      <v-col id="tradeItem" class="d-flex" cols="12" sm="6">
+        <v-select :items="items" label="아이템" dense></v-select>
+      </v-col>
+
+      <!-- 아이템 검색으로 바꿔야할 부분 -->
       <v-col id="tradeItemDetail" class="d-flex" cols="12" sm="6">
         <v-select :items="items" label="아이템" dense></v-select>
       </v-col>

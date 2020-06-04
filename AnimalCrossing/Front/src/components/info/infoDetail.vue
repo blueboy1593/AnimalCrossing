@@ -6,7 +6,11 @@
         <v-icon large dark @click="close()">mdi-close-circle-outline</v-icon>
       </span>
     </div>
-    <div>
+    <div class="detailPhoto">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
       <img
         :src="getPatingImagPath(infoCard.engname)"
         alt=""
@@ -39,20 +43,10 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
-<<<<<<< HEAD
-/* #black {
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("../../assets/images/marble.png");
-  background-size: cover;
-} */
-=======
 .infoDetail {
   background-image: url("../../assets/images/light.png");
+  color: white;
 }
->>>>>>> frontDetail
 
 .paintingDetailCon {
   transform: scale(0.8);
@@ -124,8 +118,9 @@ export default {
 }
 
 .detailPhoto:hover {
-  transform: scale(1.2);
-  animation: photo 1s forwards;
+  /* transform: scale(1.2); */
+  /* animation: photo 1s forwards; */
+  opacity: 0.95;
 }
 
 @keyframes photo {
@@ -143,8 +138,9 @@ export default {
 }
 
 .detailPhoto {
-  margin-top: 1rem;
-  position: absolute;
+  /* margin-top: 1rem; */
+  /* position: absolute; */
+  position: relative;
   box-shadow: 0 10px 20px rgba(146, 193, 219, 0.5);
   overflow: hidden;
   line-height: 0;
