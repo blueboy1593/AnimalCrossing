@@ -47,7 +47,10 @@
     <form id="wantTrade" action="" method="">
       <div id="imgPreview">이미지 미리보기</div>
 
-      <input id="bell" type="text" placeholder="가격 제시" />
+      <div class="bell">
+        <input id="bellInput" type="text" placeholder="가격 제시" />
+        <img id="bellImg" src="../../assets/images/bell.png" alt="" />
+      </div>
       <!-- <label for="bell">벨</label> -->
 
       <form id="write" action="">
@@ -178,20 +181,29 @@ textarea:focus {
   grid-area: imgPreview;
 }
 
-#bell {
+.bell {
   display: grid;
   grid-area: bell;
-  background-color: rgba(210, 241, 31, 0.37);
-  border-radius: 13px;
-  font-family: "Jua", sans-serif;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: "bellInput bellInput bellInput bellImg";
 }
 
-#bell {
+#bellInput {
+  display: grid;
+  grid-area: bellInput;
   background-color: rgba(210, 241, 31, 0.37);
   border-radius: 13px;
-  margin-right: 10%;
-  margin-top: 10px;
   font-family: "Jua", sans-serif;
+  margin-top: 4%;
+  margin-right: 5%;
+  margin-left: 5%;
+  height: 40px;
+}
+
+#bellImg {
+  display: grid;
+  grid-area: bellImg;
+  width: 50%;
 }
 
 #write {
@@ -229,9 +241,6 @@ button {
     opacity: 1;
     transform: scale(1.1);
   }
-}
-
-@media screen and (max-width: 375px) {
 }
 
 @media screen and (max-width: 850px) {
