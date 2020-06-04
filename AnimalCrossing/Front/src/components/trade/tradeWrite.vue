@@ -27,7 +27,38 @@
       <!-- <v-col id="tradeSearch" class="d-flex" cols="12" sm="6">
         <v-select :items="items" label="아이템" dense></v-select>
       </v-col> -->
-      <v-text-field id="tradeSearch" hide-details single-line placeholder="거래할 아이템 검색" color="green" required></v-text-field>
+      
+      
+
+        <v-autocomplete
+        v-model="model"
+        :items="items"
+        :loading="isLoading"
+        :search-input.sync="search"
+        color="white"
+        hide-no-data
+        hide-selected
+        item-text="Description"
+        item-value="API"
+        label="거래할 아이템 검색"
+        placeholder="Start typing to Search"
+        prepend-icon="mdi-database-search"
+        return-object
+      ></v-autocomplete>
+    <v-divider></v-divider>
+    <v-expand-transition>
+      <v-list v-if="model" class="red lighten-3">
+        <v-list-item
+          v-for="(field, i) in fields"
+          :key="i"
+        >
+          <v-list-item-content>
+            <v-list-item-title v-text="field.value"></v-list-item-title>
+            <v-list-item-subtitle v-text="field.key"></v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-expand-transition>
     </form>
 
     <!-- 제목과 내용 -->
