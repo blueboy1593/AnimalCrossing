@@ -1,9 +1,30 @@
 <template>
-  <div></div>
+  <div class="commentitem">
+    <p>{{ comment.content }}</p>
+  </div>
 </template>
 
 <script>
-export default {};
+import * as showService from "../../api/show.js";
+export default {
+  name: "commentListItem",
+  props: {
+    comment: {
+      type: Object,
+      required: false
+    }
+  },
+  data() {
+    return {
+      comments: []
+    };
+  },
+  mounted: async function() {
+    var showId = this.$route.params.id;
+    const data = await showService.getCommentById(showId);
+    console.log(data);
+  }
+};
 </script>
 
 <style></style>

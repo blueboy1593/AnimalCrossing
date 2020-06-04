@@ -28,3 +28,15 @@ export function getShowById(showId, data) {
       console.log(error);
     });
 }
+
+export function getCommentById(showId, data) {
+  return instance
+    .get(`/shows/comment/${showId}/`)
+    .then(response => {
+      data = response.data;
+      return data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
