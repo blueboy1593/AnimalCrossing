@@ -12,7 +12,7 @@
             무 계산기
           </li>
         </router-link>
-        <router-link to="/community">
+        <router-link to="/trade">
           <li id="exchange">
             거래소
           </li>
