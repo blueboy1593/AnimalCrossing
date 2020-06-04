@@ -1,5 +1,5 @@
 <template>
-  <div id="black" class="container">
+  <div class="container infoDetail">
     <div class="">
       <span>{{ infoCard.name }}</span>
       <span>
@@ -39,7 +39,7 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
-#black {
+.infoDetail {
   background-image: url("../../assets/images/light.png");
 }
 
