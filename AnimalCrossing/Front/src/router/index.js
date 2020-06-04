@@ -77,11 +77,8 @@ const routes = [
         component: Community,
         children: [
           {
-            path: "communitypost",
-            component: () => import("../components/community/CommunityPost.vue")
-          },
-          {
-            path: "cdetail",
+            path: "cdetail/:id",
+            name: "cdetail",
             component: () =>
               import("../components/community/CommunityDetail.vue")
           },
