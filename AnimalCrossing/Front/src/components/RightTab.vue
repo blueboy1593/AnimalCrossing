@@ -17,7 +17,7 @@
             거래소
           </li>
         </router-link>
-        <router-link to="/community">
+        <router-link to="/community/list">
           <li id="board">
             게시판
           </li>
