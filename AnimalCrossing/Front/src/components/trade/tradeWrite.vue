@@ -20,45 +20,27 @@
       <!-- 거래할 아이템(+이미지 미리보기) -->
       <!-- 거래할 아이템 종류로 바꿈 -->
       <v-col id="tradeItem" class="d-flex" cols="12" sm="6">
-        <v-select :items="items" label="아이템" dense></v-select>
+        <v-select
+          v-model="selected"
+          :items="items"
+          label="종류"
+          dense
+        ></v-select>
       </v-col>
 
       <!-- 아이템 검색으로 바꿔야할 부분 -->
       <!-- <v-col id="tradeSearch" class="d-flex" cols="12" sm="6">
         <v-select :items="items" label="아이템" dense></v-select>
       </v-col> -->
-      
-      
 
-        <v-autocomplete
-        v-model="model"
-        :items="items"
-        :loading="isLoading"
-        :search-input.sync="search"
+      <v-autocomplete
+        :items="selectedLists"
+        :filter="customFilter"
         color="white"
-        hide-no-data
-        hide-selected
-        item-text="Description"
-        item-value="API"
-        label="거래할 아이템 검색"
-        placeholder="Start typing to Search"
-        prepend-icon="mdi-database-search"
-        return-object
+        item-text="name"
+        label="아이템 검색"
+        @click="update"
       ></v-autocomplete>
-    <v-divider></v-divider>
-    <v-expand-transition>
-      <v-list v-if="model" class="red lighten-3">
-        <v-list-item
-          v-for="(field, i) in fields"
-          :key="i"
-        >
-          <v-list-item-content>
-            <v-list-item-title v-text="field.value"></v-list-item-title>
-            <v-list-item-subtitle v-text="field.key"></v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-expand-transition>
     </form>
 
     <!-- 제목과 내용 -->
@@ -78,10 +60,18 @@
 </template>
 
 <script>
+import * as infoService from "@/api/info.js";
 export default {
   name: "write",
   data: () => ({
-    items: ["이웃", "미술품", "화석", "기타"]
+    items: ["이웃", "미술품", "화석", "기타"],
+    fossils: [],
+    neighbors: [],
+    paintings: [],
+    row: "",
+    model: "",
+    selected: "",
+    selectedLists: []
   }),
   methods: {
     onClickImageUpload() {
@@ -91,7 +81,25 @@ export default {
       console.log(e.target.files);
       const file = e.target.files[0];
       this.imageUrl = URL.createObjectURL(file);
+    },
+    update() {
+      console.log(this.selected);
+      if (this.selected === "이웃") {
+        this.selectedLists = this.neighbors;
+      } else if (this.selected === "미술품") {
+        this.selectedLists = this.paintings;
+      } else if (this.selected === "화석") {
+        this.selectedLists = this.fossils;
+      } else {
+        this.selectedLists = "";
+      }
     }
+  },
+  async mounted() {
+    this.fossils = await infoService.getFossils(this.fossils);
+    this.neighbors = await infoService.getNeighbors(this.neighbors);
+    this.paintings = await infoService.getPaintings(this.paintings);
+    // console.log(this.fossils, this.neighbors, this.paintings);
   }
 };
 </script>
