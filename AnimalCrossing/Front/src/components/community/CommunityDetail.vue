@@ -53,7 +53,16 @@ export default {
   align-items: center;
   display: block;
   margin: 0px auto;
+  border-radius: 10px;
+  box-shadow: 4px 4px 3px 0px rgba(4, 37, 56, 0.75);
+;
 }
+
+.detailimage:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
 .ttext {
   text-align: center;
 }
