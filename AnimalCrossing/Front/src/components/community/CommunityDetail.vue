@@ -25,7 +25,7 @@
         <p>{{ article.content }}</p>
       </div>
       <v-btn>삭제하기</v-btn>
-      <h4>comment 넣을 곳</h4>
+      <h4 class="text">Comments</h4>
       <CommentList
         v-for="CommentList in CommentLists"
         :key="CommentList.id"

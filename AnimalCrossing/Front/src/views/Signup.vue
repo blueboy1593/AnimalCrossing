@@ -4,7 +4,7 @@
       <div id="register-form" class="col-md-6 mx-auto box2">
         <div class="mt-4 box2">
           <div class="form-group">
-            <label for="email">email</label>
+            <label for="email" style="font-family:Gamja Flower">이메일</label>
             <input
               type="text"
               class="form-control"
@@ -14,13 +14,13 @@
             />
           </div>
           <div class="form-group">
-            <label for="name">이름</label>
+            <label for="name" style="font-family:Gamja Flower">아이디</label>
             <input
               type="text"
               class="form-control"
               id="signup-name"
               v-model="user.name"
-              placeholder="이름"
+              placeholder="아이디"
             />
           </div>
         </div>
@@ -28,7 +28,9 @@
       <div id="register-form" class="col-md-6 mx-auto box2">
         <div class="mt-4 box2">
           <div class="form-group">
-            <label for="password">비밀번호</label>
+            <label for="password" style="font-family:Gamja Flower"
+              >비밀번호</label
+            >
             <input
               type="password"
               class="form-control"
@@ -38,7 +40,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="password-confirm">비밀번호 확인</label>
+            <label for="password-confirm" style="font-family:Gamja Flower"
+              >비밀번호 확인</label
+            >
             <input
               type="password"
               class="form-control"
@@ -106,7 +110,7 @@ export default {
 
 .box2 {
   text-align: center;
-  color: white;
+  color: black;
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -124,9 +128,11 @@ export default {
   padding: 14px 10px;
   width: 200px;
   outline: none;
-  color: white;
+  color: black;
   border-radius: 24px;
   transition: 0.25s;
+  font-family: "Gamja Flower";
+  font-size: 1rem;
 }
 
 #signup-email:focus,
@@ -147,10 +153,11 @@ export default {
   padding: 0px 40px;
   height: 40px;
   outline: none;
-  color: white;
+  color: black;
   border-radius: 24px;
   transition: 0.25s;
   cursor: pointer;
+  font-family: "Gamja Flower";
 }
 
 .signup_btn:hover {
