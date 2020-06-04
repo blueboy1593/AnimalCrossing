@@ -128,14 +128,13 @@ const routes = [
         component: Signup
       },
       {
-        path: "/test2",
+        path: "/trade",
         name: "trade",
         component: trade,
         children: [
           {
             path: "write",
-            component: () =>
-              import("../components/trade/tradeWrite.vue")
+            component: () => import("../components/trade/tradeWrite.vue")
           }
         ]
       }
