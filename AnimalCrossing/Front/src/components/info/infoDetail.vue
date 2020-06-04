@@ -1,29 +1,25 @@
 <template>
-  <div id="black">
-    <div class="paintingDetailCon">
-      <div class="paintingDetail">
-        <div class="painting">
-          <div class="detailPhoto">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <img
-              id="detailImg"
-              :src="getPatingImagPath(infoCard.engname)"
-              alt=""
-            />
-          </div>
-        </div>
-
-        <div class="detailName">
-          <div class="textBox">
-            {{ infoCard.name }}
-          </div>
-        </div>
-        <div class="detailReal">진품: {{ infoCard.real }}</div>
-        <div class="detailMemo">가품: {{ infoCard.memo }}</div>
-      </div>
+  <div class="container infoDetail">
+    <div class="">
+      <span>{{ infoCard.name }}</span>
+      <span>
+        <v-icon large dark @click="close()">mdi-close-circle-outline</v-icon>
+      </span>
+    </div>
+    <div class="detailPhoto">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <img
+        :src="getPatingImagPath(infoCard.engname)"
+        alt=""
+        style="width:100%; height:70%"
+      />
+    </div>
+    <div>
+      <span class="detailReal">진품: {{ infoCard.real }}</span> <br />
+      <span class="detailMemo">가품: {{ infoCard.memo }}</span>
     </div>
   </div>
 </template>
@@ -33,6 +29,9 @@ export default {
   name: "paintingDetail",
   props: ["infoCard", "routePath"],
   methods: {
+    close() {
+      this.$emit("close");
+    },
     getPatingImagPath(engname) {
       let images = require(`@/assets/images/image_painting/${engname}.jpg`);
       return images;
@@ -44,14 +43,10 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
-/* #black {
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("../../assets/images/marble.png");
-  background-size: cover;
-} */
+.infoDetail {
+  background-image: url("../../assets/images/light.png");
+  color: white;
+}
 
 .paintingDetailCon {
   transform: scale(0.8);
@@ -72,14 +67,11 @@ export default {
     ". . . . . .";
   height: 100vh;
   border-radius: 15px;
-  /* background-color: #2f3652ec; */
-  background-image: url("../../assets/images/light.png");
+
   background-size: cover;
 
   overflow: hidden;
-  /* font-family: "Jua", sans-serif; */
   font-family: 고딕;
-  /* text-align: left; */
   color: white;
 }
 
@@ -126,8 +118,9 @@ export default {
 }
 
 .detailPhoto:hover {
-  transform: scale(1.2);
-  animation: photo 1s forwards;
+  /* transform: scale(1.2); */
+  /* animation: photo 1s forwards; */
+  opacity: 0.95;
 }
 
 @keyframes photo {
@@ -145,8 +138,9 @@ export default {
 }
 
 .detailPhoto {
-  margin-top: 1rem;
-  position: absolute;
+  /* margin-top: 1rem; */
+  /* position: absolute; */
+  position: relative;
   box-shadow: 0 10px 20px rgba(146, 193, 219, 0.5);
   overflow: hidden;
   line-height: 0;
@@ -249,7 +243,7 @@ export default {
 }
 
 @media (max-width: 1400px) {
-  .paintingDetail {
+  /* .paintingDetail {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(8, 1fr);
@@ -264,18 +258,15 @@ export default {
       ". memo memo memo memo .";
     height: 100vh;
     border-radius: 15px;
-  }
+  } */
 
   #detailImg {
     height: 40vh;
   }
 }
 
-@media (max-width: 1100px) {
-}
-
 @media (max-width: 700px) {
-  .paintingDetail {
+  /* .paintingDetail {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(9, 1fr);
@@ -289,7 +280,7 @@ export default {
       ". real real real real real"
       ". memo memo memo memo memo"
       ". . . . . .";
-  }
+  } */
 
   #detailImg {
     height: 35vh;
@@ -309,7 +300,7 @@ export default {
 }
 
 @media (max-width: 560px) {
-  .paintingDetail {
+  /* .paintingDetail {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(8, 1fr);
@@ -322,7 +313,7 @@ export default {
       ". real real real real real"
       ". memo memo memo memo memo"
       ". . . . . .";
-  }
+  } */
 
   #detailImg {
     height: 30vh;
@@ -342,7 +333,7 @@ export default {
 }
 
 @media (max-width: 460px) {
-  .paintingDetail {
+  /* .paintingDetail {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(8, 1fr);
@@ -355,7 +346,7 @@ export default {
       ". real real real real real"
       ". memo memo memo memo memo"
       ". . . . . .";
-  }
+  } */
 
   #detailImg {
     height: 25vh;
@@ -375,7 +366,7 @@ export default {
 }
 
 @media (max-width: 375px) {
-  .paintingDetail {
+  /* .paintingDetail {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(8, 1fr);
@@ -388,7 +379,7 @@ export default {
       ". real real real real real"
       ". memo memo memo memo memo"
       ". . . . . .";
-  }
+  } */
 
   #detailImg {
     height: 20vh;

@@ -13,14 +13,21 @@
       </v-radio-group>
 
       <!-- 거래할 아이템 종류 -->
-      <v-col id="tradeItem" class="d-flex" cols="12" sm="6">
+      <!-- <v-col id="tradeItem" class="d-flex" cols="12" sm="6">
         <v-select :items="items" label="Solo field" dense solo></v-select>
-      </v-col>
+      </v-col> -->
 
       <!-- 거래할 아이템(+이미지 미리보기) -->
-      <v-col id="tradeItemDetail" class="d-flex" cols="12" sm="6">
+      <!-- 거래할 아이템 종류로 바꿈 -->
+      <v-col id="tradeItem" class="d-flex" cols="12" sm="6">
         <v-select :items="items" label="아이템" dense></v-select>
       </v-col>
+
+      <!-- 아이템 검색으로 바꿔야할 부분 -->
+      <!-- <v-col id="tradeSearch" class="d-flex" cols="12" sm="6">
+        <v-select :items="items" label="아이템" dense></v-select>
+      </v-col> -->
+      <v-text-field id="tradeSearch" hide-details single-line placeholder="거래할 아이템 검색" color="green" required></v-text-field>
     </form>
 
     <!-- 제목과 내용 -->
@@ -92,7 +99,7 @@ textarea:focus {
   display: grid;
   grid-area: tradeUpload;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: "buySell tradeItem tradeItemDetail";
+  grid-template-areas: "buySell tradeItem tradeSearch";
 }
 
 #buySell {
@@ -108,10 +115,11 @@ textarea:focus {
   grid-area: tradeItem;
 }
 
-#tradeItemDetail {
+#tradeSearch {
   margin: 0 auto;
   display: grid;
-  grid-area: tradeItemDetail;
+  grid-area: tradeSearch;
+  margin-top: -0.3rem;
 }
 
 #wantTrade {
@@ -205,7 +213,7 @@ button {
     grid-template-areas:
       "buySell"
       "tradeItem"
-      "tradeItemDetail";
+      "tradeSearch";
   }
 
   #wantTrade {

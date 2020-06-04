@@ -22,7 +22,7 @@
   /* border-radius: 10px; */
   position: fixed;
   right: 16%;
-  z-index: 999;
+  z-index: 3;
   top: 4%;
   opacity: 0.5;
   /* background-color: rgba(36, 116, 136, 0.356); */
