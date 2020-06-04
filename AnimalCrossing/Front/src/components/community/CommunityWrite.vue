@@ -17,24 +17,25 @@
     </form>
 
     <!-- 제목과 내용 -->
-    <!-- <form id="textUpload" action="" method=""> -->
-    <input
-      id="title"
-      type="text"
-      v-model="article.title"
-      placeholder="제목을 입력해주세요"
-    />
-    <textarea
-      id="field"
-      placeholder="내용을 입력해주세요"
-      v-model="article.content"
-    ></textarea>
-    <!-- <form id="write" action=""> -->
-    <button type="submit" v-on:click="write">
-      <img class="writeButton" src="../../assets/images/write.png" alt="" />
-    </button>
-    <!-- </form> -->
-    <!-- </form> -->
+    <div id="textUpload" action="" method="">
+      <input
+        id="title"
+        type="text"
+        v-model="article.title"
+        placeholder="제목을 입력해주세요"
+      />
+      <textarea
+        id="field"
+        placeholder="내용을 입력해주세요"
+        v-model="article.content"
+      ></textarea>
+    </div>
+    <div></div>
+    <div id="write" action="">
+      <button type="submit" v-on:click="write">
+        <img class="writeButton" src="../../assets/images/write.png" alt="" />
+      </button>
+    </div>
   </div>
 </template>
 
