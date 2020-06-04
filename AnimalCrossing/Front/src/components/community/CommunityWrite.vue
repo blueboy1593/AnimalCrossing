@@ -19,7 +19,7 @@
       <textarea id="field" placeholder="내용을 입력해주세요"> </textarea>
 
       <form id="write" action="">
-        <button type="submit">
+        <button type="submit" v-on:click="write">
           <img class="writeButton" src="../../assets/images/write.png" alt="" />
         </button>
       </form>
@@ -43,6 +43,9 @@ export default {
       console.log(e.target.files);
       const file = e.target.files[0];
       this.imageUrl = URL.createObjectURL(file);
+    },
+    write() {
+      this.$router.push("/community/list");
     }
   }
 };

@@ -42,7 +42,7 @@ export default {
   methods: {
     toDetail: function() {
       console.log(this.id);
-      // this.$router.push({ path: `/community/cdetail/${this.id}` });
+      this.$router.push({ path: `/community/cdetail/${this.id}` });
     }
   }
 };
@@ -51,7 +51,7 @@ export default {
 <style>
 .cCard {
   margin-top: 0.3rem;
-  width: 28%;
+  width: 100%;
   height: 20%;
   border-radius: 15px;
   border-style: dotted;
