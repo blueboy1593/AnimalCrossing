@@ -14,6 +14,7 @@ import Signup from "../views/Signup.vue";
 import infoDetail from "../components/info/infoDetail.vue";
 import trade from "../views/trade.vue";
 import Detail from "../views/Detail.vue";
+import Mypage from "../views/Mypage.vue";
 
 Vue.use(VueRouter);
 // const detail = () =>
@@ -108,6 +109,11 @@ const routes = [
         path: "/login",
         name: "Login",
         component: Login
+      },
+      {
+        path: "/mypage",
+        name: "Mypage",
+        component: Mypage
       },
       {
         path: "/logout",
