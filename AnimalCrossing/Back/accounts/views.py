@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from .models import User
-from .serializers import UserSerializer, UserCreateSerializer, UserLoginSerializer
+from .serializers import UserSerializer, UserCreateSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly 
 from rest_framework import serializers
 from rest_framework.views import APIView
@@ -19,6 +19,7 @@ def signup(request):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def userprofile(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     serializer = UserSerializer(instance=user)
@@ -50,20 +51,4 @@ def change(request, user_id):
     return Response(True)
 
 
-
-class UserLoginAPIView(APIView):
-
-    # post를 하기 때문에 localhost:8000/api/test/login 으로 데이터를 확인할 수 없음
-    # localhost:8000/api/test/login으로 확인하기 위해서는!
-    serializer_class = UserLoginSerializer
-    permission_classes = [AllowAny]
-
-    def post(self, request, *args, **kwargs):
-        data = request.data
-        serializer = UserLoginSerializer(data=data)
-
-        if serializer.is_valid(raise_exception=True):
-            new_data = serializer.data
-            return Response(new_data, status=HTTP_200_OK)
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 

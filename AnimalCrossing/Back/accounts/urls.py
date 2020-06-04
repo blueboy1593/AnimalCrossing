@@ -7,7 +7,5 @@ urlpatterns = [
     path('withdraw/<int:user_id>/', views.withdraw),
     path('userprofile/<int:user_id>/', views.userprofile),
     path('change/<int:user_id>/', views.change),
-    path('login/', views.UserLoginAPIView.as_view(),name='login')
-
 ]
 
