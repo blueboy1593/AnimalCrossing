@@ -130,7 +130,28 @@ const routes = [
         children: [
           {
             path: "write",
+            name: "trade_write",
             component: () => import("../components/trade/tradeWrite.vue")
+          },
+          {
+            path: "neighbor",
+            name: "trade_neighbor",
+            component: () => import("../components/trade/neighbor.vue")
+          },
+          {
+            path: "painting",
+            name: "trade_painting",
+            component: () => import("../components/trade/painting.vue")
+          },
+          {
+            path: "fossil",
+            name: "trade_fossil",
+            component: () => import("../components/trade/fossil.vue")
+          },
+          {
+            path: "etc",
+            name: "trade_etc",
+            component: () => import("../components/trade/etc.vue")
           }
         ]
       }

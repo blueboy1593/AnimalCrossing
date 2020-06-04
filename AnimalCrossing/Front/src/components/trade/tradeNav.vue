@@ -1,23 +1,23 @@
 <template>
   <nav class="board__nav">
-    <router-link to="/trade">
+    <router-link to="/trade/neighbor">
       <img
         src="../../assets/images/nav_neighbor.png"
         alt="neighbor"
         class="nav-img"
       />
     </router-link>
-    <router-link to="/trade">
+    <router-link to="/trade/painting">
       <img
         src="../../assets/images/nav_painting.png"
         alt="painting"
         class="nav-img"
       />
     </router-link>
-    <router-link to="/trade">
+    <router-link to="/trade/fossil">
       <img src="../../assets/images/fossil.png" alt="fossil" class="nav-img" />
     </router-link>
-    <router-link to="/trade">
+    <router-link to="/trade/etc">
       <img src="../../assets/images/nav_etc.png" alt="기타" class="nav-img" />
     </router-link>
     <router-link to="/trade/write">
