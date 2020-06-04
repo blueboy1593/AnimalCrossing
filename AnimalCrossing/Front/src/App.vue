@@ -18,9 +18,9 @@ export default {
           (scope.$store.state.user.password = localStorage.getItem("password")),
           function(response) {
             scope.$store.commit("setIsSigned", true);
-            scope.$store.commit("setUserId", response.data.id);
+            // scope.$store.commit("setUserId", response.data.id);
             scope.$store.commit("saveToken", response.data.token);
-            scope.$router.push("/");
+            // scope.$router.push("/");
           },
           function(error) {
             alert("유저 이메일 혹은 비밀번호가 일치하지 않습니다.");

@@ -52,13 +52,15 @@ export default {
         this.user.email,
         this.user.password,
         function(response) {
-          console.log(response.data);
+          const user_info = response.data;
+          scope.$store.state.user.email = user_info.email;
+          scope.$store.state.user.username = user_info.username;
           scope.$store.commit("saveToken", response.data.token);
           scope.$store.commit("setIsSigned", true);
-          scope.$store.commit("setUserId", response.data.id);
+          // scope.$store.commit("setUserId", response.data.id);
+          localStorage.setItem("token", response.data.token);
           localStorage.setItem("user", scope.user.email);
           localStorage.setItem("password", scope.user.password);
-          localStorage.setItem("token", response.data.token);
           scope.$router.go(-1);
         },
         function(error) {
