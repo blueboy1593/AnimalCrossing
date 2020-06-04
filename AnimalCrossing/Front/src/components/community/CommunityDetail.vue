@@ -1,13 +1,13 @@
 <template>
   <div class="community">
     <div class="container">
-      <h2 class="ttext" style="margin-bottom: 5px">{{ article.title }}</h2>
+      <h2 class="ttext" style="margin-bottom: 5px">{{ this.article.title }}</h2>
       <v-row no-gutters>
         <v-col>
-          <p>{{ article.username }}</p>
+          <p>{{ this.article.username }}</p>
         </v-col>
         <v-col>
-          <p style="text-align:right">{{ article.created_at }}</p>
+          <p style="text-align:right">{{ this.article.created_at }}</p>
         </v-col>
       </v-row>
       <img
@@ -26,7 +26,7 @@
 <script>
 import * as showService from "../../api/show.js";
 export default {
-  data() {
+  data: function() {
     return {
       article: {
         title: "",
@@ -36,18 +36,13 @@ export default {
       }
     };
   },
-  mounted: function() {
+  mounted: async function() {
     var showId = this.$route.params.id;
-    showService.getShowById(showId, function(response) {
-      console.log(response.data);
-      const data = response.data;
-      this.title = data.title;
-      this.content = data.content;
-      this.created_at = data.created_at;
-      this.username = data.username;
-    });
-
-    // show 디테일 조회
+    const data = await showService.getShowById(showId);
+    this.article.title = data.title;
+    this.article.content = data.content;
+    this.article.created_at = data.created_at;
+    this.article.username = data.username;
   }
 };
 </script>

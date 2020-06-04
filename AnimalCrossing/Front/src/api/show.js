@@ -16,9 +16,15 @@ export function getShows(shows) {
     });
 }
 
-export function getShowById(showId, success, fail) {
-  instance
-    .get(`/shows/detail/${showId}`)
-    .then(success)
-    .catch(fail);
+export function getShowById(showId, data) {
+  return instance
+    .get(`/shows/detail/${showId}/`)
+    .then(response => {
+      data = response.data;
+      console.log(data);
+      return data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
 }
