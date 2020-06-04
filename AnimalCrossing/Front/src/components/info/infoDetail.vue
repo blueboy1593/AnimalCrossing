@@ -44,14 +44,14 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
-#black {
+/* #black {
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
     url("../../assets/images/marble.png");
   background-size: cover;
-}
+} */
 
 .paintingDetailCon {
   transform: scale(0.8);
@@ -98,9 +98,6 @@ export default {
   font-family: 돋움;
   font-weight: bolder;
   font-size: 2.2rem;
-}
-
-.textBox {
 }
 
 .detailReal {

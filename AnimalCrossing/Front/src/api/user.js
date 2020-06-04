@@ -7,7 +7,7 @@ const instance = createInstance();
 function signup(email, nickname, password, success, fail) {
   const user = {
     email: email,
-    nickname: nickname,
+    username: nickname,
     password: password
   };
   console.log(user);

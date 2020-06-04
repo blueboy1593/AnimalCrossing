@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from "../store";
+
 import Home from "../views/Home.vue";
 import Info from "../views/Info.vue";
 import Community from "../views/Community.vue";
@@ -85,6 +87,11 @@ const routes = [
           {
             path: "friend",
             component: () => import("../components/community/Friend.vue")
+          },
+          {
+            path: "write",
+            component: () =>
+              import("../components/community/CommunityWrite.vue")
           }
         ]
       },
@@ -105,6 +112,15 @@ const routes = [
         path: "/login",
         name: "Login",
         component: Login
+      },
+      {
+        path: "/logout",
+        name: "logout",
+        beforeEnter(to, from, next) {
+          store.commit("logout");
+          alert("로그아웃 되었습니다.");
+          next("/info/fish");
+        }
       },
       {
         path: "/signup",
