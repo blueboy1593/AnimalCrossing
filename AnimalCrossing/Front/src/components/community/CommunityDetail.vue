@@ -75,7 +75,6 @@ export default {
   margin: 0px auto;
   border-radius: 10px;
   box-shadow: 4px 4px 3px 0px rgba(4, 37, 56, 0.75);
-;
 }
 
 .detailimage:hover {

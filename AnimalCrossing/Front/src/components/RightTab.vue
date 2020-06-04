@@ -43,14 +43,23 @@
           </router-link>
         </li>
 
-        <router-link to="/signup">
-          <li id="signup">
+        <li id="signup" v-if="!$store.state.isSigned">
+          <router-link to="/signup">
             <div class="signup">
               <img src="../assets/images/neogul.png" alt="" />
               회원가입
             </div>
-          </li>
-        </router-link>
+          </router-link>
+        </li>
+
+        <li id="signup" v-if="$store.state.isSigned">
+          <router-link to="/mypage">
+            <div class="signup">
+              <img src="../assets/images/neogul.png" alt="" />
+              마이페이지
+            </div>
+          </router-link>
+        </li>
       </ul>
     </v-row>
   </v-container>
@@ -195,6 +204,10 @@ li:hover > span {
   width: 145px;
   background: none;
   overflow: hidden;
+  color: white;
+}
+
+.signup {
   color: white;
 }
 
