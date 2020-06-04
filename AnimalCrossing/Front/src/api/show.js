@@ -21,7 +21,7 @@ export function getShowById(showId, data) {
     .get(`/shows/detail/${showId}/`)
     .then(response => {
       data = response.data;
-      // console.log(data);
+      console.log(data);
       return data;
     })
     .catch(error => {

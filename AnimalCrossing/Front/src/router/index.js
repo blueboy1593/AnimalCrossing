@@ -52,10 +52,6 @@ const routes = [
             component: () => import("../components/info/Fish.vue")
           },
           {
-            path: "flower",
-            component: () => import("../components/info/Flower.vue")
-          },
-          {
             path: "fossil",
             component: () => import("../components/info/Fossil.vue")
           },

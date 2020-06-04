@@ -26,7 +26,11 @@
       </div>
       <v-btn>삭제하기</v-btn>
       <h4>comment 넣을 곳</h4>
-      <CommentList />
+      <CommentList
+        v-for="CommentList in CommentLists"
+        :key="CommentList.id"
+        :CommentList="CommentList"
+      />
     </div>
   </div>
 </template>
@@ -44,13 +48,15 @@ export default {
         content: "",
         image: null,
         username: "",
-        created_at: ""
+        created_at: "",
+        comments: []
       }
     };
   },
   mounted: async function() {
     var showId = this.$route.params.id;
     const data = await showService.getShowById(showId);
+    this.article.comments = data.showcomments;
     this.article.title = data.title;
     this.article.image = data.image;
     this.article.content = data.content;

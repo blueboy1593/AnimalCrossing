@@ -3,7 +3,7 @@
     <ul>
       <div v-for="comment in comments" :key="comment.id">
         <li>
-          <CommentListItem :comment="comment" />
+          <p>{ comment.content }</p>
         </li>
       </div>
     </ul>
@@ -11,12 +11,8 @@
 </template>
 
 <script>
-import CommentListItem from "./CommunityComment.vue";
 export default {
   name: "commentList",
-  components: {
-    CommentListItem
-  },
   props: {
     comments: {
       type: Array,
