@@ -17,21 +17,32 @@
             거래소
           </li>
         </router-link>
-        <router-link to="/community">
+        <router-link to="/community/list">
           <li id="board">
             게시판
           </li>
         </router-link>
         <li class="blank"></li>
         <li class="blank"></li>
-        <router-link to="/login">
-          <li id="signin">
+
+        <li id="signin" v-if="!$store.state.isSigned">
+          <router-link to="/login">
             <div class="signin">
               <img src="../assets/images/dog.png" alt="" />
               로그인
             </div>
-          </li>
-        </router-link>
+          </router-link>
+        </li>
+
+        <li id="signin" v-if="$store.state.isSigned">
+          <router-link to="/logout">
+            <div class="signin">
+              <img src="../assets/images/dog.png" alt="" />
+              로그아웃
+            </div>
+          </router-link>
+        </li>
+
         <router-link to="/signup">
           <li id="signup">
             <div class="signup">
@@ -160,6 +171,10 @@ li:hover > span {
   /* background: #8a2e2e; */
   background: none;
   overflow: hidden;
+  color: white;
+}
+
+.signin {
   color: white;
 }
 

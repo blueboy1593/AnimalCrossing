@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from "../store";
+
 import Home from "../views/Home.vue";
 import Info from "../views/Info.vue";
 import Community from "../views/Community.vue";
@@ -11,8 +13,13 @@ import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import infoDetail from "../components/info/infoDetail.vue";
 import trade from "../views/trade.vue";
+import Detail from "../views/Detail.vue";
 
 Vue.use(VueRouter);
+// const detail = () =>
+//   import(
+//     /* webpackChunkName: "c_detail" */ "../components/community/CommunityDetail.vue"
+//   );
 
 const routes = [
   {
@@ -30,6 +37,11 @@ const routes = [
     name: "Board",
     component: Board,
     children: [
+      {
+        path: "/detail",
+        name: "detail",
+        component: Detail
+      },
       {
         path: "/info",
         name: "Info",
@@ -67,16 +79,19 @@ const routes = [
         component: Community,
         children: [
           {
-            path: "trade",
-            component: () => import("../components/community/Trade.vue")
+            path: "list",
+            component: () => import("../components/community/CommunityPost.vue")
           },
           {
-            path: "show",
-            component: () => import("../components/community/Show.vue")
+            path: "cdetail/:id",
+            name: "cdetail",
+            component: () =>
+              import("../components/community/CommunityDetail.vue")
           },
           {
-            path: "friend",
-            component: () => import("../components/community/Friend.vue")
+            path: "write",
+            component: () =>
+              import("../components/community/CommunityWrite.vue")
           }
         ]
       },
@@ -99,6 +114,15 @@ const routes = [
         component: Login
       },
       {
+        path: "/logout",
+        name: "logout",
+        beforeEnter(to, from, next) {
+          store.commit("logout");
+          alert("로그아웃 되었습니다.");
+          next("/info/fish");
+        }
+      },
+      {
         path: "/signup",
         name: "Signup",
         component: Signup
@@ -106,7 +130,14 @@ const routes = [
       {
         path: "/test2",
         name: "trade",
-        component: trade
+        component: trade,
+        children: [
+          {
+            path: "write",
+            component: () =>
+              import("../components/trade/tradeWrite.vue")
+          }
+        ]
       }
     ]
   },

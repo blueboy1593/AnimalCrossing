@@ -33,7 +33,7 @@
 </template>
 
 <script>
-// import { login } from "../api/user.js";
+import { login } from "../api/user.js";
 
 export default {
   data() {
@@ -43,6 +43,32 @@ export default {
         password: ""
       }
     };
+  },
+  methods: {
+    login: function() {
+      const scope = this;
+
+      login(
+        this.user.email,
+        this.user.password,
+        function(response) {
+          const user_info = response.data;
+          scope.$store.state.user.email = user_info.email;
+          scope.$store.state.user.username = user_info.username;
+          scope.$store.commit("saveToken", response.data.token);
+          scope.$store.commit("setIsSigned", true);
+          // scope.$store.commit("setUserId", response.data.id);
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("user", scope.user.email);
+          localStorage.setItem("password", scope.user.password);
+          scope.$router.go(-1);
+        },
+        function(error) {
+          alert("유저 이메일 혹은 비밀번호가 일치하지 않습니다.");
+          console.error(error);
+        }
+      );
+    }
   }
 };
 </script>

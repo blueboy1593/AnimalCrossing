@@ -4,7 +4,7 @@
         <img src="../../src/assets/images/navi.png" class="albumImg" alt="" />
   </div>-->
   <!-- <audio src="../../src/assets/audios/navi.mp3" class="audioCon" loop autoplay></audio> -->
-  <audio controls autoplay class="player">
+  <audio controls class="player">
     <source src="../../src/assets/audios/navi.mp3" type="audio/mpeg" />
   </audio>
   <!-- </div> -->
