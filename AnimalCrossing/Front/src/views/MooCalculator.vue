@@ -15,7 +15,7 @@
           <input
             type="text"
             class="buy_price_input"
-            placeholder="bell을 입력하세요"
+            placeholder="구입가"
             v-model="moo[0]"
           />벨
         </div>
@@ -210,7 +210,21 @@
 export default {
   data() {
     return {
-      moo: [100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      moo: [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
     };
   },
   methods: {
@@ -248,7 +262,21 @@ export default {
     },
     initialize: function() {
       localStorage.removeItem("moo_info");
-      this.moo = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      this.moo = [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ];
       alert("무 입력값이 초기화 되었습니다.");
     }
   },
@@ -365,7 +393,7 @@ h4 {
   padding: 0px 40px;
   height: 40px;
   outline: none;
-  color: white;
+  color: black;
   border-radius: 24px;
   transition: 0.25s;
   cursor: pointer;

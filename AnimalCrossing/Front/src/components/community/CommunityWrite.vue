@@ -121,7 +121,7 @@ textarea:focus {
 
 #imgUploadButton {
   background-color: rgba(210, 241, 31, 0.37);
-  height: 1.6rem;
+  height: 1.8rem;
   border-radius: 10px;
   font-family: "Jua", sans-serif;
   display: grid;
@@ -158,15 +158,17 @@ textarea:focus {
   height: 50px;
   border-radius: 13px;
   font-family: "Jua", sans-serif;
+  text-align: center;
 }
 
 #field {
   background-color: rgba(210, 241, 31, 0.37);
   width: 90%;
-  height: 170px;
+  height: 240px;
   border-radius: 13px;
-  margin-top: 10px;
+  margin-top: 15px;
   font-family: "Jua", sans-serif;
+  text-align: center;
 }
 
 #write {
