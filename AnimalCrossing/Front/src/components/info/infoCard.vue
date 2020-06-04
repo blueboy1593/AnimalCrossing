@@ -1,7 +1,6 @@
 <template>
   <div class="infoCard">
     <div class="photo">
-      <!-- <img src="../../assets/images/fish.png" height="100%" class="photoImg" alt=""> -->
       <img
         v-if="routePath === '/info/neighbor'"
         :src="getAnimalImgPath(infoCard.engname)"
@@ -36,8 +35,10 @@
       {{ infoCard.price }}
     </div>
 
-    <v-dialog id="paintingfDialog" v-model="paintingDialog">
+    <v-dialog id="paintingDialog" v-model="paintingDialog" width="600">
       <PaintingDialog
+        id="paintingDialog"
+        v-model="paintingDialog"
         v-on:close="paintingDialog = false"
         :infoCard="infoCard"
       />
