@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      <h2 style="font-family:Gamja Flower">자랑해요, 동물의 숲</h2>
       <communityCard
         v-for="communityCard in communityCards"
         :key="communityCard.id"
@@ -50,7 +51,7 @@ export default {
   padding: 0px 40px;
   height: 40px;
   outline: none;
-  color: white;
+  color: black;
   border-radius: 24px;
   transition: 0.25s;
   cursor: pointer;
