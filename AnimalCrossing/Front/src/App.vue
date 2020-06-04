@@ -19,6 +19,7 @@ export default {
           function(response) {
             scope.$store.commit("setIsSigned", true);
             scope.$store.commit("setUserId", response.data.id);
+            scope.$store.commit("saveToken", response.data.token);
             scope.$router.push("/");
           },
           function(error) {
