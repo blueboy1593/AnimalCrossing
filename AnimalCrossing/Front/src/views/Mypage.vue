@@ -2,11 +2,14 @@
   <div class="mypage">
     <div class="profile">
       <img
-        src="../assets/images/moopany.png"
+        :src="getAnimalImgPath(neighbor)"
         alt="나의 주민"
         class="my_neighbor"
       />
-      <button class="change_neighbor btn btn-primary">
+      <button
+        class="change_neighbor btn btn-primary"
+        v-on:click="changeNeighbor"
+      >
         내 주민 바꾸기
       </button>
       <hr />
@@ -26,21 +29,39 @@
 </template>
 
 <script>
+import { getNeighbors } from "@/api/info.js";
+
 export default {
   data: function() {
     return {
       username: "",
-      email: ""
+      email: "",
+      neighbor: "",
+      infoCards: []
     };
   },
-  changeNeighbor: () => {
-    console.log("안해");
-  },
-  mounted() {
+  async mounted() {
     const user = this.$store.state.user;
-    console.log(user);
+    // console.log(user);
     this.username = user.username;
     this.email = user.email;
+    const infoCards = await getNeighbors(infoCards);
+    this.infoCards = infoCards;
+    const random_info = infoCards[Math.floor(Math.random() * infoCards.length)];
+    this.neighbor = random_info.engname;
+    // console.log(this.neighbor);
+  },
+  methods: {
+    getAnimalImgPath(engname) {
+      let images = require(`@/assets/images/image_animal/${engname}.png`);
+      return images;
+    },
+    changeNeighbor: function() {
+      const infoCards = this.infoCards;
+      const random_info =
+        infoCards[Math.floor(Math.random() * infoCards.length)];
+      this.neighbor = random_info.engname;
+    }
   }
 };
 </script>
