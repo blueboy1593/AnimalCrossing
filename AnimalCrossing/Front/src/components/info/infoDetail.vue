@@ -203,7 +203,7 @@ export default {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 90%;
   height: 2px;
   /* background: linear-gradient(to left, #0c002b, #1779ff); */
   background: linear-gradient(to left, #012b00, #7fb8a0);

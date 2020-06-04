@@ -1,25 +1,21 @@
 <template>
-  <div>
-    <ul>
-      <div v-for="comment in comments" :key="comment.id">
-        <li>
-          <p>{ comment.content }</p>
-        </li>
-      </div>
-    </ul>
+  <div class="onecomment">
+    <p>{{ CommentList.username }}</p>
+    <p>{{ CommentList.content }}</p>
+    <p>{{ CommentList.created_at }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "commentList",
-  props: {
-    comments: {
-      type: Array,
-      required: false
-    }
-  }
+  name: "CommentList",
+  props: ["CommentList"]
 };
 </script>
 
-<style></style>
+<style>
+.onecomment {
+  border: 2px solid blue;
+  border-radius: 10px;
+}
+</style>

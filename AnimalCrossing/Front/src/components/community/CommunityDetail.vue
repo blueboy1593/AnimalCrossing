@@ -27,7 +27,7 @@
       <v-btn>삭제하기</v-btn>
       <h4 class="text">Comments</h4>
       <CommentList
-        v-for="CommentList in CommentLists"
+        v-for="CommentList in article.CommentLists"
         :key="CommentList.id"
         :CommentList="CommentList"
       />
@@ -49,14 +49,15 @@ export default {
         image: null,
         username: "",
         created_at: "",
-        comments: []
+        CommentLists: [] // obj3개 들어감
       }
     };
   },
   mounted: async function() {
     var showId = this.$route.params.id;
     const data = await showService.getShowById(showId);
-    this.article.comments = data.showcomments;
+    this.article.CommentLists = data.showcomments;
+    console.log(this.article.CommentLists); // object
     this.article.title = data.title;
     this.article.image = data.image;
     this.article.content = data.content;
