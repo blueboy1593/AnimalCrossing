@@ -14,7 +14,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    # path('insert/', views.excel_to_list),
+    path('insert/', views.excel_to_list),
     path('fishes/', views.fishes, name='fish_list'),
     path('insects/', views.insects, name='insect_list'),
     path('fossils/', views.fossils, name='fossil_list'),

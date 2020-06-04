@@ -8,7 +8,7 @@ class Show(models.Model):
     username = models.CharField(max_length=50) # 아이디 paik11012
     title = models.CharField(max_length=20)
     content = models.TextField(max_length=800)
-    image = models.ImageField(blank=True) # 선택 가능s
+    image = models.CharField(max_length=800, blank=True) # 선택 가능s
     created_at = models.DateTimeField(auto_now_add=True)  # 만들어졌을 때 기록하겠다
     updated_at = models.DateTimeField(auto_now=True)  # 언제든지 시간 기록하겠다
     def __str__(self):
