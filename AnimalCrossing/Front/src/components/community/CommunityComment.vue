@@ -21,7 +21,7 @@ export default {
   },
   mounted: async function() {
     var showId = this.$route.params.id;
-    const data = await showService.getCommentById(showId);
+    const data = await showService.getShowById(showId);
     console.log(data);
   }
 };

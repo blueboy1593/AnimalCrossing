@@ -4,23 +4,28 @@
       <h2 class="ttext" style="margin-bottom: 5px">{{ this.article.title }}</h2>
       <v-row no-gutters>
         <v-col>
-          <p>{{ this.article.username }}</p>
+          <p class="text">{{ this.article.username }}</p>
         </v-col>
         <v-col>
-          <p style="text-align:right">{{ this.article.created_at }}</p>
+          <p style="text-align:right" class="text">
+            {{ this.article.created_at }}
+          </p>
         </v-col>
       </v-row>
-      <div v-if="this.image == ''">
+      <div v-if="this.image == null" class="detailimage">
         <img
           src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
-          class="cimage"
+          class="detailimage"
         />
       </div>
-      <div v-else><img v-bind:src="image" alt="" class="detailimage" /></div>
+      <div v-else>
+        <img v-bind:src="article.image" alt="" class="detailimage" />
+      </div>
       <div class="showcontent">
         <p>{{ article.content }}</p>
       </div>
-      <h2>comment 넣을 곳</h2>
+      <v-btn>삭제하기</v-btn>
+      <h4>comment 넣을 곳</h4>
       <CommentList />
     </div>
   </div>
@@ -37,7 +42,7 @@ export default {
       article: {
         title: "",
         content: "",
-        image: "",
+        image: null,
         username: "",
         created_at: ""
       }
@@ -57,15 +62,21 @@ export default {
 
 <style>
 .detailimage {
-  width: 60%;
+  width: 70%;
   align-items: center;
   display: block;
   margin: 0px auto;
+  border-radius: 5px;
 }
 .ttext {
   text-align: center;
+  font-family: "Gamja Flower", cursive;
 }
 .showcontent {
   margin-top: 10px;
+  font-family: "Gamja Flower", cursive;
+}
+.text {
+  font-family: "Gamja Flower", cursive;
 }
 </style>

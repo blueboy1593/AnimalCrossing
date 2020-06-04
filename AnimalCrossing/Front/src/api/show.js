@@ -21,19 +21,7 @@ export function getShowById(showId, data) {
     .get(`/shows/detail/${showId}/`)
     .then(response => {
       data = response.data;
-      console.log(data);
-      return data;
-    })
-    .catch(error => {
-      console.log(error);
-    });
-}
-
-export function getCommentById(showId, data) {
-  return instance
-    .get(`/shows/comment/${showId}/`)
-    .then(response => {
-      data = response.data;
+      // console.log(data);
       return data;
     })
     .catch(error => {
