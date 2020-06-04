@@ -31,8 +31,39 @@
     <div class="infoName">
       {{ infoCard.name }}
     </div>
-    <div class="infoDetail">
-      {{ infoCard.price }}
+    <div v-if="routePath === '/info/insect'">
+      <div class="infoDetail">
+        {{ infoCard.month }}
+      </div>
+      <div class="infoDetail">
+        {{ infoCard.time }}
+      </div>
+    </div>
+    <div v-if="routePath === '/info/fish'">
+      <div class="infoDetail">
+        {{ infoCard.month }}
+      </div>
+      <div class="infoDetail">
+        {{ infoCard.time }}
+      </div>
+    </div>
+    <div v-if="routePath === '/info/fossil'">
+      <div class="infoDetail">
+        {{ infoCard.price + " 벨" }}
+      </div>
+    </div>
+    <div v-if="routePath === '/info/neighbor'">
+      <div class="infoDetail">
+        {{ infoCard.personality }}
+      </div>
+      <div class="infoDetail">
+        {{ infoCard.sort }}
+      </div>
+    </div>
+    <div v-if="routePath === '/info/painting'">
+      <div class="infoDetail">
+        {{ infoCard.real }}
+      </div>
     </div>
 
     <v-dialog id="paintingDialog" v-model="paintingDialog" width="600">
@@ -87,7 +118,7 @@ export default {
 .infoCard {
   margin-top: 0.3rem;
   width: 120px;
-  height: 150px;
+  height: 172px;
   border-radius: 15px;
   background-color: #c1d2e1;
   overflow: hidden;
@@ -117,11 +148,14 @@ export default {
 .infoName {
   text-align: center;
   font-weight: bolder;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  font-family: "Gamja Flower";
 }
 
 .infoDetail {
   text-align: center;
   font-weight: 100;
+  font-family: "Gamja Flower";
+  font-size: 1rem;
 }
 </style>

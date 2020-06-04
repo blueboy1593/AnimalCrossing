@@ -4,7 +4,7 @@
       <div id="login-form" class="col-md-6 mx-auto box">
         <div class="mt-4 box">
           <div class="form-group">
-            <label for="email">이메일</label>
+            <label for="email" style="font-family:Gamja Flower">이메일</label>
             <input
               type="text"
               class="form-control"
@@ -14,7 +14,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="password">비밀번호</label>
+            <label for="password" style="font-family:Gamja Flower"
+              >비밀번호</label
+            >
             <input
               type="password"
               class="form-control "
@@ -64,7 +66,7 @@ export default {
           scope.$router.go(-1);
         },
         function(error) {
-          alert("유저 이메일 혹은 비밀번호가 일치하지 않습니다.");
+          alert("사용자 이메일 혹은 비밀번호가 일치하지 않습니다.");
           console.error(error);
         }
       );
@@ -100,9 +102,10 @@ export default {
   padding: 14px 10px;
   width: 200px;
   outline: none;
-  color: white;
+  color: black;
   border-radius: 34px;
   transition: 0.25s;
+  font-family: "Gamja Flower";
 }
 
 #login-email:focus,
@@ -128,6 +131,7 @@ export default {
   border-radius: 24px;
   transition: 0.25s;
   cursor: pointer;
+  font-family: "Gamja Flower";
 }
 
 .box button[type="submit"]:hover {
