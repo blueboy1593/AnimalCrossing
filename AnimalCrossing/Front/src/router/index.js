@@ -79,7 +79,7 @@ const routes = [
         component: Community,
         children: [
           {
-            path: "cdetail/:id",
+            path: "cdetail/:id/",
             name: "cdetail",
             component: () =>
               import("../components/community/CommunityDetail.vue")

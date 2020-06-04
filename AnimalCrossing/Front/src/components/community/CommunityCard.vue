@@ -1,24 +1,26 @@
 <template>
   <div>
-    <div @click="toDetail" class="cCard">
-      <div class="cphoto">
-        <img
-          src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
-          class="cimage"
-        />
-      </div>
-      <div class="infoName">
-        {{ communityCard.title }}
-      </div>
-      <v-row>
-        <div class="infoDetail">
-          {{ communityCard.username }}
+    <router-link :to="{ name: 'cdetail', params: { id: communityCard.id } }">
+      <div @click="toDetail" class="cCard">
+        <div class="cphoto">
+          <img
+            src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
+            class="cimage"
+          />
         </div>
-        <div class="infoDetail2">
-          {{ this.counter }}
-        </div></v-row
-      >
-    </div>
+        <div class="infoName">
+          {{ communityCard.title }}
+        </div>
+        <v-row>
+          <div class="infoDetail">
+            {{ communityCard.username }}
+          </div>
+          <div class="infoDetail2">
+            {{ this.counter }}
+          </div></v-row
+        >
+      </div>
+    </router-link>
   </div>
 </template>
 

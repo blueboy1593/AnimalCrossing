@@ -24,17 +24,30 @@
 </template>
 
 <script>
+import * as showService from "../../api/show.js";
 export default {
   data() {
     return {
       article: {
-        title: "제목입니다만",
-        content:
-          "내용 블라블라 🏝️모여봐요 동물의 숲🏝️ 🌞하루 24시간 BGM🌛 🏖️동물의 숲 하루를 채우는 잔잔한 노래🌊🏝️모여봐요 동물의 숲🏝 🌞하루 24시간 BGM🌛 🏖️동물의 숲 하루를 채우는 잔잔한 노래🌊",
-        username: "paik11012",
-        created_at: "2020-06-03"
+        title: "",
+        content: "",
+        username: "",
+        created_at: ""
       }
     };
+  },
+  mounted: function() {
+    var showId = this.$route.params.id;
+    showService.getShowById(showId, function(response) {
+      console.log(response.data);
+      const data = response.data;
+      this.title = data.title;
+      this.content = data.content;
+      this.created_at = data.created_at;
+      this.username = data.username;
+    });
+
+    // show 디테일 조회
   }
 };
 </script>

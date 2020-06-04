@@ -15,3 +15,10 @@ export function getShows(shows) {
       console.log(error);
     });
 }
+
+export function getShowById(showId, success, fail) {
+  instance
+    .get(`/shows/detail/${showId}`)
+    .then(success)
+    .catch(fail);
+}
