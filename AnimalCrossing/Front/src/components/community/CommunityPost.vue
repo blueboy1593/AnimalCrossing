@@ -1,5 +1,10 @@
 <template>
   <div>
+    <router-link to="/community/write">
+      <button class="write_btn btn btn-primary">
+        글쓰기
+      </button>
+    </router-link>
     <div>
       <h2 style="font-family:Gamja Flower">자랑해요, 동물의 숲</h2>
       <communityCard
@@ -9,11 +14,6 @@
         class="card_one"
       />
     </div>
-    <router-link to="/community/write">
-      <button class="write_btn btn btn-primary">
-        글쓰기
-      </button>
-    </router-link>
   </div>
 </template>
 

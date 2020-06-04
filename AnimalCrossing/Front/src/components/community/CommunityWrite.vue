@@ -8,31 +8,48 @@
         자랑할 사진 업로드
       </button>
       <div class="imgCon">
-        <img id="imgPreview" v-if="imageUrl" :src="imageUrl" /><img />
+        <img
+          id="imgPreview"
+          v-if="article.imageUrl"
+          :src="article.imageUrl"
+        /><img />
       </div>
     </form>
 
     <!-- 제목과 내용 -->
-    <form id="textUpload" action="" method="">
-      <input id="title" type="text" placeholder="제목을 입력해주세요" />
-
-      <textarea id="field" placeholder="내용을 입력해주세요"> </textarea>
-
-      <form id="write" action="">
-        <button type="submit" v-on:click="write">
-          <img class="writeButton" src="../../assets/images/write.png" alt="" />
-        </button>
-      </form>
-    </form>
+    <!-- <form id="textUpload" action="" method=""> -->
+    <input
+      id="title"
+      type="text"
+      v-model="article.title"
+      placeholder="제목을 입력해주세요"
+    />
+    <textarea
+      id="field"
+      placeholder="내용을 입력해주세요"
+      v-model="article.content"
+    ></textarea>
+    <!-- <form id="write" action=""> -->
+    <button type="submit" v-on:click="write">
+      <img class="writeButton" src="../../assets/images/write.png" alt="" />
+    </button>
+    <!-- </form> -->
+    <!-- </form> -->
   </div>
 </template>
 
 <script>
+import { writeShows } from "../../api/show.js";
+
 export default {
   name: "write",
   data() {
     return {
-      imageUrl: null
+      article: {
+        imageUrl: null,
+        title: "",
+        content: ""
+      }
     };
   },
   methods: {
@@ -42,9 +59,19 @@ export default {
     onChangeImages(e) {
       console.log(e.target.files);
       const file = e.target.files[0];
-      this.imageUrl = URL.createObjectURL(file);
+      this.article.imageUrl = URL.createObjectURL(file);
     },
-    write() {
+    async write() {
+      const token = this.$store.state.token;
+      const user = this.$store.state.user;
+      const article = {
+        title: this.article.title,
+        content: this.article.content,
+        user_id: user.id,
+        username: user.username
+      };
+      console.log(article);
+      await writeShows(article, token);
       this.$router.push("/community/list");
     }
   }
