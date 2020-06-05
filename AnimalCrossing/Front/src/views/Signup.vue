@@ -95,6 +95,27 @@ export default {
             console.error(error);
           }
         );
+
+        // 아 왜 쉬워보이는데 안되냐....
+        // // function
+        // await this.timego();
+        // login(this.user.email, this.user.password, async function(response) {
+        //   const user_info = response.data;
+        //   scope.$store.state.user.email = user_info.email;
+        //   scope.$store.state.user.username = user_info.username;
+        //   scope.$store.commit("saveToken", response.data.token);
+        //   scope.$store.commit("setIsSigned", true);
+        //   localStorage.setItem("token", response.data.token);
+        //   const decodedToken = jwtDecode(response.data.token);
+        //   const userId = decodedToken.user_id;
+        //   await findById(userId, function(response) {
+        //     console.log(userId, response.data);
+        //     scope.$store.commit("setUserName", response.data.username);
+        //   });
+        //   alert("회원가입이 완료되었습니다.");
+        //   scope.$router.push("/");
+        //   // scope.$router.go(-1);
+        // });
       } else {
         alert("비밀번호가 일치하지 않습니다.");
       }
