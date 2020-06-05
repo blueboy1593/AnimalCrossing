@@ -1,11 +1,7 @@
 <template>
   <div class="mypage">
     <div class="profile">
-      <img
-        :src="getAnimalImgPath(neighbor)"
-        alt="나의 주민"
-        class="my_neighbor"
-      />
+      <img :src="neighbor_url" alt="나의 주민" class="my_neighbor" />
       <button
         class="change_neighbor btn btn-primary"
         v-on:click="changeNeighbor"
@@ -36,7 +32,7 @@ export default {
     return {
       username: "",
       email: "",
-      neighbor: "",
+      neighbor_url: "",
       infoCards: []
     };
   },
@@ -48,19 +44,22 @@ export default {
 
     // 로컬 스토리지에 오늘의 주민 정보가 있을 때.
     if (localStorage.getItem("myneighbor_time")) {
-      const neighbor_name = localStorage.getItem("myneighbor_name");
-      this.neighbor = neighbor_name;
+      const myneighbor_url = localStorage.getItem("myneighbor_url");
+      this.neighbor_url = myneighbor_url;
     } else {
       const infoCards = await getNeighbors(infoCards);
       // this.infoCards = infoCards;
       const random_info =
         infoCards[Math.floor(Math.random() * infoCards.length)];
-      this.neighbor = random_info.engname;
+      // this.neighbor = random_info.engname;
+      const neighbor_url = await this.getAnimalImgPath(random_info.engname);
+      // console.log(neighbor_url);
+      this.neighbor_url = neighbor_url;
 
       // 오늘의 첫 시간 저장.
       const now_time = new Date().toLocaleDateString();
       localStorage.setItem("myneighbor_time", now_time);
-      localStorage.setItem("myneighbor_name", random_info.engname);
+      localStorage.setItem("myneighbor_url", neighbor_url);
       // console.log(this.neighbor);
     }
   },
@@ -71,15 +70,16 @@ export default {
       return images;
     },
     changeNeighbor: async function() {
-      // 현재 시간 잡아내는 코드
-      // const now_time = new Date().toLocaleDateString();
-
-      // Random import해서 주민 하나 뽑기.
-      // const infoCards = this.infoCards;
       const infoCards = await getNeighbors(infoCards);
       const random_info =
         infoCards[Math.floor(Math.random() * infoCards.length)];
-      this.neighbor = random_info.engname;
+      const neighbor_url = await this.getAnimalImgPath(random_info.engname);
+      this.neighbor_url = neighbor_url;
+
+      // 현재 시간 잡아내는 코드
+      const now_time = new Date().toLocaleDateString();
+      localStorage.setItem("myneighbor_time", now_time);
+      localStorage.setItem("myneighbor_url", neighbor_url);
     }
   }
 };
