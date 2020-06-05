@@ -57,10 +57,9 @@ export default {
 .cCard {
   display: inline-block;
   margin-top: 0.3rem;
-  width: 100%;
+  width: 26rem;
   height: 20%;
   border-radius: 15px;
-  /* border-style: dotted; */
   margin-right: 1rem;
   overflow: hidden;
 
@@ -96,7 +95,7 @@ export default {
 .infoDetail {
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
-  /* margin-left: 20px; */
+  margin-left: 20px;
 }
 
 .infoDetail2 {
