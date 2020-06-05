@@ -53,6 +53,7 @@
 <script>
 import * as showService from "../../api/show.js";
 import CommentList from "./CommunityCommentList.vue";
+import { writeComment } from "../../api/show.js";
 
 export default {
   components: { CommentList },
@@ -70,8 +71,23 @@ export default {
     };
   },
   methods: {
-    writeComment() {
-      console.log(this.comment);
+    async writeComment() {
+      const user = this.$store.state.user;
+      const show_id = Number(this.$route.params.id);
+      const token = this.$store.state.user.token;
+      const comment = {
+        show: show_id,
+        content: this.comment,
+        user_id: user.id,
+        username: user.username
+      };
+      console.log(comment);
+      await writeComment(comment, show_id, token);
+      this.comment = "";
+      const data = await showService.getShowById(show_id);
+      this.article.CommentLists = data.showcomments;
+      // this.$router.go(this.$router.currentRoute);
+      // $router.push("/auction/register/" + response.data.id);
     }
   },
   mounted: async function() {

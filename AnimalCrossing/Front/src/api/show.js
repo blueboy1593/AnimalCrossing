@@ -44,3 +44,19 @@ export function writeShows(article, token) {
       console.log(error);
     });
 }
+
+// Show 게시판에서 댓글 달기
+export function writeComment(comment, show_id, token) {
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: "JWT " + token
+  };
+  instance
+    .post(`/shows/comment/${show_id}/`, comment, { headers })
+    .then(response => {
+      console.log("show comment 작성!!!", response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
