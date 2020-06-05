@@ -6,6 +6,7 @@
       :key="tradeCard.id"
       :infoCard="tradeCard"
       :routePath="routePath"
+      :category="category"
     />
   </div>
 </template>
@@ -22,6 +23,7 @@ export default {
     return {
       tradeCards: [],
       detailTrade: [],
+      category: "neighbor",
       routePath: this.$route.path
     };
   },
@@ -29,9 +31,9 @@ export default {
     this.tradeCards = await getNeighbors(this.tradeCards);
   },
   methods: {
-    routePushTo(neighbor_id) {
-      console.log(neighbor_id);
-      this.$router.push(`/trade/detail/${neighbor_id}`);
+    routePushTo(category, id) {
+      console.log(id);
+      this.$router.push(`/trade/${category}/${id}`);
     }
   }
 };

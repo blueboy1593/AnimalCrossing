@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link :to="{ name: 'cdetail', params: { id: communityCard.id } }">
-      <div @click="toDetail" class="cCard">
+      <div class="cCard">
         <div class="cphoto">
           <div v-if="communityCard.image === null">
             <img
@@ -42,12 +42,6 @@ export default {
   computed: {
     trim: function() {
       return this.counter.substring(0, 5);
-    }
-  },
-  methods: {
-    toDetail: function() {
-      console.log(this.id);
-      this.$router.push({ path: `/community/detail/${this.id}` });
     }
   }
 };

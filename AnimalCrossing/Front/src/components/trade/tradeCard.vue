@@ -1,77 +1,81 @@
 <template>
-  <div class="infoCard" @click="routePushTo(infoCard.id)">
-    <div class="photo">
-      <img
-        v-if="routePath === '/trade/neighbor'"
-        :src="getAnimalImgPath(infoCard.engname)"
-        class="image"
-      />
-      <img
-        v-if="routePath === '/info/fish'"
-        :src="getFishImgPath(infoCard.name)"
-        class="image"
-      />
-      <img
-        v-if="routePath === '/info/insect'"
-        :src="getInsectImgPath(infoCard.name)"
-        class="image"
-      />
-      <img
-        v-if="routePath === '/trade/fossil'"
-        :src="getFossilImgPath()"
-        class="image"
-      />
-      <img
-        v-if="routePath === '/trade/painting'"
-        :src="getPatingImagPath(infoCard.engname)"
-        class="image"
-        @click="paintingDialog = !paintingDialog"
-      />
-    </div>
-    <div class="infoName">
-      {{ infoCard.name }}
-    </div>
-    <div v-if="routePath === '/info/insect'">
-      <div class="infoDetail">
-        {{ infoCard.month }}
+  <div class="infoCard">
+    <router-link
+      :to="{ name: 'tlist', params: { id: infoCard.id, category: category } }"
+    >
+      <div class="photo">
+        <img
+          v-if="routePath === '/trade/neighbor'"
+          :src="getAnimalImgPath(infoCard.engname)"
+          class="image"
+        />
+        <img
+          v-if="routePath === '/info/fish'"
+          :src="getFishImgPath(infoCard.name)"
+          class="image"
+        />
+        <img
+          v-if="routePath === '/info/insect'"
+          :src="getInsectImgPath(infoCard.name)"
+          class="image"
+        />
+        <img
+          v-if="routePath === '/trade/fossil'"
+          :src="getFossilImgPath()"
+          class="image"
+        />
+        <img
+          v-if="routePath === '/trade/painting'"
+          :src="getPatingImagPath(infoCard.engname)"
+          class="image"
+          @click="paintingDialog = !paintingDialog"
+        />
       </div>
-      <div class="infoDetail">
-        {{ infoCard.time }}
+      <div class="infoName">
+        {{ infoCard.name }}
       </div>
-    </div>
-    <div v-if="routePath === '/info/fish'">
-      <div class="infoDetail">
-        {{ infoCard.month }}
+      <div v-if="routePath === '/info/insect'">
+        <div class="infoDetail">
+          {{ infoCard.month }}
+        </div>
+        <div class="infoDetail">
+          {{ infoCard.time }}
+        </div>
       </div>
-      <div class="infoDetail">
-        {{ infoCard.time }}
+      <div v-if="routePath === '/info/fish'">
+        <div class="infoDetail">
+          {{ infoCard.month }}
+        </div>
+        <div class="infoDetail">
+          {{ infoCard.time }}
+        </div>
       </div>
-    </div>
-    <div v-if="routePath === '/info/fossil'">
-      <div class="infoDetail">
-        {{ infoCard.price + " 벨" }}
+      <div v-if="routePath === '/info/fossil'">
+        <div class="infoDetail">
+          {{ infoCard.price + " 벨" }}
+        </div>
       </div>
-    </div>
-    <div v-if="routePath === '/info/neighbor'">
-      <div class="infoDetail">
-        {{ infoCard.personality }}
+      <div v-if="routePath === '/info/neighbor'">
+        <div class="infoDetail">
+          {{ infoCard.personality }}
+        </div>
+        <div class="infoDetail">
+          {{ infoCard.sort }}
+        </div>
       </div>
-      <div class="infoDetail">
-        {{ infoCard.sort }}
+      <div v-if="routePath === '/info/painting'">
+        <div class="infoDetail">
+          {{ infoCard.real }}
+        </div>
       </div>
-    </div>
-    <div v-if="routePath === '/info/painting'">
-      <div class="infoDetail">
-        {{ infoCard.real }}
-      </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
   name: "infoCard",
-  props: ["infoCard", "routePath"],
+  props: ["infoCard", "routePath", "category"],
   data: () => ({}),
   methods: {
     getAnimalImgPath(engname) {
@@ -93,10 +97,6 @@ export default {
     getPatingImagPath(engname) {
       let images = require(`@/assets/images/image_painting/${engname}.jpg`);
       return images;
-    },
-    routePushTo(neighbor_id) {
-      console.log(neighbor_id);
-      this.$router.push(`/trade/detail/${neighbor_id}`);
     }
   }
 };
