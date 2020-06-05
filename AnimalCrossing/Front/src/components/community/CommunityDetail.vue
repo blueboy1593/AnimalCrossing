@@ -27,7 +27,7 @@
       <v-btn color="error">삭제하기</v-btn>
       <h4 class="text">
         <div class="commentImg">
-          <img id="commentImg" src="../../assets/images/comment.png" alt="">
+          <img id="commentImg" src="../../assets/images/comment.png" alt="" />
         </div>
       </h4>
       <CommentList
