@@ -3,7 +3,7 @@
     <router-link :to="{ name: 'cdetail', params: { id: communityCard.id } }">
       <div @click="toDetail" class="cCard">
         <div class="cphoto">
-          <div v-if="image == null">
+          <div v-if="image === null">
             <img
               src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
               class="cimage"
