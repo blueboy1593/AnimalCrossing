@@ -5,6 +5,7 @@
         <img
           v-if="routePath === '/trade/neighbor'"
           :src="getAnimalImgPath(infoCard.engname)"
+          :category="category"
           class="image"
         />
         <img
@@ -20,12 +21,14 @@
         <img
           v-if="routePath === '/trade/fossil'"
           :src="getFossilImgPath()"
+          :category="category"
           class="image"
         />
         <img
           v-if="routePath === '/trade/painting'"
           :src="getPatingImagPath(infoCard.engname)"
           class="image"
+          :category="category"
           @click="paintingDialog = !paintingDialog"
         />
       </div>
@@ -74,7 +77,11 @@
 export default {
   name: "infoCard",
   props: ["infoCard", "routePath", "category"],
-  data: () => ({}),
+  data() {
+    // return {
+    //   category: "neighbor"
+    // }
+  },
   methods: {
     getAnimalImgPath(engname) {
       let images = require(`@/assets/images/image_animal/${engname}.png`);
