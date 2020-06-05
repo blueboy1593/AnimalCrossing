@@ -160,9 +160,10 @@ const routes = [
             component: () => import("../components/trade/etc.vue")
           },
           {
-            path: "detail/:id",
-            name: "sdetail",
-            component: () => import("../components/trade/tradeDetail.vue")
+            path: "list/:category/:id",
+            name: "tlist",
+            props: true,
+            component: () => import("../components/trade/tradeList.vue")
           }
         ]
       }
