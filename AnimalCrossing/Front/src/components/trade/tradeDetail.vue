@@ -1,6 +1,7 @@
 <template>
   <div class="community">
     <div class="container">
+      <v-btn>뒤로가기</v-btn>
       <h2 class="ttext" style="margin-bottom: 5px">{{ this.trade.title }}</h2>
       <v-row no-gutters>
         <v-col>
@@ -22,7 +23,10 @@
         <img v-bind:src="trade.image" alt="" class="detailimage detailImg" />
       </div>
       <div class="showcontent">
-        <p>{{trade.content }}</p>
+        <p>{{ trade.price }}</p>
+      </div>
+      <div class="showcontent">
+        <p>{{ trade.content }}</p>
       </div>
       <v-btn color="error">삭제하기</v-btn>
       <!-- <h4 class="text">
@@ -40,23 +44,22 @@
             v-on:click="writeComment"
           />
         </div>
-      </h4>
+      </h4> -->
       <CommentList
-        v-for="CommentList in.trade.CommentLists"
+        v-for="CommentList in trade.CommentLists"
         :key="CommentList.id"
-        :CommentList="CommentList"
-      /> -->
+        :CommentList="CommentList" />
     </div>
   </div>
 </template>
 
 <script>
 import * as tradeService from "../../api/trade.js";
-// import CommentList from "./CommunityCommentList.vue";
+import CommentList from "./tradeCommentList.vue";
 // import { writeComment } from "../../api/show.js";
 
 export default {
-  // components: { CommentList },
+  components: { CommentList },
   data: function() {
     return {
       trade: {
@@ -69,7 +72,7 @@ export default {
         sort: "",
         name: "",
         category: "",
-        CommentLists: [] // obj3개 들어감
+        CommentLists: [] // obj1개 들어감
       },
       comment: ""
     };
@@ -98,16 +101,16 @@ export default {
   mounted: async function() {
     var tradeId = this.$route.params.id;
     const data = await tradeService.getDetailTradeByArticleId(tradeId);
-    // this.trade.CommentLists = data.showcomments;
     console.log(this.trade.CommentLists); // object
     this.trade.title = data.title;
     this.trade.image = data.image;
     this.trade.content = data.content;
     this.trade.created_at = data.created_at;
     this.trade.username = data.username;
-    this.trade.price = data.username;
+    this.trade.price = data.price;
     this.trade.sort = data.username;
     this.trade.category = data.username;
+    this.trade.CommentLists = data.comments;
   }
 };
 </script>
