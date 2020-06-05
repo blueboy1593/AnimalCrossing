@@ -16,7 +16,7 @@
         <div class="infoName">
           {{ communityCard.title }}
         </div>
-        <v-row>
+        <v-row id="vrow">
           <div class="infoDetail">
             {{ communityCard.username }}
           </div>
@@ -55,14 +55,20 @@ export default {
 
 <style>
 .cCard {
+  display: inline-block;
   margin-top: 0.3rem;
-  width: 100%;
+  width: 26rem;
   height: 20%;
   border-radius: 15px;
-  border-style: dotted;
-  border-color: #76a7b2;
-  border-width: 5px;
+  margin-right: 1rem;
   overflow: hidden;
+
+  background-color: rgba(110, 173, 157, 0.144);
+}
+
+.cCard:hover {
+  border-bottom: 1px solid #76a7b2;
+  background-color: rgba(98, 173, 155, 0.26);
 }
 
 .cphoto {
@@ -89,8 +95,9 @@ export default {
 .infoDetail {
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
-  /* margin-left: 15px; */
+  margin-left: 20px;
 }
+
 .infoDetail2 {
   text-align: right;
   font-weight: 100;

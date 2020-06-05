@@ -1,11 +1,7 @@
 <template>
   <div class="mypage">
     <div class="profile">
-      <img
-        :src="getAnimalImgPath(neighbor)"
-        alt="나의 주민"
-        class="my_neighbor"
-      />
+      <img :src="neighbor_url" alt="나의 주민" class="my_neighbor" />
       <button
         class="change_neighbor btn btn-primary"
         v-on:click="changeNeighbor"
@@ -36,19 +32,32 @@ export default {
     return {
       username: "",
       email: "",
-      neighbor: "",
+      neighbor_url: "",
       infoCards: []
     };
   },
   async mounted() {
+    // 여기는 유저 정보를 스토어에서 받아서 저장하는 코드
     const user = this.$store.state.user;
-    const infoCards = await getNeighbors(infoCards);
     this.username = user.username;
     this.email = user.email;
-    this.infoCards = infoCards;
-    const random_info = infoCards[Math.floor(Math.random() * infoCards.length)];
-    this.neighbor = random_info.engname;
-    // console.log(this.neighbor);
+
+    // 로컬 스토리지에 오늘의 주민 정보가 있을 때.
+    if (localStorage.getItem("myneighbor_time")) {
+      const myneighbor_url = localStorage.getItem("myneighbor_url");
+      this.neighbor_url = myneighbor_url;
+    } else {
+      const infoCards = await getNeighbors(infoCards);
+      const random_info =
+        infoCards[Math.floor(Math.random() * infoCards.length)];
+      const neighbor_url = await this.getAnimalImgPath(random_info.engname);
+      this.neighbor_url = neighbor_url;
+
+      // 오늘의 첫 시간 저장.
+      const now_time = new Date().toLocaleDateString();
+      localStorage.setItem("myneighbor_time", now_time);
+      localStorage.setItem("myneighbor_url", neighbor_url);
+    }
   },
   methods: {
     getAnimalImgPath(engname) {
@@ -56,11 +65,22 @@ export default {
       console.log(images);
       return images;
     },
-    changeNeighbor: function() {
-      const infoCards = this.infoCards;
-      const random_info =
-        infoCards[Math.floor(Math.random() * infoCards.length)];
-      this.neighbor = random_info.engname;
+    changeNeighbor: async function() {
+      // 현재 시간 잡아내는 코드
+      const now_time = new Date().toLocaleDateString();
+      if (now_time === localStorage.getItem("myneighbor_time")) {
+        alert("주민 변경은 하루에 한번만 된다구리!");
+      } else {
+        const infoCards = await getNeighbors(infoCards);
+        const random_info =
+          infoCards[Math.floor(Math.random() * infoCards.length)];
+        const neighbor_url = await this.getAnimalImgPath(random_info.engname);
+        this.neighbor_url = neighbor_url;
+
+        localStorage.setItem("myneighbor_time", now_time);
+        localStorage.setItem("myneighbor_url", neighbor_url);
+        alert("주민 변경에 성공했다구리!");
+      }
     }
   }
 };
@@ -80,9 +100,7 @@ export default {
 .profile {
   display: inline-block;
   width: 40%;
-  /* height: 100%; */
   text-align: center;
-  /* padding-top: 20%; */
   font-size: 18px;
 }
 

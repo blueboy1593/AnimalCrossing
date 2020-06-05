@@ -144,6 +144,10 @@ export default {
   text-align: center;
 }
 
+#comment:focus {
+  outline: none;
+}
+
 /* 한줄로 해주기 위해 flex!! */
 .commentImg {
   display: flex;
