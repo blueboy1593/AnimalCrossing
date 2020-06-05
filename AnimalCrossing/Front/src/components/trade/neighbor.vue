@@ -12,7 +12,7 @@
 
 <script>
 import { getNeighbors } from "@/api/info.js";
-import tradeCard from "../info/infoCard.vue";
+import tradeCard from "../trade/tradeCard.vue";
 export default {
   name: "tradeNeighbors",
   components: {
@@ -21,11 +21,18 @@ export default {
   data() {
     return {
       tradeCards: [],
+      detailTrade: [],
       routePath: this.$route.path
     };
   },
   async mounted() {
     this.tradeCards = await getNeighbors(this.tradeCards);
+  },
+  methods: {
+    routePushTo(neighbor_id) {
+      console.log(neighbor_id);
+      this.$router.push(`/trade/detail/${neighbor_id}`);
+    }
   }
 };
 </script>
