@@ -1,6 +1,8 @@
 <template>
-  <div class="infoCard" >
-    <router-link :to="{name: 'tlist', params:{ id:infoCard.id, category:category }}">
+  <div class="infoCard">
+    <router-link
+      :to="{ name: 'tlist', params: { id: infoCard.id, category: category } }"
+    >
       <div class="photo">
         <img
           v-if="routePath === '/trade/neighbor'"
