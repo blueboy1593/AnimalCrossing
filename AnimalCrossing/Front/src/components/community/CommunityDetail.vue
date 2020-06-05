@@ -12,7 +12,7 @@
           </p>
         </v-col>
       </v-row>
-      <div v-if="this.image == null" class="detailimage">
+      <div v-if="this.image === null" class="detailimage">
         <img
           src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
           class="detailimage"
@@ -69,7 +69,7 @@ export default {
 
 <style>
 .detailimage {
-  width: 70%;
+  width: 400px;
   align-items: center;
   display: block;
   margin: 0px auto;
