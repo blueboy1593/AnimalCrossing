@@ -11,7 +11,8 @@ export default new Vuex.Store({
       id: 0, // 사용자 아이디 저장
       email: "",
       password: "",
-      username: ""
+      username: "",
+      token: ""
     }
   },
   mutations: {
@@ -22,6 +23,7 @@ export default new Vuex.Store({
       const decoded_token = jwtDecode(token);
       state.user.id = decoded_token.user_id;
       state.user.email = decoded_token.email;
+      state.user.token = token;
     },
     setIsSigned(state, isSigned) {
       state.isSigned = isSigned;

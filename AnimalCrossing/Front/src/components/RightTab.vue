@@ -179,7 +179,7 @@ li:hover > span {
 #signin {
   /* background: #8a2e2e; */
   background: none;
-  overflow: hidden;
+  /* overflow: hidden; */
   color: white;
 }
 
@@ -203,7 +203,7 @@ li:hover > span {
   /* background: #805114; */
   width: 145px;
   background: none;
-  overflow: hidden;
+  /* overflow: hidden; */
   color: white;
 }
 

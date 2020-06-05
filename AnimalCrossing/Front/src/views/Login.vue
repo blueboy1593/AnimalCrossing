@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import { login } from "../api/user.js";
-
+import { login, findById } from "../api/user.js";
+import jwtDecode from "jwt-decode";
 export default {
   data() {
     return {
@@ -53,7 +53,7 @@ export default {
       login(
         this.user.email,
         this.user.password,
-        function(response) {
+        async function(response) {
           const user_info = response.data;
           scope.$store.state.user.email = user_info.email;
           scope.$store.state.user.username = user_info.username;
@@ -61,6 +61,12 @@ export default {
           scope.$store.commit("setIsSigned", true);
           // scope.$store.commit("setUserId", response.data.id);
           localStorage.setItem("token", response.data.token);
+          const decodedToken = jwtDecode(response.data.token);
+          const userId = decodedToken.user_id;
+          await findById(userId, function(response) {
+            console.log(userId, response.data);
+            scope.$store.commit("setUserName", response.data.username);
+          });
           scope.$router.go(-1);
         },
         function(error) {
