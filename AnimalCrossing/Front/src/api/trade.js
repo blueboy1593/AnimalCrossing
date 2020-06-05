@@ -11,7 +11,7 @@ const instance = createInstance();
  * 동물주민 카테고리의 특정 id에 대한 모든 거래글 가져오기
  * (예: 동물주민의 id가 1인 모든 거래글)
  */
-export function getTradeListAnimalItem(id) {
+export function getTradeListByAnimalId(id) {
   return instance
     .get(`/trades/list/animal/${id}`)
     .then(response => {
@@ -27,7 +27,7 @@ export function getTradeListAnimalItem(id) {
  * 미술품 카테고리의 특정 id에 대한 모든 거래글 가져오기
  * (예: 미술품 id가 1인 모든 거래글)
  */
-export function getTradeListPaintingItem(id) {
+export function getTradeListByPaintingId(id) {
   return instance
     .get(`/trades/list/painting/${id}`)
     .then(response => {
@@ -43,7 +43,7 @@ export function getTradeListPaintingItem(id) {
  * 화석 카테고리의 특정 id에 대한 모든 거래글 가져오기
  * (예: 화석 id가 1인 모든 거래글)
  */
-export function getTradeListFossilItem(id) {
+export function getTradeListByFossilId(id) {
   return instance
     .get(`/trades/list/fossil/${id}`)
     .then(response => {
@@ -73,7 +73,7 @@ export function getTradeListEtc() {
 /*
  * 특정 거래글로 접근하기
  */
-export function getDetailTrade(article_pk) {
+export function getDetailTradeByArticleId(article_pk) {
   return instance
     .get(`/trades/detail/${article_pk}/`)
     .then(response => {
