@@ -6,6 +6,7 @@
       :key="tradeCard.id"
       :infoCard="tradeCard"
       :routePath="routePath"
+      :category="category"
     />
   </div>
 </template>
@@ -20,8 +21,9 @@ export default {
   },
   data() {
     return {
-      tradeCards: [],
-      routePath: this.$route.path
+      category: "fossil",
+      routePath: this.$route.path,
+      tradeCards: []
     };
   },
   async mounted() {

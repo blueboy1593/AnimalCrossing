@@ -1,11 +1,11 @@
 !<template>
   <div class="paintingCards">
-    <h1>카드를 클릭하면 뭐가 나올까요</h1>
     <tradeCard
       v-for="tradeCard in tradeCards"
       :key="tradeCard.id"
       :infoCard="tradeCard"
       :routePath="routePath"
+      :category="category"
     />
   </div>
 </template>
@@ -20,8 +20,9 @@ export default {
   },
   data() {
     return {
-      tradeCards: [],
-      routePath: this.$route.path
+      category: "painting",
+      routePath: this.$route.path,
+      tradeCards: []
     };
   },
   async mounted() {

@@ -1,6 +1,5 @@
 !<template>
   <div class="neighborCards">
-    <!-- <h1>여기는 동물주민거래 게시판이지롱</h1> -->
     <tradeCard
       v-for="tradeCard in tradeCards"
       :key="tradeCard.id"
@@ -21,20 +20,13 @@ export default {
   },
   data() {
     return {
-      tradeCards: [],
-      detailTrade: [],
+      category: "neighbor",
       routePath: this.$route.path,
-      category: "neighbor"
+      tradeCards: []
     };
   },
   async mounted() {
     this.tradeCards = await getNeighbors(this.tradeCards);
-  },
-  methods: {
-    routePushTo(neighbor_id) {
-      console.log(neighbor_id);
-      this.$router.push(`/trade/detail/${neighbor_id}`);
-    }
   }
 };
 </script>

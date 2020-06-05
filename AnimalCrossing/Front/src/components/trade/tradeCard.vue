@@ -1,51 +1,29 @@
 <template>
   <div class="infoCard" @click="routePushTo(category, infoCard.id)">
     <div class="photo">
+      <!-- 동물주민 이미지 가져오기 -->
       <img
         v-if="routePath === '/trade/neighbor'"
         :src="getAnimalImgPath(infoCard.engname)"
         class="image"
       />
-      <img
-        v-if="routePath === '/info/fish'"
-        :src="getFishImgPath(infoCard.name)"
-        class="image"
-      />
-      <img
-        v-if="routePath === '/info/insect'"
-        :src="getInsectImgPath(infoCard.name)"
-        class="image"
-      />
+
+      <!-- 화석 이미지 가져오기 -->
       <img
         v-if="routePath === '/trade/fossil'"
         :src="getFossilImgPath()"
         class="image"
       />
+
+      <!-- 미술품 이미지 가져오기 -->
       <img
         v-if="routePath === '/trade/painting'"
         :src="getPatingImagPath(infoCard.engname)"
         class="image"
-        @click="paintingDialog = !paintingDialog"
       />
     </div>
     <div class="infoName">
       {{ infoCard.name }}
-    </div>
-    <div v-if="routePath === '/info/insect'">
-      <div class="infoDetail">
-        {{ infoCard.month }}
-      </div>
-      <div class="infoDetail">
-        {{ infoCard.time }}
-      </div>
-    </div>
-    <div v-if="routePath === '/info/fish'">
-      <div class="infoDetail">
-        {{ infoCard.month }}
-      </div>
-      <div class="infoDetail">
-        {{ infoCard.time }}
-      </div>
     </div>
     <div v-if="routePath === '/info/fossil'">
       <div class="infoDetail">
@@ -60,11 +38,6 @@
         {{ infoCard.sort }}
       </div>
     </div>
-    <div v-if="routePath === '/info/painting'">
-      <div class="infoDetail">
-        {{ infoCard.real }}
-      </div>
-    </div>
   </div>
 </template>
 
@@ -72,7 +45,6 @@
 export default {
   name: "infoCard",
   props: ["infoCard", "routePath", "category"],
-  data: () => ({}),
   methods: {
     getAnimalImgPath(engname) {
       let images = require(`@/assets/images/image_animal/${engname}.png`);
@@ -94,9 +66,9 @@ export default {
       let images = require(`@/assets/images/image_painting/${engname}.jpg`);
       return images;
     },
-    routePushTo(category, neighbor_id) {
-      console.log(`/trade/list/${category}/${neighbor_id}`);
-      this.$router.push(`/trade/list/${category}/${neighbor_id}`);
+    routePushTo(category, id) {
+      console.log(`/trade/list/${category}/${id}`);
+      this.$router.push(`/trade/list/${category}/${id}`);
     }
   }
 };
