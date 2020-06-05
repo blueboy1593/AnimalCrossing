@@ -48,7 +48,8 @@
       <CommentList
         v-for="CommentList in trade.CommentLists"
         :key="CommentList.id"
-        :CommentList="CommentList" />
+        :CommentList="CommentList"
+      />
     </div>
   </div>
 </template>
