@@ -1,5 +1,5 @@
 <template>
-  <div class="infoCard" @click="routePushTo(infoCard.id)">
+  <div class="infoCard" @click="routePushTo(category, infoCard.id)">
     <div class="photo">
       <img
         v-if="routePath === '/trade/neighbor'"
@@ -71,7 +71,7 @@
 <script>
 export default {
   name: "infoCard",
-  props: ["infoCard", "routePath"],
+  props: ["infoCard", "routePath", "category"],
   data: () => ({}),
   methods: {
     getAnimalImgPath(engname) {
@@ -94,9 +94,9 @@ export default {
       let images = require(`@/assets/images/image_painting/${engname}.jpg`);
       return images;
     },
-    routePushTo(neighbor_id) {
-      console.log(neighbor_id);
-      this.$router.push(`/trade/detail/${neighbor_id}`);
+    routePushTo(category, neighbor_id) {
+      console.log(`/trade/list/${category}/${neighbor_id}`);
+      this.$router.push(`/trade/list/${category}/${neighbor_id}`);
     }
   }
 };
