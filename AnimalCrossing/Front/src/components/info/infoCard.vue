@@ -2,7 +2,9 @@
   <div class="infoCard">
     <div class="photo">
       <img
-        v-if="routePath === '/info/neighbor'"
+        v-if="
+          (routePath === '/info/neighbor') | (routePath === '/trade/neighbor')
+        "
         :src="getAnimalImgPath(infoCard.engname)"
         class="image"
       />
@@ -17,12 +19,14 @@
         class="image"
       />
       <img
-        v-if="routePath === '/info/fossil'"
+        v-if="(routePath === '/info/fossil') | (routePath === '/trade/fossil')"
         :src="getFossilImgPath()"
         class="image"
       />
       <img
-        v-if="routePath === '/info/painting'"
+        v-if="
+          (routePath === '/info/painting') | (routePath === '/trade/painting')
+        "
         :src="getPatingImagPath(infoCard.engname)"
         class="image"
         @click="paintingDialog = !paintingDialog"
@@ -66,7 +70,12 @@
       </div>
     </div>
 
-    <v-dialog id="paintingDialog" v-model="paintingDialog" width="600">
+    <v-dialog
+      v-if="routePath === '/info/painting'"
+      id="paintingDialog"
+      v-model="paintingDialog"
+      width="600"
+    >
       <PaintingDialog
         id="paintingDialog"
         v-model="paintingDialog"

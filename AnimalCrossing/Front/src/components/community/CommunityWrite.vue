@@ -41,6 +41,7 @@
 
 <script>
 import { writeShows } from "../../api/show.js";
+import * as firebase from "firebase";
 
 export default {
   name: "write",
@@ -57,19 +58,50 @@ export default {
     onClickImageUpload() {
       this.$refs.imageInput.click();
     },
-    onChangeImages(e) {
+    async onChangeImages(e) {
       console.log(e.target.files);
       const file = e.target.files[0];
       this.article.imageUrl = URL.createObjectURL(file);
+      await firebase
+        .storage()
+        .ref()
+        .child(file.name)
+        .put(file)
+        .then(response => {
+          console.log(response);
+          console.log("firebase 업로드");
+        });
+      let image = "";
+      await firebase
+        .storage()
+        .ref()
+        .child(file.name)
+        .getDownloadURL()
+        .then(response => {
+          console.log(response);
+          console.log("firebase 받아오기");
+          image = response;
+        });
+      this.article.imageUrl = image;
     },
+
     async write() {
       const token = this.$store.state.token;
       const user = this.$store.state.user;
+      let image = "";
+      if (this.article.imageUrl === null) {
+        image =
+          "https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg";
+      } else {
+        image = this.article.imageUrl;
+      }
+      console.log(image);
       const article = {
         title: this.article.title,
         content: this.article.content,
         user_id: user.id,
-        username: user.username
+        username: user.username,
+        image: image
       };
       console.log(article);
       await writeShows(article, token);

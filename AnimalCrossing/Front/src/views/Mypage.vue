@@ -42,10 +42,9 @@ export default {
   },
   async mounted() {
     const user = this.$store.state.user;
-    // console.log(user);
+    const infoCards = await getNeighbors(infoCards);
     this.username = user.username;
     this.email = user.email;
-    const infoCards = await getNeighbors(infoCards);
     this.infoCards = infoCards;
     const random_info = infoCards[Math.floor(Math.random() * infoCards.length)];
     this.neighbor = random_info.engname;
@@ -54,6 +53,7 @@ export default {
   methods: {
     getAnimalImgPath(engname) {
       let images = require(`@/assets/images/image_animal/${engname}.png`);
+      console.log(images);
       return images;
     },
     changeNeighbor: function() {

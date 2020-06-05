@@ -25,6 +25,7 @@
           :items="items"
           label="종류"
           dense
+          @click="init"
         ></v-select>
       </v-col>
 
@@ -40,6 +41,7 @@
         item-text="name"
         label="아이템 검색"
         @click="update"
+        loading
       ></v-autocomplete>
     </form>
 
@@ -84,6 +86,9 @@ export default {
       console.log(e.target.files);
       const file = e.target.files[0];
       this.imageUrl = URL.createObjectURL(file);
+    },
+    init() {
+      this.selectedLists = [];
     },
     update() {
       console.log(this.selected);

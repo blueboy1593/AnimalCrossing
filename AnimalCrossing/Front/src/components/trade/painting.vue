@@ -1,25 +1,27 @@
 !<template>
-  <div>
-    <h1>여기는 미술품 거래 게시판이지롱</h1>
-    <!-- <tradeCard
+  <div class="paintingCards">
+    <h1>카드를 클릭하면 뭐가 나올까요</h1>
+    <tradeCard
       v-for="tradeCard in tradeCards"
       :key="tradeCard.id"
-      :tradeCard="tradeCard"
-    /> -->
+      :infoCard="tradeCard"
+      :routePath="routePath"
+    />
   </div>
 </template>
 
 <script>
 import { getPaintings } from "@/api/info.js";
-// import tradeCard from "../info/infoCard.vue";
+import tradeCard from "../info/infoCard.vue";
 export default {
   name: "tradeNeighbors",
   components: {
-    // tradeCard
+    tradeCard
   },
   data() {
     return {
-      tradeCards: []
+      tradeCards: [],
+      routePath: this.$route.path
     };
   },
   async mounted() {
@@ -28,4 +30,46 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.paintingCards {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem 1rem;
+  /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
+}
+@media (max-width: 1600px) {
+  .paintingCards {
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1rem 0.4rem;
+  }
+}
+
+@media (max-width: 1300px) {
+  .paintingCards {
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem 0.4rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .paintingCards {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem 0.4rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .paintingCards {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem 0rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .paintingCards {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem 0rem;
+  }
+}
+</style>
