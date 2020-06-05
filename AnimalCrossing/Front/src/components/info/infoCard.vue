@@ -127,7 +127,7 @@ export default {
 .infoCard {
   margin-top: 0.3rem;
   width: 120px;
-  height: 172px;
+  /* height: 172px; */
   border-radius: 15px;
   background-color: #c1d2e1;
   overflow: hidden;

@@ -2,6 +2,20 @@ import { createInstance } from "./index.js";
 
 const instance = createInstance();
 
+// 특정 id에 대한 글 한개 가져오기
+
+export function getTradeById(category, tradeid) {
+  return instance
+    .get(`/trades/list/${category}/${tradeid}/`)
+    .then(response => {
+      console.log(`category / tradeid `, response.data);
+      return response.data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
 /*
  * 해당 카테고리 모든 거래글 가져오기 (동물주민, 미술품, 화석, 기타)
  * 그냥 도감 정보 가져오는 api 가져다 쓰기. 어차피 가져오기만 하는 거니까.

@@ -80,7 +80,7 @@ const routes = [
             component: () => import("../components/community/CommunityPost.vue")
           },
           {
-            path: "cdetail/:id",
+            path: "detail/:id",
             name: "cdetail",
             component: () =>
               import("../components/community/CommunityDetail.vue")
@@ -158,6 +158,11 @@ const routes = [
             path: "etc",
             name: "trade_etc",
             component: () => import("../components/trade/etc.vue")
+          },
+          {
+            path: "detail/:id",
+            name: "sdetail",
+            component: () => import("../components/trade/tradeDetail.vue")
           }
         ]
       }

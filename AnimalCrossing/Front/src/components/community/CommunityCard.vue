@@ -47,7 +47,7 @@ export default {
   methods: {
     toDetail: function() {
       console.log(this.id);
-      this.$router.push({ path: `/community/cdetail/${this.id}` });
+      this.$router.push({ path: `/community/detail/${this.id}` });
     }
   }
 };

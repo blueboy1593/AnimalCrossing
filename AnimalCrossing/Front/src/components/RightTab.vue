@@ -12,7 +12,7 @@
             무 계산기
           </li>
         </router-link>
-        <router-link to="/trade">
+        <router-link to="/trade/etc">
           <li id="exchange">
             거래소
           </li>
@@ -179,7 +179,7 @@ li:hover > span {
 #signin {
   /* background: #8a2e2e; */
   background: none;
-  overflow: hidden;
+  /* overflow: hidden; */
   color: white;
 }
 
@@ -203,7 +203,7 @@ li:hover > span {
   /* background: #805114; */
   width: 150px;
   background: none;
-  overflow: hidden;
+  /* overflow: hidden; */
   color: white;
 }
 
