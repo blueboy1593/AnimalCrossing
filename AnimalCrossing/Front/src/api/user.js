@@ -28,4 +28,12 @@ function login(email, password, success, fail) {
     .then(success)
     .catch(fail);
 }
-export { signup, login };
+
+function findById(id, success, fail) {
+  instance
+    .get("accounts/userprofile/" + id + "/")
+    .then(success)
+    .catch(fail);
+}
+
+export { signup, login, findById };

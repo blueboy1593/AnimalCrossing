@@ -61,8 +61,6 @@ export default {
           scope.$store.commit("setIsSigned", true);
           // scope.$store.commit("setUserId", response.data.id);
           localStorage.setItem("token", response.data.token);
-          localStorage.setItem("user", scope.user.email);
-          localStorage.setItem("password", scope.user.password);
           scope.$router.go(-1);
         },
         function(error) {
