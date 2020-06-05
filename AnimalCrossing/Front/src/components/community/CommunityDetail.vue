@@ -27,17 +27,17 @@
       <v-btn color="error">삭제하기</v-btn>
       <h4 class="text">
         <div class="commentImg">
-          <img
-            id="commentImg"
-            src="../../assets/images/comment.png"
-            alt=""
-            v-on:click="writeComment"
-          />
           <input
             id="comment"
             type="text"
             v-model="comment"
             placeholder="댓글을 입력하세요"
+          />
+          <img
+            id="commentImg"
+            src="../../assets/images/comment.png"
+            alt=""
+            v-on:click="writeComment"
           />
         </div>
       </h4>
@@ -133,6 +133,7 @@ export default {
 }
 .text {
   font-family: "Gamja Flower", cursive;
+  margin-left: 1rem;
 }
 
 #comment {
@@ -157,7 +158,29 @@ export default {
 }
 
 #commentImg {
-  margin: 10px 10px;
+  margin: 10px 10px 10px 15px;
   width: 70px;
+}
+
+#commentImg:hover {
+  transform:scale(1.1);
+  animation: commentButton-ani 1s forwards;
+}
+
+@keyframes commentButton-ani {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 }
 </style>
