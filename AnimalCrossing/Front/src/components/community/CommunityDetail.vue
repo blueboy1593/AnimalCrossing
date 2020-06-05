@@ -15,11 +15,11 @@
       <div v-if="this.image == null" class="detailimage">
         <img
           src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
-          class="detailimage"
+          class="detailimage detailImg"
         />
       </div>
       <div v-else>
-        <img v-bind:src="article.image" alt="" class="detailimage" />
+        <img v-bind:src="article.image" alt="" class="detailimage detailImg" />
       </div>
       <div class="showcontent">
         <p>{{ article.content }}</p>
@@ -74,10 +74,17 @@ export default {
   display: block;
   margin: 0px auto;
   border-radius: 10px;
+}
+
+/* .detailimage:hover {
+
+} */
+
+.detailImg {
   box-shadow: 4px 4px 3px 0px rgba(4, 37, 56, 0.75);
 }
 
-.detailimage:hover {
+.detailImg:hover {
   transform: scale(1.02);
   opacity: 0.95;
 }
