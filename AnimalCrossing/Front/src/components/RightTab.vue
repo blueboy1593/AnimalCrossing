@@ -201,7 +201,7 @@ li:hover > span {
 
 #signup {
   /* background: #805114; */
-  width: 145px;
+  width: 150px;
   background: none;
   /* overflow: hidden; */
   color: white;
