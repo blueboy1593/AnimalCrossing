@@ -53,6 +53,7 @@ export default {
   methods: {
     getAnimalImgPath(engname) {
       let images = require(`@/assets/images/image_animal/${engname}.png`);
+      console.log(images);
       return images;
     },
     changeNeighbor: function() {
