@@ -22,6 +22,7 @@ export default new Vuex.Store({
       const decoded_token = jwtDecode(token);
       state.user.id = decoded_token.user_id;
       state.user.email = decoded_token.email;
+      state.user.token = token;
     },
     setIsSigned(state, isSigned) {
       state.isSigned = isSigned;
