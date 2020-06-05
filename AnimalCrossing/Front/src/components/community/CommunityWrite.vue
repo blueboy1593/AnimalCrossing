@@ -65,11 +65,20 @@ export default {
     async write() {
       const token = this.$store.state.token;
       const user = this.$store.state.user;
+      let image = "";
+      if (this.article.imageUrl === null) {
+        image =
+          "https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg";
+      } else {
+        image = this.imageUrl;
+      }
+      console.log(image);
       const article = {
         title: this.article.title,
         content: this.article.content,
         user_id: user.id,
-        username: user.username
+        username: user.username,
+        image: image
       };
       console.log(article);
       await writeShows(article, token);
