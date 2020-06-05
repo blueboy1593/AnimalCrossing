@@ -11,7 +11,8 @@ export default new Vuex.Store({
       id: 0, // 사용자 아이디 저장
       email: "",
       password: "",
-      username: ""
+      username: "",
+      token: ""
     }
   },
   mutations: {
