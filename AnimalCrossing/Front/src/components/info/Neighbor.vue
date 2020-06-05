@@ -72,7 +72,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .neighborCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

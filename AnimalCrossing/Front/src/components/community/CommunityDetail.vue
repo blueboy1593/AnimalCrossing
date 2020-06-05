@@ -104,7 +104,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .detailimage {
   width: 400px;
   align-items: center;

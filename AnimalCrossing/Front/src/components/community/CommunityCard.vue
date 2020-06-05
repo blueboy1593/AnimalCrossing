@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .cCard {
   display: inline-block;
   margin-top: 0.3rem;

@@ -30,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .fossilCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

@@ -39,7 +39,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .detailimage {
   width: 60%;
   align-items: center;
