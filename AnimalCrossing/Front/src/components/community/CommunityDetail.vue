@@ -24,8 +24,12 @@
       <div class="showcontent">
         <p>{{ article.content }}</p>
       </div>
-      <v-btn>삭제하기</v-btn>
-      <h4 class="text">Comments</h4>
+      <v-btn color="error">삭제하기</v-btn>
+      <h4 class="text">
+        <div class="commentImg">
+          <img id="commentImg" src="../../assets/images/comment.png" alt="">
+        </div>
+      </h4>
       <CommentList
         v-for="CommentList in article.CommentLists"
         :key="CommentList.id"
@@ -76,10 +80,6 @@ export default {
   border-radius: 10px;
 }
 
-/* .detailimage:hover {
-
-} */
-
 .detailImg {
   box-shadow: 4px 4px 3px 0px rgba(4, 37, 56, 0.75);
 }
@@ -99,5 +99,10 @@ export default {
 }
 .text {
   font-family: "Gamja Flower", cursive;
+}
+
+#commentImg {
+  margin: 10px 10px;
+  width: 70px;
 }
 </style>
