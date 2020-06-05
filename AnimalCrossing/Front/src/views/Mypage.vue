@@ -48,19 +48,15 @@ export default {
       this.neighbor_url = myneighbor_url;
     } else {
       const infoCards = await getNeighbors(infoCards);
-      // this.infoCards = infoCards;
       const random_info =
         infoCards[Math.floor(Math.random() * infoCards.length)];
-      // this.neighbor = random_info.engname;
       const neighbor_url = await this.getAnimalImgPath(random_info.engname);
-      // console.log(neighbor_url);
       this.neighbor_url = neighbor_url;
 
       // 오늘의 첫 시간 저장.
       const now_time = new Date().toLocaleDateString();
       localStorage.setItem("myneighbor_time", now_time);
       localStorage.setItem("myneighbor_url", neighbor_url);
-      // console.log(this.neighbor);
     }
   },
   methods: {
@@ -70,16 +66,21 @@ export default {
       return images;
     },
     changeNeighbor: async function() {
-      const infoCards = await getNeighbors(infoCards);
-      const random_info =
-        infoCards[Math.floor(Math.random() * infoCards.length)];
-      const neighbor_url = await this.getAnimalImgPath(random_info.engname);
-      this.neighbor_url = neighbor_url;
-
       // 현재 시간 잡아내는 코드
       const now_time = new Date().toLocaleDateString();
-      localStorage.setItem("myneighbor_time", now_time);
-      localStorage.setItem("myneighbor_url", neighbor_url);
+      if (now_time === localStorage.getItem("myneighbor_time")) {
+        alert("주민 변경은 하루에 한번만 된다구리!");
+      } else {
+        const infoCards = await getNeighbors(infoCards);
+        const random_info =
+          infoCards[Math.floor(Math.random() * infoCards.length)];
+        const neighbor_url = await this.getAnimalImgPath(random_info.engname);
+        this.neighbor_url = neighbor_url;
+
+        localStorage.setItem("myneighbor_time", now_time);
+        localStorage.setItem("myneighbor_url", neighbor_url);
+        alert("주민 변경에 성공했다구리!");
+      }
     }
   }
 };
@@ -99,9 +100,7 @@ export default {
 .profile {
   display: inline-block;
   width: 40%;
-  /* height: 100%; */
   text-align: center;
-  /* padding-top: 20%; */
   font-size: 18px;
 }
 
