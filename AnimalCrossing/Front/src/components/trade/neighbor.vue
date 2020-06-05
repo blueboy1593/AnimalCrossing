@@ -1,6 +1,6 @@
 !<template>
   <div class="neighborCards">
-    <h1>여기는 동물주민거래 게시판이지롱</h1>
+    <!-- <h1>여기는 동물주민거래 게시판이지롱</h1> -->
     <tradeCard
       v-for="tradeCard in tradeCards"
       :key="tradeCard.id"

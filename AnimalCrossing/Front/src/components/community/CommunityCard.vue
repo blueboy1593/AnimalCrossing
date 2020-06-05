@@ -16,8 +16,8 @@
         <div class="infoName">
           {{ communityCard.title }}
         </div>
-        <v-row id="vrow">
-          <div class="infoDetail">
+        <v-row>
+          <div class="infoDetail3">
             {{ communityCard.username }}
           </div>
           <div class="infoDetail2">
@@ -47,7 +47,7 @@ export default {
   methods: {
     toDetail: function() {
       console.log(this.id);
-      this.$router.push({ path: `/community/cdetail/${this.id}` });
+      this.$router.push({ path: `/community/detail/${this.id}` });
     }
   }
 };
@@ -92,7 +92,7 @@ export default {
   font-family: "Gamja Flower", cursive;
 }
 
-.infoDetail {
+.infoDetail3 {
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
   margin-left: 20px;

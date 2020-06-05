@@ -1,5 +1,5 @@
 !<template>
-  <div class="fossilCards">
+  <div class="fossilCardst">
     <h1>여기는 화석거래 게시판이지롱</h1>
     <tradeCard
       v-for="tradeCard in tradeCards"
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style scoped>
-.fossilCards {
+.fossilCardst {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: auto;
@@ -39,35 +39,35 @@ export default {
   /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
 }
 @media (max-width: 1600px) {
-  .fossilCards {
+  .fossilCardst {
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 1rem 0.4rem;
   }
 }
 
 @media (max-width: 1300px) {
-  .fossilCards {
+  .fossilCardst {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 1rem 0.4rem;
   }
 }
 
 @media (max-width: 1100px) {
-  .fossilCards {
+  .fossilCardst {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem 0.4rem;
   }
 }
 
 @media (max-width: 900px) {
-  .fossilCards {
+  .fossilCardst {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem 0rem;
   }
 }
 
 @media (max-width: 560px) {
-  .fossilCards {
+  .fossilCardst {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem 0rem;
   }

@@ -90,6 +90,7 @@ export default {
       // $router.push("/auction/register/" + response.data.id);
     }
   },
+  // detail정보 가져오기
   mounted: async function() {
     var showId = this.$route.params.id;
     const data = await showService.getShowById(showId);
