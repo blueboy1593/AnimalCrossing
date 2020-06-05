@@ -89,7 +89,7 @@ export default {
 .infoDetail {
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
-  margin-left: 15px;
+  /* margin-left: 15px; */
 }
 .infoDetail2 {
   text-align: right;
