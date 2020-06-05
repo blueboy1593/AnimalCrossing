@@ -2,14 +2,14 @@
   <!-- 전체 -->
   <div id="writeWrap">
     <!-- 거래할 아이템 선택 -->
-    <form id="tradeUpload" action="" method="">
+    <div id="tradeUpload" action="" method="">
       <!-- <input type="radio" name="trade" value="buy" id="buy" />
             <label for="buy">삽니다</label>
             <input type="radio" name="trade" value="sell" id="sell" />
             <label for="sell">팝니다</label> -->
-      <v-radio-group id="buySell" v-model="row" row>
-        <v-radio label="삽니다" value="radio-1"></v-radio>
-        <v-radio label="팝니다" value="radio-2"></v-radio>
+      <v-radio-group id="buySell" v-model="trade.sort">
+        <v-radio label="삽니다" value="buy"></v-radio>
+        <v-radio label="팝니다" value="sell"></v-radio>
       </v-radio-group>
 
       <!-- 거래할 아이템 종류 -->
@@ -21,7 +21,7 @@
       <!-- 거래할 아이템 종류로 바꿈 -->
       <v-col id="tradeItem" class="d-flex" cols="12" sm="6">
         <v-select
-          v-model="selected"
+          v-model="category"
           :items="items"
           label="종류"
           dense
@@ -35,6 +35,7 @@
       </v-col> -->
 
       <v-autocomplete
+        v-model="name"
         :items="selectedLists"
         :filter="customFilter"
         color="white"
@@ -43,29 +44,58 @@
         @click="update"
         loading
       ></v-autocomplete>
-    </form>
+    </div>
 
     <!-- 제목과 내용 -->
-    <form id="wantTrade" action="" method="">
-      <div id="imgPreview">이미지 미리보기</div>
+    <div id="wantTrade" action="" method="">
+      <div id="imgPreview">
+        <input ref="imageInput" type="file" hidden @change="onChangeImages" />
+        <button id="imgUploadButton" type="button" @click="onClickImageUpload">
+          자랑할 사진 업로드
+        </button>
+        <div class="imgCon">
+          <img id="imgPreview" v-if="trade.image" :src="trade.image" /><img />
+        </div>
+      </div>
 
       <div class="bell">
-        <input id="bellInput" type="text" placeholder="가격 제시" />
+        <input
+          id="bellInput"
+          type="text"
+          placeholder="가격 제시"
+          v-model="trade.price"
+        />
         <img id="bellImg" src="../../assets/images/bell.png" alt="" />
       </div>
       <!-- <label for="bell">벨</label> -->
 
-      <form id="write" action="">
-        <button type="submit">
+      <div id="write" action="">
+        <button type="submit" v-on:click="tradeSubmit">
           <img class="writeButton" src="../../assets/images/write.png" alt="" />
         </button>
-      </form>
-    </form>
+      </div>
+    </div>
+    <div id="textUpload" action="" method="">
+      <input
+        id="title"
+        type="text"
+        placeholder="제목을 입력해주세요"
+        v-model="trade.title"
+      />
+      <textarea
+        id="field"
+        placeholder="내용을 입력해주세요"
+        v-model="trade.content"
+      ></textarea>
+    </div>
   </div>
 </template>
 
 <script>
 import * as infoService from "@/api/info.js";
+import { tradePost } from "@/api/trade.js";
+import * as firebase from "firebase";
+
 export default {
   name: "write",
   data: () => ({
@@ -73,34 +103,90 @@ export default {
     fossils: [],
     neighbors: [],
     paintings: [],
-    row: "",
-    model: "",
-    selected: "",
-    selectedLists: []
+    selectedLists: [],
+    category: "",
+    name: "",
+
+    // post를 보내기 위해서 dict로 묶어서 사용!
+    trade: {
+      sort: "",
+      price: 0,
+      title: "",
+      content: "",
+      image: null
+    }
   }),
   methods: {
     onClickImageUpload() {
       this.$refs.imageInput.click();
     },
-    onChangeImages(e) {
+    async onChangeImages(e) {
       console.log(e.target.files);
       const file = e.target.files[0];
-      this.imageUrl = URL.createObjectURL(file);
+      this.trade.image = URL.createObjectURL(file);
+      await firebase
+        .storage()
+        .ref()
+        .child(file.name)
+        .put(file)
+        .then(response => {
+          console.log(response);
+          console.log("firebase 업로드");
+        });
+      let image = "";
+      await firebase
+        .storage()
+        .ref()
+        .child(file.name)
+        .getDownloadURL()
+        .then(response => {
+          console.log(response);
+          console.log("firebase 받아오기");
+          image = response;
+        });
+      this.trade.image = image;
     },
     init() {
       this.selectedLists = [];
     },
     update() {
       console.log(this.selected);
-      if (this.selected === "이웃") {
+      if (this.category === "이웃") {
         this.selectedLists = this.neighbors;
-      } else if (this.selected === "미술품") {
+      } else if (this.category === "미술품") {
         this.selectedLists = this.paintings;
-      } else if (this.selected === "화석") {
+      } else if (this.category === "화석") {
         this.selectedLists = this.fossils;
       } else {
         this.selectedLists = "";
       }
+    },
+    async tradeSubmit() {
+      const token = this.$store.state.user.token;
+      const user = this.$store.state.user;
+      let image = "";
+      if (this.trade.image === null) {
+        image =
+          "https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg";
+      } else {
+        image = this.trade.image;
+      }
+      console.log(image);
+      const trade_info = this.trade;
+      const trade = {
+        title: trade_info.title,
+        content: trade_info.content,
+        user_id: user.id,
+        username: user.username,
+        image: image,
+        category: this.category,
+        name: this.name,
+        sort: trade_info.sort,
+        price: trade_info.price
+      };
+      console.log(trade);
+      await tradePost(trade, token);
+      // this.$router.push("/community/list");
     }
   },
   async mounted() {
@@ -112,7 +198,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 #writeWrap {
@@ -147,6 +233,62 @@ textarea:focus {
   grid-area: tradeUpload;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: "buySell tradeItem tradeSearch";
+}
+
+/* 여기서부터 communitywrite에서 가져온 부분. */
+#textUpload {
+  min-width: 50%;
+  display: grid;
+  grid-area: textUpload;
+  padding-left: 2rem;
+}
+
+#title {
+  display: inline-block;
+  background-color: rgba(210, 241, 31, 0.37);
+  width: 90%;
+  height: 50px;
+  border-radius: 13px;
+  font-family: "Jua", sans-serif;
+  text-align: center;
+}
+
+#field {
+  background-color: rgba(210, 241, 31, 0.37);
+  width: 90%;
+  height: 240px;
+  border-radius: 13px;
+  margin-top: 15px;
+  font-family: "Jua", sans-serif;
+  text-align: center;
+}
+/* 는 여기까지 */
+
+/* 이미지 업로드 하는 부분 community write에서 따옴 */
+#imgUploadButton {
+  background-color: rgba(210, 241, 31, 0.37);
+  height: 1.8rem;
+  border-radius: 10px;
+  font-family: "Jua", sans-serif;
+  display: grid;
+  grid-area: imgUploadButton;
+}
+
+.imgCon {
+  margin-top: -1rem;
+  max-width: 10rem;
+  display: grid;
+  grid-area: imgCon;
+  height: 100px;
+  float: left;
+}
+/* 여기까지 복사해온거 */
+
+#imgPreview {
+  margin: 0 auto;
+  margin-left: -2.5rem;
+  max-width: 15rem;
+  padding-top: -10rem;
 }
 
 #buySell {
@@ -203,6 +345,7 @@ textarea:focus {
   margin-right: 5%;
   margin-left: 5%;
   height: 40px;
+  text-align: center;
 }
 
 #bellImg {
