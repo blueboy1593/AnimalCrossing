@@ -168,9 +168,8 @@ const routes = [
           {
             path: "tetail/:id",
             name: "tdetail",
-            component: () =>
-              import("../components/trade/tradeDetail.vue")
-          },
+            component: () => import("../components/trade/tradeDetail.vue")
+          }
         ]
       }
     ]

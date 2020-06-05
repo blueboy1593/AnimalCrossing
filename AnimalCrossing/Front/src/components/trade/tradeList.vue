@@ -24,11 +24,15 @@ export default {
   },
   data() {
     return {
-      tradeItemCards: [],
+      tradeItemCards: []
     };
   },
   async mounted() {
-    this.tradeItemCards = await getTradeById(this.category, this.id, this.tradeItemCards);
+    this.tradeItemCards = await getTradeById(
+      this.category,
+      this.id,
+      this.tradeItemCards
+    );
   }
 };
 </script>
