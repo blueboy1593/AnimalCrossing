@@ -30,8 +30,7 @@ export default {
   line-height: 50px;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  grid-template-areas: 
-    "user comment time";
+  grid-template-areas: "user comment time";
 }
 
 .onecomment:hover {
