@@ -85,6 +85,10 @@ export default {
   margin: 0 auto;
 }
 
+.detailimage {
+  width: 100%;
+}
+
 .infoName {
   text-align: center;
   font-weight: bolder;
