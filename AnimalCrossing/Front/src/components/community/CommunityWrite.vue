@@ -86,7 +86,7 @@ export default {
     },
 
     async write() {
-      const token = this.$store.state.token;
+      const token = this.$store.state.user.token;
       const user = this.$store.state.user;
       let image = "";
       if (this.article.imageUrl === null) {
