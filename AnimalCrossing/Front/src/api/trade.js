@@ -45,7 +45,7 @@ export function getDetailTradeByArticleId(tradeId, data) {
     .get(`/trades/detail/${tradeId}/`)
     .then(response => {
       console.log(response.data);
-      data = response.data
+      data = response.data;
       return data;
     })
     .catch(error => {

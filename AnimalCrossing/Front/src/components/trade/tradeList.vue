@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div>      
-      <h2 style="font-family:Gamja Flower">{{category}}</h2>
+    <div>
+      <h2 style="font-family:Gamja Flower">{{ category }}</h2>
       <v-btn>뒤로가기</v-btn>
-      <br>
+      <br />
       <tradeItemCard
         v-for="tradeItemCard in tradeItemCards"
         :key="tradeItemCard.id"
@@ -26,11 +26,15 @@ export default {
   },
   data() {
     return {
-      tradeItemCards: [],
+      tradeItemCards: []
     };
   },
   async mounted() {
-    this.tradeItemCards = await getTradeById(this.category, this.id, this.tradeItemCards);
+    this.tradeItemCards = await getTradeById(
+      this.category,
+      this.id,
+      this.tradeItemCards
+    );
   }
 };
 </script>

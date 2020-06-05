@@ -13,7 +13,7 @@
           </p>
         </v-col>
       </v-row>
-      <div v-if="trade.image = null" class="detailimage">
+      <div v-if="(trade.image = null)" class="detailimage">
         <img
           src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
           class="detailimage detailImg"
@@ -93,8 +93,8 @@ export default {
     //   this.comment = "";
     //   const data = await showService.getShowById(show_id);
     //   this.trade.CommentLists = data.showcomments;
-      // this.$router.go(this.$router.currentRoute);
-      // $router.push("/auction/register/" + response.data.id);
+    // this.$router.go(this.$router.currentRoute);
+    // $router.push("/auction/register/" + response.data.id);
     // }
   },
   // detail정보 가져오기
