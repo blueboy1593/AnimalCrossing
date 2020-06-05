@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <router-link :to="{ name: 'tdetail', params: { id: tradeItemCard.id } }"> -->
+    <router-link :to="{ name: 'tdetail', params: { id: tradeItemCard.id } }">
       <div  class="cCard">
         <div class="cphoto">
         </div>
@@ -11,7 +11,7 @@
           {{ tradeItemCard.content }}
         </div>
       </div>
-    <!-- <router-link> -->
+    </router-link>
   </div>
 </template>
 

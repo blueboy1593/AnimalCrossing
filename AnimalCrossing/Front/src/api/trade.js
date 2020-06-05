@@ -40,12 +40,13 @@ export function getTradeListEtc() {
 /*
  * 특정 거래글로 접근하기
  */
-export function getDetailTradeByArticleId(article_pk) {
+export function getDetailTradeByArticleId(tradeId, data) {
   return instance
-    .get(`/trades/detail/${article_pk}/`)
+    .get(`/trades/detail/${tradeId}/`)
     .then(response => {
-      console.log(`/trades/detail/${article_pk}/ => `, response.data);
-      return response.data;
+      console.log(response.data);
+      data = response.data
+      return data;
     })
     .catch(error => {
       console.log(error);

@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div>
-      <h2 style="font-family:Gamja Flower">trade list</h2>
+    <div>      
+      <h2 style="font-family:Gamja Flower">{{category}}</h2>
+      <v-btn>뒤로가기</v-btn>
+      <br>
       <tradeItemCard
         v-for="tradeItemCard in tradeItemCards"
         :key="tradeItemCard.id"
