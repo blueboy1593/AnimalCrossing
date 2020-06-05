@@ -12,7 +12,7 @@
           </p>
         </v-col>
       </v-row>
-      <div v-if="this.image === null" class="detailimage">
+      <div v-if="article.image === null" class="detailimage">
         <img
           src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
           class="detailimage detailImg"
@@ -27,7 +27,7 @@
       <v-btn color="error">삭제하기</v-btn>
       <h4 class="text">
         <div class="commentImg">
-          <img id="commentImg" src="../../assets/images/comment.png" alt="">
+          <img id="commentImg" src="../../assets/images/comment.png" alt="" />
         </div>
       </h4>
       <CommentList
