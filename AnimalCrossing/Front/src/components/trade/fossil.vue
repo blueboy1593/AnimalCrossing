@@ -1,4 +1,4 @@
-!<template>
+<template>
   <div class="fossilCardst">
     <h1>여기는 화석거래 게시판이지롱</h1>
     <tradeCard
@@ -13,7 +13,7 @@
 
 <script>
 import { getFossils } from "@/api/info.js";
-import tradeCard from "../info/infoCard.vue";
+import tradeCard from "../trade/tradeCard.vue";
 export default {
   name: "tradeNeighbors",
   components: {
@@ -21,9 +21,9 @@ export default {
   },
   data() {
     return {
-      tradeCards: [],
+      category: "fossil",
       routePath: this.$route.path,
-      category: "fossil"
+      tradeCards: []
     };
   },
   async mounted() {

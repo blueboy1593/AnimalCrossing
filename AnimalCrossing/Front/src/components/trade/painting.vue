@@ -1,4 +1,4 @@
-!<template>
+<template>
   <div class="paintingCards">
     <h1>카드를 클릭하면 뭐가 나올까요</h1>
     <tradeCard
@@ -13,7 +13,7 @@
 
 <script>
 import { getPaintings } from "@/api/info.js";
-import tradeCard from "../info/infoCard.vue";
+import tradeCard from "../trade/tradeCard.vue";
 export default {
   name: "tradeNeighbors",
   components: {
