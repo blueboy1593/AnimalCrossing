@@ -123,7 +123,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .infoCard {
   margin-top: 0.3rem;
   width: 120px;

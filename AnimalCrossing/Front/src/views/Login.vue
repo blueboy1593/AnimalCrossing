@@ -79,7 +79,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .box {
   padding-top: 1rem;
   /* transform: translate(-50%, -50%); */

@@ -19,7 +19,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .onecomment {
   background-color: rgba(30, 143, 255, 0.075);
   border-top-left-radius: 10px;
