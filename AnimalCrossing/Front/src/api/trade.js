@@ -2,7 +2,7 @@ import { createInstance } from "./index.js";
 
 const instance = createInstance();
 
-// 특정 id에 대한 글 한개 가져오기
+// 특정 id에 대한 거래글 모두 가져오기
 
 export function getTradeById(category, tradeid) {
   return instance
@@ -20,54 +20,6 @@ export function getTradeById(category, tradeid) {
  * 해당 카테고리 모든 거래글 가져오기 (동물주민, 미술품, 화석, 기타)
  * 그냥 도감 정보 가져오는 api 가져다 쓰기. 어차피 가져오기만 하는 거니까.
  */
-
-/*
- * 동물주민 카테고리의 특정 id에 대한 모든 거래글 가져오기
- * (예: 동물주민의 id가 1인 모든 거래글)
- */
-export function getTradeListByAnimalId(id) {
-  return instance
-    .get(`/trades/list/animal/${id}`)
-    .then(response => {
-      console.log(`/trades/list/animal/${id} => `, response.data);
-      return response.data;
-    })
-    .catch(error => {
-      console.log(error);
-    });
-}
-
-/*
- * 미술품 카테고리의 특정 id에 대한 모든 거래글 가져오기
- * (예: 미술품 id가 1인 모든 거래글)
- */
-export function getTradeListByPaintingId(id) {
-  return instance
-    .get(`/trades/list/painting/${id}`)
-    .then(response => {
-      console.log(`trades/list/painting/${id} => `, response.data);
-      return response.data;
-    })
-    .catch(error => {
-      console.log(error);
-    });
-}
-
-/*
- * 화석 카테고리의 특정 id에 대한 모든 거래글 가져오기
- * (예: 화석 id가 1인 모든 거래글)
- */
-export function getTradeListByFossilId(id) {
-  return instance
-    .get(`/trades/list/fossil/${id}`)
-    .then(response => {
-      console.log(`trades/list/painting/${id} => `, response.data);
-      return response.data;
-    })
-    .catch(error => {
-      console.log(error);
-    });
-}
 
 /*
  * etc 카테고리의 모든 거래글 리스트 가져오기

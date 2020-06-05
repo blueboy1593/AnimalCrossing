@@ -6,14 +6,13 @@
       :key="tradeCard.id"
       :infoCard="tradeCard"
       :routePath="routePath"
-      @click="routePushto(tradeCard.id)"
     />
   </div>
 </template>
 
 <script>
 import { getNeighbors } from "@/api/info.js";
-import tradeCard from "../info/infoCard.vue";
+import tradeCard from "../trade/tradeCard.vue";
 export default {
   name: "tradeNeighbors",
   components: {
@@ -31,7 +30,8 @@ export default {
   },
   methods: {
     routePushTo(neighbor_id) {
-      this.$router.push(`/trade/neighbor/${neighbor_id}`);
+      console.log(neighbor_id);
+      this.$router.push(`/trade/detail/${neighbor_id}`);
     }
   }
 };
