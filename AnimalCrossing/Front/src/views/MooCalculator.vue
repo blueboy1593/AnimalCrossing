@@ -210,21 +210,7 @@
 export default {
   data() {
     return {
-      moo: [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
+      moo: [100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     };
   },
   methods: {
@@ -262,21 +248,7 @@ export default {
     },
     initialize: function() {
       localStorage.removeItem("moo_info");
-      this.moo = [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ];
+      this.moo = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       alert("무 입력값이 초기화 되었습니다.");
     }
   },

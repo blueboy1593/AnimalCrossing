@@ -17,7 +17,7 @@
           {{ communityCard.title }}
         </div>
         <v-row>
-          <div class="infoDetail">
+          <div class="infoDetail3">
             {{ communityCard.username }}
           </div>
           <div class="infoDetail2">
@@ -86,7 +86,7 @@ export default {
   font-family: "Gamja Flower", cursive;
 }
 
-.infoDetail {
+.infoDetail3 {
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
   margin-left: 15px;
