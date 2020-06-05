@@ -45,6 +45,10 @@ export default {};
   height: 60px;
 }
 
+.nav-img:hover {
+  transform: scale(1.1);
+}
+
 /* style the buttons to have a bit of whitespace around the text
 a background is specified in the script */
 .nav--item {
