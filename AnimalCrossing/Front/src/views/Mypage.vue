@@ -41,14 +41,28 @@ export default {
     };
   },
   async mounted() {
+    // 여기는 유저 정보를 스토어에서 받아서 저장하는 코드
     const user = this.$store.state.user;
-    const infoCards = await getNeighbors(infoCards);
     this.username = user.username;
     this.email = user.email;
-    this.infoCards = infoCards;
-    const random_info = infoCards[Math.floor(Math.random() * infoCards.length)];
-    this.neighbor = random_info.engname;
-    // console.log(this.neighbor);
+
+    // 로컬 스토리지에 오늘의 주민 정보가 있을 때.
+    if (localStorage.getItem("myneighbor_time")) {
+      const neighbor_name = localStorage.getItem("myneighbor_name");
+      this.neighbor = neighbor_name;
+    } else {
+      const infoCards = await getNeighbors(infoCards);
+      // this.infoCards = infoCards;
+      const random_info =
+        infoCards[Math.floor(Math.random() * infoCards.length)];
+      this.neighbor = random_info.engname;
+
+      // 오늘의 첫 시간 저장.
+      const now_time = new Date().toLocaleDateString();
+      localStorage.setItem("myneighbor_time", now_time);
+      localStorage.setItem("myneighbor_name", random_info.engname);
+      // console.log(this.neighbor);
+    }
   },
   methods: {
     getAnimalImgPath(engname) {
@@ -56,8 +70,13 @@ export default {
       console.log(images);
       return images;
     },
-    changeNeighbor: function() {
-      const infoCards = this.infoCards;
+    changeNeighbor: async function() {
+      // 현재 시간 잡아내는 코드
+      // const now_time = new Date().toLocaleDateString();
+
+      // Random import해서 주민 하나 뽑기.
+      // const infoCards = this.infoCards;
+      const infoCards = await getNeighbors(infoCards);
       const random_info =
         infoCards[Math.floor(Math.random() * infoCards.length)];
       this.neighbor = random_info.engname;
