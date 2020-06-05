@@ -27,7 +27,18 @@
       <v-btn color="error">삭제하기</v-btn>
       <h4 class="text">
         <div class="commentImg">
-          <img id="commentImg" src="../../assets/images/comment.png" alt="" />
+          <img
+            id="commentImg"
+            src="../../assets/images/comment.png"
+            alt=""
+            v-on:click="writeComment"
+          />
+          <input
+            id="comment"
+            type="text"
+            v-model="comment"
+            placeholder="댓글을 입력하세요"
+          />
         </div>
       </h4>
       <CommentList
@@ -54,8 +65,14 @@ export default {
         username: "",
         created_at: "",
         CommentLists: [] // obj3개 들어감
-      }
+      },
+      comment: ""
     };
+  },
+  methods: {
+    writeComment() {
+      console.log(this.comment);
+    }
   },
   mounted: async function() {
     var showId = this.$route.params.id;
@@ -99,6 +116,23 @@ export default {
 }
 .text {
   font-family: "Gamja Flower", cursive;
+}
+
+#comment {
+  display: inline-block;
+  background-color: rgba(210, 241, 31, 0.37);
+  width: 80%;
+  height: 50px;
+  border-radius: 13px;
+  font-family: "Jua", sans-serif;
+  text-align: center;
+}
+
+/* 한줄로 해주기 위해 flex!! */
+.commentImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #commentImg {
