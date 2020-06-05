@@ -1,22 +1,24 @@
 <template>
   <div>
+    <!-- <router-link :to="{ name: 'tdetail', params: { id: tradeItemCard.id } }"> -->
       <div  class="cCard">
         <div class="cphoto">
         </div>
         <div class="infoName">
-          {{ tradeCard.price }}
+          {{ tradeItemCard.title }}
         </div>
-          <div class="infoDetail3">
-            {{ tradeCard.content }}
-          </div>
+        <div class="infoDetail3">
+          {{ tradeItemCard.content }}
+        </div>
       </div>
+    <!-- <router-link> -->
   </div>
 </template>
 
 <script>
 export default {
   name: "tradeItemCard",
-  props: ["tradeCard"],
+  props: ["tradeItemCard"],
 };
 </script>
 

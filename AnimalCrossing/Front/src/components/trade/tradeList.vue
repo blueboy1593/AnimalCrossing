@@ -1,11 +1,11 @@
 <template>
   <div>
     <div>
-      <h2 style="font-family:Gamja Flower">거래해요, 동물의 숲</h2>
-      <tradeCard
-        v-for="tradeCard in tradeCards"
-        :key="tradeCard.id"
-        :tradeCard="tradeCard"
+      <h2 style="font-family:Gamja Flower">trade list</h2>
+      <tradeItemCard
+        v-for="tradeItemCard in tradeItemCards"
+        :key="tradeItemCard.id"
+        :tradeItemCard="tradeItemCard"
         class="card_one"
       />
     </div>
@@ -13,22 +13,22 @@
 </template>
 
 <script>
-// import { getTradeById } from "@/api/trade.js";
-import tradeCard from "./tradeItemCard.vue";
+import { getTradeById } from "@/api/trade.js";
+import tradeItemCard from "./tradeItemCard.vue";
 
 export default {
   name: "trade",
+  props: ["category", "id"],
   components: {
-    tradeCard
+    tradeItemCard
   },
   data() {
     return {
-      tradeCards: [],
+      tradeItemCards: [],
     };
   },
   async mounted() {
-    console.log(this.category, this.infoCard)
-    // this.inftradeCards = await getTradeById(this.category, this.tradeCard.id);
+    this.tradeItemCards = await getTradeById(this.category, this.id, this.tradeItemCards);
   }
 };
 </script>

@@ -7,7 +7,7 @@
         <img
           v-if="routePath === '/trade/neighbor'"
           :src="getAnimalImgPath(infoCard.engname)"
-          :category="category"
+          :id = "infoCard.id"
           class="image"
         />
         <img
@@ -79,11 +79,6 @@
 export default {
   name: "infoCard",
   props: ["infoCard", "routePath", "category"],
-  data() {
-    // return {
-    //   category: "neighbor"
-    // }
-  },
   methods: {
     getAnimalImgPath(engname) {
       let images = require(`@/assets/images/image_animal/${engname}.png`);

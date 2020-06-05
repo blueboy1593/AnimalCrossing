@@ -4,12 +4,13 @@ const instance = createInstance();
 
 // 특정 id에 대한 거래글 모두 가져오기
 
-export function getTradeById(category, tradeid) {
+export function getTradeById(category, id, lists) {
   return instance
-    .get(`/trades/list/${category}/${tradeid}/`)
+    .get(`/trades/list/${category}/${id}/`)
     .then(response => {
-      console.log(`category / tradeid `, response.data);
-      return response.data;
+      lists = response.data;
+      console.log(`category / tradeid`, response.data);
+      return lists;
     })
     .catch(error => {
       console.log(error);

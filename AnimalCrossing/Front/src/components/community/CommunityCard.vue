@@ -21,7 +21,7 @@
             {{ communityCard.username }}
           </div>
           <div class="infoDetail2">
-            {{ this.counter }}
+            {{ communityCard.created_at }}
           </div></v-row
         >
       </div>
@@ -32,18 +32,7 @@
 <script>
 export default {
   name: "communityCard",
-  props: ["communityCard"],
-  data: function() {
-    return {
-      counter: this.communityCard.created_at,
-      id: this.communityCard.id
-    };
-  },
-  computed: {
-    trim: function() {
-      return this.counter.substring(0, 5);
-    }
-  }
+  props: ["communityCard"]
 };
 </script>
 

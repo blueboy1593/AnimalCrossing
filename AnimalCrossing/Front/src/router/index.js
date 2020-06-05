@@ -164,7 +164,13 @@ const routes = [
             name: "tlist",
             props: true,
             component: () => import("../components/trade/tradeList.vue")
-          }
+          },
+          {
+            path: "tetail/:id",
+            name: "tdetail",
+            component: () =>
+              import("../components/trade/tradeDetail.vue")
+          },
         ]
       }
     ]

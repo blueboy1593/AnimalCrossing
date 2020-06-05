@@ -23,7 +23,7 @@ export default {
     return {
       tradeCards: [],
       detailTrade: [],
-      category: "neighbor",
+      category: "animal", // 바꿈
       routePath: this.$route.path
     };
   },
