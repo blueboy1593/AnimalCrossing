@@ -1,16 +1,16 @@
 <template>
   <div>
-    <!-- <router-link :to="{ name: 'tdetail', params: { id: tradeItemCard.id } }"> -->
-    <div class="cCard">
-      <div class="cphoto"></div>
-      <div class="infoName">
-        {{ tradeItemCard.title }}
+    <router-link :to="{ name: 'tdetail', params: { id: tradeItemCard.id } }">
+      <div class="cCard">
+        <div class="cphoto"></div>
+        <div class="infoName">
+          {{ tradeItemCard.title }}
+        </div>
+        <div class="infoDetail3">
+          {{ tradeItemCard.content }}
+        </div>
       </div>
-      <div class="infoDetail3">
-        {{ tradeItemCard.content }}
-      </div>
-    </div>
-    <!-- <router-link> -->
+    </router-link>
   </div>
 </template>
 
