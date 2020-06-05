@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link :to="{ name: 'cdetail', params: { id: communityCard.id } }">
-      <div  class="cCard">
+      <div class="cCard">
         <div class="cphoto">
           <div v-if="communityCard.image === null">
             <img
@@ -43,7 +43,7 @@ export default {
     trim: function() {
       return this.counter.substring(0, 5);
     }
-  },
+  }
 };
 </script>
 

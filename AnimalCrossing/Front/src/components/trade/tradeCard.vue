@@ -1,6 +1,8 @@
 <template>
-  <div class="infoCard" >
-    <router-link :to="{name: 'tlist', params:{ id:infoCard.id, category:category }}">
+  <div class="infoCard">
+    <router-link
+      :to="{ name: 'tlist', params: { id: infoCard.id, category: category } }"
+    >
       <div class="photo">
         <img
           v-if="routePath === '/trade/neighbor'"
@@ -109,6 +111,7 @@ export default {
 
 <style scoped>
 .infoCard {
+  margin-left: 5px;
   margin-top: 0.3rem;
   width: 120px;
   /* height: 172px; */
@@ -118,9 +121,9 @@ export default {
 }
 
 .infoCard:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
   opacity: 0.9;
-  border: 3px solid #276dd68e;
+  box-shadow: 0 0 0 3px #276dd68e;
 }
 
 .photo {

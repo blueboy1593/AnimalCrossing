@@ -51,6 +51,23 @@ export function getDetailTradeByArticleId(article_pk) {
     });
 }
 
+// 거래글 작성하기
+
+export function tradePost(trade, token) {
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: "JWT " + token
+  };
+  instance
+    .post("/trades/write/", trade, { headers })
+    .then(response => {
+      console.log("tradePost", response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
 /*
  * 특정 거래글로 수정하기
  */
