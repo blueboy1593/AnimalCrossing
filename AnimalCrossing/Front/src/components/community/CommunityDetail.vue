@@ -98,11 +98,11 @@ export default {
         return true;
       }
     },
-    deleteShow() {
+    async deleteShow() {
       const show_pk = this.$route.params.id;
       const token = this.$store.state.user.token;
-      // console.log(show_pk, token); 얘는 문제 없음
-      deleteShows(show_pk, token);
+      await deleteShows(show_pk, token);
+      this.$router.go(-1);
     }
   },
   // detail정보 가져오기
