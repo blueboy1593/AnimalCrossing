@@ -45,6 +45,23 @@ export function writeShows(article, token) {
     });
 }
 
+// 자랑글 삭제하기
+export function deleteShows(show_pk, token) {
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: "JWT " + token
+  };
+  instance
+    .delete(`/shows/detail_ud/${show_pk}/`, show_pk, { headers })
+    .then(response => {
+      this.$router.go(-1);
+      console.log("삭제완료:::: ", response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
 // Show 게시판에서 댓글 달기
 export function writeComment(comment, show_id, token) {
   const headers = {

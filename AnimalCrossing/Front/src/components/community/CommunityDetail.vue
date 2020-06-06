@@ -24,7 +24,9 @@
       <div class="showcontent">
         <p>{{ article.content }}</p>
       </div>
-      <v-btn color="error">삭제하기</v-btn>
+      <v-btn v-if="this.checkId()" color="error" @click="deleteShow"
+        >삭제하기</v-btn
+      >
       <h4 class="text">
         <div class="commentImg">
           <input
@@ -53,7 +55,7 @@
 <script>
 import * as showService from "../../api/show.js";
 import CommentList from "./CommunityCommentList.vue";
-import { writeComment } from "../../api/show.js";
+import { deleteShows, writeComment } from "../../api/show.js";
 
 export default {
   components: { CommentList },
@@ -64,8 +66,10 @@ export default {
         content: "",
         image: null,
         username: "",
+        user_id: "",
         created_at: "",
-        CommentLists: [] // obj3개 들어감
+        CommentLists: [], // obj3개 들어감
+        show_pk: ""
       },
       comment: ""
     };
@@ -88,6 +92,17 @@ export default {
       this.article.CommentLists = data.showcomments;
       // this.$router.go(this.$router.currentRoute);
       // $router.push("/auction/register/" + response.data.id);
+    },
+    checkId() {
+      if (this.article.user_id === this.$store.state.user.id) {
+        return true;
+      }
+    },
+    deleteShow() {
+      const show_pk = this.$route.params.id;
+      const token = this.$store.state.user.token;
+      // console.log(show_pk, token); 얘는 문제 없음
+      deleteShows(show_pk, token);
     }
   },
   // detail정보 가져오기
@@ -95,12 +110,12 @@ export default {
     var showId = this.$route.params.id;
     const data = await showService.getShowById(showId);
     this.article.CommentLists = data.showcomments;
-    console.log(this.article.CommentLists); // object
     this.article.title = data.title;
     this.article.image = data.image;
     this.article.content = data.content;
     this.article.created_at = data.created_at;
     this.article.username = data.username;
+    this.article.user_id = data.user_id;
   }
 };
 </script>
