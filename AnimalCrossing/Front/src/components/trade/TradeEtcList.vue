@@ -1,12 +1,11 @@
 <template>
   <div>
     <div>
-      <v-btn>뒤로가기</v-btn>
       <br />
-      <tradeItemCard
-        v-for="tradeItemCard in tradeItemCards"
-        :key="tradeItemCard.id"
-        :tradeItemCard="tradeItemCard"
+      <TradeEtcCard
+        v-for="TradeEtcCard in TradeEtcCards"
+        :key="TradeEtcCard.id"
+        :TradeEtcCard="TradeEtcCard"
         class="card_one"
       />
     </div>
@@ -14,26 +13,21 @@
 </template>
 
 <script>
-import { getTradeById } from "@/api/trade.js";
-import tradeItemCard from "./tradeItemCard.vue";
+import { getTradeListEtc } from "@/api/trade.js";
+import TradeEtcCard from "./TradeEtcCard.vue";
 
 export default {
-  name: "trade",
-  props: ["category", "id"],
+  name: "tradeEtc",
   components: {
-    tradeItemCard
+    TradeEtcCard
   },
   data() {
     return {
-      tradeItemCards: []
+      TradeEtcCards: []
     };
   },
   async mounted() {
-    this.tradeItemCards = await getTradeById(
-      this.category,
-      this.id,
-      this.tradeItemCards
-    );
+    this.TradeEtcCards = await getTradeListEtc(this.TradeEtcCards);
   }
 };
 </script>
