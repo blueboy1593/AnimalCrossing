@@ -31,9 +31,12 @@
         <div class="showcontent">
           <p>{{ article.content }}</p>
         </div>
-        <v-btn v-if="this.checkId()" color="error" @click="deleteShow"
-          >삭제하기</v-btn
-        >
+        <!-- <v-btn id="boastDelete" v-if="this.checkId()" color="error" @click="deleteShow">삭제하기</v-btn> -->
+        <div id="boastDeleteDiv">
+          <button id="boastDelete" v-if="this.checkId()" @click="deleteShow">
+            <img id="boastDeleteImg" src="../../assets/images/삭제.png" alt="">
+          </button>
+        </div>
         <h4 class="text">
           <div class="commentImg">
             <input
@@ -222,5 +225,26 @@ export default {
   border-bottom: 1.2px solid rgba(76, 180, 157, 0.295);
   margin-bottom: 0.3rem;
   display: grid;
+}
+
+#boastDeleteDiv {
+  display: flex;
+  justify-content: center;
+  /* 오른쪽 정렬 */
+  /* justify-content: flex-end; */
+}
+
+#boastDelete {
+  max-width: 64px;
+  border: 0;
+  outline: 0;
+}
+
+#boastDeleteImg {
+  width: 100%;
+}
+
+#boastDeleteImg:hover {
+  transform: scale(1.1);
 }
 </style>
