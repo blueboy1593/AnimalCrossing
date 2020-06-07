@@ -46,7 +46,7 @@ export default {
   margin-right: 1rem;
   overflow: hidden;
   margin-left: 0.5rem;
-
+  color: black;
   background-color: rgba(110, 173, 157, 0.144);
 }
 
