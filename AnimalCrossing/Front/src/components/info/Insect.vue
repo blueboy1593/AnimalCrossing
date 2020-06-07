@@ -1,11 +1,14 @@
 <template>
-  <div class="insectCards">
-    <infoCard
-      v-for="infoCard in infoCards"
-      :key="infoCard.id"
-      :infoCard="infoCard"
-      :routePath="routePath"
-    />
+  <div>
+    <!-- <div class="dogam">곤충 도감</div> -->
+    <div class="insectCards">
+      <infoCard
+        v-for="infoCard in infoCards"
+        :key="infoCard.id"
+        :infoCard="infoCard"
+        :routePath="routePath"
+      />
+    </div>
   </div>
 </template>
 
@@ -28,56 +31,18 @@ export default {
   async mounted() {
     this.infoCards = await getInsects(this.infoCards);
   }
-  // data() {
-  //   return {
-  //     infoCards: [
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.dogam {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+  color: rgb(9, 40, 71);
+}
+
 .insectCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

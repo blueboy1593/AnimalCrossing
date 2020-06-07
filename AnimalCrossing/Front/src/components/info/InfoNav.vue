@@ -1,8 +1,10 @@
 <template>
-  <nav class="board__nav">
-    <router-link to="/info/fish">
-      <img src="../../assets/images/nav_fish.png" alt="Fish" class="nav-img" />
-    </router-link>
+  <div class="board__nav1">
+    <nav class="board__nav">
+      <img src="../../assets/images/도감.png" alt="도감" id="dogam" />
+      <router-link to="/info/fish">
+        <img src="../../assets/images/nav_fish.png" alt="Fish" class="nav-img" />
+      </router-link>
     <router-link to="/info/insect">
       <img
         src="../../assets/images/nav_insect.png"
@@ -29,7 +31,9 @@
     </router-link>
     <!-- <button class="nav--item" data-item="events">Events</button>
     <button class="nav--item" data-item="important">Important</button> -->
-  </nav>
+    </nav>
+    <!-- <div class="dogam">도감</div> -->
+  </div>
 </template>
 
 <script>
@@ -37,6 +41,7 @@ export default {};
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 /* navigation displaying the items evenly in a non-wrapping row */
 .board__nav {
   display: flex;
@@ -44,6 +49,18 @@ export default {};
   justify-content: space-evenly;
   width: 90%;
   justify-self: center;
+}
+
+#dogam {
+  width: 50px;
+  height: 40px;
+  margin-left: -10%;
+}
+
+.dogam {
+  font-size: 22px;
+  text-align: center;
+  font-family: "Jua", sans-serif;
 }
 
 /* navbar 이미지 사이즈 및 설정 */
