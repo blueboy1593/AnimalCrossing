@@ -109,7 +109,10 @@ export default {
     this.trade.title = data.title;
     this.trade.image = data.image;
     this.trade.content = data.content;
-    this.trade.created_at = data.created_at;
+    this.trade.created_at =
+      data.created_at.substring(0, 10) +
+      "  " +
+      data.created_at.substring(11, 16);
     this.trade.username = data.username;
     this.trade.CommentLists = data.comments;
     this.trade.price = data.price;

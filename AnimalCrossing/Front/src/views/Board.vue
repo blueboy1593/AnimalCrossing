@@ -113,7 +113,8 @@ body {
   max-width: 90%;
   max-height: 90%;
   display: grid;
-  background: rgba(10, 85, 10, 0.425);
+  background: rgba(10, 85, 56, 0.425);
+  /* background: rgba(10, 85, 10, 0.425); */
   box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.3);
   position: relative;
   border-radius: 15px;
