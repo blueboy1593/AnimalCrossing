@@ -105,12 +105,15 @@ export default {
     var tradeId = this.$route.params.id;
     const data = await tradeService.getDetailTradeByArticleId(tradeId);
     console.log(this.trade.CommentLists); // object
+    console.log(data);
     this.trade.title = data.title;
     this.trade.image = data.image;
     this.trade.content = data.content;
     this.trade.created_at = data.created_at;
     this.trade.username = data.username;
     this.trade.CommentLists = data.comments;
+    this.trade.price = data.price;
+    console.log(this.trade.price);
   }
 };
 </script>
@@ -143,6 +146,8 @@ export default {
 .showcontent {
   margin-top: 10px;
   font-family: "Gamja Flower", cursive;
+  text-align: center;
+  font-size: 1.2rem;
 }
 .text {
   font-family: "Gamja Flower", cursive;
