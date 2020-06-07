@@ -35,6 +35,7 @@ export default {
 </script>
 
 <style scoped>
+
 .cCard {
   display: inline-block;
   margin-top: 0.3rem;
@@ -43,7 +44,6 @@ export default {
   border-radius: 15px;
   margin-right: 1rem;
   overflow: hidden;
-
   background-color: rgba(110, 173, 157, 0.144);
 }
 
@@ -88,4 +88,5 @@ export default {
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
 }
+
 </style>

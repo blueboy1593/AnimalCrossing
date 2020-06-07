@@ -41,6 +41,7 @@ export default {
 
 <style scoped>
 .cCard {
+  color: black;
   display: inline-block;
   margin-top: 0.3rem;
   width: 26rem;
