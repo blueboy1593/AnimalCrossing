@@ -1,8 +1,10 @@
 <template>
   <div class="community">
     <div class="container">
-      <v-btn>뒤로가기</v-btn>
-      <h2 class="ttext" style="margin-bottom: 5px">{{ this.trade.title }}</h2>
+      <h2 class="ttext" style="margin-bottom: 5px">
+        {{ this.trade.title }} {{ this.trade.price }}
+      </h2>
+
       <v-row no-gutters>
         <v-col>
           <p class="text">{{ this.trade.username }}</p>
@@ -70,9 +72,7 @@ export default {
         username: "",
         created_at: "",
         price: "",
-        sort: "",
         name: "",
-        category: "",
         CommentLists: [] // obj1개 들어감
       },
       comment: ""
@@ -108,9 +108,6 @@ export default {
     this.trade.content = data.content;
     this.trade.created_at = data.created_at;
     this.trade.username = data.username;
-    this.trade.price = data.price;
-    this.trade.sort = data.username;
-    this.trade.category = data.username;
     this.trade.CommentLists = data.comments;
   }
 };

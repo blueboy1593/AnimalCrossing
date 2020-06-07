@@ -157,7 +157,7 @@ const routes = [
           {
             path: "etc",
             name: "trade_etc",
-            component: () => import("../components/trade/etc.vue")
+            component: () => import("../components/trade/Etc.vue")
           },
           {
             path: "list/:category/:id",
@@ -166,9 +166,14 @@ const routes = [
             component: () => import("../components/trade/tradeList.vue")
           },
           {
-            path: "tetail/:id",
-            name: "tdetail",
-            component: () => import("../components/trade/tradeDetail.vue")
+            path: "tradedetail/:id",
+            name: "tradedetail",
+            component: () => import("../components/trade/TradeDetail.vue")
+          },
+          {
+            path: "etcdetail/:id",
+            name: "etcdetail",
+            component: () => import("../components/trade/TradeEtcDetail.vue")
           }
         ]
       }

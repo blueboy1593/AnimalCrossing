@@ -1,27 +1,32 @@
 <template>
   <div>
-    <router-link
-      :to="{ name: 'tradedetail', params: { id: tradeItemCard.id } }"
-    >
+    <router-link :to="{ name: 'etcdetail', params: { id: TradeEtcCard.id } }">
       <div class="cCard">
         <div class="cphoto">
-          <div v-if="tradeItemCard.image === null">
+          <div v-if="TradeEtcCard.image === null">
             <img
               src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
               class="cimage"
             />
           </div>
           <div v-else>
-            <img v-bind:src="tradeItemCard.image" alt="" class="detailimage" />
+            <img v-bind:src="TradeEtcCard.image" alt="" class="detailimage" />
           </div>
         </div>
-        <div class="cphoto"></div>
         <div class="infoName">
-          {{ tradeItemCard.title }}
+          {{ TradeEtcCard.title }}
         </div>
-        <div class="infoDetail3">
-          {{ tradeItemCard.content }}
-        </div>
+        <v-row>
+          <div class="infoDetail3">
+            {{ TradeEtcCard.username }}
+          </div>
+          <div class="infoDetail4">
+            {{ TradeEtcCard.price }}
+          </div>
+          <div class="infoDetail2">
+            {{ TradeEtcCard.created_at }}
+          </div></v-row
+        >
       </div>
     </router-link>
   </div>
@@ -29,8 +34,8 @@
 
 <script>
 export default {
-  name: "tradeItemCard",
-  props: ["tradeItemCard"]
+  name: "TradeEtcCard",
+  props: ["TradeEtcCard"]
 };
 </script>
 
@@ -82,9 +87,15 @@ export default {
   font-family: "Gamja Flower", cursive;
   margin-left: 20px;
 }
+.infoDetail4 {
+  font-weight: 100;
+  font-family: "Gamja Flower", cursive;
+  margin-left: 20px;
+  text-align: center;
+}
 
 .infoDetail2 {
-  text-align: right;
+  text-align: right !important;
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
 }
