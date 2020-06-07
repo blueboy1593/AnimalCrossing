@@ -92,7 +92,7 @@
 
 <script>
 import * as infoService from "@/api/info.js";
-// import { tradePost } from "@/api/trade.js";
+import { tradePost } from "@/api/trade.js";
 import * as firebase from "firebase";
 
 export default {
@@ -165,7 +165,7 @@ export default {
       }
     },
     async tradeSubmit() {
-      // const token = this.$store.state.user.token;
+      const token = this.$store.state.user.token;
       const user = this.$store.state.user;
       let image = "";
       if (this.trade.image === null) {
@@ -185,12 +185,13 @@ export default {
         username: user.username,
         image: image,
         category: this.categoryEng,
-        name: find.id,
+        name: find[0].id.toString(),
         sort: trade_info.sort,
         price: trade_info.price
       };
+      console.log(find);
       console.log(trade);
-      // await tradePost(trade, token);
+      await tradePost(trade, token);
       // this.$router.push("/community/list");
     }
   },
