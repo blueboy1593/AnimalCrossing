@@ -87,8 +87,8 @@ export default {
       };
       console.log(comment);
       await writeComment(comment, show_id, token);
+      let data = await showService.getShowById(show_id);
       this.comment = "";
-      const data = await showService.getShowById(show_id);
       this.article.CommentLists = data.showcomments;
       // this.$router.go(this.$router.currentRoute);
       // $router.push("/auction/register/" + response.data.id);

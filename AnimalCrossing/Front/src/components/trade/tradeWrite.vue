@@ -37,7 +37,6 @@
       <v-autocomplete
         v-model="name"
         :items="selectedLists"
-        :filter="customFilter"
         color="white"
         item-text="name"
         label="아이템 검색"
@@ -106,7 +105,8 @@ export default {
     selectedLists: [],
     category: "",
     name: "",
-
+    categoryEng: "",
+    id: "",
     // post를 보내기 위해서 dict로 묶어서 사용!
     trade: {
       sort: "",
@@ -150,15 +150,18 @@ export default {
       this.selectedLists = [];
     },
     update() {
-      console.log(this.selected);
       if (this.category === "이웃") {
         this.selectedLists = this.neighbors;
+        this.categoryEng = "animal";
       } else if (this.category === "미술품") {
         this.selectedLists = this.paintings;
+        this.categoryEng = "painting";
       } else if (this.category === "화석") {
         this.selectedLists = this.fossils;
+        this.categoryEng = "fossil";
       } else {
-        this.selectedLists = "";
+        this.selectedLists = [];
+        this.categoryEng = "etc";
       }
     },
     async tradeSubmit() {
@@ -171,16 +174,18 @@ export default {
       } else {
         image = this.trade.image;
       }
-      console.log(image);
+
       const trade_info = this.trade;
+      let find = this.selectedLists.filter(list => list.name === this.name);
+
       const trade = {
         title: trade_info.title,
         content: trade_info.content,
         user_id: user.id,
         username: user.username,
         image: image,
-        category: this.category,
-        name: this.name,
+        category: this.categoryEng,
+        name: find.id,
         sort: trade_info.sort,
         price: trade_info.price
       };
