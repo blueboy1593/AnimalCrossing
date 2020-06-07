@@ -151,12 +151,14 @@ li:hover {
 #board {
   /* background: #807e14; */
   /* background: #c2dff0dc; */
-  background: #8d6b3f;
+  /* background: #8d6b3f; */
+  background: #924460;
 }
 #board:hover {
   /* background: #b1af3b; */
   /* background: #195e7a; */
-  background: #b88e56ce;
+  /* background: #b88e56ce; */
+  background: #d4648cc9;
 }
 li:hover > span {
   color: #ffffff;
