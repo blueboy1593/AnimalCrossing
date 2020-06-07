@@ -16,15 +16,21 @@
 </template>
 
 <script>
-import { deleteCommentApi } from "../../api/trade.js";
+import * as tradeService from "../../api/trade.js";
 export default {
   name: "CommentList",
   props: ["CommentList"],
   methods: {
     async deleteComment() {
+      var scope = this;
       const token = this.$store.state.user.token;
       const comment_pk = this.CommentList.id;
-      await deleteCommentApi(comment_pk, token);
+      await tradeService.deleteCommentApi(comment_pk, token, function(
+        response
+      ) {
+        console.log(response);
+        scope.$emit("update");
+      });
     }
   }
 };
