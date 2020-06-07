@@ -84,6 +84,7 @@ export default {
   },
   methods: {
     async writeComment() {
+      var scope = this;
       const user = this.$store.state.user;
       const show_id = Number(this.$route.params.id);
       const token = this.$store.state.user.token;
@@ -94,10 +95,15 @@ export default {
         username: user.username
       };
       console.log(comment);
-      await writeComment(comment, show_id, token);
-      let data = await showService.getShowById(show_id);
-      this.comment = "";
-      this.article.CommentLists = data.showcomments;
+      await writeComment(comment, show_id, token, async function(response) {
+        console.log(response);
+        let data = await showService.getShowById(show_id);
+        let list = { ...scope.article };
+        list.CommentLists = data.showcomments;
+        scope.article = list;
+        scope.comment = "";
+      });
+
       // this.$router.go(this.$router.currentRoute);
       // $router.push("/auction/register/" + response.data.id);
     },
