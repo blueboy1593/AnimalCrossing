@@ -116,7 +116,7 @@ a background is specified in the script */
   /* position the navigation items atop one another instead of side by side */
   .board__nav {
     /* grid-area: nav; */
-    flex-direction: column;
+    /* flex-direction: column; */
     /* at the top of the container */
     align-self: start;
   }
@@ -131,6 +131,11 @@ a background is specified in the script */
     /* grid-area: section; */
     width: 90%;
     max-height: 380px;
+  }
+
+  .nav-img {
+    width: 40px;
+    height: auto;
   }
 }
 </style>
