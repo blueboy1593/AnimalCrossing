@@ -52,13 +52,12 @@ export function deleteShows(show_pk, token) {
     Authorization: "JWT " + token
   };
   instance
-    .delete(`/shows/detail_ud/${show_pk}/`, show_pk, { headers })
+    .delete(`/shows/detail_ud/${show_pk}/`, { headers })
     .then(response => {
-      this.$router.go(-1);
       console.log("삭제완료:::: ", response.data);
     })
     .catch(error => {
-      console.log(error);
+      console.log("삭제불가::: ", error);
     });
 }
 
