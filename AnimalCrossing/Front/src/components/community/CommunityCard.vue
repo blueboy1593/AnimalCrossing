@@ -17,12 +17,19 @@
           {{ communityCard.title }}
         </div>
         <v-row>
-          <div class="infoDetail3">
-            {{ communityCard.username }}
-          </div>
-          <div class="infoDetail2">
-            {{ communityCard.created_at }}
-          </div></v-row
+          <v-col>
+            <div class="infoDetail3">
+              {{ communityCard.username }}
+            </div></v-col
+          ><v-col>
+            <div class="infoDetail2">
+              {{
+                communityCard.created_at.substring(0, 10) +
+                  "  " +
+                  communityCard.created_at.substring(11, 16)
+              }}
+            </div></v-col
+          ></v-row
         >
       </div>
     </router-link>
@@ -97,12 +104,13 @@ export default {
 .infoDetail3 {
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .infoDetail2 {
   text-align: right;
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
+  margin-right: 10px;
 }
 </style>

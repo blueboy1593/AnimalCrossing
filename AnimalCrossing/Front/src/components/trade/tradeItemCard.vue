@@ -19,9 +19,21 @@
         <div class="infoName">
           {{ tradeItemCard.title }}
         </div>
-        <div class="infoDetail3">
-          {{ tradeItemCard.content }}
-        </div>
+        <v-row>
+          <v-col>
+            <div class="infoDetail3">
+              {{ tradeItemCard.username }}
+            </div></v-col
+          ><v-col>
+            <div class="infoDetail4">
+              {{ tradeItemCard.price }}
+            </div></v-col
+          ><v-col>
+            <div class="infoDetail2">
+              {{ tradeItemCard.created_at.substring(0, 10) }}
+            </div></v-col
+          ></v-row
+        >
       </div>
     </router-link>
   </div>
@@ -80,13 +92,20 @@ export default {
 .infoDetail3 {
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
+  margin-left: 10px;
+}
+.infoDetail4 {
+  font-weight: 100;
+  font-family: "Gamja Flower", cursive;
   margin-left: 20px;
+  text-align: center;
 }
 
 .infoDetail2 {
-  text-align: right;
+  text-align: right !important;
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
+  margin-right: 10px;
 }
 
 </style>

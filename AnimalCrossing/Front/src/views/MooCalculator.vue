@@ -267,7 +267,7 @@ export default {
 }
 
 .cal_head {
-  font-size: 22px;
+  font-size: 20px;
   text-align: center;
   margin-top: 15px;
 }

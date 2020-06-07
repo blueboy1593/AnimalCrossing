@@ -55,6 +55,7 @@ export function deleteShows(show_pk, token) {
     .delete(`/shows/detail_ud/${show_pk}/`, { headers })
     .then(response => {
       console.log("삭제완료:::: ", response.data);
+      return response;
     })
     .catch(error => {
       console.log("삭제불가::: ", error);

@@ -1,37 +1,39 @@
 <template>
   <div class="community">
     <div class="container">
-      <h2 class="ttext" style="margin-bottom: 5px">
-        {{ this.trade.title }} {{ this.trade.price }}
-      </h2>
+      <div class="onetrade">
+        <h2 class="ttext" style="margin-bottom: 5px">
+          {{ this.trade.title }}
+        </h2>
 
-      <v-row no-gutters>
-        <v-col>
-          <p class="text">{{ this.trade.username }}</p>
-        </v-col>
-        <v-col>
-          <p style="text-align:right" class="text">
-            {{ this.trade.created_at }}
-          </p>
-        </v-col>
-      </v-row>
-      <div v-if="trade.image === null" class="detailimage">
-        <img
-          src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
-          class="detailimage detailImg"
-        />
+        <v-row no-gutters>
+          <v-col>
+            <p class="text">{{ this.trade.username }}</p>
+          </v-col>
+          <v-col>
+            <p style="text-align:right" class="text">
+              {{ this.trade.created_at }}
+            </p>
+          </v-col>
+        </v-row>
+        <div v-if="trade.image === null" class="detailimage">
+          <img
+            src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
+            class="detailimage detailImg"
+          />
+        </div>
+        <div v-else>
+          <img v-bind:src="trade.image" alt="" class="detailimage detailImg" />
+        </div>
+        <div class="showcontent">
+          <p>{{ trade.price }}</p>
+        </div>
+        <div class="showcontent">
+          <p>{{ trade.content }}</p>
+        </div>
+        <v-btn color="error" class="deletebtn">글 삭제</v-btn>
       </div>
-      <div v-else>
-        <img v-bind:src="trade.image" alt="" class="detailimage detailImg" />
-      </div>
-      <div class="showcontent">
-        <p>{{ trade.price }}</p>
-      </div>
-      <div class="showcontent">
-        <p>{{ trade.content }}</p>
-      </div>
-      <v-btn color="error">삭제하기</v-btn>
-      <!-- <h4 class="text">
+      <h4 class="text">
         <div class="commentImg">
           <input
             id="comment"
@@ -46,7 +48,7 @@
             v-on:click="writeComment"
           />
         </div>
-      </h4> -->
+      </h4>
       <CommentList
         v-for="CommentList in trade.CommentLists"
         :key="CommentList.id"
@@ -59,7 +61,7 @@
 <script>
 import * as tradeService from "../../api/trade.js";
 import CommentList from "./tradeCommentList.vue";
-// import { writeComment } from "../../api/show.js";
+import { writeComment } from "../../api/trade.js";
 
 export default {
   components: { CommentList },
@@ -79,36 +81,42 @@ export default {
     };
   },
   methods: {
-    // async writeComment() {
-    //   const user = this.$store.state.user;
-    //   const show_id = Number(this.$route.params.id);
-    //   const token = this.$store.state.user.token;
-    //   const comment = {
-    //     show: show_id,
-    //     content: this.comment,
-    //     user_id: user.id,
-    //     username: user.username
-    //   };
-    //   console.log(comment);
-    //   await writeComment(comment, show_id, token);
-    //   this.comment = "";
-    //   const data = await showService.getShowById(show_id);
-    //   this.trade.CommentLists = data.showcomments;
-    // this.$router.go(this.$router.currentRoute);
-    // $router.push("/auction/register/" + response.data.id);
-    // }
+    async writeComment() {
+      const user = this.$store.state.user;
+      const article_pk = Number(this.$route.params.id);
+      const token = this.$store.state.user.token;
+      const comment = {
+        article: article_pk,
+        content: this.comment,
+        user_id: user.id,
+        username: user.username
+      };
+      console.log(comment);
+      await writeComment(comment, article_pk, token);
+      this.comment = "";
+      const data = await tradeService.getDetailTradeByArticleId(article_pk);
+      this.trade.CommentLists = data.showcomments;
+      // this.$router.go(this.$router.currentRoute);
+      // $router.push("/auction/register/" + response.data.id);
+    }
   },
   // detail정보 가져오기
   mounted: async function() {
     var tradeId = this.$route.params.id;
     const data = await tradeService.getDetailTradeByArticleId(tradeId);
     console.log(this.trade.CommentLists); // object
+    console.log(data);
     this.trade.title = data.title;
     this.trade.image = data.image;
     this.trade.content = data.content;
-    this.trade.created_at = data.created_at;
+    this.trade.created_at =
+      data.created_at.substring(0, 10) +
+      "  " +
+      data.created_at.substring(11, 16);
     this.trade.username = data.username;
     this.trade.CommentLists = data.comments;
+    this.trade.price = data.price;
+    console.log(this.trade.price);
   }
 };
 </script>
@@ -121,7 +129,10 @@ export default {
   margin: 0px auto;
   border-radius: 10px;
 }
-
+.deletebtn {
+  width: 3%;
+  align-items: center;
+}
 .detailImg {
   box-shadow: 4px 4px 3px 0px rgba(4, 37, 56, 0.75);
 }
@@ -138,6 +149,8 @@ export default {
 .showcontent {
   margin-top: 10px;
   font-family: "Gamja Flower", cursive;
+  text-align: center;
+  font-size: 1.2rem;
 }
 .text {
   font-family: "Gamja Flower", cursive;
@@ -190,5 +203,13 @@ export default {
     opacity: 1;
     transform: scale(1.1);
   }
+}
+.onetrade {
+  background-color: rgba(30, 255, 135, 0.075);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: 1.2px solid rgba(76, 180, 157, 0.295);
+  margin-bottom: 0.3rem;
+  display: grid;
 }
 </style>
