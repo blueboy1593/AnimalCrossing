@@ -29,7 +29,9 @@
         <div class="showcontent">
           <p>{{ trade.content }}</p>
         </div>
-        <v-btn color="error" class="deletebtn">글 삭제</v-btn>
+        <v-btn color="error" class="deletebtn" @click="deleteArticle"
+          >글 삭제</v-btn
+        >
       </div>
       <h4 class="text">
         <div class="commentImg">
@@ -59,7 +61,7 @@
 <script>
 import * as tradeService from "../../api/trade.js";
 import CommentList from "./tradeCommentList.vue";
-import { writeComment } from "../../api/trade.js";
+import { writeComment, deleteArticleApi } from "../../api/trade.js";
 
 export default {
   components: { CommentList },
@@ -98,6 +100,12 @@ export default {
       this.trade.CommentLists = data.showcomments;
       // this.$router.go(this.$router.currentRoute);
       // $router.push("/auction/register/" + response.data.id);
+    },
+    async deleteArticle() {
+      const article_pk = this.$route.params.id;
+      const token = this.$store.state.user.token;
+      await deleteArticleApi(article_pk, token);
+      this.$router.go(-1);
     }
   },
   // detail정보 가져오기
@@ -108,7 +116,10 @@ export default {
     this.trade.title = data.title;
     this.trade.image = data.image;
     this.trade.content = data.content;
-    this.trade.created_at = data.created_at;
+    this.trade.created_at =
+      data.created_at.substring(0, 10) +
+      "  " +
+      data.created_at.substring(11, 16);
     this.trade.username = data.username;
     this.trade.price = data.price;
     this.trade.sort = data.username;

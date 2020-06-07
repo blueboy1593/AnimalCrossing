@@ -121,7 +121,10 @@ export default {
     this.article.title = data.title;
     this.article.image = data.image;
     this.article.content = data.content;
-    this.article.created_at = data.created_at;
+    this.article.created_at =
+      data.created_at.substring(0, 10) +
+      "  " +
+      data.created_at.substring(11, 16);
     this.article.username = data.username;
     this.article.user_id = data.user_id;
   }

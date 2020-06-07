@@ -17,15 +17,19 @@
           {{ TradeEtcCard.title }}
         </div>
         <v-row>
-          <div class="infoDetail3">
-            {{ TradeEtcCard.username }}
-          </div>
-          <div class="infoDetail4">
-            {{ TradeEtcCard.price }}
-          </div>
-          <div class="infoDetail2">
-            {{ TradeEtcCard.created_at }}
-          </div></v-row
+          <v-col>
+            <div class="infoDetail3">
+              {{ TradeEtcCard.username }}
+            </div></v-col
+          ><v-col>
+            <div class="infoDetail4">
+              {{ TradeEtcCard.price }}
+            </div></v-col
+          ><v-col>
+            <div class="infoDetail2">
+              {{ TradeEtcCard.created_at.substring(0, 10) }}
+            </div></v-col
+          ></v-row
         >
       </div>
     </router-link>
@@ -85,7 +89,7 @@ export default {
 .infoDetail3 {
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .infoDetail4 {
   font-weight: 100;
@@ -98,5 +102,6 @@ export default {
   text-align: right !important;
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
+  margin-right: 10px;
 }
 </style>

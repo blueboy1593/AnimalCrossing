@@ -1,6 +1,6 @@
 !<template>
   <div>
-    <h2 style="font-family:Gamja Flower">거래해요, 동물의 숲</h2>
+    <h2 class="btitle">거래해요, 동물의 숲</h2>
     <v-btn>뒤로가기</v-btn>
     <TradeEtcList />
   </div>
@@ -13,4 +13,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.btitle {
+  font-family: "Jua", sans-serif;
+  text-align: center;
+  font-size: 1.7rem;
+}
+</style>
