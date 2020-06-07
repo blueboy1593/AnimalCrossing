@@ -50,6 +50,7 @@
         </div>
       </h4>
       <CommentList
+        v-on:update="updateComment"
         v-for="CommentList in trade.CommentLists"
         :key="CommentList.id"
         :CommentList="CommentList"
@@ -84,6 +85,7 @@ export default {
   },
   methods: {
     async writeComment() {
+      var scope = this;
       const user = this.$store.state.user;
       const article_pk = Number(this.$route.params.id);
       const token = this.$store.state.user.token;
@@ -93,11 +95,16 @@ export default {
         user_id: user.id,
         username: user.username
       };
-      console.log(comment);
-      await writeComment(comment, article_pk, token);
-      this.comment = "";
-      const data = await tradeService.getDetailTradeByArticleId(article_pk);
-      this.trade.CommentLists = data.showcomments;
+      await writeComment(comment, article_pk, token, async function(response) {
+        console.log(response);
+        let data = await tradeService.getDetailTradeByArticleId(article_pk);
+        let list = { ...scope.trade };
+        console.log("여기에요!!", data, list);
+        list.CommentLists = data.comments;
+        scope.trade = list;
+        scope.comment = "";
+      });
+
       // this.$router.go(this.$router.currentRoute);
       // $router.push("/auction/register/" + response.data.id);
     },
@@ -106,13 +113,20 @@ export default {
       const token = this.$store.state.user.token;
       await deleteArticleApi(article_pk, token);
       this.$router.go(-1);
+    },
+    async updateComment() {
+      const article_pk = this.$route.params.id;
+      let data = await tradeService.getDetailTradeByArticleId(article_pk);
+      let list = { ...this.trade };
+      console.log("여기에요!!", data, list);
+      list.CommentLists = data.comments;
+      this.trade = list;
     }
   },
   // detail정보 가져오기
   mounted: async function() {
     var tradeId = this.$route.params.id;
     const data = await tradeService.getDetailTradeByArticleId(tradeId);
-    console.log(this.trade.CommentLists); // object
     this.trade.title = data.title;
     this.trade.image = data.image;
     this.trade.content = data.content;

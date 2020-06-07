@@ -91,51 +91,36 @@ export function updateDetailtrade(article_pk, token) {
 /*
  * 특정 거래글로 삭제하기
  */
-export function deleteArticleApi(article_pk, token) {
+export function deleteArticleApi(article_pk, token, success, fail) {
   const headers = {
     "Content-Type": "application/json",
     Authorization: "JWT " + token
   };
   instance
     .delete(`trades/detail_ud/${article_pk}/`, { headers })
-    .then(response => {
-      console.log(response.data);
-      return response.data;
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    .then(success)
+    .catch(fail);
 }
 
 // 댓글 작성하기
-export function writeComment(comment, article_pk, token) {
+export function writeComment(comment, article_pk, token, success, fail) {
   const headers = {
     "Content-Type": "application/json",
     Authorization: "JWT " + token
   };
   instance
     .post(`/trades/comment/${article_pk}/`, comment, { headers })
-    .then(response => {
-      console.log("trade comment", response.data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    .then(success)
+    .catch(fail);
 }
-
 // 댓글 삭제하기
-export function deleteCommentApi(comment_pk, token) {
+export function deleteCommentApi(comment_pk, token, success, fail) {
   const headers = {
     "Content-Type": "application/json",
     Authorization: "JWT " + token
   };
   instance
     .delete(`/trades/comment_ud/${comment_pk}/`, { headers })
-    .then(response => {
-      console.log("delete comment", response.data);
-      return response.data;
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    .then(success)
+    .catch(fail);
 }

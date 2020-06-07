@@ -3,33 +3,41 @@
     <nav class="board__nav">
       <img src="../../assets/images/도감.png" alt="도감" id="dogam" />
       <router-link to="/info/fish">
-        <img src="../../assets/images/nav_fish.png" alt="Fish" class="nav-img" />
+        <img
+          src="../../assets/images/nav_fish.png"
+          alt="Fish"
+          class="nav-img"
+        />
       </router-link>
-    <router-link to="/info/insect">
-      <img
-        src="../../assets/images/nav_insect.png"
-        alt="Insect"
-        class="nav-img"
-      />
-    </router-link>
-    <router-link to="/info/fossil">
-      <img src="../../assets/images/fossil.png" alt="Fossil" class="nav-img" />
-    </router-link>
-    <router-link to="/info/painting">
-      <img
-        src="../../assets/images/nav_painting.png"
-        alt="Nav_painting"
-        class="nav-img"
-      />
-    </router-link>
-    <router-link to="/info/neighbor">
-      <img
-        src="../../assets/images/nav_neighbor.png"
-        alt="Nav_neighbor"
-        class="nav-img"
-      />
-    </router-link>
-    <!-- <button class="nav--item" data-item="events">Events</button>
+      <router-link to="/info/insect">
+        <img
+          src="../../assets/images/nav_insect.png"
+          alt="Insect"
+          class="nav-img"
+        />
+      </router-link>
+      <router-link to="/info/fossil">
+        <img
+          src="../../assets/images/fossil.png"
+          alt="Fossil"
+          class="nav-img"
+        />
+      </router-link>
+      <router-link to="/info/painting">
+        <img
+          src="../../assets/images/nav_painting.png"
+          alt="Nav_painting"
+          class="nav-img"
+        />
+      </router-link>
+      <router-link to="/info/neighbor">
+        <img
+          src="../../assets/images/nav_neighbor.png"
+          alt="Nav_neighbor"
+          class="nav-img"
+        />
+      </router-link>
+      <!-- <button class="nav--item" data-item="events">Events</button>
     <button class="nav--item" data-item="important">Important</button> -->
     </nav>
     <!-- <div class="dogam">도감</div> -->
