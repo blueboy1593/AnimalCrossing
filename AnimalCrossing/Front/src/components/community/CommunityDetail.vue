@@ -1,53 +1,61 @@
 <template>
   <div class="community">
     <div class="container">
-      <h2 class="ttext" style="margin-bottom: 5px">{{ this.article.title }}</h2>
-      <v-row no-gutters>
-        <v-col>
-          <p class="text">{{ this.article.username }}</p>
-        </v-col>
-        <v-col>
-          <p style="text-align:right" class="text">
-            {{ this.article.created_at }}
-          </p>
-        </v-col>
-      </v-row>
-      <div v-if="article.image === null" class="detailimage">
-        <img
-          src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
-          class="detailimage detailImg"
-        />
-      </div>
-      <div v-else>
-        <img v-bind:src="article.image" alt="" class="detailimage detailImg" />
-      </div>
-      <div class="showcontent">
-        <p>{{ article.content }}</p>
-      </div>
-      <v-btn v-if="this.checkId()" color="error" @click="deleteShow"
-        >삭제하기</v-btn
-      >
-      <h4 class="text">
-        <div class="commentImg">
-          <input
-            id="comment"
-            type="text"
-            v-model="comment"
-            placeholder="댓글을 입력하세요"
-          />
+      <div class="onetrade">
+        <h2 class="ttext" style="margin-bottom: 5px">
+          {{ this.article.title }}
+        </h2>
+        <v-row no-gutters>
+          <v-col>
+            <p class="text">{{ this.article.username }}</p>
+          </v-col>
+          <v-col>
+            <p style="text-align:right" class="text">
+              {{ this.article.created_at }}
+            </p>
+          </v-col>
+        </v-row>
+        <div v-if="article.image === null" class="detailimage">
           <img
-            id="commentImg"
-            src="../../assets/images/comment.png"
-            alt=""
-            v-on:click="writeComment"
+            src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
+            class="detailimage detailImg"
           />
         </div>
-      </h4>
-      <CommentList
-        v-for="CommentList in article.CommentLists"
-        :key="CommentList.id"
-        :CommentList="CommentList"
-      />
+        <div v-else>
+          <img
+            v-bind:src="article.image"
+            alt=""
+            class="detailimage detailImg"
+          />
+        </div>
+        <div class="showcontent">
+          <p>{{ article.content }}</p>
+        </div>
+        <v-btn v-if="this.checkId()" color="error" @click="deleteShow"
+          >삭제하기</v-btn
+        >
+        <h4 class="text">
+          <div class="commentImg">
+            <input
+              id="comment"
+              type="text"
+              v-model="comment"
+              placeholder="댓글을 입력하세요"
+            />
+            <img
+              id="commentImg"
+              src="../../assets/images/comment.png"
+              alt=""
+              v-on:click="writeComment"
+            />
+          </div>
+        </h4>
+        <CommentList
+          v-for="CommentList in article.CommentLists"
+          :key="CommentList.id"
+          :CommentList="CommentList"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -197,5 +205,13 @@ export default {
     opacity: 1;
     transform: scale(1.1);
   }
+}
+.onetrade {
+  background-color: rgba(30, 255, 135, 0.075);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: 1.2px solid rgba(76, 180, 157, 0.295);
+  margin-bottom: 0.3rem;
+  display: grid;
 }
 </style>
