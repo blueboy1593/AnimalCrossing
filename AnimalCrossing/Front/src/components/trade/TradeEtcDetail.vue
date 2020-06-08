@@ -34,9 +34,15 @@
         <div class="showcontent">
           <p>{{ trade.content }}</p>
         </div>
-        <button id="boastDelete" v-if="this.checkId()" @click="deleteTrade">
-          <img id="boastDeleteImg" src="../../assets/images/삭제.png" alt="" />
-        </button>
+        <div id="boastDeleteDiv">
+          <button id="boastDelete" v-if="this.checkId()" @click="deleteTrade">
+            <img
+              id="boastDeleteImg"
+              src="../../assets/images/삭제.png"
+              alt=""
+            />
+          </button>
+        </div>
       </div>
       <h4 class="text">
         <div class="commentImg">
@@ -82,6 +88,7 @@ export default {
         created_at: "",
         price: "",
         name: "",
+        user_id: "",
         CommentLists: [] // obj1개 들어감
       },
       comment: ""
@@ -99,7 +106,6 @@ export default {
         user_id: user.id,
         username: user.username
       };
-      console.log(comment);
       await writeComment(comment, article_pk, token, async function(response) {
         console.log(response);
         let data = await tradeService.getDetailTradeByArticleId(article_pk);
@@ -129,17 +135,16 @@ export default {
       this.$router.go(-1);
     },
     checkId() {
-      // if (this.trade.user_id === this.$store.state.user.id) {
-      //   return true;
-      // }
+      console.log(this.trade.user_id, this.$store.state.user.id);
+      if (this.trade.user_id === this.$store.state.user.id) {
+        return true;
+      }
     }
   },
   // detail정보 가져오기
   mounted: async function() {
     var tradeId = this.$route.params.id;
     const data = await tradeService.getDetailTradeByArticleId(tradeId);
-    console.log(this.trade.CommentLists); // object
-    console.log(data);
     this.trade.title = data.title;
     this.trade.image = data.image;
     this.trade.content = data.content;
@@ -150,7 +155,7 @@ export default {
     this.trade.username = data.username;
     this.trade.CommentLists = data.comments;
     this.trade.price = data.price;
-    console.log(this.trade.price);
+    this.trade.user_id = data.user_id;
   }
 };
 </script>
