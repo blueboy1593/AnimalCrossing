@@ -109,7 +109,7 @@ export default {
   },
   methods: {
     goback() {
-      this.$router.go(-1);
+      this.$router.push(`/trade/${this.trade.category}`);
     },
     async writeComment() {
       var scope = this;
@@ -163,8 +163,12 @@ export default {
       data.created_at.substring(11, 16);
     this.trade.username = data.username;
     this.trade.price = data.price;
-    this.trade.sort = data.username;
-    this.trade.category = data.username;
+    this.trade.sort = data.sort;
+    if (data.category === "animal") {
+      this.trade.category = "neighbor";
+    } else {
+      this.trade.category = data.category;
+    }
     this.trade.CommentLists = data.comments;
     this.trade.user_id = data.user_id;
   }

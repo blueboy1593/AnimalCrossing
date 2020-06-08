@@ -221,8 +221,9 @@ export default {
           price: trade_info.price
         };
       }
-      await tradePost(trade, token);
-      this.$router.push("/trade/etc");
+      await tradePost(trade, token, function(response) {
+        this.$router.push(`/trade/tradedetail/${response.data.id}`);
+      });
     },
     getImgPath(engname) {
       let image = "";

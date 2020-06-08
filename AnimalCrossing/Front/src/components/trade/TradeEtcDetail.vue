@@ -130,7 +130,6 @@ export default {
       let data = await tradeService.getDetailTradeByArticleId(article_pk);
       let list = { ...this.trade };
       0;
-      console.log("여기에요!!", data, list);
       list.CommentLists = data.comments;
       this.trade = list;
     },
