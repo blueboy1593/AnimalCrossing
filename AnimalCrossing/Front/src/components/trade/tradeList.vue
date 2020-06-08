@@ -2,14 +2,27 @@
   <div>
     <div>
       <button @click="goback" class="backbtn">
-        <img src="../../assets/images/back.png" alt="글쓰기" class="back-img" />
+        <img
+          src="../../assets/images/back.png"
+          alt="뒤로가기"
+          class="back-img"
+        />
       </button>
+      <v-tabs centered color="pink accent-1" background-color="transparent">
+        <v-tab @click="buying">
+          <img id="buyIcon" src="../../assets/images/buy.png" alt="" />
+        </v-tab>
+        <v-tab @click="selling">
+          <img id="sellIcon" src="../../assets/images/sell.png" alt="" />
+        </v-tab>
+      </v-tabs>
       <br />
       <tradeItemCard
-        v-for="tradeItemCard in tradeItemCards"
-        :key="tradeItemCard.id"
-        :tradeItemCard="tradeItemCard"
-        :name="tradeItemCard.engname"
+        v-for="selectedItemCard in selectedItemCards"
+        :key="selectedItemCard.id"
+        :tradeItemCard="selectedItemCard"
+        :category="category"
+        :engname="engname"
         class="card_one"
       />
     </div>
@@ -19,17 +32,36 @@
 <script>
 import { getTradeById } from "@/api/trade.js";
 import tradeItemCard from "./tradeItemCard.vue";
-
+import * as infoService from "../../api/info.js";
 export default {
   name: "trade",
-  props: ["category", "id", "name"],
+  props: ["category", "id"],
   components: {
     tradeItemCard
   },
   data() {
     return {
-      tradeItemCards: []
+      tradeItemCards: [],
+      selectedItemCards: [],
+      engname: ""
     };
+  },
+  methods: {
+    goback() {
+      this.$router.go(-1);
+    },
+    buying() {
+      let buyList = this.tradeItemCards.filter(
+        tradeItemCard => tradeItemCard.sort === "buy"
+      );
+      this.selectedItemCards = buyList;
+    },
+    selling() {
+      let sellList = this.tradeItemCards.filter(
+        tradeItemCard => tradeItemCard.sort === "sell"
+      );
+      this.selectedItemCards = sellList;
+    }
   },
   async mounted() {
     this.tradeItemCards = await getTradeById(
@@ -37,11 +69,25 @@ export default {
       this.id,
       this.tradeItemCards
     );
-  },
-  methods: {
-    goback() {
-      this.$router.go(-1);
+    let buyList = this.tradeItemCards.filter(
+      tradeItemCard => tradeItemCard.sort === "buy"
+    );
+    this.selectedItemCards = buyList;
+    console.log("id값", this.id);
+    console.log("카테고리", this.category);
+    let data = "";
+    if (this.category === "fossil") {
+      return;
     }
+    if (this.category === "animal") {
+      data = await infoService.getNeighbors();
+    } else if (this.category === "painting") {
+      data = await infoService.getPaintings();
+    }
+    let find = data.filter(element => this.id == element.id);
+
+    this.engname = find[0].engname;
+    console.log(this.engname, this.category);
   }
 };
 </script>
@@ -77,5 +123,19 @@ export default {
 .backbtn {
   border: 0;
   outline: 0;
+}
+
+#buyingTab {
+  background-color: none;
+}
+
+#buyIcon {
+  width: 55px;
+  margin-bottom: 3px;
+}
+
+#sellIcon {
+  width: 55px;
+  margin-bottom: 3px;
 }
 </style>

@@ -5,15 +5,12 @@
     >
       <div class="cCard">
         <div class="cphoto">
-          <div v-if="tradeItemCard.image === null">
-            <img
-              src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
-              class="cimage"
-            />
-          </div>
-          <div v-else>
+          <!-- <div v-if="tradeItemCard.image === null"> -->
+          <img :src="getImgPath()" class="cimage" />
+          <!-- </div> -->
+          <!-- <div v-else>
             <img v-bind:src="tradeItemCard.image" alt="" class="detailimage" />
-          </div>
+          </div> -->
         </div>
         <div class="cphoto"></div>
         <div class="infoName">
@@ -40,29 +37,19 @@
 </template>
 
 <script>
-import * as infoService from "../../api/info.js";
-
+// import * as infoService from "../../api/info.js";
 export default {
   name: "tradeItemCard",
-  props: ["tradeItemCard", "id"],
-  async mounted() {
-    let address = location.pathname;
-    let one = address.split("/")[4]; // 1
-    console.log(address);
-    let datacategory = address.split("/")[3]; // animal
-    this.category = datacategory;
-    if (this.category == "animal") {
-      let data = await infoService.getNeighbors();
-      let oneanimal = data.filter(animal => one == animal.id);
-      this.engname = oneanimal[0].engname;
-      console.log(this.engname);
-    }
-  },
+  props: ["tradeItemCard", "engname", "category"],
   data() {
-    return {
-      engname: "",
-      category: ""
-    };
+    return {};
+  },
+  methods: {
+    getImgPath() {
+      let image = require(`@/assets/images/image_${this.category}/${this.engname}.png`);
+      console.log(`@/assets/images/image_${this.category}/${this.engname}.png`);
+      return image;
+    }
   }
 };
 </script>
