@@ -173,11 +173,15 @@ export default {
 }
 
 .ttext {
+  margin-top: 10px;
   text-align: center;
   font-family: "Gamja Flower", cursive;
 }
 .showcontent {
+  font-size: 1.2rem;
+  text-align: center;
   margin-top: 10px;
+  margin-bottom: 10px;
   font-family: "Gamja Flower", cursive;
 }
 .text {
