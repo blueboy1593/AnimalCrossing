@@ -86,7 +86,7 @@ export default {
     );
 
     // 로컬 스토리지에 오늘의 주민 정보가 있을 때.
-    if (localStorage.getItem("myneighbor_time")) {
+    if (localStorage.getItem("myneighbor_url")) {
       const myneighbor_url = localStorage.getItem("myneighbor_url");
       this.neighbor_url = myneighbor_url;
     } else {
@@ -97,8 +97,8 @@ export default {
       this.neighbor_url = neighbor_url;
 
       // 오늘의 첫 시간 저장.
-      const now_time = new Date().toLocaleDateString();
-      localStorage.setItem("myneighbor_time", now_time);
+      // const now_time = new Date().toLocaleDateString();
+      // localStorage.setItem("myneighbor_time", now_time);
       localStorage.setItem("myneighbor_url", neighbor_url);
     }
   },
@@ -137,6 +137,7 @@ export default {
 .mypage {
   display: flex;
   height: 100%;
+  padding-top: 15px;
 }
 
 .profile {
