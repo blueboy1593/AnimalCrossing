@@ -51,7 +51,6 @@ export default {
   async mounted() {
     this.infoCards = await getNeighbors(this.infoCards);
     this.selectedCards = this.infoCards;
-    console.log(this.selectedCards);
   }
 };
 </script>
