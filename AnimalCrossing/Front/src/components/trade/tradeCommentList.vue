@@ -77,7 +77,7 @@ export default {
   display: grid;
   grid-area: comment;
   font-family: "Gamja Flower";
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .time {

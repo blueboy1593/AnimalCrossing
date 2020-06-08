@@ -2,6 +2,20 @@ import { createInstance } from "./index.js";
 
 const instance = createInstance();
 
+// 모든 트레이드 글 가져오기
+export function getTrades(trades) {
+  return instance
+    .get("/trades/list/")
+    .then(response => {
+      trades = response.data;
+      // console.log("show list", response.data);
+      return trades;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
 // 특정 id에 대한 거래글 모두 가져오기
 
 export function getTradeById(category, id, lists) {

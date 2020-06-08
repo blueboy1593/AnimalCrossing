@@ -186,7 +186,7 @@ export default {
   font-family: "Gamja Flower", cursive;
 }
 .showcontent {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;

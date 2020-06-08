@@ -1,9 +1,19 @@
 <template>
   <div class="back">
     <div class="cal_head">
-      <img id="doll" style="margin-right: 10px" src="../assets/images/doll1.png" alt="">
+      <img
+        id="doll"
+        style="margin-right: 10px"
+        src="../assets/images/doll1.png"
+        alt=""
+      />
       <h1>동물의숲 무계산기</h1>
-      <img id="doll" style="margin-left: 8px" src="../assets/images/doll2.png" alt="">
+      <img
+        id="doll"
+        style="margin-left: 8px"
+        src="../assets/images/doll2.png"
+        alt=""
+      />
     </div>
     <div class="buy_price">
       <div class="buy_price_form">
@@ -236,13 +246,14 @@ export default {
           const max_input = Math.round(
             (pre_input[1] * (100 + percentage)) / 100
           );
-          percentage = percentage * (2 / 3);
+          // percentage = percentage * (2 / 3);
+          percentage = percentage * (1 / 2);
           price_calculated.push([min_input, Math.min(600, max_input)]);
         } else {
           price_calculated.push([price_input[i], price_input[i]]);
         }
       }
-      alert("무값 계산중 계산중");
+      alert("무값 계산중이다구리!");
       scope.$router.push({
         name: "MooCalculated",
         params: { price_calculated }
