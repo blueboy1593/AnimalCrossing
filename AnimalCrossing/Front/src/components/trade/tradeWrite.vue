@@ -50,8 +50,8 @@
     <div id="wantTrade" action="" method="">
       <div id="imgPreview">
         <input ref="imageInput" type="file" hidden @change="onChangeImages" />
-        <button id="imgUploadButton" type="button" @click="onClickImageUpload">
-          자랑할 사진 업로드
+        <button style="margin-left: 15px;" id="imgUploadButton" type="button" @click="onClickImageUpload">
+          거래 사진 업로드
         </button>
         <div class="imgCon">
           <img id="imgPreview" v-if="trade.image" :src="trade.image" /><img />
@@ -243,9 +243,9 @@ export default {
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   grid-template-areas:
-    "tradeUpload"
-    "wantTrade"
-    "wantTrade";
+    "tradeUpload tradeUpload"
+    "wantTrade textUpload"
+    "wantTrade textUpload";
   margin: 0 auto;
   margin-top: 20px;
   display: grid;
@@ -283,7 +283,7 @@ textarea:focus {
   display: inline-block;
   background-color: rgba(210, 241, 31, 0.37);
   width: 90%;
-  height: 50px;
+  height: 45px;
   border-radius: 13px;
   font-family: "Jua", sans-serif;
   text-align: center;
@@ -292,9 +292,10 @@ textarea:focus {
 #field {
   background-color: rgba(210, 241, 31, 0.37);
   width: 90%;
-  height: 240px;
+  height: 120px;
+  padding-top: 10px;
   border-radius: 13px;
-  margin-top: 15px;
+  /* margin-top: 15px; */
   font-family: "Jua", sans-serif;
   text-align: center;
 }
@@ -322,9 +323,9 @@ textarea:focus {
 
 #imgPreview {
   margin: 0 auto;
-  margin-left: -2.5rem;
+  margin-left: 1rem;
   max-width: 15rem;
-  padding-top: -10rem;
+  padding-top: -15rem;
 }
 
 #buySell {
@@ -360,8 +361,11 @@ textarea:focus {
 }
 
 #imgPreview {
-  display: grid;
-  grid-area: imgPreview;
+  /* display: grid; */
+  /* grid-area: imgPreview; */
+  width: 200px;
+  margin-top: 10px;
+  z-index: 1;
 }
 
 .bell {
