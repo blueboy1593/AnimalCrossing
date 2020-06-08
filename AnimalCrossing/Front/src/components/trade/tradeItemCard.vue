@@ -1,7 +1,10 @@
 <template>
   <div>
     <router-link
-      :to="{ name: 'tradedetail', params: { id: tradeItemCard.id } }"
+      :to="{
+        name: 'tradedetail',
+        params: { id: tradeItemCard.id, image_url: image_url }
+      }"
     >
       <div class="cCard">
         <div class="cphoto">
@@ -41,7 +44,9 @@ export default {
   name: "tradeItemCard",
   props: ["tradeItemCard", "engname", "category"],
   data() {
-    return {};
+    return {
+      image_url: ""
+    };
   },
   methods: {
     getImgPath() {
@@ -53,6 +58,7 @@ export default {
       } else if (this.category === "animal") {
         image = require(`@/assets/images/image_${this.category}/${this.engname}.png`);
       }
+      this.image_url = image;
       return image;
     }
   }

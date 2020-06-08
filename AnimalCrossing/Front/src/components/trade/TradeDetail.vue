@@ -18,14 +18,14 @@
             </p>
           </v-col>
         </v-row>
-        <div v-if="trade.image === null" class="detailimage">
+        <div v-if="image_url === null" class="detailimage">
           <img
             src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
             class="detailimage detailImg"
           />
         </div>
         <div v-else>
-          <img v-bind:src="trade.image" alt="" class="detailimage detailImg" />
+          <img v-bind:src="image_url" alt="" class="detailimage detailImg" />
         </div>
         <div class="showcontent">
           <p>{{ trade.price }}</p>
@@ -82,6 +82,12 @@ import { writeComment, deleteArticleApi } from "../../api/trade.js";
 
 export default {
   components: { CommentList },
+  props: {
+    image_url: {
+      type: String,
+      required: false
+    }
+  },
   data: function() {
     return {
       trade: {
@@ -163,13 +169,15 @@ export default {
     this.trade.category = data.username;
     this.trade.CommentLists = data.comments;
     this.trade.user_id = data.user_id;
+    // console.log(this.props);
   }
 };
 </script>
 
 <style scoped>
 .detailimage {
-  width: 400px;
+  max-height: 170px;
+  /* width: 400px; */
   align-items: center;
   display: block;
   margin: 0px auto;

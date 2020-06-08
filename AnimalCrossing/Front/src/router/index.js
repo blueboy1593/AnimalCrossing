@@ -168,6 +168,7 @@ const routes = [
           {
             path: "tradedetail/:id",
             name: "tradedetail",
+            props: true,
             component: () => import("../components/trade/TradeDetail.vue")
           },
           {
