@@ -40,9 +40,30 @@
 </template>
 
 <script>
+import * as infoService from "../../api/info.js";
+
 export default {
   name: "tradeItemCard",
-  props: ["tradeItemCard"]
+  props: ["tradeItemCard", "id"],
+  async mounted() {
+    let address = location.pathname;
+    let one = address.split("/")[4]; // 1
+    console.log(address);
+    let datacategory = address.split("/")[3]; // animal
+    this.category = datacategory;
+    if (this.category == "animal") {
+      let data = await infoService.getNeighbors();
+      let oneanimal = data.filter(animal => one == animal.id);
+      this.engname = oneanimal[0].engname;
+      console.log(this.engname);
+    }
+  },
+  data() {
+    return {
+      engname: "",
+      category: ""
+    };
+  }
 };
 </script>
 

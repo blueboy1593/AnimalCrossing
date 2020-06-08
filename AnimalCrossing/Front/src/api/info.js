@@ -49,7 +49,6 @@ export function getNeighbors(cards) {
     .get("/api/v1/animals/")
     .then(response => {
       cards = response.data;
-      // console.log("response.data::::  ", response.data);
       return cards;
     })
     .catch(error => {
