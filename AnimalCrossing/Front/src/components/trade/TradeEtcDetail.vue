@@ -46,23 +46,25 @@
           </button>
         </div>
       </div>
-      <h4 class="text">
-        <div class="commentImg">
-          <input
-            id="comment"
-            type="text"
-            v-model="comment"
-            placeholder="댓글을 입력하세요"
-            @keyup.enter="writeComment"
-          />
-          <img
-            id="commentImg"
-            src="../../assets/images/comment.png"
-            alt=""
-            v-on:click="writeComment"
-          />
-        </div>
-      </h4>
+      <div v-if="$store.state.isSigned">
+        <h4 class="text">
+          <div class="commentImg">
+            <input
+              id="comment"
+              type="text"
+              v-model="comment"
+              placeholder="댓글을 입력하세요"
+              @keyup.enter="writeComment"
+            />
+            <img
+              id="commentImg"
+              src="../../assets/images/comment.png"
+              alt=""
+              v-on:click="writeComment"
+            />
+          </div>
+        </h4>
+      </div>
       <CommentList
         v-on:update="updateComment"
         v-for="CommentList in trade.CommentLists"
