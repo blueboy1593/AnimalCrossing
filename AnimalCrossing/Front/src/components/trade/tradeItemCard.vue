@@ -12,7 +12,6 @@
             <img v-bind:src="tradeItemCard.image" alt="" class="detailimage" />
           </div> -->
         </div>
-        <div class="cphoto"></div>
         <div class="infoName">
           {{ tradeItemCard.title }}
         </div>
