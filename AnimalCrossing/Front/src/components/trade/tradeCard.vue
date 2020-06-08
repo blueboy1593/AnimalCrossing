@@ -72,7 +72,6 @@ export default {
       return images;
     },
     routePushTo(category, id) {
-      console.log(`/trade/list/${category}/${id}`);
       this.$router.push(`/trade/list/${category}/${id}`);
     }
   }
