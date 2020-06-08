@@ -1,36 +1,36 @@
 <template>
   <div>
-    <router-link :to="{ name: 'cdetail', params: { id: communityCard.id } }">
+    <router-link :to="{ name: 'cdetail', params: { id: MypageCard.id } }">
       <div class="cCard">
         <div class="cphoto">
-          <div v-if="communityCard.image === null">
+          <div v-if="MypageCard.image === null">
             <img
               src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
               class="cimage"
             />
           </div>
           <div v-else>
-            <img v-bind:src="communityCard.image" alt="" class="detailimage" />
+            <img v-bind:src="MypageCard.image" alt="" class="detailimage" />
           </div>
         </div>
         <div class="infoName">
-          {{ communityCard.title }}
+          {{ MypageCard.title }}
         </div>
-        <v-row>
+        <!-- <v-row>
           <v-col>
             <div class="infoDetail3">
-              {{ communityCard.username }}
+              {{ MypageCard.username }}
             </div></v-col
           ><v-col>
             <div class="infoDetail2">
               {{
-                communityCard.created_at.substring(0, 10) +
+                MypageCard.created_at.substring(0, 10) +
                   "  " +
-                  communityCard.created_at.substring(11, 16)
+                  MypageCard.created_at.substring(11, 16)
               }}
             </div></v-col
           ></v-row
-        >
+        > -->
       </div>
     </router-link>
   </div>
@@ -38,21 +38,23 @@
 
 <script>
 export default {
-  name: "communityCard",
-  props: ["communityCard"]
+  name: "MypageCard",
+  props: ["MypageCard"]
 };
 </script>
 
 <style scoped>
 .cCard {
   display: inline-block;
-  margin-top: 0.3rem;
-  width: 26rem;
-  height: 20%;
+  /* margin-top: 0.3rem; */
+  /* width: 10rem; */
+  width: 80%;
+  height: auto;
+  max-height: 165px;
   border-radius: 15px;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
   overflow: hidden;
-  margin-left: 0.5rem;
+  /* margin-left: 0.5rem; */
   color: black;
   background-color: rgba(110, 173, 157, 0.144);
 }
@@ -67,11 +69,14 @@ export default {
 
 .cphoto {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
-  width: 100%;
-  min-height: 246.4px;
-  height: 20%;
+  width: auto;
+  height: auto;
+  /* min-height: 246.4px; */
+  max-width: 230px;
+  max-height: 120px;
+  /* height: 20%; */
   border-radius: 15px;
   text-align: center;
   overflow: hidden;
@@ -88,8 +93,8 @@ export default {
   width: auto;
   /* width: 100%; */
   height: auto;
-  max-width: 460px;
-  max-height: 240px;
+  max-width: 230px;
+  max-height: 120px;
   /* margin-top: 4%; */
 }
 

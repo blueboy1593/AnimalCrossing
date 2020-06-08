@@ -157,13 +157,23 @@ const routes = [
           {
             path: "etc",
             name: "trade_etc",
-            component: () => import("../components/trade/etc.vue")
+            component: () => import("../components/trade/Etc.vue")
           },
           {
             path: "list/:category/:id",
             name: "tlist",
             props: true,
             component: () => import("../components/trade/tradeList.vue")
+          },
+          {
+            path: "tradedetail/:id",
+            name: "tradedetail",
+            component: () => import("../components/trade/TradeDetail.vue")
+          },
+          {
+            path: "etcdetail/:id",
+            name: "etcdetail",
+            component: () => import("../components/trade/TradeEtcDetail.vue")
           }
         ]
       }

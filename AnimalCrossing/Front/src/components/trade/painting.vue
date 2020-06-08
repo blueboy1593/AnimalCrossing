@@ -1,6 +1,5 @@
-!<template>
+<template>
   <div class="paintingCards">
-    <h1>카드를 클릭하면 뭐가 나올까요</h1>
     <tradeCard
       v-for="tradeCard in tradeCards"
       :key="tradeCard.id"
@@ -13,7 +12,7 @@
 
 <script>
 import { getPaintings } from "@/api/info.js";
-import tradeCard from "../info/infoCard.vue";
+import tradeCard from "../trade/tradeCard.vue";
 export default {
   name: "tradeNeighbors",
   components: {
@@ -28,6 +27,7 @@ export default {
   },
   async mounted() {
     this.tradeCards = await getPaintings(this.tradeCards);
+    console.log("hi", this.tradeCards);
   }
 };
 </script>

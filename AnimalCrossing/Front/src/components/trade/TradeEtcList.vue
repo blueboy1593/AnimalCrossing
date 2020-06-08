@@ -10,6 +10,10 @@
         <img src="../../assets/images/back1.png" alt="뒤로가기" />
         <img src="../../assets/images/back2.png" alt="뒤로가기" />
       </button>
+      <!-- <v-tabs>
+        <v-tab @click="buying">삽니다</v-tab>
+        <v-tab @click="selling">팝니다</v-tab>
+      </v-tabs> -->
       <v-tabs centered color="pink accent-1" background-color="transparent">
         <v-tab @click="selling">
           <img id="sellIcon" src="../../assets/images/sell.png" alt="" />
@@ -19,12 +23,10 @@
         </v-tab>
       </v-tabs>
       <br />
-      <tradeItemCard
+      <TradeEtcCard
         v-for="selectedItemCard in selectedItemCards"
         :key="selectedItemCard.id"
-        :tradeItemCard="selectedItemCard"
-        :category="category"
-        :engname="engname"
+        :TradeEtcCard="selectedItemCard"
         class="card_one"
       />
     </div>
@@ -32,20 +34,18 @@
 </template>
 
 <script>
-import { getTradeById } from "@/api/trade.js";
-import tradeItemCard from "./tradeItemCard.vue";
-import * as infoService from "../../api/info.js";
+import { getTradeListEtc } from "@/api/trade.js";
+import TradeEtcCard from "./TradeEtcCard.vue";
+
 export default {
-  name: "trade",
-  props: ["category", "id"],
+  name: "tradeEtc",
   components: {
-    tradeItemCard
+    TradeEtcCard
   },
   data() {
     return {
-      tradeItemCards: [],
-      selectedItemCards: [],
-      engname: ""
+      TradeEtcCards: [],
+      selectedItemCards: []
     };
   },
   methods: {
@@ -53,40 +53,26 @@ export default {
       this.$router.go(-1);
     },
     buying() {
-      let buyList = this.tradeItemCards.filter(
-        tradeItemCard => tradeItemCard.sort === "buy"
+      let buyList = this.TradeEtcCards.filter(
+        TradeEtcCard => TradeEtcCard.sort === "buy"
       );
       this.selectedItemCards = buyList;
+      console.log("삽니다", buyList, this.selectedItemCards);
     },
     selling() {
-      let sellList = this.tradeItemCards.filter(
-        tradeItemCard => tradeItemCard.sort === "sell"
+      let sellList = this.TradeEtcCards.filter(
+        TradeEtcCard => TradeEtcCard.sort === "sell"
       );
       this.selectedItemCards = sellList;
+      console.log("팝니다", sellList, this.selectedItemCards);
     }
   },
   async mounted() {
-    this.tradeItemCards = await getTradeById(
-      this.category,
-      this.id,
-      this.tradeItemCards
-    );
-    let sellList = this.tradeItemCards.filter(
-      tradeItemCard => tradeItemCard.sort === "sell"
+    this.TradeEtcCards = await getTradeListEtc(this.TradeEtcCards);
+    let sellList = this.TradeEtcCards.filter(
+      TradeEtcCard => TradeEtcCard.sort === "sell"
     );
     this.selectedItemCards = sellList;
-    let data = "";
-    if (this.category === "fossil") {
-      return;
-    }
-    if (this.category === "animal") {
-      data = await infoService.getNeighbors();
-    } else if (this.category === "painting") {
-      data = await infoService.getPaintings();
-    }
-    let find = data.filter(element => this.id == element.id);
-
-    this.engname = find[0].engname;
   }
 };
 </script>

@@ -2,42 +2,42 @@
   <div class="community">
     <div class="container">
       <button @click="goback" class="backbtn">
+        <!-- <img src="../../assets/images/back.png" alt="글쓰기" class="back-img" /> -->
         <img src="../../assets/images/back1.png" alt="뒤로가기" />
         <img src="../../assets/images/back2.png" alt="뒤로가기" />
       </button>
       <div class="onetrade">
         <h2 class="ttext" style="margin-bottom: 5px">
-          {{ this.article.title }}
+          {{ this.trade.title }}
         </h2>
+
         <v-row no-gutters>
           <v-col>
-            <p class="text">{{ this.article.username }}</p>
+            <p class="text">{{ this.trade.username }}</p>
           </v-col>
           <v-col>
             <p style="text-align:right" class="text">
-              {{ this.article.created_at }}
+              {{ this.trade.created_at }}
             </p>
           </v-col>
         </v-row>
-        <div v-if="article.image === null" class="detailimage">
+        <div v-if="trade.image === null" class="detailimage">
           <img
             src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
             class="detailimage detailImg"
           />
         </div>
         <div v-else>
-          <img
-            v-bind:src="article.image"
-            alt=""
-            class="detailimage detailImg"
-          />
+          <img v-bind:src="trade.image" alt="" class="detailimage detailImg" />
         </div>
         <div class="showcontent">
-          <p>{{ article.content }}</p>
+          <p>{{ trade.price }}</p>
         </div>
-        <!-- <v-btn id="boastDelete" v-if="this.checkId()" color="error" @click="deleteShow">삭제하기</v-btn> -->
+        <div class="showcontent">
+          <p>{{ trade.content }}</p>
+        </div>
         <div id="boastDeleteDiv">
-          <button id="boastDelete" v-if="this.checkId()" @click="deleteShow">
+          <button id="boastDelete" v-if="this.checkId()" @click="deleteTrade">
             <img
               id="boastDeleteImg"
               src="../../assets/images/삭제.png"
@@ -65,7 +65,7 @@
       </h4>
       <CommentList
         v-on:update="updateComment"
-        v-for="CommentList in article.CommentLists"
+        v-for="CommentList in trade.CommentLists"
         :key="CommentList.id"
         :CommentList="CommentList"
       />
@@ -74,23 +74,24 @@
 </template>
 
 <script>
-import * as showService from "../../api/show.js";
-import CommentList from "./CommunityCommentList.vue";
-import { deleteShows, writeComment } from "../../api/show.js";
+import * as tradeService from "../../api/trade.js";
+import CommentList from "./tradeCommentList.vue";
+import { writeComment, deleteArticleApi } from "../../api/trade.js";
 
 export default {
   components: { CommentList },
   data: function() {
     return {
-      article: {
+      trade: {
         title: "",
         content: "",
         image: null,
         username: "",
-        user_id: "",
         created_at: "",
-        CommentLists: [], // obj3개 들어감
-        show_pk: ""
+        price: "",
+        name: "",
+        user_id: "",
+        CommentLists: [] // obj1개 들어감
       },
       comment: ""
     };
@@ -99,65 +100,64 @@ export default {
     async writeComment() {
       var scope = this;
       const user = this.$store.state.user;
-      const show_id = Number(this.$route.params.id);
+      const article_pk = Number(this.$route.params.id);
       const token = this.$store.state.user.token;
       const comment = {
-        show: show_id,
+        article: article_pk,
         content: this.comment,
         user_id: user.id,
         username: user.username
       };
-      console.log(comment);
-      await writeComment(comment, show_id, token, async function(response) {
+      await writeComment(comment, article_pk, token, async function(response) {
         console.log(response);
-        let data = await showService.getShowById(show_id);
-        let list = { ...scope.article };
-        list.CommentLists = data.showcomments;
-        scope.article = list;
-        console.log(scope.article);
+        let data = await tradeService.getDetailTradeByArticleId(article_pk);
+        let list = { ...scope.trade };
+        console.log("여기에요!!", data, list);
+        list.CommentLists = data.comments;
+        scope.trade = list;
         scope.comment = "";
       });
-
-      // this.$router.go(this.$router.currentRoute);
-      // $router.push("/auction/register/" + response.data.id);
+    },
+    async deleteTrade() {
+      const article_pk = this.$route.params.id;
+      const token = this.$store.state.user.token;
+      await deleteArticleApi(article_pk, token);
+      this.$router.go(-1);
     },
     async updateComment() {
-      const show_id = Number(this.$route.params.id);
-      let data = await showService.getShowById(show_id);
-      let list = { ...this.article };
+      const article_pk = this.$route.params.id;
+      let data = await tradeService.getDetailTradeByArticleId(article_pk);
+      let list = { ...this.trade };
+      0;
       console.log("여기에요!!", data, list);
-      list.CommentLists = data.showcomments;
-      this.article = list;
-    },
-    checkId() {
-      if (this.article.user_id === this.$store.state.user.id) {
-        return true;
-      }
-    },
-    async deleteShow() {
-      const show_pk = this.$route.params.id;
-      const token = this.$store.state.user.token;
-      await deleteShows(show_pk, token);
-      this.$router.go(-1);
+      list.CommentLists = data.comments;
+      this.trade = list;
     },
     goback() {
       this.$router.go(-1);
+    },
+    checkId() {
+      console.log(this.trade.user_id, this.$store.state.user.id);
+      if (this.trade.user_id === this.$store.state.user.id) {
+        return true;
+      }
     }
   },
   // detail정보 가져오기
   mounted: async function() {
-    var showId = this.$route.params.id;
-    const data = await showService.getShowById(showId);
-    this.article.CommentLists = data.showcomments;
-    this.article.title = data.title;
-    this.article.image = data.image;
-    this.article.content = data.content;
-    this.article.created_at =
+    var tradeId = this.$route.params.id;
+    const data = await tradeService.getDetailTradeByArticleId(tradeId);
+    this.trade.title = data.title;
+    this.trade.image = data.image;
+    this.trade.content = data.content;
+    this.trade.created_at =
       data.created_at.substring(0, 10) +
       "  " +
       data.created_at.substring(11, 16);
-    this.article.username = data.username;
-    this.article.user_id = data.user_id;
+    this.trade.username = data.username;
+    this.trade.CommentLists = data.comments;
+    this.trade.price = data.price;
+    this.trade.user_id = data.user_id;
   }
 };
 </script>
@@ -170,7 +170,10 @@ export default {
   margin: 0px auto;
   border-radius: 10px;
 }
-
+.deletebtn {
+  width: 3%;
+  align-items: center;
+}
 .detailImg {
   box-shadow: 4px 4px 3px 0px rgba(4, 37, 56, 0.75);
 }
@@ -181,16 +184,14 @@ export default {
 }
 
 .ttext {
-  margin-top: 10px;
   text-align: center;
   font-family: "Gamja Flower", cursive;
 }
 .showcontent {
-  font-size: 1.2rem;
-  text-align: center;
   margin-top: 10px;
-  margin-bottom: 10px;
   font-family: "Gamja Flower", cursive;
+  text-align: center;
+  font-size: 1.2rem;
 }
 .text {
   font-family: "Gamja Flower", cursive;
@@ -252,7 +253,15 @@ export default {
   margin-bottom: 0.3rem;
   display: grid;
 }
-
+.back-img {
+  height: 25px;
+  margin-right: 30px;
+}
+.backbtn {
+  display: block;
+  border: 0;
+  outline: 0;
+}
 #boastDeleteDiv {
   display: flex;
   justify-content: center;
@@ -272,15 +281,6 @@ export default {
 
 #boastDeleteImg:hover {
   transform: scale(1.1);
-}
-.back-img {
-  height: 25px;
-  margin-right: 30px;
-}
-.backbtn {
-  display: block;
-  border: 0;
-  outline: 0;
 }
 
 .backbtn img:last-child {

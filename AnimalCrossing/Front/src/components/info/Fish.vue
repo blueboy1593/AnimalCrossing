@@ -1,12 +1,14 @@
 <template>
-  <div class="fishCards">
-    <!-- <h1>fish</h1> -->
-    <infoCard
-      v-for="infoCard in infoCards"
-      :key="infoCard.title"
-      :infoCard="infoCard"
-      :routePath="routePath"
-    />
+  <div>
+    <!-- <div class="dogam">물고기 도감</div> -->
+    <div class="fishCards">
+      <infoCard
+        v-for="infoCard in infoCards"
+        :key="infoCard.title"
+        :infoCard="infoCard"
+        :routePath="routePath"
+      />
+    </div>
   </div>
 </template>
 
@@ -28,88 +30,25 @@ export default {
   async mounted() {
     this.infoCards = await getFishes(this.infoCards);
   }
-  // data() {
-  //   return {
-  //     infoCards: [
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "붕어",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "잉어",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.dogam {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+  color: rgb(9, 40, 71);
+}
+
 .fishCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: auto;
   grid-gap: 1rem 1rem;
-  /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
 }
+
 @media (max-width: 1600px) {
   .fishCards {
     grid-template-columns: repeat(6, 1fr);

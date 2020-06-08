@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import * as showService from "../../api/show.js";
+import * as tradeService from "../../api/trade.js";
 export default {
   name: "CommentList",
   props: ["CommentList"],
@@ -30,7 +30,9 @@ export default {
       var scope = this;
       const token = this.$store.state.user.token;
       const comment_pk = this.CommentList.id;
-      await showService.deleteCommentApi(comment_pk, token, function(response) {
+      await tradeService.deleteCommentApi(comment_pk, token, function(
+        response
+      ) {
         console.log(response);
         scope.$emit("update");
       });
@@ -52,11 +54,10 @@ export default {
   border-bottom: 1.2px solid rgba(76, 180, 157, 0.295);
   margin-bottom: 0.3rem;
   height: 50px;
-  line-height: 50px;
+  /* line-height: 50px; */
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr 0.3fr;
+  grid-template-columns: 1fr 3fr 1fr 0.2fr;
   grid-template-areas: "user comment time delete";
-  font-family: "Gamja Flower", cursive;
 }
 
 .onecomment:hover {
@@ -68,34 +69,34 @@ export default {
   display: grid;
   grid-area: user;
   text-align: center;
+  font-family: "Gamja Flower";
+  font-size: 1.2rem;
 }
 
 .comment {
   display: grid;
   grid-area: comment;
+  font-family: "Gamja Flower";
+  font-size: 1.2rem;
 }
 
 .time {
   display: grid;
   grid-area: time;
   text-align: center;
+  font-family: "Gamja Flower";
+  font-size: 1.2rem;
 }
+
 .delete {
-  grid-area: delete;
   width: 2%;
   height: 1%;
   z-index: 1;
   margin-top: 10px;
-  /* margin-right: 5px; */
-  margin-left: -10px;
-  opacity: 77%;
+  margin-right: 5px;
+  opacity: 55%;
   color: white;
   font-family: "Gamja Flower";
   font-size: 1rem;
-}
-
-.delete:hover {
-  opacity: 100%;
-  font-size: 1.1rem;
 }
 </style>
