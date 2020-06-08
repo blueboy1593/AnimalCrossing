@@ -69,17 +69,24 @@ export default {
   border-radius: 15px;
   margin-right: 1rem;
   overflow: hidden;
-  background-color: rgba(110, 173, 157, 0.144);
+  margin-left: 0.5rem;
   color: black;
+  background-color: rgba(110, 173, 157, 0.144);
 }
 
 .cCard:hover {
-  border-bottom: 1px solid #76a7b2;
   background-color: rgba(98, 173, 155, 0.26);
+  transform: scale(1.03);
+  opacity: 0.9;
+  box-shadow: 0 0 0 1px #76a7b2;
 }
 
 .cphoto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  min-height: 246.4px;
   height: 20%;
   border-radius: 15px;
   text-align: center;
@@ -87,13 +94,17 @@ export default {
 }
 
 .cimage {
-  height: 170px;
+  max-height: 170px;
   display: block;
   margin: 0 auto;
+  margin-top: 4%;
 }
 
 .detailimage {
-  width: 100%;
+  width: auto;
+  height: auto;
+  max-width: 460px;
+  max-height: 240px;
 }
 
 .infoName {
