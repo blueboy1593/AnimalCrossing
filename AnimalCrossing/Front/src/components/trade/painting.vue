@@ -27,6 +27,7 @@ export default {
   },
   async mounted() {
     this.tradeCards = await getPaintings(this.tradeCards);
+    console.log("hi", this.tradeCards);
   }
 };
 </script>
