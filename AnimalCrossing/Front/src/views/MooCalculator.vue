@@ -246,7 +246,6 @@ export default {
           const max_input = Math.round(
             (pre_input[1] * (100 + percentage)) / 100
           );
-          // percentage = percentage * (2 / 3);
           percentage = percentage * (1 / 2);
           price_calculated.push([min_input, Math.min(600, max_input)]);
         } else {
