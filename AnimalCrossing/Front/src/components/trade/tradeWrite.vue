@@ -181,6 +181,7 @@ export default {
       }
     },
     async tradeSubmit() {
+      var scope = this;
       const token = this.$store.state.user.token;
       const user = this.$store.state.user;
       let image = "";
@@ -222,7 +223,7 @@ export default {
         };
       }
       await tradePost(trade, token, function(response) {
-        this.$router.push(`/trade/tradedetail/${response.data.id}`);
+        scope.$router.push(`/trade/tradedetail/${response.data.id}`);
       });
     },
     getImgPath(engname) {
