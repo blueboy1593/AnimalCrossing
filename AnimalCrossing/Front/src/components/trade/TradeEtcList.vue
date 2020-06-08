@@ -23,8 +23,19 @@
         </v-tab>
       </v-tabs>
       <br />
+      <div style="display: flex;">
+        <v-text-field
+          v-model="searchText"
+          @keyup="filter"
+          solo-inverted
+          flat
+          hide-details
+          label="Search"
+          class="nav-search"
+        ></v-text-field>
+      </div>
       <TradeEtcCard
-        v-for="selectedItemCard in selectedItemCards"
+        v-for="selectedItemCard in searchItemCards"
         :key="selectedItemCard.id"
         :TradeEtcCard="selectedItemCard"
         class="card_one"
@@ -45,10 +56,21 @@ export default {
   data() {
     return {
       TradeEtcCards: [],
-      selectedItemCards: []
+      selectedItemCards: [],
+      searchItemCards: [],
+      searchText: ""
     };
   },
   methods: {
+    filter() {
+      let check = this.selectedItemCards.filter(
+        selectedItemCard =>
+          selectedItemCard.title.indexOf(this.searchText.trim()) !== -1 ||
+          selectedItemCard.content.indexOf(this.searchText.trim()) !== -1
+      );
+      this.searchItemCards = check;
+      console.log(check);
+    },
     goback() {
       this.$router.go(-1);
     },
@@ -73,11 +95,19 @@ export default {
       TradeEtcCard => TradeEtcCard.sort === "sell"
     );
     this.selectedItemCards = sellList;
+    console.log(this.selectedItemCards);
   }
 };
 </script>
 
 <style scoped>
+.v-text-field {
+  width: 300px;
+  background-color: rgba(173, 204, 245, 0.322);
+  margin-bottom: 10px;
+  margin-left: 35%;
+  margin-right: 35%;
+}
 .card_one {
   display: inline-block;
 }
