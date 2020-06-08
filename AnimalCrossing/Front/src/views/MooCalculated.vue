@@ -162,7 +162,7 @@ export default {
     // moo_graph_min.unshift(600);
     // console.log(moo_graph_max);
     // console.log(moo_graph_min);
-
+    moo_price.shift();
     this.moo = moo_price;
     this.graph_max = moo_graph_max;
     this.graph_min = moo_graph_min;
