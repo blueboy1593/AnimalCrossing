@@ -18,14 +18,14 @@
             </p>
           </v-col>
         </v-row>
-        <div v-if="image_url === null" class="detailimage">
+        <div v-if="trade.image === null" class="detailimage">
           <img
             src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
             class="detailimage detailImg"
           />
         </div>
         <div v-else>
-          <img v-bind:src="image_url" alt="" class="detailimage detailImg" />
+          <img v-bind:src="trade.image" alt="" class="detailimage detailImg" />
         </div>
         <div class="showcontent">
           <p>{{ trade.price }}</p>
