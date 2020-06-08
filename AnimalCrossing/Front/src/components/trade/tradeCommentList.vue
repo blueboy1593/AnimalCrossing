@@ -53,11 +53,16 @@ export default {
   border-top-right-radius: 10px;
   border-bottom: 1.2px solid rgba(76, 180, 157, 0.295);
   margin-bottom: 0.3rem;
-  height: 50px;
+  /* height: 50px; */
   line-height: 50px;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 0.2fr;
   grid-template-areas: "user comment time delete";
+}
+
+/* v-app 내의 p에서 마진을 제거해버림 */
+.v-application p {
+  margin-bottom: 0;
 }
 
 .onecomment:hover {
