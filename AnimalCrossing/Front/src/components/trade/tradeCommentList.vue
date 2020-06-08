@@ -54,7 +54,7 @@ export default {
   border-bottom: 1.2px solid rgba(76, 180, 157, 0.295);
   margin-bottom: 0.3rem;
   height: 50px;
-  /* line-height: 50px; */
+  line-height: 50px;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 0.2fr;
   grid-template-areas: "user comment time delete";
