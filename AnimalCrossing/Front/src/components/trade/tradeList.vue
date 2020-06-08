@@ -9,7 +9,6 @@
         v-for="tradeItemCard in tradeItemCards"
         :key="tradeItemCard.id"
         :tradeItemCard="tradeItemCard"
-        :name="tradeItemCard.engname"
         class="card_one"
       />
     </div>
