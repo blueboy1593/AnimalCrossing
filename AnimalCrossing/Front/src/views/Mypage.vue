@@ -15,10 +15,20 @@
     </div>
     <div class="mydata">
       <div class="mypost">
-        내가 쓴 글
+        <h4>내가 쓴 글</h4>
+        <section class="board__news">
+          <div>
+            <MypageCard
+              v-for="MypageCard in MypageCards"
+              :key="MypageCard.id"
+              :MypageCard="MypageCard"
+              class="card_one"
+            />
+          </div>
+        </section>
       </div>
       <div class="mytrade">
-        내 거래내역
+        <h4>내 거래내역</h4>
       </div>
     </div>
   </div>
@@ -26,17 +36,25 @@
 
 <script>
 import { getNeighbors } from "@/api/info.js";
+import { getShows } from "@/api/show.js";
+import MypageCard from "../components/mypage/MypageCard.vue";
 
 export default {
+  components: {
+    MypageCard
+  },
   data: function() {
     return {
       username: "",
       email: "",
       neighbor_url: "",
-      infoCards: []
+      infoCards: [],
+      MypageCards: []
     };
   },
   async mounted() {
+    this.MypageCards = await getShows(this.MypageCards);
+
     // 여기는 유저 정보를 스토어에서 받아서 저장하는 코드
     const user = this.$store.state.user;
     this.username = user.username;
@@ -148,5 +166,41 @@ export default {
   height: 50%;
   border: 2px solid lavender;
   border-radius: 24px;
+}
+
+.card_one {
+  display: inline-block;
+  width: 50%;
+  height: auto;
+  max-height: 165px;
+  padding: 10px 0px;
+}
+
+/* board_new -  */
+/* for the section describing the news items, display the items in a single column layout */
+.board__news {
+  display: flex;
+  /* margin: 1rem 0 2rem; */
+  flex-direction: column;
+  width: 100%;
+  justify-self: center;
+  /* dictate a maximum height to allow for vertical scroll */
+  /* max-height: 500px; */
+  height: 80%;
+  overflow-y: auto;
+}
+
+/* minor style changes for the scrollbar */
+.board__news::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.board__news::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px hsla(200, 100%, 5%, 0.3);
+}
+
+.board__news::-webkit-scrollbar-thumb {
+  background: hsl(200, 100%, 10%);
+  border-radius: 5px;
 }
 </style>
