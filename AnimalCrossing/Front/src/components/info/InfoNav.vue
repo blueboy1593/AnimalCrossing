@@ -40,6 +40,7 @@
       <!-- <button class="nav--item" data-item="events">Events</button>
     <button class="nav--item" data-item="important">Important</button> -->
     </nav>
+
     <!-- <div class="dogam">도감</div> -->
   </div>
 </template>
@@ -159,6 +160,10 @@ a background is specified in the script */
   }
 
   .nav-img {
+    width: 40px;
+    height: auto;
+  }
+  .nav-search {
     width: 40px;
     height: auto;
   }

@@ -1,9 +1,18 @@
 <template>
   <div>
+    <v-text-field
+      v-model="searchText"
+      @keyup="filter"
+      solo-inverted
+      flat
+      hide-details
+      label="Search"
+      class="nav-search"
+    ></v-text-field>
     <!-- <div class="dogam">곤충 도감</div> -->
     <div class="insectCards">
       <infoCard
-        v-for="infoCard in infoCards"
+        v-for="infoCard in selectedCards"
         :key="infoCard.id"
         :infoCard="infoCard"
         :routePath="routePath"
@@ -24,12 +33,22 @@ export default {
   data() {
     return {
       infoCards: [],
-      routePath: this.$route.path
+      routePath: this.$route.path,
+      selectedCards: [],
+      searchText: ""
     };
   },
-
+  methods: {
+    filter() {
+      let check = this.infoCards.filter(
+        infoCard => infoCard.name.indexOf(this.searchText.trim()) !== -1
+      );
+      this.selectedCards = check;
+    }
+  },
   async mounted() {
     this.infoCards = await getInsects(this.infoCards);
+    this.selectedCards = this.infoCards;
   }
 };
 </script>

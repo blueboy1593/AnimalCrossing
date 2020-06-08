@@ -11,7 +11,7 @@ import MooCalculator from "../views/MooCalculator.vue";
 import MooCalculated from "../views/MooCalculated.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
-import infoDetail from "../components/info/infoDetail.vue";
+import searchBar from "../components/searchBar.vue";
 import trade from "../views/trade.vue";
 import Detail from "../views/Detail.vue";
 import Mypage from "../views/Mypage.vue";
@@ -31,7 +31,7 @@ const routes = [
   {
     path: "/test",
     name: "test",
-    component: infoDetail
+    component: searchBar
   },
   {
     path: "/",
