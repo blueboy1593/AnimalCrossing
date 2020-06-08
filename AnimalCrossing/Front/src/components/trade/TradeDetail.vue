@@ -111,7 +111,6 @@ export default {
         console.log(response);
         let data = await tradeService.getDetailTradeByArticleId(article_pk);
         let list = { ...scope.trade };
-        console.log("여기에요!!", data, list);
         list.CommentLists = data.comments;
         scope.trade = list;
         scope.comment = "";
@@ -130,7 +129,6 @@ export default {
       const article_pk = this.$route.params.id;
       let data = await tradeService.getDetailTradeByArticleId(article_pk);
       let list = { ...this.trade };
-      console.log("여기에요!!", data, list);
       list.CommentLists = data.comments;
       this.trade = list;
     }
@@ -139,6 +137,7 @@ export default {
   mounted: async function() {
     var tradeId = this.$route.params.id;
     const data = await tradeService.getDetailTradeByArticleId(tradeId);
+    console.log(data);
     this.trade.title = data.title;
     this.trade.image = data.image;
     this.trade.content = data.content;
