@@ -20,9 +20,16 @@
     <router-link to="/trade/etc">
       <img src="../../assets/images/nav_etc.png" alt="기타" class="nav-img" />
     </router-link>
-    <router-link to="/trade/write">
-      <img src="../../assets/images/write.png" alt="글쓰기" class="nav-img" />
-    </router-link>
+    <div v-if="!$store.state.isSigned">
+      <router-link to="/login">
+        <img src="../../assets/images/write.png" alt="글쓰기" class="nav-img" />
+      </router-link>
+    </div>
+    <div v-else>
+      <router-link to="/trade/write">
+        <img src="../../assets/images/write.png" alt="글쓰기" class="nav-img" />
+      </router-link>
+    </div>
   </nav>
 </template>
 

@@ -50,7 +50,12 @@
     <div id="wantTrade" action="" method="">
       <div id="imgPreview">
         <input ref="imageInput" type="file" hidden @change="onChangeImages" />
-        <button style="margin-left: 15px;" id="imgUploadButton" type="button" @click="onClickImageUpload">
+        <button
+          style="margin-left: 15px;"
+          id="imgUploadButton"
+          type="button"
+          @click="onClickImageUpload"
+        >
           거래 사진 업로드
         </button>
         <div class="imgCon">
