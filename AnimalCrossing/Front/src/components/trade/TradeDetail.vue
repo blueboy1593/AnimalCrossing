@@ -186,10 +186,6 @@ export default {
   border-radius: 10px;
 }
 
-.detailImg {
-  box-shadow: 4px 4px 3px 0px rgba(4, 37, 56, 0.75);
-}
-
 .detailImg:hover {
   transform: scale(1.02);
   opacity: 0.95;
