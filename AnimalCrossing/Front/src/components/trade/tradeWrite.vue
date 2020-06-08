@@ -35,6 +35,7 @@
       </v-col> -->
       <!--         :filter="customFilter" -->
       <v-autocomplete
+        v-if="check"
         v-model="name"
         :items="selectedLists"
         color="white"
@@ -107,6 +108,7 @@ export default {
     name: "",
     categoryEng: "",
     id: "",
+    check: true,
     // post를 보내기 위해서 dict로 묶어서 사용!
     trade: {
       sort: "",
@@ -116,6 +118,16 @@ export default {
       image: null
     }
   }),
+  watch: {
+    category: function(newVal, oldVal) {
+      if (newVal === "기타") {
+        console.log(newVal, oldVal);
+        this.check = false;
+      } else {
+        this.check = true;
+      }
+    }
+  },
   methods: {
     onClickImageUpload() {
       this.$refs.imageInput.click();
@@ -147,8 +159,9 @@ export default {
       this.trade.image = image;
     },
     init() {
-      this.selectedLists = [];
+      this.name = "";
     },
+
     update() {
       if (this.category === "이웃") {
         this.selectedLists = this.neighbors;
@@ -174,23 +187,38 @@ export default {
       } else {
         image = this.trade.image;
       }
-
+      let find = "",
+        trade = "";
       const trade_info = this.trade;
-      let find = this.selectedLists.filter(list => list.name === this.name);
+      if (this.categoryEng === "etc") {
+        trade = {
+          title: trade_info.title,
+          content: trade_info.content,
+          user_id: user.id,
+          username: user.username,
+          image: image,
+          category: this.categoryEng,
+          name: "",
+          sort: trade_info.sort,
+          price: trade_info.price
+        };
+      } else {
+        find = this.selectedLists.filter(list => list.name === this.name);
 
-      const trade = {
-        title: trade_info.title,
-        content: trade_info.content,
-        user_id: user.id,
-        username: user.username,
-        image: image,
-        category: this.categoryEng,
-        name: find[0].id.toString(),
-        sort: trade_info.sort,
-        price: trade_info.price
-      };
-      console.log("find");
-      console.log(trade);
+        trade = {
+          title: trade_info.title,
+          content: trade_info.content,
+          user_id: user.id,
+          username: user.username,
+          image: image,
+          category: this.categoryEng,
+          name: find[0].id.toString(),
+          sort: trade_info.sort,
+          price: trade_info.price
+        };
+        console.log(find);
+        console.log(trade);
+      }
       await tradePost(trade, token);
       // this.$router.push("/community/list");
     }
@@ -199,6 +227,7 @@ export default {
     this.fossils = await infoService.getFossils(this.fossils);
     this.neighbors = await infoService.getNeighbors(this.neighbors);
     this.paintings = await infoService.getPaintings(this.paintings);
+    this.selectedLists = [];
     // console.log(this.fossils, this.neighbors, this.paintings);
   }
 };
