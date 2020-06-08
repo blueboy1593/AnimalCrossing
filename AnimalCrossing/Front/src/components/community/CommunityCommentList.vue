@@ -9,7 +9,12 @@
     <p class="time">
       {{ CommentList.created_at }}
     </p>
-    <v-btn color="error" small class="delete" @click="deleteComment"
+    <v-btn
+      v-if="this.checkId()"
+      color="error"
+      small
+      class="delete"
+      @click="deleteComment"
       >삭제</v-btn
     >
   </div>
@@ -29,6 +34,11 @@ export default {
         console.log(response);
         scope.$emit("update");
       });
+    },
+    checkId() {
+      if (this.CommentList.user_id === this.$store.state.user.id) {
+        return true;
+      }
     }
   }
 };
