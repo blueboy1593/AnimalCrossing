@@ -23,7 +23,6 @@
 
 <script>
 export default {
-  // name: "MypageCard",
   props: ["MypageCard"]
 };
 </script>
@@ -31,21 +30,16 @@ export default {
 <style scoped>
 .cCard {
   display: inline-block;
-  /* margin-top: 0.3rem; */
-  /* width: 10rem; */
   width: 80%;
   height: auto;
   max-height: 165px;
   border-radius: 15px;
-  /* margin-right: 1rem; */
   overflow: hidden;
-  /* margin-left: 0.5rem; */
   color: black;
   background-color: rgba(110, 173, 157, 0.144);
 }
 
 .cCard:hover {
-  /* border-bottom: 1px solid #76a7b2; */
   background-color: rgba(98, 173, 155, 0.26);
   transform: scale(1.03);
   opacity: 0.9;
@@ -54,14 +48,11 @@ export default {
 
 .cphoto {
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   width: auto;
   height: auto;
-  /* min-height: 246.4px; */
   max-width: 230px;
   max-height: 120px;
-  /* height: 20%; */
   border-radius: 15px;
   text-align: center;
   overflow: hidden;
@@ -76,11 +67,9 @@ export default {
 
 .detailimage {
   width: auto;
-  /* width: 100%; */
   height: auto;
   max-width: 230px;
   max-height: 120px;
-  /* margin-top: 4%; */
 }
 
 .infoName {
