@@ -73,3 +73,15 @@ export function writeComment(comment, show_id, token, success, fail) {
     .then(success)
     .catch(fail);
 }
+
+// 댓글 삭제하기
+export function deleteCommentApi(show_id, token, success, fail) {
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: "JWT " + token
+  };
+  instance
+    .delete(`/shows/comment_ud/${show_id}/`, { headers })
+    .then(success)
+    .catch(fail);
+}

@@ -9,13 +9,28 @@
     <p class="time">
       {{ CommentList.created_at }}
     </p>
+    <v-btn color="error" small class="delete" @click="deleteComment"
+      >삭제</v-btn
+    >
   </div>
 </template>
 
 <script>
+import * as showService from "../../api/show.js";
 export default {
   name: "CommentList",
-  props: ["CommentList"]
+  props: ["CommentList"],
+  methods: {
+    async deleteComment() {
+      var scope = this;
+      const token = this.$store.state.user.token;
+      const comment_pk = this.CommentList.id;
+      await showService.deleteCommentApi(comment_pk, token, function(response) {
+        console.log(response);
+        scope.$emit("update");
+      });
+    }
+  }
 };
 </script>
 
@@ -29,8 +44,8 @@ export default {
   height: 50px;
   line-height: 50px;
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  grid-template-areas: "user comment time";
+  grid-template-columns: 1fr 3fr 1fr 0.2fr;
+  grid-template-areas: "user comment time delete";
 }
 
 .onecomment:hover {
@@ -53,5 +68,16 @@ export default {
   display: grid;
   grid-area: time;
   text-align: center;
+}
+.delete {
+  width: 2%;
+  height: 1%;
+  z-index: 1;
+  margin-top: 10px;
+  margin-right: 5px;
+  opacity: 55%;
+  color: white;
+  font-family: "Gamja Flower";
+  font-size: 1rem;
 }
 </style>

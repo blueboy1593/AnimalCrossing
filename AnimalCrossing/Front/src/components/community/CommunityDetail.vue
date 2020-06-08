@@ -34,7 +34,11 @@
         <!-- <v-btn id="boastDelete" v-if="this.checkId()" color="error" @click="deleteShow">삭제하기</v-btn> -->
         <div id="boastDeleteDiv">
           <button id="boastDelete" v-if="this.checkId()" @click="deleteShow">
-            <img id="boastDeleteImg" src="../../assets/images/삭제.png" alt="">
+            <img
+              id="boastDeleteImg"
+              src="../../assets/images/삭제.png"
+              alt=""
+            />
           </button>
         </div>
         <h4 class="text">
