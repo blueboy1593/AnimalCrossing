@@ -8,7 +8,7 @@
           class="back-img"
         />
       </button>
-      <v-tabs color="pink accent-1" background-color="transparent">
+      <v-tabs centered color="pink accent-1" background-color="transparent">
         <v-tab @click="buying">
           <img id="buyIcon" src="../../assets/images/buy.png" alt="" />
         </v-tab>
@@ -123,10 +123,6 @@ export default {
 .backbtn {
   border: 0;
   outline: 0;
-}
-
-#tabColor::selection {
-  background-color: red;
 }
 
 #buyingTab {

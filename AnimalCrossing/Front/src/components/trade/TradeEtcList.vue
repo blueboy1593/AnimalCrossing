@@ -8,9 +8,17 @@
           class="back-img"
         />
       </button>
-      <v-tabs>
+      <!-- <v-tabs>
         <v-tab @click="buying">삽니다</v-tab>
         <v-tab @click="selling">팝니다</v-tab>
+      </v-tabs> -->
+      <v-tabs centered color="pink accent-1" background-color="transparent">
+        <v-tab @click="buying">
+          <img id="buyIcon" src="../../assets/images/buy.png" alt="">
+        </v-tab>
+        <v-tab @click="selling">
+          <img id="sellIcon" src="../../assets/images/sell.png" alt="">
+        </v-tab>
       </v-tabs>
       <br />
       <TradeEtcCard
@@ -99,4 +107,19 @@ export default {
   border: 0;
   outline: 0;
 }
+
+#buyingTab {
+  background-color: none;
+}
+
+#buyIcon {
+  width: 55px;
+  margin-bottom: 3px;
+}
+
+#sellIcon {
+  width: 55px;
+  margin-bottom: 3px;
+}
+
 </style>
