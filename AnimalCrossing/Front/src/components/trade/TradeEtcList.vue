@@ -79,6 +79,8 @@ export default {
         TradeEtcCard => TradeEtcCard.sort === "buy"
       );
       this.selectedItemCards = buyList;
+      this.searchItemCards = buyList;
+      this.searchText = "";
       console.log("삽니다", buyList, this.selectedItemCards);
     },
     selling() {
@@ -86,6 +88,8 @@ export default {
         TradeEtcCard => TradeEtcCard.sort === "sell"
       );
       this.selectedItemCards = sellList;
+      this.searchItemCards = sellList;
+      this.searchText = "";
       console.log("팝니다", sellList, this.selectedItemCards);
     }
   },
