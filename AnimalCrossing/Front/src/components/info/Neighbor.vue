@@ -1,11 +1,22 @@
 <template>
-  <div class="neighborCards">
-    <infoCard
-      v-for="infoCard in infoCards"
-      :key="infoCard.id"
-      :infoCard="infoCard"
-      :routePath="routePath"
-    />
+  <div>
+    <v-text-field
+      v-model="searchText"
+      @keyup="filter"
+      solo-inverted
+      flat
+      hide-details
+      label="Search"
+      class="nav-search"
+    ></v-text-field>
+    <div class="neighborCards">
+      <infoCard
+        v-for="infoCard in infoCards"
+        :key="infoCard.id"
+        :infoCard="infoCard"
+        :routePath="routePath"
+      />
+    </div>
   </div>
 </template>
 
@@ -18,14 +29,25 @@ export default {
   components: {
     infoCard
   },
+  methods: {
+    filter() {
+      let check = this.infoCards.filter(
+        infoCard => infoCard.name.indexOf(this.searchText.trim()) !== -1
+      );
+      this.selectedCards = check;
+    }
+  },
   data() {
     return {
       infoCards: [],
-      routePath: this.$route.path
+      routePath: this.$route.path,
+      selectedCards: [],
+      searchText: ""
     };
   },
   async mounted() {
     this.infoCards = await getNeighbors(this.infoCards);
+    this.selectedCards = this.infoCards;
   }
   // data() {
   //   return {
