@@ -31,9 +31,16 @@
         <div class="showcontent">
           <p>{{ trade.content }}</p>
         </div>
-        <v-btn color="error" class="deletebtn" @click="deleteArticle"
-          >글 삭제</v-btn
-        >
+        <!-- <v-btn color="error" class="deletebtn" @click="deleteArticle">글 삭제</v-btn> -->
+        <div id="tradeDeleteDiv">
+          <button id="tradeDelete" class="deletebtn" @click="deleteArticle">
+            <img
+              id="tradeDeleteImg"
+              src="../../assets/images/삭제.png"
+              alt=""
+            />
+          </button>
+        </div>
       </div>
       <h4 class="text">
         <div class="commentImg">
@@ -248,5 +255,26 @@ export default {
 .backbtn {
   border: 0;
   outline: 0;
+}
+#tradeDeleteDiv {
+  display: flex;
+  justify-content: center;
+  /* 오른쪽 정렬 */
+  /* justify-content: flex-end; */
+}
+
+#tradeDelete {
+  width: 60px;
+  border: 0;
+  outline: 0;
+  margin-left: 12px;
+}
+
+#tradeDeleteImg {
+  width: 100%;
+}
+
+#tradeDeleteImg:hover {
+  transform: scale(1.1);
 }
 </style>

@@ -61,6 +61,7 @@
           </div>
         </h4>
         <CommentList
+          v-on:update="updateComment"
           v-for="CommentList in article.CommentLists"
           :key="CommentList.id"
           :CommentList="CommentList"
@@ -111,11 +112,20 @@ export default {
         let list = { ...scope.article };
         list.CommentLists = data.showcomments;
         scope.article = list;
+        console.log(scope.article);
         scope.comment = "";
       });
 
       // this.$router.go(this.$router.currentRoute);
       // $router.push("/auction/register/" + response.data.id);
+    },
+    async updateComment() {
+      const show_id = Number(this.$route.params.id);
+      let data = await showService.getShowById(show_id);
+      let list = { ...this.article };
+      console.log("여기에요!!", data, list);
+      list.CommentLists = data.showcomments;
+      this.article = list;
     },
     checkId() {
       if (this.article.user_id === this.$store.state.user.id) {
@@ -169,11 +179,15 @@ export default {
 }
 
 .ttext {
+  margin-top: 10px;
   text-align: center;
   font-family: "Gamja Flower", cursive;
 }
 .showcontent {
+  font-size: 1.2rem;
+  text-align: center;
   margin-top: 10px;
+  margin-bottom: 10px;
   font-family: "Gamja Flower", cursive;
 }
 .text {
