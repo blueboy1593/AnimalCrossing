@@ -32,7 +32,10 @@ export default {
   methods: {
     filter() {
       let check = this.infoCards.filter(
-        infoCard => infoCard.name.indexOf(this.searchText.trim()) !== -1
+        infoCard =>
+          infoCard.name.indexOf(this.searchText.trim()) !== -1 ||
+          infoCard.personality.indexOf(this.searchText.trim()) !== -1 ||
+          infoCard.sort.indexOf(this.searchText.trim()) !== -1
       );
       this.selectedCards = check;
     }
@@ -48,6 +51,7 @@ export default {
   async mounted() {
     this.infoCards = await getNeighbors(this.infoCards);
     this.selectedCards = this.infoCards;
+    console.log(this.selectedCards);
   }
 };
 </script>
