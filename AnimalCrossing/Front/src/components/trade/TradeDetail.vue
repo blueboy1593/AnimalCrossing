@@ -188,18 +188,18 @@ export default {
 .ttext {
   text-align: center;
   font-family: "Gamja Flower", cursive;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 .showcontent {
   margin-top: 10px;
   font-family: "Gamja Flower", cursive;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: center;
 }
 .text {
   font-family: "Gamja Flower", cursive;
   margin-left: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 #comment {
