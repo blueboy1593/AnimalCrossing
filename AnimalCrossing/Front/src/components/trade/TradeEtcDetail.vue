@@ -134,7 +134,7 @@ export default {
       this.trade = list;
     },
     goback() {
-      this.$router.go(-1);
+      this.$router.push("/trade/etc");
     },
     checkId() {
       if (this.trade.user_id === this.$store.state.user.id) {
