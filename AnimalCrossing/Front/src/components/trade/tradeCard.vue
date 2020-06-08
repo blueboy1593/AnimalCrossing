@@ -87,6 +87,7 @@ export default {
   border-radius: 15px;
   background-color: #c1d2e1;
   overflow: hidden;
+  color: black;
 }
 
 .infoCard:hover {

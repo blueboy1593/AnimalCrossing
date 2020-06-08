@@ -49,6 +49,7 @@
             type="text"
             v-model="comment"
             placeholder="댓글을 입력하세요"
+            @keyup.enter="writeComment"
           />
           <img
             id="commentImg"

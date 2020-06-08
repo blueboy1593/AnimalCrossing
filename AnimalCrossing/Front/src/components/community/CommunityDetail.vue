@@ -44,29 +44,30 @@
             />
           </button>
         </div>
-        <h4 class="text">
-          <div class="commentImg">
-            <input
-              id="comment"
-              type="text"
-              v-model="comment"
-              placeholder="댓글을 입력하세요"
-            />
-            <img
-              id="commentImg"
-              src="../../assets/images/comment.png"
-              alt=""
-              v-on:click="writeComment"
-            />
-          </div>
-        </h4>
-        <CommentList
-          v-on:update="updateComment"
-          v-for="CommentList in article.CommentLists"
-          :key="CommentList.id"
-          :CommentList="CommentList"
-        />
       </div>
+      <h4 class="text">
+        <div class="commentImg">
+          <input
+            id="comment"
+            type="text"
+            v-model="comment"
+            placeholder="댓글을 입력하세요"
+            @keyup.enter="writeComment"
+          />
+          <img
+            id="commentImg"
+            src="../../assets/images/comment.png"
+            alt=""
+            v-on:click="writeComment"
+          />
+        </div>
+      </h4>
+      <CommentList
+        v-on:update="updateComment"
+        v-for="CommentList in article.CommentLists"
+        :key="CommentList.id"
+        :CommentList="CommentList"
+      />
     </div>
   </div>
 </template>

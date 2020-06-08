@@ -34,7 +34,9 @@
         <div class="showcontent">
           <p>{{ trade.content }}</p>
         </div>
-        <v-btn color="error" class="deletebtn">글 삭제</v-btn>
+        <button id="boastDelete" v-if="this.checkId()" @click="deleteTrade">
+          <img id="boastDeleteImg" src="../../assets/images/삭제.png" alt="" />
+        </button>
       </div>
       <h4 class="text">
         <div class="commentImg">
@@ -43,6 +45,7 @@
             type="text"
             v-model="comment"
             placeholder="댓글을 입력하세요"
+            @keyup.enter="writeComment"
           />
           <img
             id="commentImg"
@@ -65,7 +68,7 @@
 <script>
 import * as tradeService from "../../api/trade.js";
 import CommentList from "./tradeCommentList.vue";
-import { writeComment } from "../../api/trade.js";
+import { writeComment, deleteArticleApi } from "../../api/trade.js";
 
 export default {
   components: { CommentList },
@@ -107,16 +110,28 @@ export default {
         scope.comment = "";
       });
     },
+    async deleteTrade() {
+      const article_pk = this.$route.params.id;
+      const token = this.$store.state.user.token;
+      await deleteArticleApi(article_pk, token);
+      this.$router.go(-1);
+    },
     async updateComment() {
       const article_pk = this.$route.params.id;
       let data = await tradeService.getDetailTradeByArticleId(article_pk);
       let list = { ...this.trade };
+      0;
       console.log("여기에요!!", data, list);
       list.CommentLists = data.comments;
       this.trade = list;
     },
     goback() {
       this.$router.go(-1);
+    },
+    checkId() {
+      // if (this.trade.user_id === this.$store.state.user.id) {
+      //   return true;
+      // }
     }
   },
   // detail정보 가져오기
@@ -238,5 +253,25 @@ export default {
 .backbtn {
   border: 0;
   outline: 0;
+}
+#boastDeleteDiv {
+  display: flex;
+  justify-content: center;
+  /* 오른쪽 정렬 */
+  /* justify-content: flex-end; */
+}
+
+#boastDelete {
+  max-width: 64px;
+  border: 0;
+  outline: 0;
+}
+
+#boastDeleteImg {
+  width: 100%;
+}
+
+#boastDeleteImg:hover {
+  transform: scale(1.1);
 }
 </style>

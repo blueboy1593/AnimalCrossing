@@ -52,6 +52,7 @@ export default {
   height: 20%;
   border-radius: 15px;
   margin-right: 1rem;
+  color: black;
   overflow: hidden;
 
   background-color: rgba(110, 173, 157, 0.144);

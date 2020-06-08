@@ -189,7 +189,7 @@ export default {
         sort: trade_info.sort,
         price: trade_info.price
       };
-      console.log(find);
+      console.log("find");
       console.log(trade);
       await tradePost(trade, token);
       // this.$router.push("/community/list");
