@@ -1,106 +1,105 @@
 <template>
-  <div class="onecomment">
-    <div class="user">
-      {{ CommentList.username }}
-    </div>
-    <p class="comment">
-      {{ CommentList.content }}
-    </p>
-    <p class="time">
-      {{ CommentList.created_at }}
-    </p>
-    <v-btn
-      v-if="this.checkId()"
-      color="error"
-      small
-      class="delete"
-      @click="deleteComment"
-      >삭제</v-btn
-    >
+  <div>
+    <router-link :to="{ name: 'cdetail', params: { id: MypageCard.id } }">
+      <div class="cCard">
+        <div class="cphoto">
+          <div v-if="MypageCard.image === null">
+            <img
+              src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
+              class="cimage"
+            />
+          </div>
+          <div v-else>
+            <img v-bind:src="MypageCard.image" alt="" class="detailimage" />
+          </div>
+        </div>
+        <div class="infoName">
+          {{ MypageCard.title }}
+        </div>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script>
-import * as showService from "../../api/show.js";
 export default {
-  name: "CommentList",
-  props: ["CommentList"],
-  methods: {
-    async deleteComment() {
-      var scope = this;
-      const token = this.$store.state.user.token;
-      const comment_pk = this.CommentList.id;
-      await showService.deleteCommentApi(comment_pk, token, function(response) {
-        console.log(response);
-        scope.$emit("update");
-      });
-    },
-    checkId() {
-      if (this.CommentList.user_id === this.$store.state.user.id) {
-        return true;
-      }
-    }
-  }
+  // name: "MypageCard",
+  props: ["MypageCard"]
 };
 </script>
 
 <style scoped>
-.onecomment {
-  background-color: rgba(30, 143, 255, 0.075);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom: 1.2px solid rgba(76, 180, 157, 0.295);
-  margin-bottom: 0.3rem;
-  /* height: 50px; */
-  line-height: 50px;
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr 0.3fr;
-  grid-template-areas: "user comment time delete";
+.cCard {
+  display: inline-block;
+  /* margin-top: 0.3rem; */
+  /* width: 10rem; */
+  width: 80%;
+  height: auto;
+  max-height: 165px;
+  border-radius: 15px;
+  /* margin-right: 1rem; */
+  overflow: hidden;
+  /* margin-left: 0.5rem; */
+  color: black;
+  background-color: rgba(110, 173, 157, 0.144);
+}
+
+.cCard:hover {
+  /* border-bottom: 1px solid #76a7b2; */
+  background-color: rgba(98, 173, 155, 0.26);
+  transform: scale(1.03);
+  opacity: 0.9;
+  box-shadow: 0 0 0 1px #76a7b2;
+}
+
+.cphoto {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  width: auto;
+  height: auto;
+  /* min-height: 246.4px; */
+  max-width: 230px;
+  max-height: 120px;
+  /* height: 20%; */
+  border-radius: 15px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cimage {
+  max-height: 170px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 4%;
+}
+
+.detailimage {
+  width: auto;
+  /* width: 100%; */
+  height: auto;
+  max-width: 230px;
+  max-height: 120px;
+  /* margin-top: 4%; */
+}
+
+.infoName {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1rem;
   font-family: "Gamja Flower", cursive;
 }
 
-/* v-app 내의 p에서 마진을 제거해버림 */
-.v-application p {
-  margin-bottom: 0;
+.infoDetail3 {
+  font-weight: 100;
+  font-family: "Gamja Flower", cursive;
+  margin-left: 10px;
 }
 
-.onecomment:hover {
-  opacity: 0.8;
-  font-weight: bold;
-}
-
-.user {
-  display: grid;
-  grid-area: user;
-  text-align: center;
-}
-
-.comment {
-  display: grid;
-  grid-area: comment;
-}
-
-.time {
-  display: grid;
-  grid-area: time;
-  text-align: center;
-}
-.delete {
-  grid-area: delete;
-  width: 2%;
-  height: 1%;
-  z-index: 1;
-  margin-top: 10px;
-  /* margin-right: 5px; */
-  margin-left: -10px;
-  opacity: 77%;
-  color: white;
-  font-family: "Gamja Flower";
-  font-size: 1rem;
-}
-
-.delete:hover {
-  opacity: 100%;
-  font-size: 1.1rem;
+.infoDetail2 {
+  text-align: right;
+  font-weight: 100;
+  font-family: "Gamja Flower", cursive;
+  margin-right: 10px;
 }
 </style>
