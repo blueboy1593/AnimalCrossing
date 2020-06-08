@@ -11,7 +11,7 @@
     ></v-text-field>
     <div class="neighborCards">
       <infoCard
-        v-for="infoCard in infoCards"
+        v-for="infoCard in selectedCards"
         :key="infoCard.id"
         :infoCard="infoCard"
         :routePath="routePath"
@@ -47,6 +47,7 @@ export default {
   },
   async mounted() {
     this.infoCards = await getNeighbors(this.infoCards);
+    console.log(this.infoCards);
     this.selectedCards = this.infoCards;
   }
   // data() {
