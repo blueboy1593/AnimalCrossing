@@ -123,6 +123,7 @@ export default {
       if (newVal === "기타") {
         console.log(newVal, oldVal);
         this.check = false;
+        this.categoryEng = "etc";
       } else {
         this.check = true;
       }
@@ -190,7 +191,7 @@ export default {
       let find = "",
         trade = "";
       const trade_info = this.trade;
-      if (this.categoryEng === "etc") {
+      if (this.category === "기타") {
         trade = {
           title: trade_info.title,
           content: trade_info.content,
@@ -220,7 +221,7 @@ export default {
         console.log(trade);
       }
       await tradePost(trade, token);
-      // this.$router.push("/community/list");
+      this.$router.push("/trade/etc");
     }
   },
   async mounted() {
