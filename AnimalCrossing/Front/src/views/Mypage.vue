@@ -86,6 +86,7 @@ export default {
     this.TradeCards = TradeCards.filter(
       element => element.user_id === this.myid
     );
+    console.log(this.TradeCards);
 
     // 로컬 스토리지에 오늘의 주민 정보가 있을 때.
     if (localStorage.getItem("myneighbor_time")) {
