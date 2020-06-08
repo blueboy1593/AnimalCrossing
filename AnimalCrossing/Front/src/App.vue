@@ -20,7 +20,7 @@ export default {
       scope.$store.commit("saveToken", token);
       const userId = decodedToken.user_id;
       await findById(userId, function(response) {
-        console.log(userId, response.data);
+        // console.log(userId, response.data);
         scope.$store.commit("setUserName", response.data.username);
       });
     }
