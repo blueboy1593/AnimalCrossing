@@ -97,6 +97,13 @@ export default {
 </script>
 
 <style scoped>
+.v-text-field {
+  width: 300px;
+  background-color: rgba(173, 204, 245, 0.322);
+  margin-bottom: 10px;
+  margin-left: 35%;
+  margin-right: 35%;
+}
 .paintingCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
