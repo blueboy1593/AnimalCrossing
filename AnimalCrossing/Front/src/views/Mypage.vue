@@ -19,7 +19,7 @@
         <section class="board__news">
           <div>
             <MypageCard
-              v-for="MypageCard in MypageCards"
+              v-for="MypageCard in CommunityCards"
               :key="MypageCard.id"
               :MypageCard="MypageCard"
               class="card_one"
@@ -29,6 +29,16 @@
       </div>
       <div class="mytrade">
         <h4>내 거래내역</h4>
+        <section class="board__news">
+          <div>
+            <MypageCard
+              v-for="MypageCard in TradeCards"
+              :key="MypageCard.id"
+              :MypageCard="MypageCard"
+              class="card_one"
+            />
+          </div>
+        </section>
       </div>
     </div>
   </div>
@@ -37,6 +47,7 @@
 <script>
 import { getNeighbors } from "@/api/info.js";
 import { getShows } from "@/api/show.js";
+import { getTrades } from "@/api/trade.js";
 import MypageCard from "../components/mypage/MypageCard.vue";
 
 export default {
@@ -49,11 +60,13 @@ export default {
       email: "",
       neighbor_url: "",
       infoCards: [],
-      MypageCards: []
+      CommunityCards: [],
+      TradeCards: []
     };
   },
   async mounted() {
-    this.MypageCards = await getShows(this.MypageCards);
+    this.CommunityCards = await getShows(this.CommunityCards);
+    this.TradeCards = await getTrades(this.TradeCards);
 
     // 여기는 유저 정보를 스토어에서 받아서 저장하는 코드
     const user = this.$store.state.user;
