@@ -186,13 +186,13 @@ export default {
     async tradeSubmit() {
       const token = this.$store.state.user.token;
       const user = this.$store.state.user;
-      let image = this.trade.image;
-      // if (this.trade.image === null) {
-      //   image =
-      //     "https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg";
-      // } else {
-      //   image = this.trade.image;
-      // }
+      let image = "";
+      if (this.trade.image === null) {
+        image =
+          "https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg";
+      } else {
+        image = this.trade.image;
+      }
       let find = "",
         trade = "";
       const trade_info = this.trade;
@@ -212,7 +212,6 @@ export default {
         find = this.selectedLists.filter(list => list.name === this.name);
         const engname = find[0].engname;
         image = await this.getImgPath(engname);
-        console.log(image);
         trade = {
           title: trade_info.title,
           content: trade_info.content,
