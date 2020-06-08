@@ -3,8 +3,8 @@
     <div class="container">
       <button @click="goback" class="backbtn">
         <!-- <img src="../../assets/images/back.png" alt="글쓰기" class="back-img" /> -->
-        <img src="../../assets/images/back1.png" alt="뒤로가기"/>
-        <img src="../../assets/images/back2.png" alt="뒤로가기"/>
+        <img src="../../assets/images/back1.png" alt="뒤로가기" />
+        <img src="../../assets/images/back2.png" alt="뒤로가기" />
       </button>
       <div class="onetrade">
         <h2 class="ttext" style="margin-bottom: 5px">{{ this.trade.title }}</h2>
@@ -272,9 +272,15 @@ export default {
   outline: 0;
 }
 
-.backbtn img:last-child{display:none} 
-.backbtn:hover img:first-child{display:none} 
-.backbtn:hover img:last-child{display:inline-block}
+.backbtn img:last-child {
+  display: none;
+}
+.backbtn:hover img:first-child {
+  display: none;
+}
+.backbtn:hover img:last-child {
+  display: inline-block;
+}
 
 #tradeDeleteDiv {
   display: flex;
