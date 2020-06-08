@@ -1,7 +1,9 @@
 <template>
   <div>
     <div>
-      <v-btn>뒤로가기</v-btn>
+      <button @click="goback" class="backbtn">
+        <img src="../../assets/images/back.png" alt="글쓰기" class="back-img" />
+      </button>
       <br />
       <tradeItemCard
         v-for="tradeItemCard in tradeItemCards"
@@ -34,6 +36,11 @@ export default {
       this.id,
       this.tradeItemCards
     );
+  },
+  methods: {
+    goback() {
+      this.$router.go(-1);
+    }
   }
 };
 </script>
@@ -61,5 +68,13 @@ export default {
 
 .write_btn:hover {
   background: #e46fc7;
+}
+.back-img {
+  height: 25px;
+  margin-right: 30px;
+}
+.backbtn {
+  border: 0;
+  outline: 0;
 }
 </style>

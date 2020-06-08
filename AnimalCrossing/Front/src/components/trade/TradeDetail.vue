@@ -1,7 +1,9 @@
 <template>
   <div class="community">
     <div class="container">
-      <v-btn>뒤로가기</v-btn>
+      <button @click="goback" class="backbtn">
+        <img src="../../assets/images/back.png" alt="글쓰기" class="back-img" />
+      </button>
       <div class="onetrade">
         <h2 class="ttext" style="margin-bottom: 5px">{{ this.trade.title }}</h2>
         <v-row no-gutters>
@@ -84,6 +86,9 @@ export default {
     };
   },
   methods: {
+    goback() {
+      this.$router.go(-1);
+    },
     async writeComment() {
       var scope = this;
       const user = this.$store.state.user;
@@ -235,5 +240,13 @@ export default {
     opacity: 1;
     transform: scale(1.1);
   }
+}
+.back-img {
+  height: 25px;
+  margin-right: 30px;
+}
+.backbtn {
+  border: 0;
+  outline: 0;
 }
 </style>

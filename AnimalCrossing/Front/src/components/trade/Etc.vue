@@ -1,7 +1,6 @@
 !<template>
   <div>
     <h2 class="btitle">거래해요, 동물의 숲</h2>
-    <v-btn>뒤로가기</v-btn>
     <TradeEtcList />
   </div>
 </template>

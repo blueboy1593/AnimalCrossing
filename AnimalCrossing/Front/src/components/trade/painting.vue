@@ -1,6 +1,5 @@
 <template>
   <div class="paintingCards">
-    <h1>카드를 클릭하면 뭐가 나올까요</h1>
     <tradeCard
       v-for="tradeCard in tradeCards"
       :key="tradeCard.id"

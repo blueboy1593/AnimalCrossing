@@ -1,6 +1,9 @@
 <template>
   <div class="community">
     <div class="container">
+      <button @click="goback" class="backbtn">
+        <img src="../../assets/images/back.png" alt="글쓰기" class="back-img" />
+      </button>
       <div class="onetrade">
         <h2 class="ttext" style="margin-bottom: 5px">
           {{ this.article.title }}
@@ -123,6 +126,9 @@ export default {
       const show_pk = this.$route.params.id;
       const token = this.$store.state.user.token;
       await deleteShows(show_pk, token);
+      this.$router.go(-1);
+    },
+    goback() {
       this.$router.go(-1);
     }
   },
@@ -250,5 +256,13 @@ export default {
 
 #boastDeleteImg:hover {
   transform: scale(1.1);
+}
+.back-img {
+  height: 25px;
+  margin-right: 30px;
+}
+.backbtn {
+  border: 0;
+  outline: 0;
 }
 </style>
