@@ -37,37 +37,19 @@
 </template>
 
 <script>
-import * as infoService from "../../api/info.js";
+// import * as infoService from "../../api/info.js";
 export default {
   name: "tradeItemCard",
-  props: ["tradeItemCard", "id"],
+  props: ["tradeItemCard", "engname", "category"],
   data() {
-    return {
-      engname: "",
-      category: ""
-    };
+    return {};
   },
   methods: {
     getImgPath() {
       let image = require(`@/assets/images/image_${this.category}/${this.engname}.png`);
-      console.log(image);
+      console.log(`@/assets/images/image_${this.category}/${this.engname}.png`);
       return image;
     }
-  },
-  async mounted() {
-    let address = location.pathname;
-    let one = address.split("/")[4]; // 1
-    this.category = address.split("/")[3]; // animal
-    let data = "";
-    if (this.category === "animal") {
-      data = await infoService.getNeighbors();
-    } else if (this.category === "painting") {
-      data = await infoService.getPaintings();
-    } else {
-      data = await infoService.getFossils();
-    }
-    let oneanimal = data.filter(animal => one == animal.id);
-    this.engname = oneanimal[0].engname;
   }
 };
 </script>
