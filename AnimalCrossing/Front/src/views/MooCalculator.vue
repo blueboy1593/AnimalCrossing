@@ -1,7 +1,9 @@
 <template>
   <div class="back">
     <div class="cal_head">
+      <img id="doll" style="margin-right: 10px" src="../assets/images/doll1.png" alt="">
       <h1>동물의숲 무계산기</h1>
+      <img id="doll" style="margin-left: 8px" src="../assets/images/doll2.png" alt="">
     </div>
     <div class="buy_price">
       <div class="buy_price_form">
@@ -270,6 +272,13 @@ export default {
   font-size: 20px;
   text-align: center;
   margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#doll:hover {
+  transform: scale(1.1);
 }
 
 /* 벨 사진 사이즈 조정 */
