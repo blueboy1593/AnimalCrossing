@@ -18,7 +18,7 @@ body {
     .box1 {
         display: grid;
         background-color: #A2DED0;
-        background-image: url("../assets/images/1.png");
+        background-image: url("../assets/images/1.jpg");
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
@@ -31,7 +31,7 @@ body {
     .box2 {
         display: grid;
         background-color: #F4D03F;
-        background-image: url("../assets/images/2.png");
+        background-image: url("../assets/images/2.jpg");
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
@@ -40,7 +40,7 @@ body {
     .box3 {
         display: grid;
         background-color: #6C7A89;
-        background-image: url("../assets/images/3.png");
+        background-image: url("../assets/images/3.jpg");
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
