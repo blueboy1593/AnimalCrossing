@@ -1,9 +1,11 @@
 <template>
   <div>
     <h2 class="btitle">자랑해요, 동물의 숲</h2>
-    <router-link to="/community/write">
-      <img src="../../assets/images/write.png" alt="글쓰기" class="nav-img" />
-    </router-link>
+    <div class="writeDiv">
+      <router-link to="/community/write">
+        <img src="../../assets/images/write.png" alt="글쓰기" class="nav-img" />
+      </router-link>
+    </div>
     <div>
       <communityCard
         v-for="communityCard in communityCards"
@@ -59,10 +61,18 @@ export default {
 .write_btn:hover {
   background: #e46fc7;
 }
+
+.writeDiv {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3%;
+}
+
 .nav-img {
   height: 60px;
   margin-right: 30px;
 }
+
 .btitle {
   font-family: "Jua", sans-serif;
   text-align: center;
