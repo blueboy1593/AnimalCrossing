@@ -7,19 +7,19 @@
           alt="뒤로가기"
           class="back-img"
         /> -->
-        <img src="../../assets/images/back1.png" alt="뒤로가기"/>
-        <img src="../../assets/images/back2.png" alt="뒤로가기"/> 
+        <img src="../../assets/images/back1.png" alt="뒤로가기" />
+        <img src="../../assets/images/back2.png" alt="뒤로가기" />
       </button>
       <!-- <v-tabs>
         <v-tab @click="buying">삽니다</v-tab>
         <v-tab @click="selling">팝니다</v-tab>
       </v-tabs> -->
       <v-tabs centered color="pink accent-1" background-color="transparent">
-        <v-tab @click="buying">
-          <img id="buyIcon" src="../../assets/images/buy.png" alt="">
-        </v-tab>
         <v-tab @click="selling">
-          <img id="sellIcon" src="../../assets/images/sell.png" alt="">
+          <img id="sellIcon" src="../../assets/images/sell.png" alt="" />
+        </v-tab>
+        <v-tab @click="buying">
+          <img id="buyIcon" src="../../assets/images/buy.png" alt="" />
         </v-tab>
       </v-tabs>
       <br />
@@ -69,10 +69,10 @@ export default {
   },
   async mounted() {
     this.TradeEtcCards = await getTradeListEtc(this.TradeEtcCards);
-    let buyList = this.TradeEtcCards.filter(
-      TradeEtcCard => TradeEtcCard.sort === "buy"
+    let sellList = this.TradeEtcCards.filter(
+      TradeEtcCard => TradeEtcCard.sort === "sell"
     );
-    this.selectedItemCards = buyList;
+    this.selectedItemCards = sellList;
   }
 };
 </script>
@@ -112,9 +112,15 @@ export default {
   outline: 0;
 }
 
-.backbtn img:last-child{display:none} 
-.backbtn:hover img:first-child{display:none} 
-.backbtn:hover img:last-child{display:inline-block}
+.backbtn img:last-child {
+  display: none;
+}
+.backbtn:hover img:first-child {
+  display: none;
+}
+.backbtn:hover img:last-child {
+  display: inline-block;
+}
 
 #buyingTab {
   background-color: none;
@@ -129,5 +135,4 @@ export default {
   width: 55px;
   margin-bottom: 3px;
 }
-
 </style>

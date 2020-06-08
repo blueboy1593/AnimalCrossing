@@ -7,15 +7,15 @@
           alt="뒤로가기"
           class="back-img"
         /> -->
-        <img src="../../assets/images/back1.png" alt="뒤로가기"/>
-        <img src="../../assets/images/back2.png" alt="뒤로가기"/>        
+        <img src="../../assets/images/back1.png" alt="뒤로가기" />
+        <img src="../../assets/images/back2.png" alt="뒤로가기" />
       </button>
       <v-tabs centered color="pink accent-1" background-color="transparent">
-        <v-tab @click="buying">
-          <img id="buyIcon" src="../../assets/images/buy.png" alt="" />
-        </v-tab>
         <v-tab @click="selling">
           <img id="sellIcon" src="../../assets/images/sell.png" alt="" />
+        </v-tab>
+        <v-tab @click="buying">
+          <img id="buyIcon" src="../../assets/images/buy.png" alt="" />
         </v-tab>
       </v-tabs>
       <br />
@@ -71,12 +71,10 @@ export default {
       this.id,
       this.tradeItemCards
     );
-    let buyList = this.tradeItemCards.filter(
-      tradeItemCard => tradeItemCard.sort === "buy"
+    let sellList = this.tradeItemCards.filter(
+      tradeItemCard => tradeItemCard.sort === "sell"
     );
-    this.selectedItemCards = buyList;
-    console.log("id값", this.id);
-    console.log("카테고리", this.category);
+    this.selectedItemCards = sellList;
     let data = "";
     if (this.category === "fossil") {
       return;
@@ -89,7 +87,6 @@ export default {
     let find = data.filter(element => this.id == element.id);
 
     this.engname = find[0].engname;
-    console.log(this.engname, this.category);
   }
 };
 </script>
@@ -129,9 +126,15 @@ export default {
   outline: 0;
 }
 
-.backbtn img:last-child{display:none} 
-.backbtn:hover img:first-child{display:none} 
-.backbtn:hover img:last-child{display:inline-block}
+.backbtn img:last-child {
+  display: none;
+}
+.backbtn:hover img:first-child {
+  display: none;
+}
+.backbtn:hover img:last-child {
+  display: inline-block;
+}
 
 #buyingTab {
   background-color: none;
