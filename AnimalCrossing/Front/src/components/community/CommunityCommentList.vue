@@ -56,6 +56,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 0.3fr;
   grid-template-areas: "user comment time delete";
+  font-family: "Gamja Flower", cursive;
 }
 
 .onecomment:hover {

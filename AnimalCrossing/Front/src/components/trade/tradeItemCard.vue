@@ -64,6 +64,7 @@ export default {
   margin-right: 1rem;
   overflow: hidden;
   background-color: rgba(110, 173, 157, 0.144);
+  color: black;
 }
 
 .cCard:hover {

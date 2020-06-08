@@ -31,9 +31,13 @@
         <div class="showcontent">
           <p>{{ trade.content }}</p>
         </div>
-        <!-- <v-btn color="error" class="deletebtn" @click="deleteArticle">글 삭제</v-btn> -->
         <div id="tradeDeleteDiv">
-          <button id="tradeDelete" class="deletebtn" @click="deleteArticle">
+          <button
+            id="tradeDelete"
+            v-if="this.checkId()"
+            class="deletebtn"
+            @click="deleteArticle"
+          >
             <img
               id="tradeDeleteImg"
               src="../../assets/images/삭제.png"
@@ -49,6 +53,7 @@
             type="text"
             v-model="comment"
             placeholder="댓글을 입력하세요"
+            @keyup.enter="writeComment"
           />
           <img
             id="commentImg"
@@ -87,6 +92,7 @@ export default {
         sort: "",
         name: "",
         category: "",
+        user_id: "",
         CommentLists: [] // obj1개 들어감
       },
       comment: ""
@@ -131,13 +137,17 @@ export default {
       let list = { ...this.trade };
       list.CommentLists = data.comments;
       this.trade = list;
+    },
+    checkId() {
+      if (this.trade.user_id === this.$store.state.user.id) {
+        return true;
+      }
     }
   },
   // detail정보 가져오기
   mounted: async function() {
     var tradeId = this.$route.params.id;
     const data = await tradeService.getDetailTradeByArticleId(tradeId);
-    console.log(data);
     this.trade.title = data.title;
     this.trade.image = data.image;
     this.trade.content = data.content;
@@ -150,6 +160,7 @@ export default {
     this.trade.sort = data.username;
     this.trade.category = data.username;
     this.trade.CommentLists = data.comments;
+    this.trade.user_id = data.user_id;
   }
 };
 </script>

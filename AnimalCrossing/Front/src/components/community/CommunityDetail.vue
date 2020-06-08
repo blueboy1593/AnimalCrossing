@@ -2,9 +2,8 @@
   <div class="community">
     <div class="container">
       <button @click="goback" class="backbtn">
-        <!-- <img src="../../assets/images/back.png" alt="글쓰기" class="back-img" /> -->
-        <img src="../../assets/images/back1.png" alt="뒤로가기"/>
-        <img src="../../assets/images/back2.png" alt="뒤로가기"/> 
+        <img src="../../assets/images/back1.png" alt="뒤로가기" />
+        <img src="../../assets/images/back2.png" alt="뒤로가기" />
       </button>
       <div class="onetrade">
         <h2 class="ttext" style="margin-bottom: 5px">
@@ -46,29 +45,30 @@
             />
           </button>
         </div>
-        <h4 class="text">
-          <div class="commentImg">
-            <input
-              id="comment"
-              type="text"
-              v-model="comment"
-              placeholder="댓글을 입력하세요"
-            />
-            <img
-              id="commentImg"
-              src="../../assets/images/comment.png"
-              alt=""
-              v-on:click="writeComment"
-            />
-          </div>
-        </h4>
-        <CommentList
-          v-on:update="updateComment"
-          v-for="CommentList in article.CommentLists"
-          :key="CommentList.id"
-          :CommentList="CommentList"
-        />
       </div>
+      <h4 class="text">
+        <div class="commentImg">
+          <input
+            id="comment"
+            type="text"
+            v-model="comment"
+            placeholder="댓글을 입력하세요"
+            @keyup.enter="writeComment"
+          />
+          <img
+            id="commentImg"
+            src="../../assets/images/comment.png"
+            alt=""
+            v-on:click="writeComment"
+          />
+        </div>
+      </h4>
+      <CommentList
+        v-on:update="updateComment"
+        v-for="CommentList in article.CommentLists"
+        :key="CommentList.id"
+        :CommentList="CommentList"
+      />
     </div>
   </div>
 </template>
@@ -283,8 +283,13 @@ export default {
   outline: 0;
 }
 
-.backbtn img:last-child{display:none} 
-.backbtn:hover img:first-child{display:none} 
-.backbtn:hover img:last-child{display:inline-block}
-
+.backbtn img:last-child {
+  display: none;
+}
+.backbtn:hover img:first-child {
+  display: none;
+}
+.backbtn:hover img:last-child {
+  display: inline-block;
+}
 </style>
