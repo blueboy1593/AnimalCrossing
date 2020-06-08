@@ -53,7 +53,7 @@ export default {};
 /* navigation displaying the items evenly in a non-wrapping row */
 .board__nav {
   display: flex;
-  margin: 1rem 1rem;
+  margin: 1rem 1rem 1rem 2.5rem;
   justify-content: space-evenly;
   width: 90%;
   justify-self: center;
