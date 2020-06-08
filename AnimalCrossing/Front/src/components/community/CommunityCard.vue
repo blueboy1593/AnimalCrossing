@@ -66,7 +66,7 @@ export default {
 }
 
 .cphoto {
-  display: flex;  
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -91,7 +91,6 @@ export default {
   max-width: 460px;
   max-height: 240px;
   /* margin-top: 4%; */
-
 }
 
 .infoName {
