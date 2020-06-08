@@ -1,11 +1,22 @@
 <template>
   <div>
     <div>
+      <button @click="goback" class="backbtn">
+        <img
+          src="../../assets/images/back.png"
+          alt="뒤로가기"
+          class="back-img"
+        />
+      </button>
+      <v-tabs>
+        <v-tab @click="buying">삽니다</v-tab>
+        <v-tab @click="selling">팝니다</v-tab>
+      </v-tabs>
       <br />
       <TradeEtcCard
-        v-for="TradeEtcCard in TradeEtcCards"
-        :key="TradeEtcCard.id"
-        :TradeEtcCard="TradeEtcCard"
+        v-for="selectedItemCard in selectedItemCards"
+        :key="selectedItemCard.id"
+        :TradeEtcCard="selectedItemCard"
         class="card_one"
       />
     </div>
@@ -23,11 +34,35 @@ export default {
   },
   data() {
     return {
-      TradeEtcCards: []
+      TradeEtcCards: [],
+      selectedItemCards: []
     };
+  },
+  methods: {
+    goback() {
+      this.$router.go(-1);
+    },
+    buying() {
+      let buyList = this.TradeEtcCards.filter(
+        TradeEtcCard => TradeEtcCard.sort === "buy"
+      );
+      this.selectedItemCards = buyList;
+      console.log("삽니다", buyList, this.selectedItemCards);
+    },
+    selling() {
+      let sellList = this.TradeEtcCards.filter(
+        TradeEtcCard => TradeEtcCard.sort === "sell"
+      );
+      this.selectedItemCards = sellList;
+      console.log("팝니다", sellList, this.selectedItemCards);
+    }
   },
   async mounted() {
     this.TradeEtcCards = await getTradeListEtc(this.TradeEtcCards);
+    let buyList = this.TradeEtcCards.filter(
+      TradeEtcCard => TradeEtcCard.sort === "buy"
+    );
+    this.selectedItemCards = buyList;
   }
 };
 </script>
@@ -55,5 +90,13 @@ export default {
 
 .write_btn:hover {
   background: #e46fc7;
+}
+.back-img {
+  height: 25px;
+  margin-right: 30px;
+}
+.backbtn {
+  border: 0;
+  outline: 0;
 }
 </style>
