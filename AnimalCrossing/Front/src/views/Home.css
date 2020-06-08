@@ -35,6 +35,7 @@ body {
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
+        
     }
 
     .box3 {
@@ -70,6 +71,14 @@ body {
         text-align: center;
         line-height: 92.3vh;
         background-color: #efefef;
+
+        filter: grayscale(100%);
+        transition: .5s linear;
+    }
+
+    .box:hover{
+        filter: none;
+        transition: .5s linear;
     }
 }
 
