@@ -15,6 +15,8 @@ class Article(models.Model):
     price = models.CharField(max_length=20, blank=True)  # 가격 입력하거나 빈칸 가능(협의)
     created_at = models.DateTimeField(auto_now_add=True)  # 만들어졌을 때 기록하겠다 강조!!!!!!!!!!!
     updated_at = models.DateTimeField(auto_now=True)  # 언제든지 시간 기록하겠다
+    class Meta:
+        ordering = ['-pk']
     def __str__(self):
         return self.title
 
@@ -27,7 +29,6 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='comments', on_delete=models.CASCADE)
     username = models.CharField(max_length=50) # 아이디 paik11012
-    class Meta:
-        ordering = ['-pk']  # 역순 ('-pk',)도 가능
+  # 역순 ('-pk',)도 가능
     def __str__(self):
         return self.content
