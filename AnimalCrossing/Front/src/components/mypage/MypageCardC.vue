@@ -23,7 +23,6 @@
 
 <script>
 export default {
-  // name: "MypageCard",
   props: ["MypageCard"]
 };
 </script>
@@ -31,8 +30,6 @@ export default {
 <style scoped>
 .cCard {
   display: inline-block;
-  /* margin-top: 0.3rem; */
-  /* width: 10rem; */
   width: 80%;
   height: auto;
   max-height: 165px;

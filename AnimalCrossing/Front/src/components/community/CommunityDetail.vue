@@ -117,15 +117,11 @@ export default {
         scope.article = list;
         scope.comment = "";
       });
-
-      // this.$router.go(this.$router.currentRoute);
-      // $router.push("/auction/register/" + response.data.id);
     },
     async updateComment() {
       const show_id = Number(this.$route.params.id);
       let data = await showService.getShowById(show_id);
       let list = { ...this.article };
-      console.log("여기에요!!", data, list);
       list.CommentLists = data.showcomments;
       this.article = list;
     },

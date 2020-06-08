@@ -47,51 +47,8 @@ export default {
   },
   async mounted() {
     this.infoCards = await getNeighbors(this.infoCards);
-    console.log(this.infoCards);
     this.selectedCards = this.infoCards;
   }
-  // data() {
-  //   return {
-  //     infoCards: [
-  //       {
-  //         src: require("../../assets/images/neighbor.png"),
-  //         title: "이웃"
-  //       },
-  //       {
-  //         src: require("../../assets/images/neighbor.png"),
-  //         title: "이웃"
-  //       },
-  //       {
-  //         src: require("../../assets/images/neighbor.png"),
-  //         title: "이웃"
-  //       },
-  //       {
-  //         src: require("../../assets/images/neighbor.png"),
-  //         title: "이웃"
-  //       },
-  //       {
-  //         src: require("../../assets/images/neighbor.png"),
-  //         title: "이웃"
-  //       },
-  //       {
-  //         src: require("../../assets/images/neighbor.png"),
-  //         title: "이웃"
-  //       },
-  //       {
-  //         src: require("../../assets/images/neighbor.png"),
-  //         title: "이웃"
-  //       },
-  //       {
-  //         src: require("../../assets/images/neighbor.png"),
-  //         title: "이웃"
-  //       },
-  //       {
-  //         src: require("../../assets/images/neighbor.png"),
-  //         title: "이웃"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 

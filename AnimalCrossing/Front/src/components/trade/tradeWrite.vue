@@ -126,7 +126,7 @@ export default {
   watch: {
     category: function(newVal, oldVal) {
       if (newVal === "기타") {
-        console.log(newVal, oldVal);
+        console.log(oldVal);
         this.check = false;
         this.categoryEng = "etc";
       } else {
@@ -139,7 +139,6 @@ export default {
       this.$refs.imageInput.click();
     },
     async onChangeImages(e) {
-      console.log(e.target.files);
       const file = e.target.files[0];
       this.trade.image = URL.createObjectURL(file);
       await firebase
@@ -149,7 +148,6 @@ export default {
         .put(file)
         .then(response => {
           console.log(response);
-          console.log("firebase 업로드");
         });
       let image = "";
       await firebase
@@ -159,7 +157,6 @@ export default {
         .getDownloadURL()
         .then(response => {
           console.log(response);
-          console.log("firebase 받아오기");
           image = response;
         });
       this.trade.image = image;

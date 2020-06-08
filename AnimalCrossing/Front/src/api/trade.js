@@ -8,7 +8,6 @@ export function getTrades(trades) {
     .get("/trades/list/")
     .then(response => {
       trades = response.data;
-      // console.log("show list", response.data);
       return trades;
     })
     .catch(error => {
@@ -23,7 +22,6 @@ export function getTradeById(category, id, lists) {
     .get(`/trades/list/${category}/${id}/`)
     .then(response => {
       lists = response.data;
-      console.log(`category / tradeid`, response.data);
       return lists;
     })
     .catch(error => {
@@ -43,7 +41,6 @@ export function getTradeListEtc() {
   return instance
     .get("/trades/list/etc/")
     .then(response => {
-      console.log("/trades/list/etc/ => ", response.data);
       return response.data;
     })
     .catch(error => {
@@ -58,7 +55,6 @@ export function getDetailTradeByArticleId(tradeId, data) {
   return instance
     .get(`/trades/detail/${tradeId}/`)
     .then(response => {
-      console.log(response.data);
       data = response.data;
       return data;
     })
@@ -69,37 +65,29 @@ export function getDetailTradeByArticleId(tradeId, data) {
 
 // 거래글 작성하기
 
-export function tradePost(trade, token) {
+export function tradePost(trade, token, success, fail) {
   const headers = {
     "Content-Type": "application/json",
     Authorization: "JWT " + token
   };
   instance
     .post("/trades/write/", trade, { headers })
-    .then(response => {
-      console.log("tradePost", response.data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    .then(success)
+    .catch(fail);
 }
 
 /*
  * 특정 거래글로 수정하기
  */
-export function updateDetailtrade(article_pk, token) {
+export function updateDetailtrade(article_pk, token, success, fail) {
   const headers = {
     "Content-Type": "application/json",
     Authorization: "JWT " + token
   };
   instance
     .put(`trades/detail_ud/${article_pk}/`, article_pk, { headers })
-    .then(response => {
-      console.log(response.data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    .then(success)
+    .catch(fail);
 }
 
 /*

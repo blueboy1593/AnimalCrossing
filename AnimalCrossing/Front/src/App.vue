@@ -26,7 +26,6 @@ export default {
   },
   mounted() {
     // 로컬스토리지에 저장된 유저정보가 있으면 store의 isSigned true로 유지.
-    // const scope = this;
     this.reloadSetting();
   }
 };

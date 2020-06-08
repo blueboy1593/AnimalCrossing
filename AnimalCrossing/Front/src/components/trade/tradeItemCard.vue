@@ -39,7 +39,6 @@
 </template>
 
 <script>
-// import * as infoService from "../../api/info.js";
 export default {
   name: "tradeItemCard",
   props: ["tradeItemCard", "engname", "category"],

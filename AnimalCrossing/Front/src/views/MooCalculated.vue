@@ -158,15 +158,10 @@ export default {
     moo_graph_min.push(600);
     moo_graph_max.unshift(0);
     moo_graph_min.unshift(0);
-    // moo_graph_max.unshift(600);
-    // moo_graph_min.unshift(600);
-    // console.log(moo_graph_max);
-    // console.log(moo_graph_min);
     moo_price.shift();
     this.moo = moo_price;
     this.graph_max = moo_graph_max;
     this.graph_min = moo_graph_min;
-    // console.log(this.moo);
   }
 };
 </script>

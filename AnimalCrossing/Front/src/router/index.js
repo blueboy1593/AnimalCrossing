@@ -17,10 +17,6 @@ import Detail from "../views/Detail.vue";
 import Mypage from "../views/Mypage.vue";
 
 Vue.use(VueRouter);
-// const detail = () =>
-//   import(
-//     /* webpackChunkName: "c_detail" */ "../components/community/CommunityDetail.vue"
-//   );
 
 const routes = [
   {

@@ -68,7 +68,6 @@ export default {
         .put(file)
         .then(response => {
           console.log(response);
-          console.log("firebase 업로드");
         });
       let image = "";
       await firebase
@@ -78,7 +77,6 @@ export default {
         .getDownloadURL()
         .then(response => {
           console.log(response);
-          console.log("firebase 받아오기");
           image = response;
         });
       this.article.imageUrl = image;
@@ -101,7 +99,6 @@ export default {
         username: user.username,
         image: image
       };
-      console.log(article);
       await writeShows(article, token);
       this.$router.push("/community/list");
     }

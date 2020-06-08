@@ -114,7 +114,6 @@ export default {
         console.log(response);
         let data = await tradeService.getDetailTradeByArticleId(article_pk);
         let list = { ...scope.trade };
-        console.log("여기에요!!", data, list);
         list.CommentLists = data.comments;
         scope.trade = list;
         scope.comment = "";
@@ -139,7 +138,6 @@ export default {
       this.$router.go(-1);
     },
     checkId() {
-      console.log(this.trade.user_id, this.$store.state.user.id);
       if (this.trade.user_id === this.$store.state.user.id) {
         return true;
       }

@@ -34,7 +34,6 @@ $mediumBrown: #7e442c;
 $pink: #df686a;
 
 .container {
-  // background img from here: https://www.reddit.com/r/ac_newhorizons/comments/eyrv8p/the_new_horizons_leaf_pattern/
   background: url("https://preview.redd.it/nfil94odgxe41.png?width=960&crop=smart&auto=webp&s=250a84bd12b8565ba3262c9b99e4b8ddc9b999b0");
   height: 100vh;
   overflow: hidden;

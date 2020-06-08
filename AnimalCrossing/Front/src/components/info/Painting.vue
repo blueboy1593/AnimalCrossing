@@ -51,48 +51,6 @@ export default {
     this.infoCards = await getPaintings(this.infoCards);
     this.selectedCards = this.infoCards;
   }
-  // data() {
-  //   return {
-  //     infoCards: [
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 

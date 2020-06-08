@@ -69,7 +69,6 @@ export default {
           selectedItemCard.content.indexOf(this.searchText.trim()) !== -1
       );
       this.searchItemCards = check;
-      console.log(check);
     },
     goback() {
       this.$router.go(-1);
@@ -81,7 +80,6 @@ export default {
       this.selectedItemCards = buyList;
       this.searchItemCards = buyList;
       this.searchText = "";
-      console.log("삽니다", buyList, this.selectedItemCards);
     },
     selling() {
       let sellList = this.TradeEtcCards.filter(
@@ -90,7 +88,6 @@ export default {
       this.selectedItemCards = sellList;
       this.searchItemCards = sellList;
       this.searchText = "";
-      console.log("팝니다", sellList, this.selectedItemCards);
     }
   },
   async mounted() {
@@ -99,7 +96,6 @@ export default {
       TradeEtcCard => TradeEtcCard.sort === "sell"
     );
     this.selectedItemCards = sellList;
-    console.log(this.selectedItemCards);
     this.searchItemCards = sellList;
   }
 };

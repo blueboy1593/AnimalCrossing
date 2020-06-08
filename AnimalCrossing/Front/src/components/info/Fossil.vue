@@ -50,45 +50,6 @@ export default {
     this.infoCards = await getFossils(this.infoCards);
     this.selectedCards = this.infoCards;
   }
-
-  // data() {
-  //   return {
-  //     infoCards: [
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 
@@ -98,7 +59,6 @@ export default {
   grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: auto;
   grid-gap: 1rem 1rem;
-  /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
 }
 @media (max-width: 1600px) {
   .fossilCards {
