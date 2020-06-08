@@ -2,11 +2,13 @@
   <div>
     <div>
       <button @click="goback" class="backbtn">
-        <img
+        <!-- <img
           src="../../assets/images/back.png"
           alt="뒤로가기"
           class="back-img"
-        />
+        /> -->
+        <img src="../../assets/images/back1.png" alt="뒤로가기"/>
+        <img src="../../assets/images/back2.png" alt="뒤로가기"/>        
       </button>
       <v-tabs centered color="pink accent-1" background-color="transparent">
         <v-tab @click="buying">
@@ -120,10 +122,16 @@ export default {
   height: 25px;
   margin-right: 30px;
 }
+
 .backbtn {
+  display: block;
   border: 0;
   outline: 0;
 }
+
+.backbtn img:last-child{display:none} 
+.backbtn:hover img:first-child{display:none} 
+.backbtn:hover img:last-child{display:inline-block}
 
 #buyingTab {
   background-color: none;

@@ -54,7 +54,7 @@ export default {
   height: 50px;
   line-height: 50px;
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr 0.2fr;
+  grid-template-columns: 1fr 3fr 1fr 0.3fr;
   grid-template-areas: "user comment time delete";
   font-family: "Gamja Flower", cursive;
 }
@@ -81,14 +81,21 @@ export default {
   text-align: center;
 }
 .delete {
+  grid-area: delete;
   width: 2%;
   height: 1%;
   z-index: 1;
   margin-top: 10px;
-  margin-right: 5px;
-  opacity: 55%;
+  /* margin-right: 5px; */
+  margin-left: -10px;
+  opacity: 77%;
   color: white;
   font-family: "Gamja Flower";
   font-size: 1rem;
+}
+
+.delete:hover {
+  opacity: 100%;
+  font-size: 1.1rem;
 }
 </style>
