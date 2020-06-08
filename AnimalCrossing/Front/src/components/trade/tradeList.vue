@@ -45,6 +45,8 @@ export default {
     return {
       tradeItemCards: [],
       selectedItemCards: [],
+      searchItemCards: [],
+      searchText: "",
       engname: ""
     };
   },
@@ -92,6 +94,13 @@ export default {
 </script>
 
 <style scoped>
+.v-text-field {
+  width: 300px;
+  background-color: rgba(173, 204, 245, 0.322);
+  margin-bottom: 10px;
+  margin-left: 35%;
+  margin-right: 35%;
+}
 .card_one {
   display: inline-block;
 }

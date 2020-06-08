@@ -2,7 +2,6 @@
   <div class="community">
     <div class="container">
       <button @click="goback" class="backbtn">
-        <!-- <img src="../../assets/images/back.png" alt="글쓰기" class="back-img" /> -->
         <img src="../../assets/images/back1.png" alt="뒤로가기" />
         <img src="../../assets/images/back2.png" alt="뒤로가기" />
       </button>
@@ -18,14 +17,14 @@
             </p>
           </v-col>
         </v-row>
-        <div v-if="image_url === null" class="detailimage">
+        <div v-if="trade.image === null" class="detailimage">
           <img
             src="https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg"
             class="detailimage detailImg"
           />
         </div>
         <div v-else>
-          <img v-bind:src="image_url" alt="" class="detailimage detailImg" />
+          <img v-bind:src="trade.image" alt="" class="detailimage detailImg" />
         </div>
         <div class="showcontent">
           <p>{{ trade.price }}</p>
@@ -131,9 +130,6 @@ export default {
         scope.trade = list;
         scope.comment = "";
       });
-
-      // this.$router.go(this.$router.currentRoute);
-      // $router.push("/auction/register/" + response.data.id);
     },
     async deleteArticle() {
       const article_pk = this.$route.params.id;
@@ -171,7 +167,6 @@ export default {
     this.trade.category = data.username;
     this.trade.CommentLists = data.comments;
     this.trade.user_id = data.user_id;
-    // console.log(this.props);
   }
 };
 </script>
@@ -179,7 +174,6 @@ export default {
 <style scoped>
 .detailimage {
   max-height: 170px;
-  /* width: 400px; */
   align-items: center;
   display: block;
   margin: 0px auto;
@@ -194,18 +188,18 @@ export default {
 .ttext {
   text-align: center;
   font-family: "Gamja Flower", cursive;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 .showcontent {
   margin-top: 10px;
   font-family: "Gamja Flower", cursive;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: center;
 }
 .text {
   font-family: "Gamja Flower", cursive;
   margin-left: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 #comment {

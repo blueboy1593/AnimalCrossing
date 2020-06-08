@@ -76,13 +76,11 @@ export default {
 
     // 나의 자랑글, 거래글 불러와서 필터 사용할것!
     const CommunityCards = await getShows(this.CommunityCards);
-    // console.log(CommunityCards);
     this.CommunityCards = CommunityCards.filter(
       element => element.user_id === this.myid
     );
 
     const TradeCards = await getTrades(this.TradeCards);
-    // console.log(TradeCards);
     this.TradeCards = TradeCards.filter(
       element => element.user_id === this.myid
     );
@@ -107,7 +105,6 @@ export default {
   methods: {
     getAnimalImgPath(engname) {
       let images = require(`@/assets/images/image_animal/${engname}.png`);
-      console.log(images);
       return images;
     },
     changeNeighbor: async function() {

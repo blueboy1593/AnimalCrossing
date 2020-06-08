@@ -2,16 +2,16 @@
   <div>
     <div style="display: flex;">
       <v-text-field
-      v-model="searchText"
-      @keyup="filter"
-      solo-inverted
-      flat
-      hide-details
-      label="Search"
-      class="nav-search"
+        v-model="searchText"
+        @keyup="filter"
+        solo-inverted
+        flat
+        hide-details
+        label="Search"
+        class="nav-search"
       ></v-text-field>
     </div>
-    
+
     <!-- <div class="dogam">물고기 도감</div> -->
     <div class="fishCards">
       <infoCard
@@ -60,7 +60,7 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
-.v-text-field{
+.v-text-field {
   width: 300px;
   background-color: rgba(173, 204, 245, 0.322);
   margin-bottom: 10px;

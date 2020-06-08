@@ -210,7 +210,8 @@ export default {
         };
       } else {
         find = this.selectedLists.filter(list => list.name === this.name);
-
+        const engname = find[0].engname;
+        image = await this.getImgPath(engname);
         trade = {
           title: trade_info.title,
           content: trade_info.content,
@@ -222,11 +223,20 @@ export default {
           sort: trade_info.sort,
           price: trade_info.price
         };
-        console.log(find);
-        console.log(trade);
       }
       await tradePost(trade, token);
       this.$router.push("/trade/etc");
+    },
+    getImgPath(engname) {
+      let image = "";
+      if (this.categoryEng === "fossil") {
+        image = require(`@/assets/images/fossil.png`);
+      } else if (this.categoryEng === "painting") {
+        image = require(`@/assets/images/image_${this.categoryEng}/${engname}.jpg`);
+      } else if (this.categoryEng === "animal") {
+        image = require(`@/assets/images/image_${this.categoryEng}/${engname}.png`);
+      }
+      return image;
     }
   },
   async mounted() {
@@ -234,7 +244,6 @@ export default {
     this.neighbors = await infoService.getNeighbors(this.neighbors);
     this.paintings = await infoService.getPaintings(this.paintings);
     this.selectedLists = [];
-    // console.log(this.fossils, this.neighbors, this.paintings);
   }
 };
 </script>

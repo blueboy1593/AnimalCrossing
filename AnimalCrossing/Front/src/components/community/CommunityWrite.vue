@@ -59,7 +59,6 @@ export default {
       this.$refs.imageInput.click();
     },
     async onChangeImages(e) {
-      console.log(e.target.files);
       const file = e.target.files[0];
       this.article.imageUrl = URL.createObjectURL(file);
       await firebase
@@ -95,7 +94,6 @@ export default {
       } else {
         image = this.article.imageUrl;
       }
-      console.log(image);
       const article = {
         title: this.article.title,
         content: this.article.content,

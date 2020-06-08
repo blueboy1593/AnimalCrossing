@@ -1,12 +1,25 @@
 <template>
-  <div class="paintingCards">
-    <tradeCard
-      v-for="tradeCard in tradeCards"
-      :key="tradeCard.id"
-      :infoCard="tradeCard"
-      :routePath="routePath"
-      :category="category"
-    />
+  <div>
+    <div style="display: flex;">
+      <v-text-field
+        v-model="searchText"
+        @keyup="filter"
+        solo-inverted
+        flat
+        hide-details
+        label="Search"
+        class="nav-search"
+      ></v-text-field>
+    </div>
+    <div class="paintingCards">
+      <tradeCard
+        v-for="tradeCard in searchItemCards"
+        :key="tradeCard.id"
+        :infoCard="tradeCard"
+        :routePath="routePath"
+        :category="category"
+      />
+    </div>
   </div>
 </template>
 
@@ -22,17 +35,34 @@ export default {
     return {
       tradeCards: [],
       routePath: this.$route.path,
-      category: "painting"
+      category: "painting",
+      searchItemCards: [],
+      searchText: ""
     };
   },
+  methods: {
+    filter() {
+      let check = this.tradeCards.filter(
+        tradeCard => tradeCard.name.indexOf(this.searchText.trim()) !== -1
+      );
+      this.searchItemCards = check;
+    }
+  },
   async mounted() {
-    this.tradeCards = await getPaintings(this.tradeCards);
-    console.log("hi", this.tradeCards);
+    this.tradeCards = await getPaintings();
+    this.searchItemCards = this.tradeCards;
   }
 };
 </script>
 
 <style scoped>
+.v-text-field {
+  width: 300px;
+  background-color: rgba(173, 204, 245, 0.322);
+  margin-bottom: 10px;
+  margin-left: 35%;
+  margin-right: 35%;
+}
 .paintingCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
