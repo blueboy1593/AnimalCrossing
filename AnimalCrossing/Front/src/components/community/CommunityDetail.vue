@@ -163,6 +163,7 @@ export default {
 }
 
 .ttext {
+  margin-top: 10px;
   text-align: center;
   font-family: "Gamja Flower", cursive;
 }
