@@ -96,6 +96,7 @@ export default {
     );
     this.selectedItemCards = sellList;
     console.log(this.selectedItemCards);
+    this.searchItemCards = sellList;
   }
 };
 </script>
