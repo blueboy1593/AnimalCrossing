@@ -192,7 +192,7 @@ export default {
       console.log("find");
       console.log(trade);
       await tradePost(trade, token);
-      // this.$router.push("/community/list");
+      this.$router.push("/trade/etc");
     }
   },
   async mounted() {
