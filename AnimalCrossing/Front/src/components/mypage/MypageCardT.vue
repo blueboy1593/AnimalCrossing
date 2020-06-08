@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to="{ name: 'cdetail', params: { id: MypageCard.id } }">
+    <router-link :to="{ name: 'tradedetail', params: { id: MypageCard.id } }">
       <div class="cCard">
         <div class="cphoto">
           <div v-if="MypageCard.image === null">
@@ -16,21 +16,6 @@
         <div class="infoName">
           {{ MypageCard.title }}
         </div>
-        <!-- <v-row>
-          <v-col>
-            <div class="infoDetail3">
-              {{ MypageCard.username }}
-            </div></v-col
-          ><v-col>
-            <div class="infoDetail2">
-              {{
-                MypageCard.created_at.substring(0, 10) +
-                  "  " +
-                  MypageCard.created_at.substring(11, 16)
-              }}
-            </div></v-col
-          ></v-row
-        > -->
       </div>
     </router-link>
   </div>
@@ -38,7 +23,7 @@
 
 <script>
 export default {
-  name: "MypageCard",
+  // name: "MypageCard",
   props: ["MypageCard"]
 };
 </script>

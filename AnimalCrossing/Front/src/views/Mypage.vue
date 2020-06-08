@@ -18,7 +18,7 @@
         <h4>나의 자랑 글</h4>
         <section class="board__news">
           <div>
-            <MypageCard
+            <MypageCardC
               v-for="MypageCard in CommunityCards"
               :key="MypageCard.id"
               :MypageCard="MypageCard"
@@ -31,7 +31,7 @@
         <h4>나의 거래글</h4>
         <section class="board__news">
           <div>
-            <MypageCard
+            <MypageCardT
               v-for="MypageCard in TradeCards"
               :key="MypageCard.id"
               :MypageCard="MypageCard"
@@ -48,11 +48,13 @@
 import { getNeighbors } from "@/api/info.js";
 import { getShows } from "@/api/show.js";
 import { getTrades } from "@/api/trade.js";
-import MypageCard from "../components/mypage/MypageCard.vue";
+import MypageCardC from "../components/mypage/MypageCardC.vue";
+import MypageCardT from "../components/mypage/MypageCardT.vue";
 
 export default {
   components: {
-    MypageCard
+    MypageCardC,
+    MypageCardT
   },
   data: function() {
     return {
