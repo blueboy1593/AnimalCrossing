@@ -2,13 +2,21 @@
   <div>
     <div>
       <button @click="goback" class="backbtn">
-        <img src="../../assets/images/back.png" alt="글쓰기" class="back-img" />
+        <img
+          src="../../assets/images/back.png"
+          alt="뒤로가기"
+          class="back-img"
+        />
       </button>
+      <v-tabs>
+        <v-tab @click="buying">삽니다</v-tab>
+        <v-tab @click="selling">팝니다</v-tab>
+      </v-tabs>
       <br />
       <tradeItemCard
-        v-for="tradeItemCard in tradeItemCards"
-        :key="tradeItemCard.id"
-        :tradeItemCard="tradeItemCard"
+        v-for="selectedItemCard in selectedItemCards"
+        :key="selectedItemCard.id"
+        :tradeItemCard="selectedItemCard"
         class="card_one"
       />
     </div>
@@ -27,8 +35,28 @@ export default {
   },
   data() {
     return {
-      tradeItemCards: []
+      tradeItemCards: [],
+      selectedItemCards: []
     };
+  },
+  methods: {
+    goback() {
+      this.$router.go(-1);
+    },
+    buying() {
+      let buyList = this.tradeItemCards.filter(
+        tradeItemCard => tradeItemCard.sort === "buy"
+      );
+      this.selectedItemCards = buyList;
+      console.log("삽니다", buyList, this.selectedItemCards);
+    },
+    selling() {
+      let sellList = this.tradeItemCards.filter(
+        tradeItemCard => tradeItemCard.sort === "sell"
+      );
+      this.selectedItemCards = sellList;
+      console.log("팝니다", sellList, this.selectedItemCards);
+    }
   },
   async mounted() {
     this.tradeItemCards = await getTradeById(
@@ -36,11 +64,11 @@ export default {
       this.id,
       this.tradeItemCards
     );
-  },
-  methods: {
-    goback() {
-      this.$router.go(-1);
-    }
+    let buyList = this.tradeItemCards.filter(
+      tradeItemCard => tradeItemCard.sort === "buy"
+    );
+    this.selectedItemCards = buyList;
+    console.log(this.tradeItemCards);
   }
 };
 </script>
