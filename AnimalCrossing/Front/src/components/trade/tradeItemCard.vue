@@ -46,8 +46,14 @@ export default {
   },
   methods: {
     getImgPath() {
-      let image = require(`@/assets/images/image_${this.category}/${this.engname}.png`);
-      console.log(`@/assets/images/image_${this.category}/${this.engname}.png`);
+      let image = "";
+      if (this.category === "fossil") {
+        image = require(`@/assets/images/fossil.png`);
+      } else if (this.category === "painting") {
+        image = require(`@/assets/images/image_${this.category}/${this.engname}.jpg`);
+      } else if (this.category === "animal") {
+        image = require(`@/assets/images/image_${this.category}/${this.engname}.png`);
+      }
       return image;
     }
   }
