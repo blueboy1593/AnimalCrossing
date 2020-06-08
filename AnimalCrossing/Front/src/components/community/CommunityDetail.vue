@@ -109,14 +109,12 @@ export default {
         user_id: user.id,
         username: user.username
       };
-      console.log(comment);
       await writeComment(comment, show_id, token, async function(response) {
         console.log(response);
         let data = await showService.getShowById(show_id);
         let list = { ...scope.article };
         list.CommentLists = data.showcomments;
         scope.article = list;
-        console.log(scope.article);
         scope.comment = "";
       });
 

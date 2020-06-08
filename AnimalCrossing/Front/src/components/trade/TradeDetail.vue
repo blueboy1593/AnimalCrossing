@@ -2,7 +2,6 @@
   <div class="community">
     <div class="container">
       <button @click="goback" class="backbtn">
-        <!-- <img src="../../assets/images/back.png" alt="글쓰기" class="back-img" /> -->
         <img src="../../assets/images/back1.png" alt="뒤로가기" />
         <img src="../../assets/images/back2.png" alt="뒤로가기" />
       </button>
@@ -131,9 +130,6 @@ export default {
         scope.trade = list;
         scope.comment = "";
       });
-
-      // this.$router.go(this.$router.currentRoute);
-      // $router.push("/auction/register/" + response.data.id);
     },
     async deleteArticle() {
       const article_pk = this.$route.params.id;
@@ -171,7 +167,6 @@ export default {
     this.trade.category = data.username;
     this.trade.CommentLists = data.comments;
     this.trade.user_id = data.user_id;
-    // console.log(this.props);
   }
 };
 </script>
@@ -179,7 +174,6 @@ export default {
 <style scoped>
 .detailimage {
   max-height: 170px;
-  /* width: 400px; */
   align-items: center;
   display: block;
   margin: 0px auto;
