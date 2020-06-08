@@ -1,8 +1,8 @@
 <template>
   <div id="info">
-    <!-- <sequential-entrance fromLeft> -->
-    <InfoNav />
-    <!-- </sequential-entrance> -->
+    <sequential-entrance fromRight>
+      <InfoNav />
+    </sequential-entrance>
     <router-view />
   </div>
 </template>
