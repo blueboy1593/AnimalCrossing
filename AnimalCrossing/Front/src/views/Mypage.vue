@@ -15,7 +15,7 @@
     </div>
     <div class="mydata">
       <div class="mypost">
-        <h4>내가 쓴 글</h4>
+        <h4>나의 자랑 글</h4>
         <section class="board__news">
           <div>
             <MypageCard
@@ -28,7 +28,7 @@
         </section>
       </div>
       <div class="mytrade">
-        <h4>내 거래내역</h4>
+        <h4>나의 거래글</h4>
         <section class="board__news">
           <div>
             <MypageCard
@@ -59,19 +59,31 @@ export default {
       username: "",
       email: "",
       neighbor_url: "",
+      myid: 0,
       infoCards: [],
       CommunityCards: [],
       TradeCards: []
     };
   },
   async mounted() {
-    this.CommunityCards = await getShows(this.CommunityCards);
-    this.TradeCards = await getTrades(this.TradeCards);
-
     // 여기는 유저 정보를 스토어에서 받아서 저장하는 코드
     const user = this.$store.state.user;
     this.username = user.username;
     this.email = user.email;
+    this.myid = user.id;
+
+    // 나의 자랑글, 거래글 불러와서 필터 사용할것!
+    const CommunityCards = await getShows(this.CommunityCards);
+    // console.log(CommunityCards);
+    this.CommunityCards = CommunityCards.filter(
+      element => element.user_id === this.myid
+    );
+
+    const TradeCards = await getTrades(this.TradeCards);
+    // console.log(TradeCards);
+    this.TradeCards = TradeCards.filter(
+      element => element.user_id === this.myid
+    );
 
     // 로컬 스토리지에 오늘의 주민 정보가 있을 때.
     if (localStorage.getItem("myneighbor_time")) {
