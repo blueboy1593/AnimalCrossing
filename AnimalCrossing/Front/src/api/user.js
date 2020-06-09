@@ -2,7 +2,6 @@
 import { createInstance } from "./index.js";
 
 const instance = createInstance();
-// console.log("여기는 인스턴스", instance);
 
 function signup(email, nickname, password, success, fail) {
   const user = {
@@ -10,7 +9,6 @@ function signup(email, nickname, password, success, fail) {
     username: nickname,
     password: password
   };
-  console.log(user);
   instance
     .post("/accounts/signup/", JSON.stringify(user))
     .then(success)

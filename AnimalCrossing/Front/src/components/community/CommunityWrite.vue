@@ -59,7 +59,6 @@ export default {
       this.$refs.imageInput.click();
     },
     async onChangeImages(e) {
-      console.log(e.target.files);
       const file = e.target.files[0];
       this.article.imageUrl = URL.createObjectURL(file);
       await firebase
@@ -69,7 +68,6 @@ export default {
         .put(file)
         .then(response => {
           console.log(response);
-          console.log("firebase 업로드");
         });
       let image = "";
       await firebase
@@ -79,7 +77,6 @@ export default {
         .getDownloadURL()
         .then(response => {
           console.log(response);
-          console.log("firebase 받아오기");
           image = response;
         });
       this.article.imageUrl = image;
@@ -95,7 +92,6 @@ export default {
       } else {
         image = this.article.imageUrl;
       }
-      console.log(image);
       const article = {
         title: this.article.title,
         content: this.article.content,
@@ -103,7 +99,6 @@ export default {
         username: user.username,
         image: image
       };
-      console.log(article);
       await writeShows(article, token);
       this.$router.push("/community/list");
     }
@@ -111,7 +106,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 #writeWrap {

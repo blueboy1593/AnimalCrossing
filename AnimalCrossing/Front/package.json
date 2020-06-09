@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
+    "@mdi/font": "^5.3.45",
     "@vue/cli-plugin-babel": "^4.3.0",
     "@vue/cli-plugin-eslint": "^4.3.0",
     "@vue/cli-plugin-pwa": "^4.3.0",

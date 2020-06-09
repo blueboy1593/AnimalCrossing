@@ -134,7 +134,7 @@ export default {
   },
   methods: {
     moocalcul: function() {
-      alert("입력란으로 돌아갑니다");
+      alert("다시 무값 입력하구리!");
       this.$router.push("/moocalculator");
     }
   },
@@ -154,13 +154,14 @@ export default {
       moo_graph_max.push(element[1]);
       moo_graph_min.push(element[0]);
     });
-    // moo_graph_max.push(600);
-    // moo_graph_min.push(600);
-
+    moo_graph_max.push(600);
+    moo_graph_min.push(600);
+    moo_graph_max.unshift(0);
+    moo_graph_min.unshift(0);
+    moo_price.shift();
     this.moo = moo_price;
     this.graph_max = moo_graph_max;
     this.graph_min = moo_graph_min;
-    // console.log(this.moo);
   }
 };
 </script>

@@ -24,22 +24,10 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      article: {
-        title: "제목입니다만",
-        content:
-          "내용 블라블라 🏝️모여봐요 동물의 숲🏝️ 🌞하루 24시간 BGM🌛 🏖️동물의 숲 하루를 채우는 잔잔한 노래🌊🏝️모여봐요 동물의 숲🏝 🌞하루 24시간 BGM🌛 🏖️동물의 숲 하루를 채우는 잔잔한 노래🌊",
-        username: "paik11012",
-        created_at: "2020-06-03"
-      }
-    };
-  }
-};
+export default {};
 </script>
 
-<style>
+<style scoped>
 .detailimage {
   width: 60%;
   align-items: center;

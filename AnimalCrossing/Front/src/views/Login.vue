@@ -59,12 +59,10 @@ export default {
           scope.$store.state.user.username = user_info.username;
           scope.$store.commit("saveToken", response.data.token);
           scope.$store.commit("setIsSigned", true);
-          // scope.$store.commit("setUserId", response.data.id);
           localStorage.setItem("token", response.data.token);
           const decodedToken = jwtDecode(response.data.token);
           const userId = decodedToken.user_id;
           await findById(userId, function(response) {
-            console.log(userId, response.data);
             scope.$store.commit("setUserName", response.data.username);
           });
           scope.$router.go(-1);
@@ -79,7 +77,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .box {
   padding-top: 1rem;
   /* transform: translate(-50%, -50%); */

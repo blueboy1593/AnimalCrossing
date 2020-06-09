@@ -15,10 +15,30 @@
     </div>
     <div class="mydata">
       <div class="mypost">
-        내가 쓴 글
+        <h4>나의 자랑 글</h4>
+        <section class="board__news">
+          <div>
+            <MypageCardC
+              v-for="MypageCard in CommunityCards"
+              :key="MypageCard.id"
+              :MypageCard="MypageCard"
+              class="card_one"
+            />
+          </div>
+        </section>
       </div>
       <div class="mytrade">
-        내 거래내역
+        <h4>나의 거래글</h4>
+        <section class="board__news">
+          <div>
+            <MypageCardT
+              v-for="MypageCard in TradeCards"
+              :key="MypageCard.id"
+              :MypageCard="MypageCard"
+              class="card_one"
+            />
+          </div>
+        </section>
       </div>
     </div>
   </div>
@@ -26,14 +46,25 @@
 
 <script>
 import { getNeighbors } from "@/api/info.js";
+import { getShows } from "@/api/show.js";
+import { getTrades } from "@/api/trade.js";
+import MypageCardC from "../components/mypage/MypageCardC.vue";
+import MypageCardT from "../components/mypage/MypageCardT.vue";
 
 export default {
+  components: {
+    MypageCardC,
+    MypageCardT
+  },
   data: function() {
     return {
       username: "",
       email: "",
       neighbor_url: "",
-      infoCards: []
+      myid: 0,
+      infoCards: [],
+      CommunityCards: [],
+      TradeCards: []
     };
   },
   async mounted() {
@@ -41,9 +72,21 @@ export default {
     const user = this.$store.state.user;
     this.username = user.username;
     this.email = user.email;
+    this.myid = user.id;
+
+    // 나의 자랑글, 거래글 불러와서 필터 사용할것!
+    const CommunityCards = await getShows(this.CommunityCards);
+    this.CommunityCards = CommunityCards.filter(
+      element => element.user_id === this.myid
+    );
+
+    const TradeCards = await getTrades(this.TradeCards);
+    this.TradeCards = TradeCards.filter(
+      element => element.user_id === this.myid
+    );
 
     // 로컬 스토리지에 오늘의 주민 정보가 있을 때.
-    if (localStorage.getItem("myneighbor_time")) {
+    if (localStorage.getItem("myneighbor_url")) {
       const myneighbor_url = localStorage.getItem("myneighbor_url");
       this.neighbor_url = myneighbor_url;
     } else {
@@ -54,15 +97,14 @@ export default {
       this.neighbor_url = neighbor_url;
 
       // 오늘의 첫 시간 저장.
-      const now_time = new Date().toLocaleDateString();
-      localStorage.setItem("myneighbor_time", now_time);
+      // const now_time = new Date().toLocaleDateString();
+      // localStorage.setItem("myneighbor_time", now_time);
       localStorage.setItem("myneighbor_url", neighbor_url);
     }
   },
   methods: {
     getAnimalImgPath(engname) {
       let images = require(`@/assets/images/image_animal/${engname}.png`);
-      console.log(images);
       return images;
     },
     changeNeighbor: async function() {
@@ -95,6 +137,7 @@ export default {
 .mypage {
   display: flex;
   height: 100%;
+  padding-top: 15px;
 }
 
 .profile {
@@ -148,5 +191,41 @@ export default {
   height: 50%;
   border: 2px solid lavender;
   border-radius: 24px;
+}
+
+.card_one {
+  display: inline-block;
+  width: 50%;
+  height: auto;
+  max-height: 165px;
+  padding: 10px 0px;
+}
+
+/* board_new -  */
+/* for the section describing the news items, display the items in a single column layout */
+.board__news {
+  display: flex;
+  /* margin: 1rem 0 2rem; */
+  flex-direction: column;
+  width: 100%;
+  justify-self: center;
+  /* dictate a maximum height to allow for vertical scroll */
+  /* max-height: 500px; */
+  height: 80%;
+  overflow-y: auto;
+}
+
+/* minor style changes for the scrollbar */
+.board__news::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.board__news::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px hsla(200, 100%, 5%, 0.3);
+}
+
+.board__news::-webkit-scrollbar-thumb {
+  background: hsl(200, 100%, 10%);
+  border-radius: 5px;
 }
 </style>

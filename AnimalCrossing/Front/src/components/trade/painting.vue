@@ -1,18 +1,31 @@
-!<template>
-  <div class="paintingCards">
-    <h1>카드를 클릭하면 뭐가 나올까요</h1>
-    <tradeCard
-      v-for="tradeCard in tradeCards"
-      :key="tradeCard.id"
-      :infoCard="tradeCard"
-      :routePath="routePath"
-    />
+<template>
+  <div>
+    <div style="display: flex;">
+      <v-text-field
+        v-model="searchText"
+        @keyup="filter"
+        solo-inverted
+        flat
+        hide-details
+        label="Search"
+        class="nav-search"
+      ></v-text-field>
+    </div>
+    <div class="paintingCards">
+      <tradeCard
+        v-for="tradeCard in searchItemCards"
+        :key="tradeCard.id"
+        :infoCard="tradeCard"
+        :routePath="routePath"
+        :category="category"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import { getPaintings } from "@/api/info.js";
-import tradeCard from "../info/infoCard.vue";
+import tradeCard from "../trade/tradeCard.vue";
 export default {
   name: "tradeNeighbors",
   components: {
@@ -21,16 +34,35 @@ export default {
   data() {
     return {
       tradeCards: [],
-      routePath: this.$route.path
+      routePath: this.$route.path,
+      category: "painting",
+      searchItemCards: [],
+      searchText: ""
     };
   },
+  methods: {
+    filter() {
+      let check = this.tradeCards.filter(
+        tradeCard => tradeCard.name.indexOf(this.searchText.trim()) !== -1
+      );
+      this.searchItemCards = check;
+    }
+  },
   async mounted() {
-    this.tradeCards = await getPaintings(this.tradeCards);
+    this.tradeCards = await getPaintings();
+    this.searchItemCards = this.tradeCards;
   }
 };
 </script>
 
-<style>
+<style scoped>
+.v-text-field {
+  width: 300px;
+  background-color: rgba(173, 204, 245, 0.322);
+  margin-bottom: 10px;
+  margin-left: 35%;
+  margin-right: 35%;
+}
 .paintingCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

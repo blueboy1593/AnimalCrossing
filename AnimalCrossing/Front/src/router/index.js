@@ -11,16 +11,13 @@ import MooCalculator from "../views/MooCalculator.vue";
 import MooCalculated from "../views/MooCalculated.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
-import infoDetail from "../components/info/infoDetail.vue";
+import searchBar from "../components/searchBar.vue";
 import trade from "../views/trade.vue";
 import Detail from "../views/Detail.vue";
 import Mypage from "../views/Mypage.vue";
+import team from "../views/team.vue";
 
 Vue.use(VueRouter);
-// const detail = () =>
-//   import(
-//     /* webpackChunkName: "c_detail" */ "../components/community/CommunityDetail.vue"
-//   );
 
 const routes = [
   {
@@ -31,7 +28,7 @@ const routes = [
   {
     path: "/test",
     name: "test",
-    component: infoDetail
+    component: searchBar
   },
   {
     path: "/",
@@ -42,6 +39,11 @@ const routes = [
         path: "/detail",
         name: "detail",
         component: Detail
+      },
+      {
+        path: "/team",
+        name: "team",
+        component: team
       },
       {
         path: "/info",
@@ -80,7 +82,7 @@ const routes = [
             component: () => import("../components/community/CommunityPost.vue")
           },
           {
-            path: "cdetail/:id",
+            path: "detail/:id",
             name: "cdetail",
             component: () =>
               import("../components/community/CommunityDetail.vue")
@@ -157,7 +159,24 @@ const routes = [
           {
             path: "etc",
             name: "trade_etc",
-            component: () => import("../components/trade/etc.vue")
+            component: () => import("../components/trade/Etc.vue")
+          },
+          {
+            path: "list/:category/:id",
+            name: "tlist",
+            props: true,
+            component: () => import("../components/trade/tradeList.vue")
+          },
+          {
+            path: "tradedetail/:id",
+            name: "tradedetail",
+            props: true,
+            component: () => import("../components/trade/TradeDetail.vue")
+          },
+          {
+            path: "etcdetail/:id",
+            name: "etcdetail",
+            component: () => import("../components/trade/TradeEtcDetail.vue")
           }
         ]
       }

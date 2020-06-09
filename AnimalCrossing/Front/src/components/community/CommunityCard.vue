@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link :to="{ name: 'cdetail', params: { id: communityCard.id } }">
-      <div @click="toDetail" class="cCard">
+      <div class="cCard">
         <div class="cphoto">
           <div v-if="communityCard.image === null">
             <img
@@ -16,13 +16,20 @@
         <div class="infoName">
           {{ communityCard.title }}
         </div>
-        <v-row id="vrow">
-          <div class="infoDetail">
-            {{ communityCard.username }}
-          </div>
-          <div class="infoDetail2">
-            {{ this.counter }}
-          </div></v-row
+        <v-row>
+          <v-col>
+            <div class="infoDetail3">
+              {{ communityCard.username }}
+            </div></v-col
+          ><v-col>
+            <div class="infoDetail2">
+              {{
+                communityCard.created_at.substring(0, 10) +
+                  "  " +
+                  communityCard.created_at.substring(11, 16)
+              }}
+            </div></v-col
+          ></v-row
         >
       </div>
     </router-link>
@@ -32,28 +39,11 @@
 <script>
 export default {
   name: "communityCard",
-  props: ["communityCard"],
-  data: function() {
-    return {
-      counter: this.communityCard.created_at,
-      id: this.communityCard.id
-    };
-  },
-  computed: {
-    trim: function() {
-      return this.counter.substring(0, 5);
-    }
-  },
-  methods: {
-    toDetail: function() {
-      console.log(this.id);
-      this.$router.push({ path: `/community/cdetail/${this.id}` });
-    }
-  }
+  props: ["communityCard"]
 };
 </script>
 
-<style>
+<style scoped>
 .cCard {
   display: inline-block;
   margin-top: 0.3rem;
@@ -62,17 +52,25 @@ export default {
   border-radius: 15px;
   margin-right: 1rem;
   overflow: hidden;
-
+  margin-left: 0.5rem;
+  color: black;
   background-color: rgba(110, 173, 157, 0.144);
 }
 
 .cCard:hover {
-  border-bottom: 1px solid #76a7b2;
+  /* border-bottom: 1px solid #76a7b2; */
   background-color: rgba(98, 173, 155, 0.26);
+  transform: scale(1.03);
+  opacity: 0.9;
+  box-shadow: 0 0 0 1px #76a7b2;
 }
 
 .cphoto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  min-height: 246.4px;
   height: 20%;
   border-radius: 15px;
   text-align: center;
@@ -80,9 +78,19 @@ export default {
 }
 
 .cimage {
-  height: 170px;
+  max-height: 170px;
   display: block;
   margin: 0 auto;
+  margin-top: 4%;
+}
+
+.detailimage {
+  width: auto;
+  /* width: 100%; */
+  height: auto;
+  max-width: 460px;
+  max-height: 240px;
+  /* margin-top: 4%; */
 }
 
 .infoName {
@@ -92,15 +100,16 @@ export default {
   font-family: "Gamja Flower", cursive;
 }
 
-.infoDetail {
+.infoDetail3 {
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .infoDetail2 {
   text-align: right;
   font-weight: 100;
   font-family: "Gamja Flower", cursive;
+  margin-right: 10px;
 }
 </style>

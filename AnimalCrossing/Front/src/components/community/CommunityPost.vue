@@ -1,12 +1,27 @@
 <template>
   <div>
-    <router-link to="/community/write">
-      <button class="write_btn btn btn-primary">
-        글쓰기
-      </button>
-    </router-link>
+    <h2 class="btitle">자랑해요, 동물의 숲</h2>
+    <div class="writeDiv">
+      <div v-if="!$store.state.isSigned">
+        <router-link to="/login">
+          <img
+            src="../../assets/images/write.png"
+            alt="글쓰기"
+            class="nav-img"
+          />
+        </router-link>
+      </div>
+      <div v-else>
+        <router-link to="/community/write">
+          <img
+            src="../../assets/images/write.png"
+            alt="글쓰기"
+            class="nav-img"
+          />
+        </router-link>
+      </div>
+    </div>
     <div>
-      <h2 style="font-family:Gamja Flower">자랑해요, 동물의 숲</h2>
       <communityCard
         v-for="communityCard in communityCards"
         :key="communityCard.id"
@@ -60,5 +75,22 @@ export default {
 
 .write_btn:hover {
   background: #e46fc7;
+}
+
+.writeDiv {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3%;
+}
+
+.nav-img {
+  height: 60px;
+  margin-right: 30px;
+}
+
+.btitle {
+  font-family: "Jua", sans-serif;
+  text-align: center;
+  font-size: 1.7rem;
 }
 </style>

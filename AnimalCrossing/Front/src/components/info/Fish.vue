@@ -1,12 +1,26 @@
 <template>
-  <div class="fishCards">
-    <!-- <h1>fish</h1> -->
-    <infoCard
-      v-for="infoCard in infoCards"
-      :key="infoCard.title"
-      :infoCard="infoCard"
-      :routePath="routePath"
-    />
+  <div>
+    <div style="display: flex;">
+      <v-text-field
+        v-model="searchText"
+        @keyup="filter"
+        solo-inverted
+        flat
+        hide-details
+        label="Search"
+        class="nav-search"
+      ></v-text-field>
+    </div>
+
+    <!-- <div class="dogam">물고기 도감</div> -->
+    <div class="fishCards">
+      <infoCard
+        v-for="infoCard in selectedCards"
+        :key="infoCard.title"
+        :infoCard="infoCard"
+        :routePath="routePath"
+      />
+    </div>
   </div>
 </template>
 
@@ -19,97 +33,54 @@ export default {
   components: {
     infoCard
   },
+  methods: {
+    filter() {
+      let check = this.infoCards.filter(
+        infoCard => infoCard.name.indexOf(this.searchText.trim()) !== -1
+      );
+      this.selectedCards = check;
+    }
+  },
+
   data() {
     return {
       infoCards: [],
-      routePath: this.$route.path
+      routePath: this.$route.path,
+      searchText: "",
+      selectedCards: []
     };
   },
   async mounted() {
     this.infoCards = await getFishes(this.infoCards);
+    this.selectedCards = this.infoCards;
   }
-  // data() {
-  //   return {
-  //     infoCards: [
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "붕어",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "잉어",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fish.png"),
-  //         title: "흰동가리",
-  //         detail: "5월"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 
-<style>
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.v-text-field {
+  width: 300px;
+  background-color: rgba(173, 204, 245, 0.322);
+  margin-bottom: 10px;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.dogam {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+  color: rgb(9, 40, 71);
+}
+
 .fishCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: auto;
   grid-gap: 1rem 1rem;
-  /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
 }
+
 @media (max-width: 1600px) {
   .fishCards {
     grid-template-columns: repeat(6, 1fr);
