@@ -15,6 +15,7 @@ import searchBar from "../components/searchBar.vue";
 import trade from "../views/trade.vue";
 import Detail from "../views/Detail.vue";
 import Mypage from "../views/Mypage.vue";
+import team from "../views/team.vue";
 
 Vue.use(VueRouter);
 
@@ -38,6 +39,11 @@ const routes = [
         path: "/detail",
         name: "detail",
         component: Detail
+      },
+      {
+        path: "/team",
+        name: "team",
+        component: team
       },
       {
         path: "/info",

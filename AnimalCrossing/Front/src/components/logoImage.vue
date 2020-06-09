@@ -5,10 +5,12 @@
         <img src="../assets/images/logo.png" alt="" />
       </router-link>
     </div>
-    <span>
-      <img class="mdmd" src="../assets/images/mdmd.png" alt="" />
-    </span>
-    <p class="pinkBubble">모두 함께 즐기는 모여봐요 동물의 숲</p>
+    <router-link to="/team">
+      <span>
+        <img class="mdmd" src="../assets/images/mdmd.png" alt="" />
+      </span>
+      <p class="pinkBubble">모두 함께 즐기는 모여봐요 동물의 숲</p>
+    </router-link>
   </div>
 </template>
 
