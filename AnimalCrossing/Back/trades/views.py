@@ -84,9 +84,10 @@ def detail(request, article_pk):
 
 
 # 글 한개 수정, 삭제
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def detail_ud(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
     if request.method == "PUT":
         serializer = ArticleUpdateSerializer(
             data=request.data, instance=article)
