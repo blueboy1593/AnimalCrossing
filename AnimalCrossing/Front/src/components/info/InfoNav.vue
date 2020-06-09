@@ -1,5 +1,5 @@
 <template>
-  <div class="board__nav1">
+  <div id="navbar" class="board__nav1">
     <nav class="board__nav">
       <img src="../../assets/images/도감.png" alt="도감" id="dogam" />
       <router-link to="/info/fish">
@@ -37,6 +37,13 @@
           class="nav-img"
         />
       </router-link>
+      <!-- <router-link to="/info/team">
+        <img
+          id="teamsg"
+          src="../../assets/images/teamsg.png"
+          alt="팀원 소개"
+        />
+      </router-link> -->
       <!-- <button class="nav--item" data-item="events">Events</button>
     <button class="nav--item" data-item="important">Important</button> -->
     </nav>
@@ -167,5 +174,11 @@ a background is specified in the script */
     width: 40px;
     height: auto;
   }
+}
+
+#teamsg {
+  width: 50px;
+  height: 40px;
+  margin-top: 10px;
 }
 </style>

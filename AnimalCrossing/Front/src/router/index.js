@@ -15,6 +15,7 @@ import searchBar from "../components/searchBar.vue";
 import trade from "../views/trade.vue";
 import Detail from "../views/Detail.vue";
 import Mypage from "../views/Mypage.vue";
+import team from "../components/info/team.vue";
 
 Vue.use(VueRouter);
 
@@ -34,6 +35,11 @@ const routes = [
     name: "Board",
     component: Board,
     children: [
+      {
+        path: "/team",
+        name: "team",
+        component: team
+      },
       {
         path: "/detail",
         name: "detail",
@@ -63,7 +69,11 @@ const routes = [
           {
             path: "neighbor",
             component: () => import("../components/info/Neighbor.vue")
-          }
+          },
+          // {
+          //   path: "team",
+          //   component: () => import("../components/info/team.vue")
+          // }
         ]
       },
       {
