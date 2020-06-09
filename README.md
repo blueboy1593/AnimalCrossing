@@ -30,7 +30,7 @@
 - 나무위키: 게임 공략을 보고 싶은 사람들이 이용
   
 
-![비교](imgs/비교.png)
+![비교](./자료정리imgs/비교.png)
 
 - 네이버 카페 / DC인사이드: 게임을 함께 이용하는 사람들과 커뮤니케이션
   <img src="imgs/gall.PNG" alt="gall" style="zoom:67%;" />
@@ -90,7 +90,7 @@
 
 ### 1-3. 팀원별 담당 역할
 
-![팀원역할](./imgs/팀원역할.png)
+![팀원역할](./자료정리/imgs/팀원역할.png)
 
 -----
 
@@ -258,12 +258,12 @@
 
 #### 1) ERD
 
-  ![](./imgs/ERD.png)
+  ![](./자료정리imgs/ERD.png)
 
 -----
 
 #### 2) Vue Components Structure
 
-  ![Project Architecture](./imgs/Project Architecture.png)
+  ![Project Architecture](./자료정리/imgs/Project Architecture.png)
 
 ## 4. PPT 참고
