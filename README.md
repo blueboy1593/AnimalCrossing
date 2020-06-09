@@ -30,10 +30,10 @@
 - 나무위키: 게임 공략을 보고 싶은 사람들이 이용
   
 
-![비교](./자료정리imgs/비교.png)
+![비교](./자료정리/imgs/비교.png)
 
 - 네이버 카페 / DC인사이드: 게임을 함께 이용하는 사람들과 커뮤니케이션
-  <img src="imgs/gall.PNG" alt="gall" style="zoom:67%;" />
+  <img src="./자료정리/imgs/gall.PNG" alt="gall" style="zoom:67%;" />
 
 - 정리: 이를 통해, 정보와 커뮤니티 서비스를 한 곳에서 제공하는 사이트를 착안
   
