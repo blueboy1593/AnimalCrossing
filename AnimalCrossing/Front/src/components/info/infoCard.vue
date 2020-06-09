@@ -123,8 +123,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .infoCard {
+  margin-left: 5px;
   margin-top: 0.3rem;
   width: 120px;
   /* height: 172px; */
@@ -134,9 +135,10 @@ export default {
 }
 
 .infoCard:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
   opacity: 0.9;
-  border: 3px solid #276dd68e;
+  box-shadow: 0 0 0 3px #276dd68e;
+  /* border: 1px solid #276dd68e; */
 }
 
 .photo {

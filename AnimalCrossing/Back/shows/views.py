@@ -54,6 +54,7 @@ def detail(request, show_pk):
 @api_view(['PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def detail_ud(request, show_pk):
+  show = get_object_or_404(Show, pk=show_pk)
   if request.method == "PUT":
     serializer = ShowUpdateSerializer(data = request.data, instance=show)
     if serializer.is_valid(raise_exception=True):

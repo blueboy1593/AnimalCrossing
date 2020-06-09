@@ -1,11 +1,23 @@
 <template>
-  <div class="insectCards">
-    <infoCard
-      v-for="infoCard in infoCards"
-      :key="infoCard.id"
-      :infoCard="infoCard"
-      :routePath="routePath"
-    />
+  <div>
+    <v-text-field
+      v-model="searchText"
+      @keyup="filter"
+      solo-inverted
+      flat
+      hide-details
+      label="Search"
+      class="nav-search"
+    ></v-text-field>
+    <!-- <div class="dogam">곤충 도감</div> -->
+    <div class="insectCards">
+      <infoCard
+        v-for="infoCard in selectedCards"
+        :key="infoCard.id"
+        :infoCard="infoCard"
+        :routePath="routePath"
+      />
+    </div>
   </div>
 </template>
 
@@ -21,63 +33,41 @@ export default {
   data() {
     return {
       infoCards: [],
-      routePath: this.$route.path
+      routePath: this.$route.path,
+      selectedCards: [],
+      searchText: ""
     };
   },
-
+  methods: {
+    filter() {
+      let check = this.infoCards.filter(
+        infoCard => infoCard.name.indexOf(this.searchText.trim()) !== -1
+      );
+      this.selectedCards = check;
+    }
+  },
   async mounted() {
     this.infoCards = await getInsects(this.infoCards);
+    this.selectedCards = this.infoCards;
   }
-  // data() {
-  //   return {
-  //     infoCards: [
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       },
-  //       {
-  //         src: require("../../assets/images/bug.png"),
-  //         title: "나비"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 
-<style>
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+.v-text-field {
+  width: 300px;
+  background-color: rgba(173, 204, 245, 0.322);
+  margin-bottom: 10px;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+.dogam {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+  color: rgb(9, 40, 71);
+}
+
 .insectCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

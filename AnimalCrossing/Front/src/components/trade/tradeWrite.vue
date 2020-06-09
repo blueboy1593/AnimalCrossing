@@ -2,14 +2,14 @@
   <!-- 전체 -->
   <div id="writeWrap">
     <!-- 거래할 아이템 선택 -->
-    <form id="tradeUpload" action="" method="">
+    <div id="tradeUpload" action="" method="">
       <!-- <input type="radio" name="trade" value="buy" id="buy" />
             <label for="buy">삽니다</label>
             <input type="radio" name="trade" value="sell" id="sell" />
             <label for="sell">팝니다</label> -->
-      <v-radio-group id="buySell" v-model="row" row>
-        <v-radio label="삽니다" value="radio-1"></v-radio>
-        <v-radio label="팝니다" value="radio-2"></v-radio>
+      <v-radio-group id="buySell" v-model="trade.sort">
+        <v-radio label="삽니다" value="buy"></v-radio>
+        <v-radio label="팝니다" value="sell"></v-radio>
       </v-radio-group>
 
       <!-- 거래할 아이템 종류 -->
@@ -21,7 +21,7 @@
       <!-- 거래할 아이템 종류로 바꿈 -->
       <v-col id="tradeItem" class="d-flex" cols="12" sm="6">
         <v-select
-          v-model="selected"
+          v-model="category"
           :items="items"
           label="종류"
           dense
@@ -33,39 +33,74 @@
       <!-- <v-col id="tradeSearch" class="d-flex" cols="12" sm="6">
         <v-select :items="items" label="아이템" dense></v-select>
       </v-col> -->
-
+      <!--         :filter="customFilter" -->
       <v-autocomplete
+        v-if="check"
+        v-model="name"
         :items="selectedLists"
-        :filter="customFilter"
         color="white"
         item-text="name"
         label="아이템 검색"
         @click="update"
         loading
       ></v-autocomplete>
-    </form>
+    </div>
 
     <!-- 제목과 내용 -->
-    <form id="wantTrade" action="" method="">
-      <div id="imgPreview">이미지 미리보기</div>
+    <div id="wantTrade" action="" method="">
+      <div id="imgPreview">
+        <input ref="imageInput" type="file" hidden @change="onChangeImages" />
+        <button
+          style="margin-left: 15px;"
+          id="imgUploadButton"
+          type="button"
+          @click="onClickImageUpload"
+        >
+          거래 사진 업로드
+        </button>
+        <div class="imgCon">
+          <img id="imgPreview" v-if="trade.image" :src="trade.image" /><img />
+        </div>
+      </div>
 
       <div class="bell">
-        <input id="bellInput" type="text" placeholder="가격 제시" />
+        <input
+          id="bellInput"
+          type="text"
+          placeholder="가격 제시"
+          v-model="trade.price"
+        />
         <img id="bellImg" src="../../assets/images/bell.png" alt="" />
       </div>
       <!-- <label for="bell">벨</label> -->
 
-      <form id="write" action="">
-        <button type="submit">
+      <div id="write" action="">
+        <button type="submit" v-on:click="tradeSubmit">
           <img class="writeButton" src="../../assets/images/write.png" alt="" />
         </button>
-      </form>
-    </form>
+      </div>
+    </div>
+    <div id="textUpload" action="" method="">
+      <input
+        id="title"
+        type="text"
+        placeholder="제목을 입력해주세요"
+        v-model="trade.title"
+      />
+      <textarea
+        id="field"
+        placeholder="내용을 입력해주세요"
+        v-model="trade.content"
+      ></textarea>
+    </div>
   </div>
 </template>
 
 <script>
 import * as infoService from "@/api/info.js";
+import { tradePost } from "@/api/trade.js";
+import * as firebase from "firebase";
+
 export default {
   name: "write",
   data: () => ({
@@ -73,41 +108,141 @@ export default {
     fossils: [],
     neighbors: [],
     paintings: [],
-    row: "",
-    model: "",
-    selected: "",
-    selectedLists: []
+    selectedLists: [],
+    category: "",
+    name: "",
+    categoryEng: "",
+    id: "",
+    check: true,
+    // post를 보내기 위해서 dict로 묶어서 사용!
+    trade: {
+      sort: "",
+      price: "",
+      title: "",
+      content: "",
+      image: null
+    }
   }),
+  watch: {
+    category: function(newVal, oldVal) {
+      if (newVal === "기타") {
+        console.log(oldVal);
+        this.check = false;
+        this.categoryEng = "etc";
+      } else {
+        this.check = true;
+      }
+    }
+  },
   methods: {
     onClickImageUpload() {
       this.$refs.imageInput.click();
     },
-    onChangeImages(e) {
-      console.log(e.target.files);
+    async onChangeImages(e) {
       const file = e.target.files[0];
-      this.imageUrl = URL.createObjectURL(file);
+      this.trade.image = URL.createObjectURL(file);
+      await firebase
+        .storage()
+        .ref()
+        .child(file.name)
+        .put(file)
+        .then(response => {
+          console.log(response);
+        });
+      let image = "";
+      await firebase
+        .storage()
+        .ref()
+        .child(file.name)
+        .getDownloadURL()
+        .then(response => {
+          console.log(response);
+          image = response;
+        });
+      this.trade.image = image;
     },
     init() {
-      this.selectedLists = [];
+      this.name = "";
     },
+
     update() {
-      console.log(this.selected);
-      if (this.selected === "이웃") {
+      if (this.category === "이웃") {
         this.selectedLists = this.neighbors;
-      } else if (this.selected === "미술품") {
+        this.categoryEng = "animal";
+      } else if (this.category === "미술품") {
         this.selectedLists = this.paintings;
-      } else if (this.selected === "화석") {
+        this.categoryEng = "painting";
+      } else if (this.category === "화석") {
         this.selectedLists = this.fossils;
+        this.categoryEng = "fossil";
       } else {
-        this.selectedLists = "";
+        this.selectedLists = [];
+        this.categoryEng = "etc";
       }
+    },
+    async tradeSubmit() {
+      var scope = this;
+      const token = this.$store.state.user.token;
+      const user = this.$store.state.user;
+      let image = "";
+      if (this.trade.image === null) {
+        image =
+          "https://ichef.bbci.co.uk/news/976/cpsprodpb/CA15/production/_111633715_df2cb9e9-4f34-499d-a255-29abf37d36d0.jpg";
+      } else {
+        image = this.trade.image;
+      }
+      let find = "",
+        trade = "";
+      const trade_info = this.trade;
+      if (this.category === "기타") {
+        trade = {
+          title: trade_info.title,
+          content: trade_info.content,
+          user_id: user.id,
+          username: user.username,
+          image: image,
+          category: this.categoryEng,
+          name: "",
+          sort: trade_info.sort,
+          price: trade_info.price
+        };
+      } else {
+        find = this.selectedLists.filter(list => list.name === this.name);
+        const engname = find[0].engname;
+        image = await this.getImgPath(engname);
+        trade = {
+          title: trade_info.title,
+          content: trade_info.content,
+          user_id: user.id,
+          username: user.username,
+          image: image,
+          category: this.categoryEng,
+          name: find[0].id.toString(),
+          sort: trade_info.sort,
+          price: trade_info.price
+        };
+      }
+      await tradePost(trade, token, function(response) {
+        scope.$router.push(`/trade/tradedetail/${response.data.id}`);
+      });
+    },
+    getImgPath(engname) {
+      let image = "";
+      if (this.categoryEng === "fossil") {
+        image = require(`@/assets/images/fossil.png`);
+      } else if (this.categoryEng === "painting") {
+        image = require(`@/assets/images/image_${this.categoryEng}/${engname}.jpg`);
+      } else if (this.categoryEng === "animal") {
+        image = require(`@/assets/images/image_${this.categoryEng}/${engname}.png`);
+      }
+      return image;
     }
   },
   async mounted() {
     this.fossils = await infoService.getFossils(this.fossils);
     this.neighbors = await infoService.getNeighbors(this.neighbors);
     this.paintings = await infoService.getPaintings(this.paintings);
-    // console.log(this.fossils, this.neighbors, this.paintings);
+    this.selectedLists = [];
   }
 };
 </script>
@@ -121,9 +256,9 @@ export default {
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   grid-template-areas:
-    "tradeUpload"
-    "wantTrade"
-    "wantTrade";
+    "tradeUpload tradeUpload"
+    "wantTrade textUpload"
+    "wantTrade textUpload";
   margin: 0 auto;
   margin-top: 20px;
   display: grid;
@@ -147,6 +282,63 @@ textarea:focus {
   grid-area: tradeUpload;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: "buySell tradeItem tradeSearch";
+}
+
+/* 여기서부터 communitywrite에서 가져온 부분. */
+#textUpload {
+  min-width: 50%;
+  display: grid;
+  grid-area: textUpload;
+  padding-left: 2rem;
+}
+
+#title {
+  display: inline-block;
+  background-color: rgba(210, 241, 31, 0.37);
+  width: 90%;
+  height: 45px;
+  border-radius: 13px;
+  font-family: "Jua", sans-serif;
+  text-align: center;
+}
+
+#field {
+  background-color: rgba(210, 241, 31, 0.37);
+  width: 90%;
+  height: 120px;
+  padding-top: 10px;
+  border-radius: 13px;
+  /* margin-top: 15px; */
+  font-family: "Jua", sans-serif;
+  text-align: center;
+}
+/* 는 여기까지 */
+
+/* 이미지 업로드 하는 부분 community write에서 따옴 */
+#imgUploadButton {
+  background-color: rgba(210, 241, 31, 0.37);
+  height: 1.8rem;
+  border-radius: 10px;
+  font-family: "Jua", sans-serif;
+  display: grid;
+  grid-area: imgUploadButton;
+}
+
+.imgCon {
+  margin-top: -1rem;
+  max-width: 10rem;
+  display: grid;
+  grid-area: imgCon;
+  height: 100px;
+  float: left;
+}
+/* 여기까지 복사해온거 */
+
+#imgPreview {
+  margin: 0 auto;
+  margin-left: 1rem;
+  max-width: 15rem;
+  padding-top: -15rem;
 }
 
 #buySell {
@@ -182,8 +374,11 @@ textarea:focus {
 }
 
 #imgPreview {
-  display: grid;
-  grid-area: imgPreview;
+  /* display: grid; */
+  /* grid-area: imgPreview; */
+  width: 200px;
+  margin-top: 10px;
+  z-index: 1;
 }
 
 .bell {
@@ -203,6 +398,7 @@ textarea:focus {
   margin-right: 5%;
   margin-left: 5%;
   height: 40px;
+  text-align: center;
 }
 
 #bellImg {

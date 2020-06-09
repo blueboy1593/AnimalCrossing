@@ -8,7 +8,6 @@ export function getFishes(cards) {
     .get("/api/v1/fishes/")
     .then(response => {
       cards = response.data;
-      // console.log("response.data::::  ", response.data);
       return cards;
     })
     .catch(error => {
@@ -35,7 +34,6 @@ export function getFossils(cards) {
     .get("/api/v1/fossils/")
     .then(response => {
       cards = response.data;
-      // console.log("response.data::::  ", response.data);
       return cards;
     })
     .catch(error => {
@@ -49,7 +47,6 @@ export function getNeighbors(cards) {
     .get("/api/v1/animals/")
     .then(response => {
       cards = response.data;
-      // console.log("response.data::::  ", response.data);
       return cards;
     })
     .catch(error => {
@@ -63,7 +60,6 @@ export function getPaintings(cards) {
     .get("/api/v1/paintings/")
     .then(response => {
       cards = response.data;
-      // console.log("response.data::::  ", response.data);
       return cards;
     })
     .catch(error => {

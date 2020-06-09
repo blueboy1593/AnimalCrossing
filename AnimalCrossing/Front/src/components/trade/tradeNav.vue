@@ -20,9 +20,16 @@
     <router-link to="/trade/etc">
       <img src="../../assets/images/nav_etc.png" alt="기타" class="nav-img" />
     </router-link>
-    <router-link to="/trade/write">
-      <img src="../../assets/images/write.png" alt="글쓰기" class="nav-img" />
-    </router-link>
+    <div v-if="!$store.state.isSigned">
+      <router-link to="/login">
+        <img src="../../assets/images/write.png" alt="글쓰기" class="nav-img" />
+      </router-link>
+    </div>
+    <div v-else>
+      <router-link to="/trade/write">
+        <img src="../../assets/images/write.png" alt="글쓰기" class="nav-img" />
+      </router-link>
+    </div>
   </nav>
 </template>
 
@@ -43,6 +50,10 @@ export default {};
 /* navbar 이미지 사이즈 및 설정 */
 .nav-img {
   height: 60px;
+}
+
+.nav-img:hover {
+  transform: scale(1.1);
 }
 
 /* style the buttons to have a bit of whitespace around the text
@@ -106,7 +117,7 @@ a background is specified in the script */
   /* position the navigation items atop one another instead of side by side */
   .board__nav {
     /* grid-area: nav; */
-    flex-direction: column;
+    /* flex-direction: column; */
     /* at the top of the container */
     align-self: start;
   }
@@ -121,6 +132,11 @@ a background is specified in the script */
     /* grid-area: section; */
     width: 90%;
     max-height: 380px;
+  }
+
+  .nav-img {
+    width: 40px;
+    height: auto;
   }
 }
 </style>

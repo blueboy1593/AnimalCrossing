@@ -1,12 +1,23 @@
 <template>
-  <div class="fossilCards">
-    <!-- <h1>fish</h1> -->
-    <infoCard
-      v-for="infoCard in infoCards"
-      :key="infoCard.id"
-      :infoCard="infoCard"
-      :routePath="routePath"
-    />
+  <div>
+    <v-text-field
+      v-model="searchText"
+      @keyup="filter"
+      solo-inverted
+      flat
+      hide-details
+      label="Search"
+      class="nav-search"
+    ></v-text-field>
+    <div class="fossilCards">
+      <!-- <h1>fish</h1> -->
+      <infoCard
+        v-for="infoCard in selectedCards"
+        :key="infoCard.id"
+        :infoCard="infoCard"
+        :routePath="routePath"
+      />
+    </div>
   </div>
 </template>
 
@@ -19,64 +30,35 @@ export default {
   components: {
     infoCard
   },
+  methods: {
+    filter() {
+      let check = this.infoCards.filter(
+        infoCard => infoCard.name.indexOf(this.searchText.trim()) !== -1
+      );
+      this.selectedCards = check;
+    }
+  },
   data() {
     return {
       infoCards: [],
-      routePath: this.$route.path
+      routePath: this.$route.path,
+      selectedCards: [],
+      searchText: ""
     };
   },
   async mounted() {
     this.infoCards = await getFossils(this.infoCards);
+    this.selectedCards = this.infoCards;
   }
-
-  // data() {
-  //   return {
-  //     infoCards: [
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       },
-  //       {
-  //         src: require("../../assets/images/fossil.png"),
-  //         title: "화석"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 
-<style>
+<style scoped>
 .fossilCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: auto;
   grid-gap: 1rem 1rem;
-  /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
 }
 @media (max-width: 1600px) {
   .fossilCards {
@@ -111,5 +93,12 @@ export default {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem 0rem;
   }
+}
+.v-text-field {
+  width: 300px;
+  background-color: rgba(173, 204, 245, 0.322);
+  margin-bottom: 10px;
+  margin-left: 35%;
+  margin-right: 35%;
 }
 </style>

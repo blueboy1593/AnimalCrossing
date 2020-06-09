@@ -99,7 +99,6 @@ export default {
     gradients,
     padding: 8,
     radius: 10,
-    // value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 100],
     width: 2
   }),
   props: {

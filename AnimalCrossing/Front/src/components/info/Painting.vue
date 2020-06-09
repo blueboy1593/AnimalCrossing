@@ -1,12 +1,24 @@
 <template>
-  <div class="paintingCards">
-    <!-- <h1>fish</h1> -->
-    <infoCard
-      v-for="infoCard in infoCards"
-      :key="infoCard.title"
-      :infoCard="infoCard"
-      :routePath="routePath"
-    />
+  <div>
+    <v-text-field
+      v-model="searchText"
+      @keyup="filter"
+      solo-inverted
+      flat
+      hide-details
+      label="Search"
+      class="nav-search"
+    ></v-text-field>
+    <div class="paintingCards">
+      <!-- <h1>fish</h1> -->
+
+      <infoCard
+        v-for="infoCard in selectedCards"
+        :key="infoCard.title"
+        :infoCard="infoCard"
+        :routePath="routePath"
+      />
+    </div>
   </div>
 </template>
 
@@ -19,61 +31,37 @@ export default {
   components: {
     infoCard
   },
+  methods: {
+    filter() {
+      let check = this.infoCards.filter(
+        infoCard => infoCard.name.indexOf(this.searchText.trim()) !== -1
+      );
+      this.selectedCards = check;
+    }
+  },
   data() {
     return {
       infoCards: [],
-      routePath: this.$route.path
+      routePath: this.$route.path,
+      selectedCards: [],
+      searchText: ""
     };
   },
   async mounted() {
     this.infoCards = await getPaintings(this.infoCards);
+    this.selectedCards = this.infoCards;
   }
-  // data() {
-  //   return {
-  //     infoCards: [
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       },
-  //       {
-  //         src: require("../../assets/images/art.jpg"),
-  //         title: "미술품"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 
-<style>
+<style scoped>
+.v-text-field {
+  width: 300px;
+  background-color: rgba(173, 204, 245, 0.322);
+  margin-bottom: 10px;
+  margin-left: 35%;
+  margin-right: 35%;
+}
 .paintingCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

@@ -11,6 +11,8 @@ class Show(models.Model):
     image = models.CharField(max_length=800, blank=True) # 선택 가능s
     created_at = models.DateTimeField(auto_now_add=True)  # 만들어졌을 때 기록하겠다
     updated_at = models.DateTimeField(auto_now=True)  # 언제든지 시간 기록하겠다
+    class Meta:
+        ordering = ['-pk']
     def __str__(self):
         return self.title
 
@@ -22,7 +24,6 @@ class Showcomment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='showcomments', on_delete=models.CASCADE)
     username = models.CharField(max_length=50) # 아이디 paik11012
-    class Meta:
-        ordering = ['-pk']  # 역순 ('-pk',)도 가능
+  # 역순 ('-pk',)도 가능
     def __str__(self):
         return self.content

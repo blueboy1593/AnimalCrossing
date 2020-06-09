@@ -28,9 +28,6 @@ export default new Vuex.Store({
     setIsSigned(state, isSigned) {
       state.isSigned = isSigned;
     },
-    // setUserId(state, id) {
-    //   state.user.id = id;
-    // },
     logout(state) {
       state.isSigned = false;
       state.user.id = 0;
