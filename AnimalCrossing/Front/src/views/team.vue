@@ -1,13 +1,12 @@
 <template>
   <div style="display: flex;">
-      <img id="team" src="../assets/images/team.png" alt="">
+    <img id="team" src="../assets/images/team.png" alt="" />
   </div>
 </template>
 <script>
 export default {
   name: "team",
-  components: {
-  },
+  components: {}
 };
 </script>
 <style scoped>
