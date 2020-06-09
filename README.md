@@ -21,7 +21,7 @@
   - 게임 커뮤니티에서 동물의 숲에 대해 소통하고자 하는 사람들 증가 
     (게임 타이틀 1300만개 이상 팔림)
 
-![2](./imgs/g_2.png)
+![2](./자료정리/imgs/g_2.png)
 
 -----
 
@@ -30,10 +30,10 @@
 - 나무위키: 게임 공략을 보고 싶은 사람들이 이용
   
 
-![비교](imgs/비교.png)
+![비교](./자료정리/imgs/비교.png)
 
 - 네이버 카페 / DC인사이드: 게임을 함께 이용하는 사람들과 커뮤니케이션
-  <img src="imgs/gall.PNG" alt="gall" style="zoom:67%;" />
+  <img src="./자료정리/imgs/gall.PNG" alt="gall" style="zoom:67%;" />
 
 - 정리: 이를 통해, 정보와 커뮤니티 서비스를 한 곳에서 제공하는 사이트를 착안
   
@@ -90,7 +90,7 @@
 
 ### 1-3. 팀원별 담당 역할
 
-![팀원역할](./imgs/팀원역할.png)
+![팀원역할](./자료정리/imgs/팀원역할.png)
 
 -----
 
@@ -258,12 +258,12 @@
 
 #### 1) ERD
 
-  ![](./imgs/ERD.png)
+  ![](./자료정리imgs/ERD.png)
 
 -----
 
 #### 2) Vue Components Structure
 
-  ![Project Architecture](./imgs/Project Architecture.png)
+  ![Project Architecture](./자료정리/imgs/Project Architecture.png)
 
 ## 4. PPT 참고
