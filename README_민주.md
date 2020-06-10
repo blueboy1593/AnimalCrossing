@@ -2,12 +2,7 @@
 
 ## http://k02a4031.p.ssafy.io/
 
-### 프로젝트 소개 영상
-
-<iframe width="640" height="360" src="https://www.youtube.com/embed/wCGdJAOtAX4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-
+### 프로젝트 소개 영상 https://www.youtube.com/embed/wCGdJAOtAX4
 
 
 
