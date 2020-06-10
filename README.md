@@ -100,7 +100,11 @@
 
 
 
-## <details><summary>2. 개발 계획</summary>
+<details>
+
+## <summary>2. 개발 계획</summary>
+
+<div markdown="1">
 
 ### 2-1. 일정 계획 및 담당
 
@@ -221,6 +225,8 @@
 - ![https://img.shields.io/badge/AdobeIllustrator-24.1.2-9cf](https://img.shields.io/badge/AdobeIllustrator-24.1.2-violet) Adobe Illustrator 24.1.2
 
 -----
+
+</div>
 
 </details>
 
