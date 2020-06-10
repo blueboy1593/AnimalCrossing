@@ -13,7 +13,7 @@
     <router-link to="/moocalculator">
       <div class="box box2" style="cursor:pointer">무 계산기</div>
     </router-link>
-    <router-link to="/trade">
+    <router-link to="/trade/etc">
       <div class="box box3" style="cursor:pointer">거래소</div>
     </router-link>
     <router-link to="/community/list">
