@@ -263,19 +263,6 @@
 | Req 8  |              커뮤니티 DB              | ** **CRUD 기능 제공** **<br /><br />- 게시글 카테고리 (IntField): 거래, 자랑, 친구<br />- 게시글 제목 (CharField)<br />- 게시글 내용 (TextField)<br />- 작성자 (CharField): 고유 ip로 형성된 랜덤 닉네임<br />- 이미지 (CharField): Firebase 이미지 URL<br />- 비밀번호 (​CharField): 게시글 작성 시마다 입력<br />- 작성 시간 (DateTimeField, auto_now_add=True)<br />- 수정 시간 (DateTimeField, auto_add=True)<br />- 댓글 (CharField)<br />- 게시글 좋아요 기능 (ManyToManyField) |
 | Req 9  |       서비스 UX/UI 커스터마이징       | - Web: 동물의 숲 컨셉 + 싸이월드 감성<br />- Mobile: 프로그레시브웹앱(PWA) |
 
-</div>
-</details>
-
-
-
-## 새로 넣을 것
-
-결과물 캡쳐 + 설명
-
-테스트 실행시키는 법
-
-에필로그 ( 느낀 점 두세줄 씩)
-
 
 
 
@@ -291,5 +278,22 @@
 #### 2) Vue Components Structure
 
   ![Project Architecture](./자료정리/imgs/Project Architecture.png)
+
+
+
+</div>
+</details>
+
+
+
+## 새로 넣을 것
+
+결과물 캡쳐 + 설명
+
+테스트 실행시키는 법
+
+에필로그 ( 느낀 점 두세줄 씩)
+
+
 
 ## 4. PPT 참고
