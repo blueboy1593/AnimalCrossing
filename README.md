@@ -100,7 +100,9 @@
 
 
 
-## <details><summary>2. 개발 계획</summary>
+## 2. 개발 계획
+
+<details><summary>개발 계획 상세보기</summary>
 
 <div markdown="1">
 
