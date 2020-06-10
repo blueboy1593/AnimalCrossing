@@ -4,11 +4,10 @@
 
 
 
-
-
-
-
 ## 1. 프로젝트 개요
+
+<details><summary>프로젝트 개요 상세보기</summary>
+<div markdown="1">
 
 ### 1-1. 주제 선정 배경 및 시장 분석
 
@@ -98,9 +97,15 @@
 
 -----
 
+</div>
 
+</details>
 
 ## 2. 개발 계획
+
+<details><summary>개발 계획 상세보기</summary>
+
+<div markdown="1">
 
 ### 2-1. 일정 계획 및 담당
 
@@ -222,9 +227,16 @@
 
 -----
 
+</div>
 
+</details>
 
 ## 3. 요구사항 정의  :mag:
+
+<details><summary>요구사항 정의 상세보기</summary>
+
+<div markdown="1">
+
 ### 3-1. Table
 
 1. 유저 관리(ip이용)
@@ -258,16 +270,6 @@
 
 
 
-## 새로 넣을 것
-
-결과물 캡쳐 + 설명
-
-테스트 실행시키는 법
-
-에필로그 ( 느낀 점 두세줄 씩)
-
-
-
 
 
 ### 3-2. ERD, Architecture
@@ -281,5 +283,22 @@
 #### 2) Vue Components Structure
 
   ![Project Architecture](./자료정리/imgs/Project Architecture.png)
+
+
+
+</div>
+</details>
+
+
+
+## 새로 넣을 것
+
+결과물 캡쳐 + 설명
+
+테스트 실행시키는 법
+
+에필로그 ( 느낀 점 두세줄 씩)
+
+
 
 ## 4. PPT 참고
