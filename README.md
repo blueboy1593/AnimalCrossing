@@ -299,19 +299,19 @@
 
 ### 2. 무계산기
 
-![moo1](C:/Users/multicampus/SSAFY/3rd_project/s02p31a403/Data/imgs/moo1.gif)
+![moo1](Data/imgs/moo1.gif)
 
 무계산기로 이번주 나의 무트코인 가격을 입력하여 남은 기간의 가격을 예측할 수 있습니다.
 
 ac-turnip, turnip-prophet 등 유명 무계산기 코드를 분석하여 상승형, 하락형, 진동형, 급변형 4가지의 패턴 중 사용자에게 가장 일어날 확률이 높은 패턴을 예측하여 제공합니다.
 
-![moo2](C:/Users/multicampus/SSAFY/3rd_project/s02p31a403/Data/imgs/moo2.gif)
+![moo2](Data/imgs/moo2.gif)
 
 이번주에 입력한 값을 다시 입력할 필요가 없습니다. 웹사이트에 저장이 되기 때문이죠.
 
 화요일 오후까지 입력을 하고 목요일에 새로 정보가 나오면 수요일 오전, 오후와 목요일 오전만 입력하면 그래프 결과를 얻을 수 있습니다.
 
-![moo3](C:/Users/multicampus/SSAFY/3rd_project/s02p31a403/Data/imgs/moo3.gif)
+![moo3](Data/imgs/moo3.gif)
 
 모든 값을 다시 입력하고싶다면, 초기화를 누르시면 됩니다.
 
