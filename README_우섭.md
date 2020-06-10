@@ -314,4 +314,4 @@
 | 이설유 |                                                              |
 | 임우섭 | 게임에서 등장하는 아기자기한 캐릭터와 설유 누나가 만든 고퀄리티의 페이지 디자인을 보며 즐겁게 개발을 했습니다.<br />처음에 생각했던 페이지 내 게임 기능이나  모바일 최적화를 위한 PWA를 시간 관계상 만들지 못해서 아쉬웠습니다.<br />프로젝트 마감 전날 열심히 디버깅한 덕분에 에러가 없는 페이지를 만들 수 있었던 것 같습니다. |
 
-<iframe width="640" height="360" src="https://www.youtube.com/embed/wCGdJAOtAX4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/wCGdJAOtAX4" frameborder="0"></iframe>
