@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+/* 여백 없애기 위해 */
+body {
+    margin: 0;
+}
+
+.container {
+    background-image: url('./assets/imgs/background.png');
+    background-size: cover;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr 20fr 1fr;
+    grid-template-rows: 1fr 20fr 1fr;
+    grid-template-areas:
+        ". logoImage ."
+        ". boardGreen ."
+        ". . .";
+}
+
+.logoImage {
+    grid-area: logoImage;
+    z-index: 2;
+}
+
+.logoImage img {
+    margin-top: 1%;
+    margin-left: 4%;
+    margin-bottom: -6%;
+}
+
+.boardGreen {
+    grid-area: boardGreen;
+    background-color: rgba(10, 85, 56, 0.425);
+    border-radius: 15px;
+
+    display: grid;
+    grid-template-columns: 1fr 25fr 1fr;
+    grid-template-rows: 2fr 20fr 2fr;
+    grid-template-areas:
+        "rings . ."
+        "rings boardGray ."
+        "rings . .";
+
+    z-index: 1;
+}
+
+.rings {
+    grid-area: rings;
+
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 5fr 1fr 1fr 2fr;
+    grid-template-areas:
+        "."
+        "ring1"
+        "ring2"
+        "."
+        "ring3"
+        "ring4"
+        ".";
+}
+
+.ring {
+    width: 120%;
+    min-width: 15px;
+    height: 30%;
+    margin-left: 40%;
+    background: linear-gradient(to right, #c2f8b4, #dfe2df);
+    border-radius: 50px;
+    box-shadow: 3px 3px 3px 2px rgba(8, 8, 8, 0.959);
+}
+
+.ring1 {
+    grid-area: ring1;
+}
+
+.ring2 {
+    grid-area: ring2;
+}
+
+.ring3 {
+    grid-area: ring3;
+}
+
+.ring4 {
+    grid-area: ring4;
+}
+
+.boardGray {
+    position: relative;
+
+    grid-area: boardGray;
+    background: rgba(255, 255, 255, 0.705);
+    border-radius: 15px;
+}
+
+.rightTab {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: -8.35%;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    font-size: 150%;
+    font-family: "Jua", sans-serif;
+}
+
+li {
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    color: black;
+    margin-bottom: 5px;
+    border-radius: 13px;
+}
+
+.illustratedBook {
+    background: #7a194a;
+}
+
+.calculator {
+    background: #607a19;
+}
+
+.exchange {
+    background: #195e7a;
+}
+
+.community {
+    background: #924460;
+}
