@@ -556,3 +556,12 @@ body {
    ```
 
    ![추가수정 후](./imgs/8.png)
+
+
+
+
+
+* 참고하면 좋을 사이트
+
+  https://heropy.blog/2019/08/17/css-grid/
+  https://studiomeal.com/archives/533
